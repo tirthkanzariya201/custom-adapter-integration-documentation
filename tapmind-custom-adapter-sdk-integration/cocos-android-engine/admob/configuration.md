@@ -1,0 +1,45 @@
+---
+description: This is guide to set up TapMind with ADMOB
+---
+
+# Configuration
+
+**CREATING CUSTOM EVENTS FOR WATERFALL**
+
+1. Under the **Mediation** tab : Click on **Create Mediation group** section
+2. Select **Android** and type of Ad format and Continue
+3. In the Name field : Type in as provided in the **G-sheet**
+4. Click on **Add ad units**
+5. Select the app and the Ad units that you want to use custom targeting on.
+
+{% hint style="info" %}
+**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**
+{% endhint %}
+
+**AD SOURCES (WATERFALL SECTION)**
+
+1. Click on Water fall source
+2. Click on Setup ad Source and then at the Bottom left Click on custom event
+3. Select the App for the setup (Android)
+4. Select ad unit and add the parameters as follows
+
+For the Below details Please reach out TapMind Account Manger
+
+```
+Mapping name : As Per the G-sheet Provided 
+ecpm : As Per the G-sheet Provided
+Class : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter : { "placementName": "As Per the G-sheet Provided"}
+```
+
+{% hint style="info" %}
+**Ad Sources → Add Custom Event → Enter Label → Set eCPM → Add Mapping → Enter Mapping Name → Enter Class Name → Add Parameter**
+{% endhint %}
+
+{% include "../../../.gitbook/includes/doc-tag-admob-gam.md" %}
+
+The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.
+
+{% hint style="info" %}
+Official Google Documentation for creating a custom event : [https://support.google.com/admob/answer/13407144](https://support.google.com/admob/answer/13407144)
+{% endhint %}

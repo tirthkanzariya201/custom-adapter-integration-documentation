@@ -1,0 +1,508 @@
+{
+  "$schema": "https://jamdesk.com/docs.json",
+  "name": "TapMind Custom Adapter SDK Integration",
+  "description": "Integration guide for TapMind Custom Adapter SDK across mobile platforms and game engines.",
+  "theme": "jam",
+  "colors": {
+    "primary": "#635BFF",
+    "light": "#7C75FF",
+    "dark": "#4F46E5"
+  },
+  "api": {
+    "openapi": [
+      "/openapi/example-api.yaml"
+    ],
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript",
+        "go",
+        "ruby",
+        "csharp",
+        "java",
+        "rust",
+        "php"
+      ]
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "/README"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Overview",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "README"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Native-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Native-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Unity-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Unity-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Flutter-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Flutter-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Applovin",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/README",
+                "title": "Applovin"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/configuration"
+            ]
+          },
+          {
+            "group": "Ironsource - Levelplay",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/README",
+                "title": "Ironsource - Levelplay"
+              },
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/installation",
+              "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Cocos-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/cocos-android-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Cocos-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/README"
+            ]
+          },
+          {
+            "group": "AdMob",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/README",
+                "title": "AdMob"
+              },
+              "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation",
+              "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/configuration"
+            ]
+          },
+          {
+            "group": "Google Ad Manager",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README",
+                "title": "Google Ad Manager"
+              },
+              "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation",
+              "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Gradle Setup",
+        "icon": "wrench",
+        "groups": [
+          {
+            "group": "Gradle Setup",
+            "pages": [
+              "gradle-setup/for-gradle-version-7+"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Legacy Starter Pages",
+        "icon": "box-archive",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Writing Content",
+            "pages": [
+              "writing/pages",
+              "writing/components",
+              "writing/code-blocks"
+            ]
+          },
+          {
+            "group": "API Pages",
+            "pages": [
+              {
+                "page": "api-reference/openapi-example",
+                "title": "OpenAPI Example"
+              },
+              "api-reference/request-response-examples"
+            ]
+          },
+          {
+            "group": "Built-In Components",
+            "pages": [
+              "components/cards",
+              "components/callouts",
+              "components/tabs-and-accordions",
+              "components/steps"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+---
+description: >-
+  This is guide to set up TapMind with Google Ad Manager using Yield Groups and
+  Yield Partners
+---
+
+# Configuration
+
+{% hint style="info" %}
+* An Ad Unit must already be in place which will be used for targeting.
+{% endhint %}
+
+**GOOGLE AD MANAGER CONFIGURATION**
+
+Please go through the below steps to integrate **TapMind** as a demand partner with your **GAM** account. To begin with the integration, login to your **GAM** account and follow the below steps.
+
+1. Under the **Admin** header : Click on the **Companies** section
+2. Click on the **New Company** button : Select **Ad Network**
+3. In the Name field : Type In **TapMind**
+4. In the **Ad Network** field : Select **Other Company**
+5. Toggle **Mediation** to **ON**
+6. Click on **Save**
+
+{% hint style="info" %}
+**Login GAM → Admin → Companies → New Company → Select Company Type (Ad Network) → Enter Name (TapMind) → Select Ad Network (Other Company) → Enable Mediation → Save**
+{% endhint %}
+
+**CREATING YIELD GROUP AND YIELD PARTNER**
+
+{% hint style="info" %}
+For adding **TapMind** under existing yield groups, skip the steps for creating a new yield group, navigate to your existing yield group and follow the steps for **Adding Yield Partner** as described in the next section
+{% endhint %}
+
+1. Under the “**Delivery**” tab : Click on “**Yield Groups**” section
+2. Click on “**New Yield Group**” to create a new yield group
+3. In the Name field : Type in as provided in the **G-sheet**
+4. Ad Format : As Per the G-sheet Provided
+5. Inventory Type : **Mobile**
+6. Under Targeting : Select the Ad Units which "**TapMind**" will target
+7. Scroll to the bottom
+
+{% hint style="info" %}
+**Delivery → Yield Groups → New Yield Group → Enter Name (from sheet) → Select Ad Format → Select Inventory Type (Mobile) → Select Ad Units (TapMind) → Scroll Down**
+{% endhint %}
+
+**ADDING YIELD PARTNER**
+
+1. Click on “**Add Yield Partner**”
+2. Select “**TapMind**” from the list
+
+Add details as provided below in Yield Partner
+
+```
+Integration Type : Custom Event 
+Platform : Android
+Status : Active
+```
+
+For the Below details Please reach out TapMind Account Manger
+
+```
+Default Cpm : As Per the G-sheet Provided
+Label : As Per the G-sheet Provided
+Class Name : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter : { "placementName": "As Per the G-sheet Provided" }
+```
+
+3. Click on “**Save**” and save the configuration.
+4. The actual number of entries, manual eCPM, etc. will be shared once the test setup is complete.
+
+The above setup completes our **TapMind x GAM** integration. You should see an Ad if test setup is complete and working fine.
+
+{% hint style="info" %}
+**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override CPM → Enter Label (from sheet) → Enter Class Name → Enter Parameter → Save**
+{% endhint %}
+
+{% include "../../../.gitbook/includes/doc-tag-admob-gam.md" %}
+
+{% hint style="info" %}
+Official Google Documentation for creating a Yield Group :\
+https://support.google.com/admanager/answer/7390828?hl=en
+{% endhint %}
