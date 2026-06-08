@@ -6,8 +6,8 @@ description: >-
 
 # AdMob
 
-{% hint style="info" %}
+<Info>
 **PREREQUISITES**
 
 * An Ad Unit must already be in place which will be used for targeting.
-{% endhint %}
+</Info>

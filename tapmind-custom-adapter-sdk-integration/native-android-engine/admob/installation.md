@@ -1,11 +1,11 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisites**
 
 * minSdkVersion 23 or higher
 * compileSdkVersion 36 or higher
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 

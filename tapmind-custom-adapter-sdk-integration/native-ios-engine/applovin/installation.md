@@ -1,14 +1,14 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * Install either **CocoaPods** (recommended) or use **Swift Package Manager** to manage dependencies in your Xcode project.
 * Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
-{% endhint %}
+</Info>
 
-{% tabs %}
-{% tab title="CocoaPods" %}
+<Tabs>
+  <Tab title="CocoaPods">
 **Installation via CocoaPods**
 
 To integrate TapMinds custom adapter SDK into your Xcode project using CocoaPods, follow these steps:
@@ -28,9 +28,8 @@ To integrate TapMinds custom adapter SDK into your Xcode project using CocoaPods
     pod install
     ```
 3. After installation, close Xcode and open the .xcworkspace file instead of .xcodeproj.
-{% endtab %}
-
-{% tab title="SPM" %}
+  </Tab>
+  <Tab title="SPM">
 #### **Installation via SPM**
 
 1. In Xcode, install the TapMind custom adapter SDK Swift Package by navigating to **File > Add Package Dependencies.**
@@ -46,13 +45,13 @@ To integrate TapMinds custom adapter SDK into your Xcode project using CocoaPods
 When integrating this SDK via **Swift Package Manager**, make sure to add the **`-ObjC`** flag to your app target.
 
 &#x20;Go to **Targets → Build Settings → Other Linker Flags** and add: -ObjC
-{% endtab %}
-{% endtabs %}
+  </Tab>
+</Tabs>
 
 #### Import Google Mobile Ads SDK <a href="#import" id="import"></a>
 
-{% tabs %}
-{% tab title="CocoaPods" %}
+<Tabs>
+  <Tab title="CocoaPods">
 #### **Installation via CocoaPods**
 
 Before you continue, review [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods) for information on creating and using Podfiles.
@@ -289,9 +288,8 @@ Update your app's `Info.plist` file to add two keys:
 ```
 
 Replace SAMPLE\_APP\_ID with your AdMob app ID. While testing, use the sample app ID shown in the previous example.
-{% endtab %}
-
-{% tab title="SPM" %}
+  </Tab>
+  <Tab title="SPM">
 **Installation via SPM**
 
 **Key Point:** Mediation adapter libraries are not yet available on Swift Package Manager. If you use [mediation](https://developers.google.com/admob/ios/mediation), we recommend integrating with CocoaPods.
@@ -305,8 +303,8 @@ To [add a package dependency](https://developer.apple.com/documentation/xcode/ad
     https://github.com/googleads/swift-package-manager-google-mobile-ads.git
     ```
 3. Select the version of the Google Mobile Ads Swift Package you want to use. For new projects, we recommend using the **Up to Next Major Version**.
-{% endtab %}
-{% endtabs %}
+  </Tab>
+</Tabs>
 
 
 

@@ -4,11 +4,13 @@ description: >-
   Yield Partners
 ---
 
+import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'
+
 # Configuration
 
-{% hint style="info" %}
+<Info>
 * An Ad Unit must already be in place which will be used for targeting.
-{% endhint %}
+</Info>
 
 **GOOGLE AD MANAGER CONFIGURATION**
 
@@ -21,15 +23,15 @@ Please go through the below steps to integrate **TapMind** as a demand partner w
 5. Toggle **Mediation** to **ON**
 6. Click on **Save**
 
-{% hint style="info" %}
+<Info>
 **Login GAM → Admin → Companies → New Company → Select Company Type (Ad Network) → Enter Name (TapMind) → Select Ad Network (Other Company) → Enable Mediation → Save**
-{% endhint %}
+</Info>
 
 **CREATING YIELD GROUP AND YIELD PARTNER**
 
-{% hint style="info" %}
+<Info>
 For adding **TapMind** under existing yield groups, skip the steps for creating a new yield group, navigate to your existing yield group and follow the steps for **Adding Yield Partner** as described in the next section
-{% endhint %}
+</Info>
 
 1. Under the “**Delivery**” tab : Click on “**Yield Groups**” section
 2. Click on “**New Yield Group**” to create a new yield group
@@ -39,9 +41,9 @@ For adding **TapMind** under existing yield groups, skip the steps for creating 
 6. Under Targeting : Select the Ad Units which "**TapMind**" will target
 7. Scroll to the bottom
 
-{% hint style="info" %}
+<Info>
 **Delivery → Yield Groups → New Yield Group → Enter Name (from sheet) → Select Ad Format → Select Inventory Type (Mobile) → Select Ad Units (TapMind) → Scroll Down**
-{% endhint %}
+</Info>
 
 **ADDING YIELD PARTNER**
 
@@ -70,13 +72,13 @@ Parameter : { "placementName": "As Per the G-sheet Provided"}
 
 The above setup completes our **TapMind x GAM** integration. You should see an Ad if test setup is complete and working fine.
 
-{% hint style="info" %}
+<Info>
 **Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override CPM → Enter Label (from sheet) → Enter Class Name → Enter Parameter → Save**
-{% endhint %}
+</Info>
 
-{% include "../../../.gitbook/includes/doc-tag-admob-gam.md" %}
+<DocTagAdmobGam />
 
-{% hint style="info" %}
+<Info>
 Official Google Documentation for creating a Yield Group :\
 https://support.google.com/admanager/answer/7390828?hl=en
-{% endhint %}
+</Info>

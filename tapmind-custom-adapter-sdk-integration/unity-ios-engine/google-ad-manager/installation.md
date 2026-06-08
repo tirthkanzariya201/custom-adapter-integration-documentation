@@ -4,8 +4,8 @@
 
 **Adding Dependency**
 
-{% tabs %}
-{% tab title="IOS" %}
+<Tabs>
+  <Tab title="IOS">
 * Open **Unity Editor**.
 * Go to **Window → Package Manager**.
 * Click the **“+” (Add)** button in the top-left corner.
@@ -16,5 +16,5 @@
     ```
 * Wait for the package to finish installing successfully.
 * Once installed, the **TapMind Unity SDK** will be available in your Unity project and ready for integration.
-{% endtab %}
-{% endtabs %}
+  </Tab>
+</Tabs>

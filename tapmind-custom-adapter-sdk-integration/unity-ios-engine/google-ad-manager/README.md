@@ -6,11 +6,11 @@ description: >-
 
 # Google Ad Manager
 
-{% hint style="info" %}
+<Info>
 **PREREQUISITES**
 
 * An Ad Unit must already be in place which will be used for targeting.
-{% endhint %}
+</Info>
 
 **GOOGLE AD MANAGER CONFIGURATION**
 
@@ -23,4 +23,4 @@ Please go through the below steps to integrate **TapMind** as a demand partner w
 5. Toggle **Mediation** to **ON**
 6. Click on **Save**
 
-[<br>](https://ca-docs.adster.tech/custom-adapter-integration/android)
+![](https://ca-docs.adster.tech/custom-adapter-integration/android)

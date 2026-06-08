@@ -7,11 +7,11 @@ description: >-
 
 # Cocos-Android Engine
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * minSdkVersion of 26 or higher
 * compileSdkVersion of 36 or higher
-{% endhint %}
+</Info>
 
 ###

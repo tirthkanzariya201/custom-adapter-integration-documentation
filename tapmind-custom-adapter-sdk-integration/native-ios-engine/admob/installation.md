@@ -34,4 +34,5 @@ https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git
 **Important (SPM Integration)**\
 When integrating this SDK via **Swift Package Manager**, make sure to add the **`-ObjC`** flag to your app target.
 
-&#x20;Go to **Targets → Build Settings → Other Linker Flags** and add: -ObjC<br>
+&#x20;Go to **Targets → Build Settings → Other Linker Flags** and add: -ObjC
+

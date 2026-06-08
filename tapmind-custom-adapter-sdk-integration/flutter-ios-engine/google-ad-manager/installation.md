@@ -1,11 +1,11 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * Ensure your `ios/Podfile` sets the minimum iOS version:
   * platform :ios, '15.0' # Minimum required by TapMind SDK
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 

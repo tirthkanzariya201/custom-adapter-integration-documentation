@@ -2,13 +2,13 @@
 
 
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * minSdkVersion of 24 or higher
 * compileSdkVersion of 36 or higher
 * Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 

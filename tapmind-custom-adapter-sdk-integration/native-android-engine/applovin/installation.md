@@ -1,12 +1,12 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * minSdkVersion of 23 or higher
 * compileSdkVersion of 36 or higher
 * Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 
@@ -39,15 +39,16 @@ implementation("io.github.tapmind-tech:customadapter-applovin:2.1.5")
 
 Add your AdMob app ID, as [identified in the AdMob web interface](https://support.google.com/admob/answer/7356431), to your app's `AndroidManifest.xml` file. To do so, add a `<meta-data>` tag with `android:name="com.google.android.gms.ads.APPLICATION_ID"`. You can find your **app ID** in the AdMob web interface. For `android:value`, insert your own AdMob app ID, surrounded by quotation marks.
 
-<pre><code>&#x3C;manifest>
-  &#x3C;application>
-<strong>    &#x3C;!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
-</strong><strong>    &#x3C;meta-data
-</strong><strong>        android:name="com.google.android.gms.ads.APPLICATION_ID"
-</strong><strong>        android:value="SAMPLE_APP_ID"/>
-</strong>  &#x3C;/application>
-&#x3C;/manifest>
-</code></pre>
+```xml
+<manifest>
+  <application>
+    <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="SAMPLE_APP_ID"/>
+  </application>
+</manifest>
+```
 
 Replace SAMPLE\_APP\_ID with your AdMob app ID. While testing, use the sample app ID shown in the previous example.
 

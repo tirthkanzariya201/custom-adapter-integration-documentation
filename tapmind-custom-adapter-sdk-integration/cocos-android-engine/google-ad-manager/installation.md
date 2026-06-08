@@ -1,11 +1,11 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * minSdkVersion of 26 or higher
 * compileSdkVersion of 36 or higher
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 
@@ -27,7 +27,7 @@ allprojects {
 2. Go to the top menu: **Extension → Extension Manager**
 3. Click on: **"Install from File"**
 
-<figure><img src="../../../.gitbook/assets/cocos-extension-guide (1).png" alt=""><figcaption></figcaption></figure>
+![](../../../.gitbook/assets/cocos-extension-guide (1).png)
 
 4. Select and upload the TapMind extension ZIP file\
    [Download TapMind Extension](https://github.com/tapmind-tech/TapMind-CA-Admob-Cocos/archive/refs/heads/main.zip)
@@ -38,6 +38,6 @@ allprojects {
 6. Locate the **TapMind extension**
 7. **Enable** it
 
-{% hint style="info" %}
+<Info>
 **Extension → Extension Manager → Install from File → Select TapMind Extension ZIP → Install → Installed Tab → Enable Extension**
-{% endhint %}
+</Info>

@@ -1,12 +1,12 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * Ensure your `ios/Podfile` sets the minimum iOS version:
   * platform :ios, '15.0' # Minimum required by TapMind SDK
 * Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 

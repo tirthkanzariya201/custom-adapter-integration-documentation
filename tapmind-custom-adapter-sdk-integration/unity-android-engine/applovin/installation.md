@@ -1,10 +1,10 @@
 # Installation
 
-{% hint style="info" %}
+<Info>
 **App Prerequisite**
 
 * Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
-{% endhint %}
+</Info>
 
 ### Configuration Steps
 
@@ -30,8 +30,8 @@
 
 In the Unity editor, select **Assets > Google Mobile Ads > Settings** from the menu.
 
-<div align="left"><img src="https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png" alt=""></div>
+![](https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png)
 
 Enter your Android and iOS [AdMob app ID](https://support.google.com/admob/answer/6232340) in each field.
 
-<div align="left"><img src="https://developers.google.com/static/admob/images/unity/settings_app_ids.png" alt=""></div>
+![](https://developers.google.com/static/admob/images/unity/settings_app_ids.png)

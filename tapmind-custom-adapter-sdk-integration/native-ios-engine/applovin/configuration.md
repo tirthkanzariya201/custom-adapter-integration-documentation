@@ -2,13 +2,15 @@
 description: This is guide to set up TapMind with applovin using custom networks
 ---
 
+import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'
+
 # Configuration
 
-{% hint style="info" %}
+<Info>
 **PREREQUISITES**
 
 * An Ad Unit must already be in place which will be used for targeting.
-{% endhint %}
+</Info>
 
 #### **APPLOVIN CONFIGURATION**
 
@@ -24,9 +26,9 @@ IOS Class: TapMindMediationAdapterApplovin
 
 3. Click on **Save**.
 
-{% hint style="info" %}
+<Info>
 **MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**
-{% endhint %}
+</Info>
 
 **ADDING YIELD PARTNER**
 
@@ -45,11 +47,11 @@ Custom Parameters = {"placementName":"As Per the G-sheet Provided"}
 
 4. Click on “Save” and save the configuration.
 
-{% hint style="info" %}
+<Info>
 **MAX → Mediation → Manage Ad Units → Select Ad Unit → Select TapMind → Enter Placement ID → Enter eCPM → Enter Custom Parameters → Save**
-{% endhint %}
+</Info>
 
-{% include "../../../.gitbook/includes/doc-tag-applovin.md" %}
+<DocTagApplovin />
 
 The above setup completes our **TapMind x Applovin** integration. You should see an Ad if test setup is complete and working fine.
 

@@ -2,6 +2,8 @@
 description: This is guide to set up TapMind with ADMOB
 ---
 
+import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'
+
 # Configuration
 
 **CREATING CUSTOM EVENTS FOR WATERFALL**
@@ -12,9 +14,9 @@ description: This is guide to set up TapMind with ADMOB
 4. Click on **Add ad units**
 5. Select the app and the Ad units that you want to use custom targeting on.
 
-{% hint style="info" %}
+<Info>
 **Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**
-{% endhint %}
+</Info>
 
 **AD SOURCES (WATERFALL SECTION)**
 
@@ -32,14 +34,14 @@ Class : TapMindMediationAdapterAdmob
 Parameter : { "placementName": "As Per the G-sheet Provided"}
 ```
 
-{% hint style="info" %}
+<Info>
 **Ad Sources → Add Custom Event → Enter Label → Set eCPM → Add Mapping → Enter Mapping Name → Enter Class Name → Add Parameter**
-{% endhint %}
+</Info>
 
 The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.
 
-{% include "../../../.gitbook/includes/doc-tag-applovin.md" %}
+<DocTagApplovin />
 
-{% hint style="info" %}
+<Info>
 Official Google Documentation for creating a custom event : [https://support.google.com/admob/answer/13407144](https://support.google.com/admob/answer/13407144)
-{% endhint %}
+</Info>

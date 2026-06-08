@@ -1,0 +1,227 @@
+{
+  "filesModified": [
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/README.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/README.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/README.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/README.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/README.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration.md",
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation.md"
+  ],
+  "hints": 158,
+  "includes": 28,
+  "tabs": 5,
+  "hintByStyle": {
+    "info": 158
+  },
+  "includeBySnippet": {
+    "doc-tag-admob-gam.md": 15,
+    "doc-tag-applovin.md": 7,
+    "doc-tag-ironsource.md": 6
+  },
+  "tabByFile": {
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation.md": 2,
+    "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation.md": 2,
+    "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation.md": 1
+  },
+  "manualReview": [
+    {
+      "file": "README.md",
+      "reason": "GitBook HTML button links — requires Card/Button redesign"
+    },
+    {
+      "file": "README.md",
+      "reason": "GitBook icon frontmatter field — not used by JamDesk"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README.md",
+      "reason": "Legacy GitBook image embed via ca-docs.adster.tech URL"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "Relative .gitbook/assets/ image path — move to /images/ in Phase 3"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    },
+    {
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation.md",
+      "reason": "HTML figure/div image markup — verify rendering after preview"
+    }
+  ]
+}
