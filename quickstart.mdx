@@ -1,0 +1,109 @@
+---
+title: Quickstart
+description: "Edit MDX files, preview locally with the Jamdesk CLI, then connect a GitHub repo for automatic deploys. Customize colors, branding, and navigation in docs.json."
+---
+
+Your docs are built from MDX files in this repository. Edit them locally with the CLI, then connect to Jamdesk for automatic builds on every push.
+
+## 1. Preview locally
+
+Install the Jamdesk CLI:
+
+<CodeGroup>
+```bash npm
+npm install -g jamdesk
+```
+
+```bash brew
+brew install jamdesk/tap/jamdesk
+```
+</CodeGroup>
+
+Start the dev server with hot reload:
+
+```bash
+jamdesk dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Edits to MDX files appear instantly.
+
+## 2. Edit a page
+
+Open any `.mdx` file and start writing. MDX supports standard Markdown plus Jamdesk components.
+
+```mdx
+---
+title: My Page
+description: A brief description for SEO
+---
+
+# Heading
+
+Regular markdown works — **bold**, *italic*, `code`, [links](https://example.com).
+
+<Tip>
+Jamdesk components like this Tip drop in without imports.
+</Tip>
+```
+
+## 3. Add a new page
+
+<Steps>
+  <Step title="Create an MDX file">
+    Add a new `.mdx` file anywhere in your project, for example `guides/deployment.mdx`.
+  </Step>
+  <Step title="Add it to navigation">
+    Open `docs.json` and add the page path to the `navigation` section:
+
+    ```json
+    {
+      "group": "Guides",
+      "pages": ["guides/deployment"]
+    }
+    ```
+  </Step>
+</Steps>
+
+## 4. Customize your site
+
+Everything is configured in `docs.json`:
+
+| Setting | What it does |
+|---------|-------------|
+| `name` | Site name shown in the header |
+| `colors` | Primary, light, and dark accent colors |
+| `logo` | Light and dark mode logo images |
+| `theme` | Visual theme (`jam`, `nebula`, or `pulsar`) |
+| `navigation` | Sidebar tabs, groups, and page order |
+| `navbar` | Top navigation links and buttons |
+
+<Tip>
+See the full configuration reference at [jamdesk.com/docs/config/docs-json-reference](https://jamdesk.com/docs/config/docs-json-reference).
+</Tip>
+
+## 5. Connect GitHub for auto-deploy
+
+Once your docs look right locally, hand off building and hosting to Jamdesk:
+
+<Steps>
+  <Step title="Push your code to GitHub">
+    Create a repository and push your project.
+  </Step>
+  <Step title="Connect on the dashboard">
+    Sign in at [dashboard.jamdesk.com](https://dashboard.jamdesk.com), create a project, and connect your repository.
+  </Step>
+  <Step title="Push changes">
+    Every push triggers an automatic build. Your site is live in seconds at `<slug>.jamdesk.app` or your custom domain.
+  </Step>
+</Steps>
+
+## What's next
+
+<Columns cols={2}>
+  <Card title="Components" icon="puzzle-piece" href="/components/cards">
+    Cards, callouts, tabs, steps, and more — all ready to use.
+  </Card>
+  <Card title="API Pages" icon="plug" href="/api-reference/openapi-example">
+    Render endpoint pages from an OpenAPI spec, or hand-author with components.
+  </Card>
+</Columns>

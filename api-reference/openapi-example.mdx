@@ -1,0 +1,55 @@
+---
+title: OpenAPI Example
+description: See a live OpenAPI-generated endpoint page and learn how Jamdesk renders requests, responses, and authentication directly from your spec.
+openapi: /openapi/example-api.yaml POST /tickets
+---
+
+This page demonstrates a live endpoint generated from an [OpenAPI specification](https://spec.openapis.org/oas/latest.html). The request schema, response models, and code examples in the right panel are all auto-generated from the spec, with no manual authoring required.
+
+<Info>
+This example uses the Acme Support API. Update `api.openapi` in your `docs.json` to point at your own spec file to generate real endpoints.
+</Info>
+
+<Info>
+**Multi-language docs?** Provide a `<spec>.<lang>.<ext>` file next to your source spec (e.g., `example-api.fr.yaml`) and Jamdesk renders the translated version when users view the page under `/fr/...`. See [Translating OpenAPI Specs](https://jamdesk.com/docs/setup/languages#translating-openapi-specs).
+</Info>
+
+<Tip>
+This page can have the [API Playground](https://jamdesk.com/docs/api-reference/playground) enabled. See the playground guide to wire up live request testing.
+</Tip>
+
+## What Gets Generated
+
+From a single `openapi` frontmatter line, Jamdesk auto-generates:
+
+- An endpoint badge showing the method and path with color coding
+- Parameter documentation for path, query, header, and body parameters
+- Request and response schemas, including nested objects and arrays
+- Code examples in cURL, Python, JavaScript, Go, Ruby, C#, Java, Rust, and PHP (configurable via `api.examples.languages`)
+- Authentication details pulled from the spec's security schemes
+
+All `$ref` references in your spec are automatically resolved, so you can organize schemas with `components/schemas` as usual.
+
+## Setting Up OpenAPI
+
+Place your OpenAPI 3.x spec (YAML or JSON) in the `openapi/` directory, register it in `docs.json` under `api.openapi`, then add `openapi: /openapi/your-spec.yaml METHOD /path` to any page's frontmatter. See the [OpenAPI setup guide](https://jamdesk.com/docs/setup/directory-structure#openapi) for full details.
+
+## Related Pages
+
+<Columns cols={2}>
+  <Card title="Request/Response Examples" icon="code" href="/api-reference/request-response-examples">
+    Hand-authored endpoint example using MDX components
+  </Card>
+  <Card title="API Playground" icon="flask-vial" href="https://jamdesk.com/docs/api-reference/playground">
+    Enable interactive API testing on your endpoint pages
+  </Card>
+</Columns>
+
+<Columns cols={2}>
+  <Card title="OpenAPI Setup" icon="file-code" href="https://jamdesk.com/docs/setup/directory-structure#openapi">
+    Where to store and reference OpenAPI files
+  </Card>
+  <Card title="docs.json Reference" icon="file-lines" href="https://jamdesk.com/docs/config/docs-json-reference">
+    Full configuration reference including api.openapi
+  </Card>
+</Columns>

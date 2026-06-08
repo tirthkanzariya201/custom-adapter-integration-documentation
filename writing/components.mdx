@@ -1,0 +1,78 @@
+---
+title: Components
+description: "Choose the right component for the job — when to use Cards, Callouts, Tabs, Steps, and more. Live examples for every component live in the Components tab."
+---
+
+Jamdesk's MDX components are available in every page — no imports needed. This guide helps you pick the right one. For live examples of every component, see the **Components** tab in the sidebar.
+
+## Highlighting information
+
+<Note>
+**Note** — Helpful context that enhances understanding.
+</Note>
+
+<Info>
+**Info** — Neutral facts or supplementary details.
+</Info>
+
+<Tip>
+**Tip** — Best practices and "pro tips."
+</Tip>
+
+<Warning>
+**Warning** — Important caveats or requirements.
+</Warning>
+
+<Danger>
+**Danger** — Critical warnings (data loss, security).
+</Danger>
+
+<Check>
+**Check** — Success confirmations.
+</Check>
+
+Use the lightest one that conveys the urgency. Reach for `Warning` and `Danger` sparingly so they keep their weight.
+
+## Linking to other pages
+
+| Component | When to use |
+|-----------|-------------|
+| `<Card>` | A single feature or destination — title, icon, optional href. |
+| `<Columns>` | A grid of cards (2, 3, or 4 columns). Wraps multiple `<Card>` children. |
+
+```mdx
+<Columns cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get up and running in minutes.
+  </Card>
+  <Card title="Components" icon="puzzle-piece" href="/components/cards">
+    See every built-in component.
+  </Card>
+</Columns>
+```
+
+## Showing alternatives or steps
+
+| Component | When to use |
+|-----------|-------------|
+| `<Tabs>` + `<Tab>` | Equal alternatives the reader chooses between (languages, platforms, OSes). |
+| `<AccordionGroup>` + `<Accordion>` | Collapsed-by-default details (FAQs, advanced options). |
+| `<Steps>` + `<Step>` | A linear sequence the reader walks through in order. |
+| `<CodeGroup>` | Multi-language code blocks side by side with shared tab strip. |
+
+If readers do all the work, use `<Steps>`. If they pick one path, use `<Tabs>`. If most readers skip it, use `<AccordionGroup>`.
+
+## Documenting APIs
+
+| Component | When to use |
+|-----------|-------------|
+| `<ParamField>` | A request parameter (path, query, header, body). |
+| `<ResponseField>` | A response field. |
+| `<RequestExample>` | The request code samples panel. |
+| `<ResponseExample>` | The response payload(s) panel. |
+
+See the **API Pages** group for working examples.
+
+<Tip>
+For the full component reference (every prop, every variant) see [jamdesk.com/docs/components/overview](https://jamdesk.com/docs/components/overview).
+</Tip>

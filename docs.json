@@ -1,0 +1,90 @@
+{
+  "$schema": "https://jamdesk.com/docs.json",
+  "name": "Documentation",
+  "description": "Your documentation site powered by Jamdesk",
+  "theme": "jam",
+  "colors": {
+    "primary": "#635BFF",
+    "light": "#7C75FF",
+    "dark": "#4F46E5"
+  },
+  "api": {
+    "openapi": [
+      "/openapi/example-api.yaml"
+    ],
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript",
+        "go",
+        "ruby",
+        "csharp",
+        "java",
+        "rust",
+        "php"
+      ]
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "/introduction"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Writing Content",
+            "icon": "pen",
+            "pages": [
+              "writing/pages",
+              "writing/components",
+              "writing/code-blocks"
+            ]
+          },
+          {
+            "group": "API Pages",
+            "icon": "plug",
+            "pages": [
+              {
+                "page": "api-reference/openapi-example",
+                "title": "OpenAPI Example"
+              },
+              "api-reference/request-response-examples"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Components",
+        "icon": "puzzle-piece",
+        "groups": [
+          {
+            "group": "Built-In Components",
+            "icon": "puzzle-piece",
+            "pages": [
+              "components/cards",
+              "components/callouts",
+              "components/tabs-and-accordions",
+              "components/steps"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
