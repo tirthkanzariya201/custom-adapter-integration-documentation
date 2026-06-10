@@ -1,0 +1,20 @@
+# Installation
+
+### Configuration Steps
+
+**Adding Dependency**
+
+{% tabs %}
+{% tab title="IOS" %}
+* Open **Unity Editor**.
+* Go to **Window → Package Manager**.
+* Click the **“+” (Add)** button in the top-left corner.
+* Select **Install package from Git URL…**
+* Paste the following Git URL and click **Install**:
+  * ```
+    https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git
+    ```
+* Wait for the package to finish installing successfully.
+* Once installed, the **TapMind Unity SDK** will be available in your Unity project and ready for integration.
+{% endtab %}
+{% endtabs %}

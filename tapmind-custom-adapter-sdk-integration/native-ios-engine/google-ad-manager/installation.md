@@ -1,0 +1,37 @@
+# Installation
+
+#### **Installation via CocoaPods**
+
+To integrate TapMinds custom adapter SDK into your Xcode project using CocoaPods, follow these steps:
+
+1.  Open your project's Podfile and add:
+
+    Copy
+
+    ```
+    pod 'TapMindAdapter'
+    ```
+2.  Run the following command in the terminal:
+
+    Copy
+
+    ```
+    pod install
+    ```
+3. After installation, close Xcode and open the .xcworkspace file instead of .xcodeproj.
+
+#### **Installation via SPM**
+
+1. In Xcode, install the TapMind custom adapter SDK Swift Package by navigating to **File > Add Package Dependencies.**
+2. In the prompt that appears, search for the below GitHub repository:&#x20;
+
+```
+https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git
+```
+
+3. Select the version of the TapMind SDK Swift Package you want to use. For new projects, we recommend using the **Up to Next Major Version**.
+
+**Important (SPM Integration)**\
+When integrating this SDK via **Swift Package Manager**, make sure to add the **`-ObjC`** flag to your app target.
+
+&#x20;Go to **Targets → Build Settings → Other Linker Flags** and add: -ObjC<br>

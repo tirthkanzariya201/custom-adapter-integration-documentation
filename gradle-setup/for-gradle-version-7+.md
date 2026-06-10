@@ -1,0 +1,4 @@
+# For Gradle Version 7+
+
+If you’re using Gradle version 7+, update your repository section on your `settings.gradle` file, instead of `build.gradle`. Please note: The repository section should be included as part of the `dependencyResolutionManagement` section:
+

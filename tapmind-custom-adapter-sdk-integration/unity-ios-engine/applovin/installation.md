@@ -1,0 +1,37 @@
+# Installation
+
+{% hint style="info" %}
+**App Prerequisite**
+
+* Ensure **Google Mobile Ads SDK** is already integrated; if not, install it before adding the TapMinds adapter.
+{% endhint %}
+
+### Configuration Steps
+
+**Adding Dependency**
+
+* Open **Unity Editor**.
+* Go to **Window → Package Manager**.
+* Click the **“+” (Add)** button in the top-left corner.
+* Select **Install package from Git URL…**
+* Paste the following Git URL and click **Install**:
+  * ```
+    https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git
+    ```
+* Wait for the package to finish installing successfully.
+* Once installed, the **TapMind Unity SDK** will be available in your Unity project and ready for integration.
+
+### Import the Google Mobile Ads for Unity plugin <a href="#import_the_mobile_ads_for_unity_plugin" id="import_the_mobile_ads_for_unity_plugin"></a>
+
+1. Download the latest [`.unitypackage`](https://github.com/googleads/googleads-mobile-unity/releases/latest) release from GitHub.
+2. Import the `.unitypackage` file by selecting the Unity menu option **Assets > Import package > Custom Package** and importing all items.
+
+### Set your AdMob app ID <a href="#set-up-app-id" id="set-up-app-id"></a>
+
+In the Unity editor, select **Assets > Google Mobile Ads > Settings** from the menu.
+
+<div align="left"><img src="https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png" alt=""></div>
+
+Enter your Android and iOS [AdMob app ID](https://support.google.com/admob/answer/6232340) in each field.
+
+<div align="left"><img src="https://developers.google.com/static/admob/images/unity/settings_app_ids.png" alt=""></div>
