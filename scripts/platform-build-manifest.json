@@ -1,0 +1,238 @@
+[
+  {
+    "key": "native-android-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/native-android-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/integration-guide.mdx",
+    "mergedSources": [
+      "native-android-engine/README.mdx",
+      "native-android-engine/admob/README.mdx",
+      "native-android-engine/admob/installation.mdx",
+      "native-android-engine/admob/configuration.mdx",
+      "native-android-engine/google-ad-manager/README.mdx",
+      "native-android-engine/google-ad-manager/installation.mdx",
+      "native-android-engine/google-ad-manager/configuration.mdx",
+      "native-android-engine/applovin/README.mdx",
+      "native-android-engine/applovin/installation.mdx",
+      "native-android-engine/applovin/configuration.mdx",
+      "native-android-engine/ironsource-levelplay/README.mdx",
+      "native-android-engine/ironsource-levelplay/installation.mdx",
+      "native-android-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 15
+  },
+  {
+    "key": "native-ios-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/native-ios-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/integration-guide.mdx",
+    "mergedSources": [
+      "native-ios-engine/README.mdx",
+      "native-ios-engine/admob/README.mdx",
+      "native-ios-engine/admob/installation.mdx",
+      "native-ios-engine/admob/configuration.mdx",
+      "native-ios-engine/google-ad-manager/README.mdx",
+      "native-ios-engine/google-ad-manager/installation.mdx",
+      "native-ios-engine/google-ad-manager/configuration.mdx",
+      "native-ios-engine/applovin/README.mdx",
+      "native-ios-engine/applovin/installation.mdx",
+      "native-ios-engine/applovin/configuration.mdx",
+      "native-ios-engine/ironsource-levelplay/README.mdx",
+      "native-ios-engine/ironsource-levelplay/installation.mdx",
+      "native-ios-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 30
+  },
+  {
+    "key": "unity-android-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/unity-android-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/integration-guide.mdx",
+    "mergedSources": [
+      "unity-android-engine/README.mdx",
+      "unity-android-engine/admob/README.mdx",
+      "unity-android-engine/admob/installation.mdx",
+      "unity-android-engine/admob/configuration.mdx",
+      "unity-android-engine/google-ad-manager/README.mdx",
+      "unity-android-engine/google-ad-manager/installation.mdx",
+      "unity-android-engine/google-ad-manager/configuration.mdx",
+      "unity-android-engine/applovin/README.mdx",
+      "unity-android-engine/applovin/installation.mdx",
+      "unity-android-engine/applovin/configuration.mdx",
+      "unity-android-engine/ironsource-levelplay/README.mdx",
+      "unity-android-engine/ironsource-levelplay/installation.mdx",
+      "unity-android-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 14
+  },
+  {
+    "key": "unity-ios-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/integration-guide.mdx",
+    "mergedSources": [
+      "unity-ios-engine/README.mdx",
+      "unity-ios-engine/admob/README.mdx",
+      "unity-ios-engine/admob/installation.mdx",
+      "unity-ios-engine/admob/configuration.mdx",
+      "unity-ios-engine/google-ad-manager/README.mdx",
+      "unity-ios-engine/google-ad-manager/installation.mdx",
+      "unity-ios-engine/google-ad-manager/configuration.mdx",
+      "unity-ios-engine/applovin/README.mdx",
+      "unity-ios-engine/applovin/installation.mdx",
+      "unity-ios-engine/applovin/configuration.mdx",
+      "unity-ios-engine/ironsource-levelplay/README.mdx",
+      "unity-ios-engine/ironsource-levelplay/installation.mdx",
+      "unity-ios-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 14
+  },
+  {
+    "key": "flutter-android-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/integration-guide.mdx",
+    "mergedSources": [
+      "flutter-android-engine/README.mdx",
+      "flutter-android-engine/admob/README.mdx",
+      "flutter-android-engine/admob/installation.mdx",
+      "flutter-android-engine/admob/configuration.mdx",
+      "flutter-android-engine/google-ad-manager/README.mdx",
+      "flutter-android-engine/google-ad-manager/installation.mdx",
+      "flutter-android-engine/google-ad-manager/configuration.mdx",
+      "flutter-android-engine/applovin/README.mdx",
+      "flutter-android-engine/applovin/installation.mdx",
+      "flutter-android-engine/applovin/configuration.mdx",
+      "flutter-android-engine/ironsource-levelplay/README.mdx",
+      "flutter-android-engine/ironsource-levelplay/installation.mdx",
+      "flutter-android-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 14
+  },
+  {
+    "key": "flutter-ios-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/integration-guide.mdx",
+    "mergedSources": [
+      "flutter-ios-engine/README.mdx",
+      "flutter-ios-engine/admob/README.mdx",
+      "flutter-ios-engine/admob/installation.mdx",
+      "flutter-ios-engine/admob/configuration.mdx",
+      "flutter-ios-engine/google-ad-manager/README.mdx",
+      "flutter-ios-engine/google-ad-manager/installation.mdx",
+      "flutter-ios-engine/google-ad-manager/configuration.mdx",
+      "flutter-ios-engine/applovin/README.mdx",
+      "flutter-ios-engine/applovin/installation.mdx",
+      "flutter-ios-engine/applovin/configuration.mdx",
+      "flutter-ios-engine/ironsource-levelplay/README.mdx",
+      "flutter-ios-engine/ironsource-levelplay/installation.mdx",
+      "flutter-ios-engine/ironsource-levelplay/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'",
+      "import DocTagApplovin from '/snippets/doc-tag-applovin.mdx'",
+      "import DocTagIronsource from '/snippets/doc-tag-ironsource.mdx'"
+    ],
+    "sizeKb": 14
+  },
+  {
+    "key": "cocos-android-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/integration-guide.mdx",
+    "mergedSources": [
+      "cocos-android-engine/README.mdx",
+      "cocos-android-engine/admob/README.mdx",
+      "cocos-android-engine/admob/installation.mdx",
+      "cocos-android-engine/admob/configuration.mdx",
+      "cocos-android-engine/google-ad-manager/README.mdx",
+      "cocos-android-engine/google-ad-manager/installation.mdx",
+      "cocos-android-engine/google-ad-manager/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'"
+    ],
+    "sizeKb": 7
+  },
+  {
+    "key": "cocos-ios-engine",
+    "slug": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/integration-guide",
+    "outFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/integration-guide.mdx",
+    "mergedSources": [
+      "cocos-ios-engine/README.mdx",
+      "cocos-ios-engine/admob/README.mdx",
+      "cocos-ios-engine/admob/installation.mdx",
+      "cocos-ios-engine/admob/configuration.mdx",
+      "cocos-ios-engine/google-ad-manager/README.mdx",
+      "cocos-ios-engine/google-ad-manager/installation.mdx",
+      "cocos-ios-engine/google-ad-manager/configuration.mdx"
+    ],
+    "networks": [
+      "AdMob",
+      "Google Ad Manager"
+    ],
+    "imports": [
+      "import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'"
+    ],
+    "sizeKb": 7
+  }
+]
