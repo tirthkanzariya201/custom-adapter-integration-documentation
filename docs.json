@@ -5,9 +5,14 @@
   "description": "Integration guide for TapMind Custom Adapter SDK across mobile platforms and game engines.",
   "theme": "jam",
   "colors": {
-    "primary": "#635BFF",
-    "light": "#7C75FF",
-    "dark": "#4F46E5"
+    "primary": "#FE7B49",
+    "light": "#FE7B49",
+    "dark": "#FE7B49"
+  },
+  "favicon": "/images/favicon.png",
+  "logo": {
+    "light": "/images/logo-light.png",
+    "dark": "/images/logo-dark.png"
   },
   "auth": {
     "password": {
