@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: scripts/generate-registry-page.js</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>scripts/generate-registry-page.js</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>/**</code></div>
+<div class="line added"><span class="ln">2</span><code> * Generates reference/class-network-key-registry.mdx from scripts/gma/class-registry.js</code></div>
+<div class="line added"><span class="ln">3</span><code> */</code></div>
+<div class="line added"><span class="ln">4</span><code>const fs = require('fs');</code></div>
+<div class="line added"><span class="ln">5</span><code>const path = require('path');</code></div>
+<div class="line added"><span class="ln">6</span><code>const { REGISTRY } = require('./gma/class-registry');</code></div>
+<div class="line added"><span class="ln">7</span><code>const { MEDIATION_DISPLAY_TITLES } = require('./gma/doc-constants');</code></div>
+<div class="line added"><span class="ln">8</span><code></code></div>
+<div class="line added"><span class="ln">9</span><code>const rootDir = path.resolve(__dirname, '..');</code></div>
+<div class="line added"><span class="ln">10</span><code>const outPath = path.join(rootDir, 'reference', 'class-network-key-registry.mdx');</code></div>
+<div class="line added"><span class="ln">11</span><code></code></div>
+<div class="line added"><span class="ln">12</span><code>const GMA_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin', 'levelplay'];</code></div>
+<div class="line added"><span class="ln">13</span><code>const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager'];</code></div>
+<div class="line added"><span class="ln">14</span><code></code></div>
+<div class="line added"><span class="ln">15</span><code>const GMA_PACKAGES = [</code></div>
+<div class="line added"><span class="ln">16</span><code>  { label: 'Native', androidKey: 'native-android', iosKey: 'native-ios' },</code></div>
+<div class="line added"><span class="ln">17</span><code>  { label: 'Flutter', androidKey: 'flutter', iosKey: 'flutter' },</code></div>
+<div class="line added"><span class="ln">18</span><code>  { label: 'React Native', androidKey: 'react-native', iosKey: 'react-native' },</code></div>
+<div class="line added"><span class="ln">19</span><code>  { label: 'Unity', androidKey: 'unity', iosKey: 'unity' },</code></div>
+<div class="line added"><span class="ln">20</span><code>  { label: 'Cocos', androidKey: 'cocos', iosKey: 'cocos' },</code></div>
+<div class="line added"><span class="ln">21</span><code>];</code></div>
+<div class="line added"><span class="ln">22</span><code></code></div>
+<div class="line added"><span class="ln">23</span><code>function mediationLabel(key) {</code></div>
+<div class="line added"><span class="ln">24</span><code>  return MEDIATION_DISPLAY_TITLES[key] || key;</code></div>
+<div class="line added"><span class="ln">25</span><code>}</code></div>
+<div class="line added"><span class="ln">26</span><code></code></div>
+<div class="line added"><span class="ln">27</span><code>function formatClass(value) {</code></div>
+<div class="line added"><span class="ln">28</span><code>  if (value === 'n/a') return 'n/a';</code></div>
+<div class="line added"><span class="ln">29</span><code>  return `\`${value}\``;</code></div>
+<div class="line added"><span class="ln">30</span><code>}</code></div>
+<div class="line added"><span class="ln">31</span><code></code></div>
+<div class="line added"><span class="ln">32</span><code>function androidClass(frameworkKey, mediation) {</code></div>
+<div class="line added"><span class="ln">33</span><code>  const entry = REGISTRY[frameworkKey]?.[mediation];</code></div>
+<div class="line added"><span class="ln">34</span><code>  if (!entry) return 'n/a';</code></div>
+<div class="line added"><span class="ln">35</span><code>  if (entry.networkKey) return entry.networkKey;</code></div>
+<div class="line added"><span class="ln">36</span><code>  if (entry.className) return entry.className;</code></div>
+<div class="line added"><span class="ln">37</span><code>  return entry.android || 'n/a';</code></div>
+<div class="line added"><span class="ln">38</span><code>}</code></div>
+<div class="line added"><span class="ln">39</span><code></code></div>
+<div class="line added"><span class="ln">40</span><code>function iosClass(frameworkKey, mediation) {</code></div>
+<div class="line added"><span class="ln">41</span><code>  const entry = REGISTRY[frameworkKey]?.[mediation];</code></div>
+<div class="line added"><span class="ln">42</span><code>  if (!entry) return 'n/a';</code></div>
+<div class="line added"><span class="ln">43</span><code>  if (entry.networkKey) return entry.networkKey;</code></div>
+<div class="line added"><span class="ln">44</span><code>  if (entry.className &amp;&amp; frameworkKey === 'native-ios') return entry.className;</code></div>
+<div class="line added"><span class="ln">45</span><code>  if (entry.ios) return entry.ios;</code></div>
+<div class="line added"><span class="ln">46</span><code>  return 'n/a';</code></div>
+<div class="line added"><span class="ln">47</span><code>}</code></div>
+<div class="line added"><span class="ln">48</span><code></code></div>
+<div class="line added"><span class="ln">49</span><code>function buildRegistryTable(rows) {</code></div>
+<div class="line added"><span class="ln">50</span><code>  const lines = [</code></div>
+<div class="line added"><span class="ln">51</span><code>    '| Package | Mediation | Android class | iOS class |',</code></div>
+<div class="line added"><span class="ln">52</span><code>    '| --- | --- | --- | --- |',</code></div>
+<div class="line added"><span class="ln">53</span><code>  ];</code></div>
+<div class="line added"><span class="ln">54</span><code></code></div>
+<div class="line added"><span class="ln">55</span><code>  for (const [pkg, mediation, android, ios] of rows) {</code></div>
+<div class="line added"><span class="ln">56</span><code>    lines.push(`| ${pkg} | ${mediation} | ${formatClass(android)} | ${formatClass(ios)} |`);</code></div>
+<div class="line added"><span class="ln">57</span><code>  }</code></div>
+<div class="line added"><span class="ln">58</span><code></code></div>
+<div class="line added"><span class="ln">59</span><code>  return lines.join('\n');</code></div>
+<div class="line added"><span class="ln">60</span><code>}</code></div>
+<div class="line added"><span class="ln">61</span><code></code></div>
+<div class="line added"><span class="ln">62</span><code>function buildGmaTable() {</code></div>
+<div class="line added"><span class="ln">63</span><code>  const rows = [];</code></div>
+<div class="line added"><span class="ln">64</span><code></code></div>
+<div class="line added"><span class="ln">65</span><code>  for (const pkg of GMA_PACKAGES) {</code></div>
+<div class="line added"><span class="ln">66</span><code>    for (const mediation of GMA_MEDIATIONS) {</code></div>
+<div class="line added"><span class="ln">67</span><code>      const android = androidClass(pkg.androidKey, mediation);</code></div>
+<div class="line added"><span class="ln">68</span><code>      const ios = iosClass(pkg.iosKey, mediation);</code></div>
+<div class="line added"><span class="ln">69</span><code>      if (android === 'n/a' &amp;&amp; ios === 'n/a') continue;</code></div>
+<div class="line added"><span class="ln">70</span><code>      rows.push([pkg.label, mediationLabel(mediation), android, ios]);</code></div>
+<div class="line added"><span class="ln">71</span><code>    }</code></div>
+<div class="line added"><span class="ln">72</span><code>  }</code></div>
+<div class="line added"><span class="ln">73</span><code></code></div>
+<div class="line added"><span class="ln">74</span><code>  return buildRegistryTable(rows);</code></div>
+<div class="line added"><span class="ln">75</span><code>}</code></div>
+<div class="line added"><span class="ln">76</span><code></code></div>
+<div class="line added"><span class="ln">77</span><code>function buildNextGenTable() {</code></div>
+<div class="line added"><span class="ln">78</span><code>  const rows = NEXTGEN_MEDIATIONS.map((mediation) =&gt; {</code></div>
+<div class="line added"><span class="ln">79</span><code>    const entry = REGISTRY['next-gen-android'][mediation];</code></div>
+<div class="line added"><span class="ln">80</span><code>    return ['Native', mediationLabel(mediation), entry.className, 'n/a'];</code></div>
+<div class="line added"><span class="ln">81</span><code>  });</code></div>
+<div class="line added"><span class="ln">82</span><code></code></div>
+<div class="line added"><span class="ln">83</span><code>  return buildRegistryTable(rows);</code></div>
+<div class="line added"><span class="ln">84</span><code>}</code></div>
+<div class="line added"><span class="ln">85</span><code></code></div>
+<div class="line added"><span class="ln">86</span><code>const body = `---</code></div>
+<div class="line added"><span class="ln">87</span><code>title: Class &amp; Network Key Registry</code></div>
+<div class="line added"><span class="ln">88</span><code>description: The canonical class strings and network key for every SDK product and mediation.</code></div>
+<div class="line added"><span class="ln">89</span><code>---</code></div>
+<div class="line added"><span class="ln">90</span><code></code></div>
+<div class="line added"><span class="ln">91</span><code>Every integration page references class names and network keys. This page is the single source of truth - integration pages link here instead of duplicating values.</code></div>
+<div class="line added"><span class="ln">92</span><code></code></div>
+<div class="line added"><span class="ln">93</span><code>## How to use this page</code></div>
+<div class="line added"><span class="ln">94</span><code></code></div>
+<div class="line added"><span class="ln">95</span><code>1. Find your SDK product, framework, and mediation partner in the tables below.</code></div>
+<div class="line added"><span class="ln">96</span><code>2. Copy the class name (or network key for LevelPlay) **exactly** into your mediation dashboard.</code></div>
+<div class="line added"><span class="ln">97</span><code>3. If ads fail in release builds, see [Troubleshooting](/reference/troubleshooting) - consumer ProGuard rules ship in the published AARs.</code></div>
+<div class="line added"><span class="ln">98</span><code></code></div>
+<div class="line added"><span class="ln">99</span><code>## Custom Adapter (GMA SDK)</code></div>
+<div class="line added"><span class="ln">100</span><code></code></div>
+<div class="line added"><span class="ln">101</span><code>${buildGmaTable()}</code></div>
+<div class="line added"><span class="ln">102</span><code></code></div>
+<div class="line added"><span class="ln">103</span><code>## Custom Adapter (GMA Next-Gen SDK)</code></div>
+<div class="line added"><span class="ln">104</span><code></code></div>
+<div class="line added"><span class="ln">105</span><code>${buildNextGenTable()}</code></div>
+<div class="line added"><span class="ln">106</span><code>`;</code></div>
+<div class="line added"><span class="ln">107</span><code></code></div>
+<div class="line added"><span class="ln">108</span><code>fs.writeFileSync(outPath, body.replace(/\r\n/g, '\n'), 'utf8');</code></div>
+<div class="line added"><span class="ln">109</span><code>console.log('Wrote', path.relative(rootDir, outPath));</code></div>
+<div class="line added"><span class="ln">110</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">/**
+ * Generates reference/class-network-key-registry.mdx from scripts/gma/class-registry.js
+ */
+const fs = require('fs');
+const path = require('path');
+const { REGISTRY } = require('./gma/class-registry');
+const { MEDIATION_DISPLAY_TITLES } = require('./gma/doc-constants');
+
+const rootDir = path.resolve(__dirname, '..');
+const outPath = path.join(rootDir, 'reference', 'class-network-key-registry.mdx');
+
+const GMA_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin', 'levelplay'];
+const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager'];
+
+const GMA_PACKAGES = [
+  { label: 'Native', androidKey: 'native-android', iosKey: 'native-ios' },
+  { label: 'Flutter', androidKey: 'flutter', iosKey: 'flutter' },
+  { label: 'React Native', androidKey: 'react-native', iosKey: 'react-native' },
+  { label: 'Unity', androidKey: 'unity', iosKey: 'unity' },
+  { label: 'Cocos', androidKey: 'cocos', iosKey: 'cocos' },
+];
+
+function mediationLabel(key) {
+  return MEDIATION_DISPLAY_TITLES[key] || key;
+}
+
+function formatClass(value) {
+  if (value === 'n/a') return 'n/a';
+  return `\`${value}\``;
+}
+
+function androidClass(frameworkKey, mediation) {
+  const entry = REGISTRY[frameworkKey]?.[mediation];
+  if (!entry) return 'n/a';
+  if (entry.networkKey) return entry.networkKey;
+  if (entry.className) return entry.className;
+  return entry.android || 'n/a';
+}
+
+function iosClass(frameworkKey, mediation) {
+  const entry = REGISTRY[frameworkKey]?.[mediation];
+  if (!entry) return 'n/a';
+  if (entry.networkKey) return entry.networkKey;
+  if (entry.className &amp;&amp; frameworkKey === 'native-ios') return entry.className;
+  if (entry.ios) return entry.ios;
+  return 'n/a';
+}
+
+function buildRegistryTable(rows) {
+  const lines = [
+    '| Package | Mediation | Android class | iOS class |',
+    '| --- | --- | --- | --- |',
+  ];
+
+  for (const [pkg, mediation, android, ios] of rows) {
+    lines.push(`| ${pkg} | ${mediation} | ${formatClass(android)} | ${formatClass(ios)} |`);
+  }
+
+  return lines.join('\n');
+}
+
+function buildGmaTable() {
+  const rows = [];
+
+  for (const pkg of GMA_PACKAGES) {
+    for (const mediation of GMA_MEDIATIONS) {
+      const android = androidClass(pkg.androidKey, mediation);
+      const ios = iosClass(pkg.iosKey, mediation);
+      if (android === 'n/a' &amp;&amp; ios === 'n/a') continue;
+      rows.push([pkg.label, mediationLabel(mediation), android, ios]);
+    }
+  }
+
+  return buildRegistryTable(rows);
+}
+
+function buildNextGenTable() {
+  const rows = NEXTGEN_MEDIATIONS.map((mediation) =&gt; {
+    const entry = REGISTRY['next-gen-android'][mediation];
+    return ['Native', mediationLabel(mediation), entry.className, 'n/a'];
+  });
+
+  return buildRegistryTable(rows);
+}
+
+const body = `---
+title: Class &amp; Network Key Registry
+description: The canonical class strings and network key for every SDK product and mediation.
+---
+
+Every integration page references class names and network keys. This page is the single source of truth - integration pages link here instead of duplicating values.
+
+## How to use this page
+
+1. Find your SDK product, framework, and mediation partner in the tables below.
+2. Copy the class name (or network key for LevelPlay) **exactly** into your mediation dashboard.
+3. If ads fail in release builds, see [Troubleshooting](/reference/troubleshooting) - consumer ProGuard rules ship in the published AARs.
+
+## Custom Adapter (GMA SDK)
+
+${buildGmaTable()}
+
+## Custom Adapter (GMA Next-Gen SDK)
+
+${buildNextGenTable()}
+`;
+
+fs.writeFileSync(outPath, body.replace(/\r\n/g, '\n'), 'utf8');
+console.log('Wrote', path.relative(rootDir, outPath));
+</pre>
+  </section>
+</body>
+</html>

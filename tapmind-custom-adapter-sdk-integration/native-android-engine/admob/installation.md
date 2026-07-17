@@ -28,7 +28,7 @@ Find the dependencies block and add from below for respective mediation platform
 ```
 dependencies {
     // Add TapMind SDK AdMob Adapter dependency
-implementation("io.github.tapmind-tech:customadapter-admob:2.1.9")
+implementation("io.github.tapmind-tech:customadapter-admob:2.1.13")
     // Add AdMob SDK dependency
     implementation ("com.google.android.gms:play-services-ads:25.0.0")
 }

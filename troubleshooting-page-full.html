@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — TapMind SDK</title>
+<style>
+  :root{
+    --ink:#16181d;--body:#2b2f38;--mut:#5b616e;--line:#e4e6ea;
+    --tm:#6d28d9;--warn:#b45309;--crit:#b91c1c;--code-bg:#eef0f3;--bg:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;max-width:820px;margin:0 auto;padding:40px 22px 80px;color:var(--body);line-height:1.6;background:var(--bg);}
+  h1{font-size:26px;color:var(--ink);margin:0 0 6px;letter-spacing:-.01em;}
+  .lede{font-size:14px;color:var(--mut);margin:0 0 26px;}
+  h2{font-size:18px;color:var(--ink);margin:38px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);letter-spacing:-.01em;}
+  h3{font-size:14.5px;color:var(--ink);margin:22px 0 6px;}
+  p{margin:10px 0;}
+  code{background:var(--code-bg);padding:1.5px 5px;border-radius:3px;font-family:"SF Mono",Consolas,monospace;font-size:12.5px;word-break:break-word;}
+  pre{background:#16181d;color:#e6e6e6;padding:13px 15px;border-radius:7px;overflow-x:auto;font-size:12.5px;line-height:1.5;margin:10px 0;}
+  pre .k{color:#9cdcfe;} pre .s{color:#ce9178;}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}
+  th{text-align:left;padding:9px 11px;background:#f7f7f9;color:var(--ink);font-weight:600;font-size:12px;border:1px solid var(--line);}
+  td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;}
+  td:first-child{font-weight:500;color:var(--ink);width:30%;}
+  .callout{border:1px solid var(--line);border-left:3px solid var(--tm);border-radius:6px;padding:12px 15px;margin:14px 0;font-size:13.5px;background:#faf8ff;}
+  .callout.warn{border-left-color:var(--warn);background:#fffaf3;}
+  .callout.plain{border-left-color:var(--mut);background:#fafafa;}
+  .verify{font-size:12.5px;color:var(--mut);font-style:italic;margin:8px 0;}
+  ul{margin:8px 0;padding-left:22px;} li{margin:5px 0;}
+  a{color:var(--tm);text-decoration:none;} a:hover{text-decoration:underline;}
+  .flag{color:var(--warn);font-weight:600;font-size:12px;}
+</style>
+</head>
+<body>
+
+<h1>Troubleshooting</h1>
+<p class="lede">Shared troubleshooting for all TapMind SDK integrations.</p>
+
+<p>Most integration issues trace back to one of four values not matching exactly: adapter class name, <code>placementName</code>, the Unity LevelPlay network key, or eCPM/rate. Adapter class names and the network key live in the <a href="/reference/class-network-key-registry">Class &amp; Network Key Registry</a>; your <code>placementName</code> and eCPM/rate come directly from your account manager. Check these before diving into logs.</p>
+
+<h2>Common issues</h2>
+<p>These apply to every mediation partner. Partner-specific problems are in <a href="#mediation-specific">Mediation-specific issues</a> below.</p>
+<table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr>
+  <td>No TapMind ad in production, but works in debug</td>
+  <td>Wrong/missing class string, or release-build stripping</td>
+  <td>Verify the class string matches the Registry exactly; TapMind AARs ship consumer ProGuard rules automatically (see <a href="#release-debug">Release vs debug</a>)</td>
+</tr>
+<tr>
+  <td>No fill at all</td>
+  <td><code>placementName</code> mismatch (case/space) or wrong eCPM position</td>
+  <td>Re-check <code>placementName</code> exactly against the TapMind Dashboard Placement Name; confirm your waterfall position</td>
+</tr>
+<tr>
+  <td>App crashes on launch</td>
+  <td>Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS)</td>
+  <td>Add your app ID exactly as shown on your integration page — see <a href="#crash">App crashes on launch</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="crash">App crashes on launch</h2>
+<p>The Google Mobile Ads (GMA) SDK reads your app ID from native config <strong>at process startup — before your own code runs</strong>. If the app ID is missing or malformed, initialization throws and the app crashes on launch. The crash looks like an ad problem but happens before any ad is requested, so check your native config, not your ad-loading code. This applies to both AdMob and Google Ad Manager (same GMA SDK).</p>
+
+<h3>Android — <code>AndroidManifest.xml</code></h3>
+<p>Add inside the <code>&lt;application&gt;</code> element:</p>
+<pre><span class="k">&lt;meta-data</span>
+    <span class="k">android:name=</span><span class="s">"com.google.android.gms.ads.APPLICATION_ID"</span>
+    <span class="k">android:value=</span><span class="s">"ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy"</span><span class="k">/&gt;</span></pre>
+
+<h3>iOS — <code>Info.plist</code></h3>
+<pre><span class="k">&lt;key&gt;</span>GADApplicationIdentifier<span class="k">&lt;/key&gt;</span>
+<span class="k">&lt;string&gt;</span>ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy<span class="k">&lt;/string&gt;</span></pre>
+
+<div class="callout warn">
+<strong>Common mistakes</strong>
+<ul>
+<li><strong>App ID vs ad unit ID.</strong> The value here is your <strong>app ID</strong> (contains a tilde: <code>ca-app-pub-…~…</code>), not an <strong>ad unit ID</strong> (contains a slash: <code>ca-app-pub-…/…</code>). The ad unit ID here still crashes.</li>
+<li><strong>Sample ID left in.</strong> The <code>ca-app-pub-3940256099942544~…</code> values in examples are Google's test IDs. Replace with your real app ID before release.</li>
+<li><strong>Wrapper frameworks still need this.</strong> On Flutter, React Native, Unity, and Cocos the plugin does <strong>not</strong> inject the app ID for you — you must still edit the native <code>AndroidManifest.xml</code> and <code>Info.plist</code> (or the Unity/Cocos equivalent). This is the most common wrapper-integration crash.</li>
+</ul>
+</div>
+<p class="verify">Use the exact snippet shown on your platform's integration page.</p>
+
+<h2 id="mediation-specific">Mediation-specific issues</h2>
+<p>The problems below are specific to how each mediation platform is configured. Find your partner.</p>
+
+<h3>AdMob (custom event)</h3>
+<table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>TapMind never competes in the mediation group</td><td>Custom event not added to the group, or the group doesn't target this ad unit / format / platform</td><td>In Mediation → your group, confirm the custom event is added and the group targets the correct ad format, platform (Android/iOS), and ad units</td></tr>
+<tr><td>Ad source configured but never fills</td><td>Class or <code>"placementName"</code> parameter wrong, or eCPM too low to win the waterfall</td><td>Verify the Class and the <code>"placementName"</code> JSON exactly; raise the manual eCPM to test whether it's a waterfall-position issue</td></tr>
+<tr><td>iOS custom event never loads (Android works)</td><td>Android class string used on the iOS custom event</td><td>Use the iOS class (<code>TapMindMediationAdapterAdmob</code>, no package prefix) from the Registry</td></tr>
+</tbody>
+</table>
+
+<h3>Google Ad Manager (yield group)</h3>
+<table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>TapMind not selectable as a yield partner</td><td>TapMind company not created, or Mediation not toggled on for the company</td><td>Admin → Companies → TapMind: confirm type is <strong>Ad Network</strong> and <strong>Mediation</strong> is toggled on</td></tr>
+<tr><td>Yield partner active but no delivery</td><td>Yield group inventory type not <strong>Mobile</strong>, partner status not <strong>Active</strong>, or group not targeting the ad units</td><td>Confirm the yield group targets the right ad units, inventory type is Mobile, and partner Status = Active</td></tr>
+<tr><td>Wrong class on wrapper vs native</td><td>Wrappers use the AdMob class for GAM; native uses the dedicated GAM class</td><td>Native: <code>…TapMindMediationAdapterGAM</code>. Flutter/RN/Unity/Cocos: use the AdMob class per the Registry note</td></tr>
+</tbody>
+</table>
+<p class="verify"><span class="flag">Verify:</span> GAM dashboard changes can take time to propagate before delivery begins — confirm the expected delay with your account manager before assuming a misconfiguration.</p>
+
+<h3>AppLovin MAX (custom network)</h3>
+<table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>TapMind never appears in MAX</td><td>Custom Network created but not enabled on the ad unit</td><td>MAX → Mediation → Ad Units → your unit → enable TapMind</td></tr>
+<tr><td>"Adapter not found" / no fill</td><td>Wrong Android or iOS Class in the Custom Network, or network type not set to SDK</td><td>Verify both the Android Class and iOS Class exactly; Network type must be <strong>SDK</strong></td></tr>
+<tr><td>Can't tell whether the adapter loaded</td><td>—</td><td>Run the <strong>MAX Mediation Debugger</strong> in a debug build to confirm the TapMind adapter loads and view its status</td></tr>
+</tbody>
+</table>
+<p class="verify"><span class="flag">Verify:</span> confirm the MAX Mediation Debugger surfaces custom-network adapters as described in your setup.</p>
+
+<h3>Unity LevelPlay (network key)</h3>
+<table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>TapMind network never appears</td><td>Wrong network key, or "Custom Adapter" not selected</td><td>Add via SDK Networks → <strong>Custom Adapter</strong> → enter the LevelPlay network key from the Registry</td></tr>
+<tr><td>Network appears but no fill</td><td>No instance created, or the instance rate is too low for its waterfall order</td><td>Setup → Instances → add a TapMind instance <strong>per ad format</strong>; set the eCPM/Rate</td></tr>
+<tr><td>Looking for a class string and can't find one</td><td>LevelPlay uses a <strong>network key</strong>, not a class string</td><td>Use the network key from the Registry; there is no class string for LevelPlay</td></tr>
+</tbody>
+</table>
+
+<h2 id="release-debug">Release vs debug</h2>
+<p>If ads work in debug but not in release, suspect the class string or <strong>R8/ProGuard stripping</strong> adapter classes in release builds.</p>
+
+<h3>ProGuard / R8 keep rules (Android)</h3>
+<p>Each shipped TapMind adapter AAR includes populated consumer ProGuard rules (<code>consumer-rules.pro</code>), packaged as consumer rules inside the artifact. These are <strong>applied automatically</strong> when you integrate the published Maven packages — you do not need to copy manual keep rules for normal integration.</p>
+<p>Consumer rules cover both the standard adapter namespace (<code>com.tapmind.tech.*</code>) and the Next-Gen namespace (<code>com.tapmind.mediation.ng.*</code>).</p>
+<p>If you still see release-only failures after confirming class strings, contact your account manager with release logcat output.</p>
+<div class="callout plain">
+<strong>Release build QA:</strong> There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads (test mode is build-type driven: debug = test, release = live).
+</div>
+
+<h2>Diagnostic logging</h2>
+<ul>
+<li><strong>Android:</strong> filter logcat by <code>TapMindAdapter</code> (the Orchestration SDK uses <code>ORCH</code>).</li>
+<li><strong>iOS:</strong> filter the Xcode console / device log by the TapMind subsystem. <span class="verify">[Insert the exact iOS log subsystem or filter string used by the SDK.]</span></li>
+</ul>
+
+<h2>Escalation</h2>
+<p>Contact your account manager with:</p>
+<ul>
+<li>The mediation platform and framework</li>
+<li>The adapter class name and <code>placementName</code> you are using</li>
+<li>Log output filtered by <code>TapMindAdapter</code> (Android) or the iOS subsystem</li>
+<li>For Orchestration: error code and message from <code>OrchError</code></li>
+</ul>
+<p>Integration pages include partner-specific verification steps under <strong>Verify integration</strong> on each mediation page.</p>
+
+</body>
+</html>

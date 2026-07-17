@@ -1,0 +1,14 @@
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+<manifest>
+  <application>
+    <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="YOUR_ADMOB_APP_ID"/>
+  </application>
+</manifest>
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.

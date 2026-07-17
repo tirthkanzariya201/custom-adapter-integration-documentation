@@ -1,0 +1,50 @@
+[
+  {
+    "key": "native-android-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/integration-guide.mdx",
+    "sizeKb": 16
+  },
+  {
+    "key": "native-ios-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/integration-guide.mdx",
+    "sizeKb": 32
+  },
+  {
+    "key": "unity-android-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/integration-guide.mdx",
+    "sizeKb": 15
+  },
+  {
+    "key": "unity-ios-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/integration-guide.mdx",
+    "sizeKb": 17
+  },
+  {
+    "key": "flutter-android-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/integration-guide.mdx",
+    "sizeKb": 15
+  },
+  {
+    "key": "flutter-ios-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/integration-guide.mdx",
+    "sizeKb": 17
+  },
+  {
+    "key": "cocos-android-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/integration-guide.mdx",
+    "sizeKb": 8
+  },
+  {
+    "key": "cocos-ios-engine",
+    "slug": "next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/integration-guide",
+    "outFile": "next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/integration-guide.mdx",
+    "sizeKb": 8
+  }
+]

@@ -1,0 +1,1348 @@
+{
+  "results": [
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "native",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 236,
+      "iosWords": 236,
+      "diffCount": 4,
+      "categories": {
+        "platform": 3,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "native",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 464,
+      "iosWords": 463,
+      "diffCount": 4,
+      "categories": {
+        "platform": 2,
+        "class-name": 1,
+        "other": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmind.tech.TapMindMediationAdapterGAM",
+          "ios": "Class Name : TapMindMediationAdapterGAM",
+          "category": "class-name"
+        },
+        {
+          "line": 36,
+          "android": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\" }",
+          "ios": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\"}",
+          "category": "other"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmind.tech.TapMindMediationAdapterGAM"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterGAM"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "native",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 310,
+      "iosWords": 310,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "native",
+      "network": "ironsource-levelplay",
+      "status": "identical",
+      "androidWords": 385,
+      "iosWords": 385,
+      "diffCount": 0,
+      "categories": {},
+      "sampleDiffs": [],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "unity",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 236,
+      "iosWords": 236,
+      "diffCount": 4,
+      "categories": {
+        "platform": 3,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "unity",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 463,
+      "iosWords": 463,
+      "diffCount": 3,
+      "categories": {
+        "platform": 2,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "unity",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 310,
+      "iosWords": 310,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "unity",
+      "network": "ironsource-levelplay",
+      "status": "identical",
+      "androidWords": 385,
+      "iosWords": 385,
+      "diffCount": 0,
+      "categories": {},
+      "sampleDiffs": [],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "flutter",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 236,
+      "iosWords": 236,
+      "diffCount": 4,
+      "categories": {
+        "platform": 3,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "flutter",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 463,
+      "iosWords": 463,
+      "diffCount": 3,
+      "categories": {
+        "platform": 2,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "flutter",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 310,
+      "iosWords": 310,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "flutter",
+      "network": "ironsource-levelplay",
+      "status": "identical",
+      "androidWords": 385,
+      "iosWords": 385,
+      "diffCount": 0,
+      "categories": {},
+      "sampleDiffs": [],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "cocos",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 236,
+      "iosWords": 236,
+      "diffCount": 4,
+      "categories": {
+        "platform": 3,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-gma",
+      "wrapper": "cocos",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 464,
+      "iosWords": 463,
+      "diffCount": 4,
+      "categories": {
+        "platform": 2,
+        "class-name": 1,
+        "other": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 36,
+          "android": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\" }",
+          "ios": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\"}",
+          "category": "other"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "native",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 248,
+      "iosWords": 248,
+      "diffCount": 6,
+      "categories": {
+        "platform": 3,
+        "class-name": 1,
+        "testing": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.mediation.ng.TapMindAdmobAdapter",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 22,
+          "android": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "ios": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "category": "testing"
+        },
+        {
+          "line": 23,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "ios": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "category": "testing"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.mediation.ng.TapMindAdmobAdapter"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "native",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 478,
+      "iosWords": 477,
+      "diffCount": 4,
+      "categories": {
+        "platform": 2,
+        "class-name": 1,
+        "other": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmind.mediation.ng.TapMindGamAdapter",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 36,
+          "android": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\" }",
+          "ios": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\"}",
+          "category": "other"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmind.mediation.ng.TapMindGamAdapter"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "native",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 322,
+      "iosWords": 322,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "native",
+      "network": "ironsource-levelplay",
+      "status": "different",
+      "androidWords": 397,
+      "iosWords": 397,
+      "diffCount": 12,
+      "categories": {
+        "testing": 2,
+        "other": 10
+      },
+      "sampleDiffs": [
+        {
+          "line": 14,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapterIronSource**",
+          "ios": "It is highly recommended to enter the Rate (that has been provided by TapMind for each placement id), as this determines the correct order in the waterfalls. Re",
+          "category": "testing"
+        },
+        {
+          "line": 15,
+          "android": "It is highly recommended to enter the Rate (that has been provided by TapMind for each placement id), as this determines the correct order in the waterfalls. Re",
+          "ios": "#### Setup Instances",
+          "category": "other"
+        },
+        {
+          "line": 16,
+          "android": "#### Setup Instances",
+          "ios": "1. In the Left Side Navigation Menu click Instances under Setup.",
+          "category": "other"
+        },
+        {
+          "line": 17,
+          "android": "1. In the Left Side Navigation Menu click Instances under Setup.",
+          "ios": "2. Click TapMind Network listed under Custom.",
+          "category": "other"
+        },
+        {
+          "line": 18,
+          "android": "2. Click TapMind Network listed under Custom.",
+          "ios": "3. Click on Ad Instance and select Ad type as Per the G-sheet Provided.",
+          "category": "other"
+        },
+        {
+          "line": 19,
+          "android": "3. Click on Ad Instance and select Ad type as Per the G-sheet Provided.",
+          "ios": "For the Below details Please reach out TapMind Account Manger",
+          "category": "other"
+        },
+        {
+          "line": 20,
+          "android": "For the Below details Please reach out TapMind Account Manger",
+          "ios": "```",
+          "category": "other"
+        },
+        {
+          "line": 21,
+          "android": "```",
+          "ios": "Instance Name : As Per the G-sheet Provided",
+          "category": "other"
+        }
+      ],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "unity",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 248,
+      "iosWords": 248,
+      "diffCount": 6,
+      "categories": {
+        "platform": 3,
+        "class-name": 1,
+        "testing": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 22,
+          "android": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "ios": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "category": "testing"
+        },
+        {
+          "line": 23,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "ios": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "category": "testing"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "unity",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 477,
+      "iosWords": 477,
+      "diffCount": 6,
+      "categories": {
+        "platform": 2,
+        "class-name": 1,
+        "testing": 1,
+        "doc-link": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        },
+        {
+          "line": 42,
+          "android": "Official Google Documentation for creating a Yield Group :",
+          "ios": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "category": "testing"
+        },
+        {
+          "line": 43,
+          "android": "https://support.google.com/admanager/answer/7390828?hl=en",
+          "ios": "Official Google Documentation for creating a Yield Group :",
+          "category": "doc-link"
+        },
+        {
+          "line": 44,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "ios": "https://support.google.com/admanager/answer/7390828?hl=en",
+          "category": "doc-link"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "unity",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 322,
+      "iosWords": 322,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "unity",
+      "network": "ironsource-levelplay",
+      "status": "identical",
+      "androidWords": 397,
+      "iosWords": 397,
+      "diffCount": 0,
+      "categories": {},
+      "sampleDiffs": [],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "flutter",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 248,
+      "iosWords": 248,
+      "diffCount": 6,
+      "categories": {
+        "platform": 3,
+        "class-name": 1,
+        "testing": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 22,
+          "android": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "ios": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "category": "testing"
+        },
+        {
+          "line": 23,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "ios": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "category": "testing"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "flutter",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 477,
+      "iosWords": 477,
+      "diffCount": 3,
+      "categories": {
+        "platform": 2,
+        "class-name": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmimd.ads.mediation.adapter.TapMindAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "flutter",
+      "network": "applovin",
+      "status": "different",
+      "androidWords": 322,
+      "iosWords": 322,
+      "diffCount": 2,
+      "categories": {
+        "platform": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 10,
+          "android": "Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin",
+          "ios": "IOS Class: TapMindMediationAdapterApplovin",
+          "category": "platform"
+        },
+        {
+          "line": 13,
+          "android": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter Android Class Name → Save**",
+          "ios": "**MAX → Mediation → Manage → Networks → Click Add Custom Network → Select Network Type (SDK) → Enter iOS Class Name → Save**",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "androidClass": "com.tapmind.tech.TapMindMediationAdapterApplovin",
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterApplovin"
+      },
+      "iosFields": {
+        "iosClass": "TapMindMediationAdapterApplovin",
+        "classLine": "TapMindMediationAdapterApplovin"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "flutter",
+      "network": "ironsource-levelplay",
+      "status": "identical",
+      "androidWords": 397,
+      "iosWords": 397,
+      "diffCount": 0,
+      "categories": {},
+      "sampleDiffs": [],
+      "androidFields": {},
+      "iosFields": {}
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "cocos",
+      "network": "admob",
+      "status": "different",
+      "androidWords": 248,
+      "iosWords": 248,
+      "diffCount": 6,
+      "categories": {
+        "platform": 3,
+        "class-name": 1,
+        "testing": 2
+      },
+      "sampleDiffs": [
+        {
+          "line": 4,
+          "android": "2. Select **Android** and type of Ad format and Continue",
+          "ios": "2. Select **IOS** and type of Ad format and Continue",
+          "category": "platform"
+        },
+        {
+          "line": 8,
+          "android": "**Add Custom Event** → **Create Mediation Group** → **Select Android** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "ios": "**Add Custom Event** → **Create Mediation Group** → **Select IOS** → **Add Name** → **Add Ad units** → **Select app and Ad units**",
+          "category": "platform"
+        },
+        {
+          "line": 12,
+          "android": "3. Select the App for the setup (Android)",
+          "ios": "3. Select the App for the setup (IOS)",
+          "category": "platform"
+        },
+        {
+          "line": 18,
+          "android": "Class : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 22,
+          "android": "> Response can be checked in LOGCAT by using tag: **TapMindAdapter**",
+          "ios": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "category": "testing"
+        },
+        {
+          "line": 23,
+          "android": "The above setup completes our **TapMind x ADMOB** integration. You should see an Ad if test setup is complete and working fine.",
+          "ios": "> Response can be checked in LOGCAT by using tag: **TapMindAdapterApplovin**",
+          "category": "testing"
+        }
+      ],
+      "androidFields": {
+        "classLine": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "classLine": "TapMindMediationAdapterAdmob"
+      }
+    },
+    {
+      "product": "custom-adapter-next-gen",
+      "wrapper": "cocos",
+      "network": "google-ad-manager",
+      "status": "different",
+      "androidWords": 478,
+      "iosWords": 477,
+      "diffCount": 4,
+      "categories": {
+        "platform": 2,
+        "class-name": 1,
+        "other": 1
+      },
+      "sampleDiffs": [
+        {
+          "line": 28,
+          "android": "Platform : Android",
+          "ios": "Platform : IOS",
+          "category": "platform"
+        },
+        {
+          "line": 35,
+          "android": "Class Name : com.tapmind.tech.TapMindMediationAdapterAdmob",
+          "ios": "Class Name : TapMindMediationAdapterAdmob",
+          "category": "class-name"
+        },
+        {
+          "line": 36,
+          "android": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\" }",
+          "ios": "Parameter : { \"placementName\": \"As Per the G-sheet Provided\"}",
+          "category": "other"
+        },
+        {
+          "line": 41,
+          "android": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (Android) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Over",
+          "ios": "**Add Yield Partner → Select TapMind → Integration Type (Custom Event) → Platform (IOS) → Set Status (Active) → Enter Default CPM (from sheet) → Enable Override",
+          "category": "platform"
+        }
+      ],
+      "androidFields": {
+        "platform": "Android",
+        "className": "com.tapmind.tech.TapMindMediationAdapterAdmob"
+      },
+      "iosFields": {
+        "platform": "IOS",
+        "className": "TapMindMediationAdapterAdmob"
+      }
+    }
+  ],
+  "mediationPatterns": {
+    "custom-adapter-gma::admob": {
+      "identical": 0,
+      "different": 4,
+      "categoryTotals": {
+        "platform": 12,
+        "class-name": 4
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 4
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 4
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 4
+        },
+        {
+          "wrapper": "cocos",
+          "status": "different",
+          "diffCount": 4
+        }
+      ]
+    },
+    "custom-adapter-gma::google-ad-manager": {
+      "identical": 0,
+      "different": 4,
+      "categoryTotals": {
+        "platform": 8,
+        "class-name": 4,
+        "other": 2
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 4
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 3
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 3
+        },
+        {
+          "wrapper": "cocos",
+          "status": "different",
+          "diffCount": 4
+        }
+      ]
+    },
+    "custom-adapter-gma::applovin": {
+      "identical": 0,
+      "different": 3,
+      "categoryTotals": {
+        "platform": 6
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 2
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 2
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 2
+        }
+      ]
+    },
+    "custom-adapter-gma::ironsource-levelplay": {
+      "identical": 3,
+      "different": 0,
+      "categoryTotals": {},
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "identical",
+          "diffCount": 0
+        },
+        {
+          "wrapper": "unity",
+          "status": "identical",
+          "diffCount": 0
+        },
+        {
+          "wrapper": "flutter",
+          "status": "identical",
+          "diffCount": 0
+        }
+      ]
+    },
+    "custom-adapter-next-gen::admob": {
+      "identical": 0,
+      "different": 4,
+      "categoryTotals": {
+        "platform": 12,
+        "class-name": 4,
+        "testing": 8
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 6
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 6
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 6
+        },
+        {
+          "wrapper": "cocos",
+          "status": "different",
+          "diffCount": 6
+        }
+      ]
+    },
+    "custom-adapter-next-gen::google-ad-manager": {
+      "identical": 0,
+      "different": 4,
+      "categoryTotals": {
+        "platform": 8,
+        "class-name": 4,
+        "other": 2,
+        "testing": 1,
+        "doc-link": 2
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 4
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 6
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 3
+        },
+        {
+          "wrapper": "cocos",
+          "status": "different",
+          "diffCount": 4
+        }
+      ]
+    },
+    "custom-adapter-next-gen::applovin": {
+      "identical": 0,
+      "different": 3,
+      "categoryTotals": {
+        "platform": 6
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 2
+        },
+        {
+          "wrapper": "unity",
+          "status": "different",
+          "diffCount": 2
+        },
+        {
+          "wrapper": "flutter",
+          "status": "different",
+          "diffCount": 2
+        }
+      ]
+    },
+    "custom-adapter-next-gen::ironsource-levelplay": {
+      "identical": 2,
+      "different": 1,
+      "categoryTotals": {
+        "testing": 2,
+        "other": 10
+      },
+      "wrappers": [
+        {
+          "wrapper": "native",
+          "status": "different",
+          "diffCount": 12
+        },
+        {
+          "wrapper": "unity",
+          "status": "identical",
+          "diffCount": 0
+        },
+        {
+          "wrapper": "flutter",
+          "status": "identical",
+          "diffCount": 0
+        }
+      ]
+    }
+  }
+}

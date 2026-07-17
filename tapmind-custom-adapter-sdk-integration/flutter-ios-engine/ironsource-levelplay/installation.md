@@ -29,7 +29,7 @@ Find the dependencies block and add from below for respective mediation platform
 
 ```
 dependencies  
-tapmind_ads_ironsource: ^0.0.8
+tapmind_ads_ironsource_flutter: ^1.0.2
 ```
 
 #### Import Google Mobile Ads SDK <a href="#import" id="import"></a>

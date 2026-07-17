@@ -1,0 +1,176 @@
+{
+  "$schema": "https://jamdesk.com/docs.json",
+  "description": "Fallback navigation for local preview until JamDesk renders navigation.products in the UI. Copy the tabs block into docs.json (replacing products) to restore sidebar navigation.",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Overview",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "README"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Native-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/integration-guide",
+                "title": "Native Android"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Native-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/integration-guide",
+                "title": "Native iOS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Unity-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/integration-guide",
+                "title": "Unity Android"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Unity-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/integration-guide",
+                "title": "Unity iOS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Flutter-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/integration-guide",
+                "title": "Flutter Android"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Flutter-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/integration-guide",
+                "title": "Flutter iOS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Cocos-Android Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/integration-guide",
+                "title": "Cocos Android"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Cocos-iOS Engine",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              {
+                "page": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/integration-guide",
+                "title": "Cocos iOS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Gradle Setup",
+        "icon": "wrench",
+        "groups": [
+          {
+            "group": "Gradle Setup",
+            "pages": [
+              "gradle-setup/for-gradle-version-7+"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Orchestration SDK",
+        "icon": "diagram-project",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "orchestration-sdk-integration/overview"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Next-Gen SDK",
+        "icon": "rocket",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "next-gen-sdk-integration/overview"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

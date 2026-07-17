@@ -1,0 +1,353 @@
+---
+title: Unity LevelPlay
+description: >-
+  Unity LevelPlay react-native guide for Custom Adapter (GMA SDK).
+---
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_ironsource: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution.
+
+### iOS
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_ironsource: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+Add the following `post_install` hook to your app's **Podfile** (alongside `use_native_modules!` and `react_native_post_install`):
+
+```ruby
+post_install do |installer|
+  react_native_post_install(
+    installer,
+    config[:reactNativePath],
+    :mac_catalyst_enabled => false,
+  )
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS'] = 'NO'
+      config.build_settings['GCC_WARN_PEDANTIC'] = 'NO'
+      if target.name == 'fmt'
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
+  end
+end
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+<manifest>
+  <application>
+    <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="YOUR_ADMOB_APP_ID"/>
+  </application>
+</manifest>
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+<key>GADApplicationIdentifier</key>
+<!-- Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511 -->
+<string>YOUR_ADMOB_APP_ID</string>
+<key>SKAdNetworkItems</key>
+<array>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>cstr6suwn9.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>4fzdc2evr5.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>2fnua5tdw4.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>ydx93a7ass.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>p78axxw29g.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>v72qych5uu.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>ludvb6z3bs.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>cp8zw746q7.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>3sh42y64q3.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>c6k4g5qg8m.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>s39g8k73mm.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>wg4vff78zm.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>3qy4746246.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>f38h382jlk.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>hs6bdukanm.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>mlmmfzh3r3.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>v4nxqhlyqp.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>wzmmz9fp6w.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>su67r6k2v3.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>yclnxrl5pm.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>t38b2kh725.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>7ug5zh24hu.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>gta9lk7p23.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>vutu7akeur.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>y5ghdn5j9k.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>v9wttpbfk9.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>n38lu8286q.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>47vhws6wlr.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>kbd757ywx3.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>9t245vhmpl.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>a2p9lx4jpn.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>22mmun2rn5.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>44jx6755aq.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>k674qkevps.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>4468km3ulz.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>2u9pt9hc89.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>8s468mfl3y.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>klf5c3l5u5.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>ppxm28t8ap.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>kbmxgpxpgc.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>uw77j35x4d.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>578prtvx9j.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>4dzt52r2t5.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>tl55sbb4fm.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>c3frkrj4fj.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>e5fvkxwrpn.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>8c4e2ghe7u.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>3rd42ekr43.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>97r2b46745.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>3qcr597p9d.skadnetwork</string>
+  </dict>
+</array>
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.

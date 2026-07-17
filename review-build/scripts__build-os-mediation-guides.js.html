@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: scripts/build-os-mediation-guides.js</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>scripts/build-os-mediation-guides.js</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>/**</code></div>
+<div class="line added"><span class="ln">2</span><code> * Builds per-OS, per-mediation guide pages for Native (phase 1).</code></div>
+<div class="line added"><span class="ln">3</span><code> * Output: guides/{android|ios}/{product}/{mediation}.mdx</code></div>
+<div class="line added"><span class="ln">4</span><code> *</code></div>
+<div class="line added"><span class="ln">5</span><code> * Each mediation page uses H2 Installation + H2 Configuration for the right TOC.</code></div>
+<div class="line added"><span class="ln">6</span><code> */</code></div>
+<div class="line added"><span class="ln">7</span><code></code></div>
+<div class="line added"><span class="ln">8</span><code>const fs = require('fs');</code></div>
+<div class="line added"><span class="ln">9</span><code>const path = require('path');</code></div>
+<div class="line added"><span class="ln">10</span><code>const { normalizeBody } = require('./mdx-content-normalize');</code></div>
+<div class="line added"><span class="ln">11</span><code>const { assembleNativeOsPage, assembleNextGenPage } = require('./gma/assemble-page');</code></div>
+<div class="line added"><span class="ln">12</span><code></code></div>
+<div class="line added"><span class="ln">13</span><code>const rootDir = path.resolve(__dirname, '..');</code></div>
+<div class="line added"><span class="ln">14</span><code>const guidesDir = path.join(rootDir, 'guides');</code></div>
+<div class="line added"><span class="ln">15</span><code></code></div>
+<div class="line added"><span class="ln">16</span><code>const { MEDIATION_DISPLAY_TITLES, MEDIATION_ORDER, resolveMediationSourceDir } = require('./gma/doc-constants');</code></div>
+<div class="line added"><span class="ln">17</span><code></code></div>
+<div class="line added"><span class="ln">18</span><code>const NETWORK_ORDER = MEDIATION_ORDER;</code></div>
+<div class="line added"><span class="ln">19</span><code></code></div>
+<div class="line added"><span class="ln">20</span><code>const NETWORK_TITLES = MEDIATION_DISPLAY_TITLES;</code></div>
+<div class="line added"><span class="ln">21</span><code></code></div>
+<div class="line added"><span class="ln">22</span><code>const OS_CONFIG = {</code></div>
+<div class="line added"><span class="ln">23</span><code>  android: { engineSuffix: 'android-engine', label: 'Android' },</code></div>
+<div class="line added"><span class="ln">24</span><code>  ios: { engineSuffix: 'ios-engine', label: 'iOS' },</code></div>
+<div class="line added"><span class="ln">25</span><code>};</code></div>
+<div class="line added"><span class="ln">26</span><code></code></div>
+<div class="line added"><span class="ln">27</span><code>const PRODUCT_CONFIG = {</code></div>
+<div class="line added"><span class="ln">28</span><code>  'custom-adapter-gma-sdk': {</code></div>
+<div class="line added"><span class="ln">29</span><code>    label: 'Custom Adapter (GMA SDK)',</code></div>
+<div class="line added"><span class="ln">30</span><code>    contentRoot: path.join(rootDir, 'tapmind-custom-adapter-sdk-integration'),</code></div>
+<div class="line added"><span class="ln">31</span><code>    wrapper: 'native',</code></div>
+<div class="line added"><span class="ln">32</span><code>    introSource: 'readme',</code></div>
+<div class="line added"><span class="ln">33</span><code>    platforms: ['android', 'ios'],</code></div>
+<div class="line added"><span class="ln">34</span><code>    mediations: null,</code></div>
+<div class="line added"><span class="ln">35</span><code>  },</code></div>
+<div class="line added"><span class="ln">36</span><code>  'custom-adapter-gma-next-gen-sdk': {</code></div>
+<div class="line added"><span class="ln">37</span><code>    label: 'Custom Adapter (GMA Next-Gen SDK)',</code></div>
+<div class="line added"><span class="ln">38</span><code>    contentRoot: path.join(rootDir, 'next-gen-sdk-integration', 'next-gen-integration-sdk'),</code></div>
+<div class="line added"><span class="ln">39</span><code>    wrapper: 'native',</code></div>
+<div class="line added"><span class="ln">40</span><code>    introSource: 'platform-mdx',</code></div>
+<div class="line added"><span class="ln">41</span><code>    platforms: ['android'],</code></div>
+<div class="line added"><span class="ln">42</span><code>    mediations: ['admob', 'google-ad-manager'],</code></div>
+<div class="line added"><span class="ln">43</span><code>  },</code></div>
+<div class="line added"><span class="ln">44</span><code>};</code></div>
+<div class="line added"><span class="ln">45</span><code></code></div>
+<div class="line added"><span class="ln">46</span><code>function stripCr(line) {</code></div>
+<div class="line added"><span class="ln">47</span><code>  return line.replace(/\r$/, '');</code></div>
+<div class="line added"><span class="ln">48</span><code>}</code></div>
+<div class="line added"><span class="ln">49</span><code></code></div>
+<div class="line added"><span class="ln">50</span><code>function extractImports(raw) {</code></div>
+<div class="line added"><span class="ln">51</span><code>  const imports = [];</code></div>
+<div class="line added"><span class="ln">52</span><code>  for (const line of raw.split('\n')) {</code></div>
+<div class="line added"><span class="ln">53</span><code>    const m = stripCr(line).match(/^import\s+.+$/);</code></div>
+<div class="line added"><span class="ln">54</span><code>    if (m) imports.push(m[0].trim());</code></div>
+<div class="line added"><span class="ln">55</span><code>  }</code></div>
+<div class="line added"><span class="ln">56</span><code>  return imports;</code></div>
+<div class="line added"><span class="ln">57</span><code>}</code></div>
+<div class="line added"><span class="ln">58</span><code></code></div>
+<div class="line added"><span class="ln">59</span><code>function parseFrontmatter(content) {</code></div>
+<div class="line added"><span class="ln">60</span><code>  if (!content.startsWith('---')) return { body: content };</code></div>
+<div class="line added"><span class="ln">61</span><code>  const end = content.indexOf('---', 3);</code></div>
+<div class="line added"><span class="ln">62</span><code>  if (end === -1) return { body: content };</code></div>
+<div class="line added"><span class="ln">63</span><code>  return { body: content.slice(end + 3).replace(/^\s+/, '') };</code></div>
+<div class="line added"><span class="ln">64</span><code>}</code></div>
+<div class="line added"><span class="ln">65</span><code></code></div>
+<div class="line added"><span class="ln">66</span><code>function stripLeadingH1(body) {</code></div>
+<div class="line added"><span class="ln">67</span><code>  const lines = body.split('\n');</code></div>
+<div class="line added"><span class="ln">68</span><code>  let i = 0;</code></div>
+<div class="line added"><span class="ln">69</span><code>  while (i &lt; lines.length &amp;&amp; stripCr(lines[i]).trim() === '') i++;</code></div>
+<div class="line added"><span class="ln">70</span><code>  const line = stripCr(lines[i] || '');</code></div>
+<div class="line added"><span class="ln">71</span><code>  if (line &amp;&amp; /^#\s+/.test(line) &amp;&amp; !/^##/.test(line)) {</code></div>
+<div class="line added"><span class="ln">72</span><code>    lines.splice(i, 1);</code></div>
+<div class="line added"><span class="ln">73</span><code>    while (i &lt; lines.length &amp;&amp; stripCr(lines[i]).trim() === '') lines.splice(i, 1);</code></div>
+<div class="line added"><span class="ln">74</span><code>  }</code></div>
+<div class="line added"><span class="ln">75</span><code>  return lines.join('\n').trim();</code></div>
+<div class="line added"><span class="ln">76</span><code>}</code></div>
+<div class="line added"><span class="ln">77</span><code></code></div>
+<div class="line added"><span class="ln">78</span><code>function removeImportLines(body) {</code></div>
+<div class="line added"><span class="ln">79</span><code>  return body</code></div>
+<div class="line added"><span class="ln">80</span><code>    .split('\n')</code></div>
+<div class="line added"><span class="ln">81</span><code>    .filter((line) =&gt; !/^import\s+.+$/.test(stripCr(line).trim()))</code></div>
+<div class="line added"><span class="ln">82</span><code>    .join('\n')</code></div>
+<div class="line added"><span class="ln">83</span><code>    .replace(/\n{3,}/g, '\n\n')</code></div>
+<div class="line added"><span class="ln">84</span><code>    .trim();</code></div>
+<div class="line added"><span class="ln">85</span><code>}</code></div>
+<div class="line added"><span class="ln">86</span><code></code></div>
+<div class="line added"><span class="ln">87</span><code>function demoteHeadings(body, levels) {</code></div>
+<div class="line added"><span class="ln">88</span><code>  return body</code></div>
+<div class="line added"><span class="ln">89</span><code>    .split('\n')</code></div>
+<div class="line added"><span class="ln">90</span><code>    .map((line) =&gt; {</code></div>
+<div class="line added"><span class="ln">91</span><code>      const clean = stripCr(line);</code></div>
+<div class="line added"><span class="ln">92</span><code>      const m = clean.match(/^(#{1,6})(\s+.+)$/);</code></div>
+<div class="line added"><span class="ln">93</span><code>      if (!m) return line;</code></div>
+<div class="line added"><span class="ln">94</span><code>      const newLevel = Math.min(6, m[1].length + levels);</code></div>
+<div class="line added"><span class="ln">95</span><code>      return '#'.repeat(newLevel) + m[2];</code></div>
+<div class="line added"><span class="ln">96</span><code>    })</code></div>
+<div class="line added"><span class="ln">97</span><code>    .join('\n');</code></div>
+<div class="line added"><span class="ln">98</span><code>}</code></div>
+<div class="line added"><span class="ln">99</span><code></code></div>
+<div class="line added"><span class="ln">100</span><code>function normalizeBodyLocal(body) {</code></div>
+<div class="line added"><span class="ln">101</span><code>  return normalizeBody(body);</code></div>
+<div class="line added"><span class="ln">102</span><code>}</code></div>
+<div class="line added"><span class="ln">103</span><code></code></div>
+<div class="line added"><span class="ln">104</span><code>function firstExisting(baseDir, candidates) {</code></div>
+<div class="line added"><span class="ln">105</span><code>  for (const rel of candidates) {</code></div>
+<div class="line added"><span class="ln">106</span><code>    const full = path.join(baseDir, rel);</code></div>
+<div class="line added"><span class="ln">107</span><code>    if (fs.existsSync(full)) return rel;</code></div>
+<div class="line added"><span class="ln">108</span><code>  }</code></div>
+<div class="line added"><span class="ln">109</span><code>  return null;</code></div>
+<div class="line added"><span class="ln">110</span><code>}</code></div>
+<div class="line added"><span class="ln">111</span><code></code></div>
+<div class="line added"><span class="ln">112</span><code>function readSection(baseDir, relPath, demoteBy) {</code></div>
+<div class="line added"><span class="ln">113</span><code>  const full = path.join(baseDir, relPath);</code></div>
+<div class="line added"><span class="ln">114</span><code>  if (!fs.existsSync(full)) return { imports: [], body: '' };</code></div>
+<div class="line added"><span class="ln">115</span><code>  const raw = fs.readFileSync(full, 'utf8');</code></div>
+<div class="line added"><span class="ln">116</span><code>  const imports = extractImports(raw);</code></div>
+<div class="line added"><span class="ln">117</span><code>  let body = parseFrontmatter(raw).body;</code></div>
+<div class="line added"><span class="ln">118</span><code>  body = removeImportLines(body);</code></div>
+<div class="line added"><span class="ln">119</span><code>  body = stripLeadingH1(body);</code></div>
+<div class="line added"><span class="ln">120</span><code>  if (demoteBy &gt; 0) body = demoteHeadings(body, demoteBy);</code></div>
+<div class="line added"><span class="ln">121</span><code>  body = normalizeBodyLocal(body);</code></div>
+<div class="line added"><span class="ln">122</span><code>  return { imports, body };</code></div>
+<div class="line added"><span class="ln">123</span><code>}</code></div>
+<div class="line added"><span class="ln">124</span><code></code></div>
+<div class="line added"><span class="ln">125</span><code>function resolveInstallOrConfig(baseDir, networkKey, kind) {</code></div>
+<div class="line added"><span class="ln">126</span><code>  const sourceDir = resolveMediationSourceDir(networkKey);</code></div>
+<div class="line added"><span class="ln">127</span><code>  return firstExisting(baseDir, [</code></div>
+<div class="line added"><span class="ln">128</span><code>    `${sourceDir}/${kind}.mdx`,</code></div>
+<div class="line added"><span class="ln">129</span><code>    `${sourceDir}/${kind}.md`,</code></div>
+<div class="line added"><span class="ln">130</span><code>  ]);</code></div>
+<div class="line added"><span class="ln">131</span><code>}</code></div>
+<div class="line added"><span class="ln">132</span><code></code></div>
+<div class="line added"><span class="ln">133</span><code>function resolveReadme(baseDir, networkKey) {</code></div>
+<div class="line added"><span class="ln">134</span><code>  const sourceDir = resolveMediationSourceDir(networkKey);</code></div>
+<div class="line added"><span class="ln">135</span><code>  return firstExisting(baseDir, [</code></div>
+<div class="line added"><span class="ln">136</span><code>    `${sourceDir}.mdx`,</code></div>
+<div class="line added"><span class="ln">137</span><code>    `${sourceDir}/README.mdx`,</code></div>
+<div class="line added"><span class="ln">138</span><code>    `${sourceDir}/README.md`,</code></div>
+<div class="line added"><span class="ln">139</span><code>  ]);</code></div>
+<div class="line added"><span class="ln">140</span><code>}</code></div>
+<div class="line added"><span class="ln">141</span><code></code></div>
+<div class="line added"><span class="ln">142</span><code>function hasInstallation(baseDir, networkKey) {</code></div>
+<div class="line added"><span class="ln">143</span><code>  return Boolean(resolveInstallOrConfig(baseDir, networkKey, 'installation'));</code></div>
+<div class="line added"><span class="ln">144</span><code>}</code></div>
+<div class="line added"><span class="ln">145</span><code></code></div>
+<div class="line added"><span class="ln">146</span><code>function discoverMediations(engineDir, fixedList) {</code></div>
+<div class="line added"><span class="ln">147</span><code>  if (fixedList) {</code></div>
+<div class="line added"><span class="ln">148</span><code>    return fixedList.filter((key) =&gt; hasInstallation(engineDir, key));</code></div>
+<div class="line added"><span class="ln">149</span><code>  }</code></div>
+<div class="line added"><span class="ln">150</span><code>  return NETWORK_ORDER.filter((key) =&gt; hasInstallation(engineDir, key));</code></div>
+<div class="line added"><span class="ln">151</span><code>}</code></div>
+<div class="line added"><span class="ln">152</span><code></code></div>
+<div class="line added"><span class="ln">153</span><code>function readProductIntro(product, os) {</code></div>
+<div class="line added"><span class="ln">154</span><code>  const engineKey = `${product.wrapper}-${os}-engine`;</code></div>
+<div class="line added"><span class="ln">155</span><code>  const baseDir = path.join(product.contentRoot, engineKey);</code></div>
+<div class="line added"><span class="ln">156</span><code>  if (product.introSource === 'platform-mdx') {</code></div>
+<div class="line added"><span class="ln">157</span><code>    const rel = `${engineKey}.mdx`;</code></div>
+<div class="line added"><span class="ln">158</span><code>    if (fs.existsSync(path.join(product.contentRoot, rel))) {</code></div>
+<div class="line added"><span class="ln">159</span><code>      return readSection(product.contentRoot, rel, 0);</code></div>
+<div class="line added"><span class="ln">160</span><code>    }</code></div>
+<div class="line added"><span class="ln">161</span><code>  }</code></div>
+<div class="line added"><span class="ln">162</span><code>  return readSection(baseDir, 'README.mdx', 0);</code></div>
+<div class="line added"><span class="ln">163</span><code>}</code></div>
+<div class="line added"><span class="ln">164</span><code></code></div>
+<div class="line added"><span class="ln">165</span><code>function writeMdx(filePath, frontmatter, importSet, body) {</code></div>
+<div class="line added"><span class="ln">166</span><code>  const imports = [...importSet].sort().join('\n');</code></div>
+<div class="line added"><span class="ln">167</span><code>  const output = `---</code></div>
+<div class="line added"><span class="ln">168</span><code>title: ${frontmatter.title}</code></div>
+<div class="line added"><span class="ln">169</span><code>description: &gt;-</code></div>
+<div class="line added"><span class="ln">170</span><code>  ${frontmatter.description}</code></div>
+<div class="line added"><span class="ln">171</span><code>---</code></div>
+<div class="line added"><span class="ln">172</span><code></code></div>
+<div class="line added"><span class="ln">173</span><code>${imports ? `${imports}\n\n` : ''}${body}</code></div>
+<div class="line added"><span class="ln">174</span><code>`;</code></div>
+<div class="line added"><span class="ln">175</span><code>  fs.mkdirSync(path.dirname(filePath), { recursive: true });</code></div>
+<div class="line added"><span class="ln">176</span><code>  fs.writeFileSync(filePath, output.replace(/\r\n/g, '\n'), 'utf8');</code></div>
+<div class="line added"><span class="ln">177</span><code>}</code></div>
+<div class="line added"><span class="ln">178</span><code></code></div>
+<div class="line added"><span class="ln">179</span><code>function buildProductForOs(os, productKey) {</code></div>
+<div class="line added"><span class="ln">180</span><code>  const product = PRODUCT_CONFIG[productKey];</code></div>
+<div class="line added"><span class="ln">181</span><code>  if (!product.platforms.includes(os)) return [];</code></div>
+<div class="line added"><span class="ln">182</span><code></code></div>
+<div class="line added"><span class="ln">183</span><code>  const osMeta = OS_CONFIG[os];</code></div>
+<div class="line added"><span class="ln">184</span><code>  const engineDir = path.join(</code></div>
+<div class="line added"><span class="ln">185</span><code>    product.contentRoot,</code></div>
+<div class="line added"><span class="ln">186</span><code>    `${product.wrapper}-${osMeta.engineSuffix}`,</code></div>
+<div class="line added"><span class="ln">187</span><code>  );</code></div>
+<div class="line added"><span class="ln">188</span><code>  if (!fs.existsSync(engineDir)) return [];</code></div>
+<div class="line added"><span class="ln">189</span><code></code></div>
+<div class="line added"><span class="ln">190</span><code>  const mediations = discoverMediations(engineDir, product.mediations);</code></div>
+<div class="line added"><span class="ln">191</span><code>  const outDir = path.join(guidesDir, os, productKey);</code></div>
+<div class="line added"><span class="ln">192</span><code>  const generated = [];</code></div>
+<div class="line added"><span class="ln">193</span><code></code></div>
+<div class="line added"><span class="ln">194</span><code>  const intro = readProductIntro(product, os);</code></div>
+<div class="line added"><span class="ln">195</span><code></code></div>
+<div class="line added"><span class="ln">196</span><code>  for (const networkKey of mediations) {</code></div>
+<div class="line added"><span class="ln">197</span><code>    const title = NETWORK_TITLES[networkKey];</code></div>
+<div class="line added"><span class="ln">198</span><code>    const pageImports = new Set();</code></div>
+<div class="line added"><span class="ln">199</span><code></code></div>
+<div class="line added"><span class="ln">200</span><code>    const configRel = resolveInstallOrConfig(engineDir, networkKey, 'configuration');</code></div>
+<div class="line added"><span class="ln">201</span><code>    const config = configRel ? readSection(engineDir, configRel, 1) : { imports: [], body: '' };</code></div>
+<div class="line added"><span class="ln">202</span><code></code></div>
+<div class="line added"><span class="ln">203</span><code>    let body;</code></div>
+<div class="line added"><span class="ln">204</span><code>    if (productKey === 'custom-adapter-gma-sdk') {</code></div>
+<div class="line added"><span class="ln">205</span><code>      const assembled = assembleNativeOsPage({</code></div>
+<div class="line added"><span class="ln">206</span><code>        os,</code></div>
+<div class="line added"><span class="ln">207</span><code>        mediation: networkKey,</code></div>
+<div class="line added"><span class="ln">208</span><code>        gitbookConfig: config.body,</code></div>
+<div class="line added"><span class="ln">209</span><code>      });</code></div>
+<div class="line added"><span class="ln">210</span><code>      assembled.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">211</span><code>      body = assembled.body;</code></div>
+<div class="line added"><span class="ln">212</span><code>    } else if (productKey === 'custom-adapter-gma-next-gen-sdk') {</code></div>
+<div class="line added"><span class="ln">213</span><code>      const assembled = assembleNextGenPage({ mediation: networkKey });</code></div>
+<div class="line added"><span class="ln">214</span><code>      assembled.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">215</span><code>      body = assembled.body;</code></div>
+<div class="line added"><span class="ln">216</span><code>    } else {</code></div>
+<div class="line added"><span class="ln">217</span><code>      intro.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">218</span><code>      const readmeRel = resolveReadme(engineDir, networkKey);</code></div>
+<div class="line added"><span class="ln">219</span><code>      const readme = readmeRel ? readSection(engineDir, readmeRel, 0) : { imports: [], body: '' };</code></div>
+<div class="line added"><span class="ln">220</span><code>      readme.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">221</span><code>      const installRel = resolveInstallOrConfig(engineDir, networkKey, 'installation');</code></div>
+<div class="line added"><span class="ln">222</span><code>      const install = installRel ? readSection(engineDir, installRel, 1) : { imports: [], body: '' };</code></div>
+<div class="line added"><span class="ln">223</span><code>      install.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">224</span><code>      config.imports.forEach((i) =&gt; pageImports.add(i));</code></div>
+<div class="line added"><span class="ln">225</span><code>      body = `## Installation</code></div>
+<div class="line added"><span class="ln">226</span><code></code></div>
+<div class="line added"><span class="ln">227</span><code>${install.body}</code></div>
+<div class="line added"><span class="ln">228</span><code></code></div>
+<div class="line added"><span class="ln">229</span><code>---</code></div>
+<div class="line added"><span class="ln">230</span><code></code></div>
+<div class="line added"><span class="ln">231</span><code>## Configuration</code></div>
+<div class="line added"><span class="ln">232</span><code></code></div>
+<div class="line added"><span class="ln">233</span><code>${config.body}</code></div>
+<div class="line added"><span class="ln">234</span><code>`;</code></div>
+<div class="line added"><span class="ln">235</span><code>    }</code></div>
+<div class="line added"><span class="ln">236</span><code></code></div>
+<div class="line added"><span class="ln">237</span><code>    const pagePath = path.join(outDir, `${networkKey}.mdx`);</code></div>
+<div class="line added"><span class="ln">238</span><code>    writeMdx(</code></div>
+<div class="line added"><span class="ln">239</span><code>      pagePath,</code></div>
+<div class="line added"><span class="ln">240</span><code>      {</code></div>
+<div class="line added"><span class="ln">241</span><code>        title,</code></div>
+<div class="line added"><span class="ln">242</span><code>        description: `${title} ${osMeta.label} guide for ${product.label}.`,</code></div>
+<div class="line added"><span class="ln">243</span><code>      },</code></div>
+<div class="line added"><span class="ln">244</span><code>      pageImports,</code></div>
+<div class="line added"><span class="ln">245</span><code>      body,</code></div>
+<div class="line added"><span class="ln">246</span><code>    );</code></div>
+<div class="line added"><span class="ln">247</span><code>    generated.push(path.relative(rootDir, pagePath).replace(/\\/g, '/'));</code></div>
+<div class="line added"><span class="ln">248</span><code>  }</code></div>
+<div class="line added"><span class="ln">249</span><code></code></div>
+<div class="line added"><span class="ln">250</span><code>  return { productKey, os, mediations, generated };</code></div>
+<div class="line added"><span class="ln">251</span><code>}</code></div>
+<div class="line added"><span class="ln">252</span><code></code></div>
+<div class="line added"><span class="ln">253</span><code>function removeProductOverviewPages() {</code></div>
+<div class="line added"><span class="ln">254</span><code>  const removed = [];</code></div>
+<div class="line added"><span class="ln">255</span><code>  for (const os of Object.keys(OS_CONFIG)) {</code></div>
+<div class="line added"><span class="ln">256</span><code>    for (const productKey of Object.keys(PRODUCT_CONFIG)) {</code></div>
+<div class="line added"><span class="ln">257</span><code>      const overviewPath = path.join(guidesDir, os, productKey, 'overview.mdx');</code></div>
+<div class="line added"><span class="ln">258</span><code>      if (fs.existsSync(overviewPath)) {</code></div>
+<div class="line added"><span class="ln">259</span><code>        fs.unlinkSync(overviewPath);</code></div>
+<div class="line added"><span class="ln">260</span><code>        removed.push(path.relative(rootDir, overviewPath).replace(/\\/g, '/'));</code></div>
+<div class="line added"><span class="ln">261</span><code>      }</code></div>
+<div class="line added"><span class="ln">262</span><code>    }</code></div>
+<div class="line added"><span class="ln">263</span><code>  }</code></div>
+<div class="line added"><span class="ln">264</span><code>  return removed;</code></div>
+<div class="line added"><span class="ln">265</span><code>}</code></div>
+<div class="line added"><span class="ln">266</span><code></code></div>
+<div class="line added"><span class="ln">267</span><code>function removeStaleMediationPages() {</code></div>
+<div class="line added"><span class="ln">268</span><code>  const removed = [];</code></div>
+<div class="line added"><span class="ln">269</span><code>  for (const r of results) {</code></div>
+<div class="line added"><span class="ln">270</span><code>    if (!r.generated?.length) continue;</code></div>
+<div class="line added"><span class="ln">271</span><code>    const outDir = path.join(guidesDir, r.os, r.productKey);</code></div>
+<div class="line added"><span class="ln">272</span><code>    if (!fs.existsSync(outDir)) continue;</code></div>
+<div class="line added"><span class="ln">273</span><code>    const keep = new Set(r.generated.map((p) =&gt; path.basename(p)));</code></div>
+<div class="line added"><span class="ln">274</span><code>    for (const file of fs.readdirSync(outDir)) {</code></div>
+<div class="line added"><span class="ln">275</span><code>      if (!file.endsWith('.mdx') || keep.has(file)) continue;</code></div>
+<div class="line added"><span class="ln">276</span><code>      const full = path.join(outDir, file);</code></div>
+<div class="line added"><span class="ln">277</span><code>      fs.unlinkSync(full);</code></div>
+<div class="line added"><span class="ln">278</span><code>      removed.push(path.relative(rootDir, full).replace(/\\/g, '/'));</code></div>
+<div class="line added"><span class="ln">279</span><code>    }</code></div>
+<div class="line added"><span class="ln">280</span><code>  }</code></div>
+<div class="line added"><span class="ln">281</span><code>  return removed;</code></div>
+<div class="line added"><span class="ln">282</span><code>}</code></div>
+<div class="line added"><span class="ln">283</span><code></code></div>
+<div class="line added"><span class="ln">284</span><code>const results = [];</code></div>
+<div class="line added"><span class="ln">285</span><code>for (const os of Object.keys(OS_CONFIG)) {</code></div>
+<div class="line added"><span class="ln">286</span><code>  for (const productKey of Object.keys(PRODUCT_CONFIG)) {</code></div>
+<div class="line added"><span class="ln">287</span><code>    const r = buildProductForOs(os, productKey);</code></div>
+<div class="line added"><span class="ln">288</span><code>    if (r &amp;&amp; r.generated) results.push(r);</code></div>
+<div class="line added"><span class="ln">289</span><code>  }</code></div>
+<div class="line added"><span class="ln">290</span><code>}</code></div>
+<div class="line added"><span class="ln">291</span><code></code></div>
+<div class="line added"><span class="ln">292</span><code>const removedOverviews = removeProductOverviewPages();</code></div>
+<div class="line added"><span class="ln">293</span><code>if (removedOverviews.length) {</code></div>
+<div class="line added"><span class="ln">294</span><code>  console.log('Removed product overview pages:', removedOverviews.join(', '));</code></div>
+<div class="line added"><span class="ln">295</span><code>}</code></div>
+<div class="line added"><span class="ln">296</span><code></code></div>
+<div class="line added"><span class="ln">297</span><code>const removedStale = removeStaleMediationPages();</code></div>
+<div class="line added"><span class="ln">298</span><code>if (removedStale.length) {</code></div>
+<div class="line added"><span class="ln">299</span><code>  console.log('Removed stale mediation pages:', removedStale.join(', '));</code></div>
+<div class="line added"><span class="ln">300</span><code>}</code></div>
+<div class="line added"><span class="ln">301</span><code></code></div>
+<div class="line added"><span class="ln">302</span><code>fs.writeFileSync(</code></div>
+<div class="line added"><span class="ln">303</span><code>  path.join(__dirname, 'os-mediation-build-manifest.json'),</code></div>
+<div class="line added"><span class="ln">304</span><code>  JSON.stringify(results, null, 2),</code></div>
+<div class="line added"><span class="ln">305</span><code>);</code></div>
+<div class="line added"><span class="ln">306</span><code></code></div>
+<div class="line added"><span class="ln">307</span><code>console.log('Built OS × mediation guides:');</code></div>
+<div class="line added"><span class="ln">308</span><code>for (const r of results) {</code></div>
+<div class="line added"><span class="ln">309</span><code>  console.log(`  ${r.os}/${r.productKey}: ${r.generated?.length || 0} pages`);</code></div>
+<div class="line added"><span class="ln">310</span><code>}</code></div>
+<div class="line added"><span class="ln">311</span><code></code></div>
+<div class="line added"><span class="ln">312</span><code>module.exports = { buildProductForOs, results };</code></div>
+<div class="line added"><span class="ln">313</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">/**
+ * Builds per-OS, per-mediation guide pages for Native (phase 1).
+ * Output: guides/{android|ios}/{product}/{mediation}.mdx
+ *
+ * Each mediation page uses H2 Installation + H2 Configuration for the right TOC.
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { normalizeBody } = require('./mdx-content-normalize');
+const { assembleNativeOsPage, assembleNextGenPage } = require('./gma/assemble-page');
+
+const rootDir = path.resolve(__dirname, '..');
+const guidesDir = path.join(rootDir, 'guides');
+
+const { MEDIATION_DISPLAY_TITLES, MEDIATION_ORDER, resolveMediationSourceDir } = require('./gma/doc-constants');
+
+const NETWORK_ORDER = MEDIATION_ORDER;
+
+const NETWORK_TITLES = MEDIATION_DISPLAY_TITLES;
+
+const OS_CONFIG = {
+  android: { engineSuffix: 'android-engine', label: 'Android' },
+  ios: { engineSuffix: 'ios-engine', label: 'iOS' },
+};
+
+const PRODUCT_CONFIG = {
+  'custom-adapter-gma-sdk': {
+    label: 'Custom Adapter (GMA SDK)',
+    contentRoot: path.join(rootDir, 'tapmind-custom-adapter-sdk-integration'),
+    wrapper: 'native',
+    introSource: 'readme',
+    platforms: ['android', 'ios'],
+    mediations: null,
+  },
+  'custom-adapter-gma-next-gen-sdk': {
+    label: 'Custom Adapter (GMA Next-Gen SDK)',
+    contentRoot: path.join(rootDir, 'next-gen-sdk-integration', 'next-gen-integration-sdk'),
+    wrapper: 'native',
+    introSource: 'platform-mdx',
+    platforms: ['android'],
+    mediations: ['admob', 'google-ad-manager'],
+  },
+};
+
+function stripCr(line) {
+  return line.replace(/\r$/, '');
+}
+
+function extractImports(raw) {
+  const imports = [];
+  for (const line of raw.split('\n')) {
+    const m = stripCr(line).match(/^import\s+.+$/);
+    if (m) imports.push(m[0].trim());
+  }
+  return imports;
+}
+
+function parseFrontmatter(content) {
+  if (!content.startsWith('---')) return { body: content };
+  const end = content.indexOf('---', 3);
+  if (end === -1) return { body: content };
+  return { body: content.slice(end + 3).replace(/^\s+/, '') };
+}
+
+function stripLeadingH1(body) {
+  const lines = body.split('\n');
+  let i = 0;
+  while (i &lt; lines.length &amp;&amp; stripCr(lines[i]).trim() === '') i++;
+  const line = stripCr(lines[i] || '');
+  if (line &amp;&amp; /^#\s+/.test(line) &amp;&amp; !/^##/.test(line)) {
+    lines.splice(i, 1);
+    while (i &lt; lines.length &amp;&amp; stripCr(lines[i]).trim() === '') lines.splice(i, 1);
+  }
+  return lines.join('\n').trim();
+}
+
+function removeImportLines(body) {
+  return body
+    .split('\n')
+    .filter((line) =&gt; !/^import\s+.+$/.test(stripCr(line).trim()))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function demoteHeadings(body, levels) {
+  return body
+    .split('\n')
+    .map((line) =&gt; {
+      const clean = stripCr(line);
+      const m = clean.match(/^(#{1,6})(\s+.+)$/);
+      if (!m) return line;
+      const newLevel = Math.min(6, m[1].length + levels);
+      return '#'.repeat(newLevel) + m[2];
+    })
+    .join('\n');
+}
+
+function normalizeBodyLocal(body) {
+  return normalizeBody(body);
+}
+
+function firstExisting(baseDir, candidates) {
+  for (const rel of candidates) {
+    const full = path.join(baseDir, rel);
+    if (fs.existsSync(full)) return rel;
+  }
+  return null;
+}
+
+function readSection(baseDir, relPath, demoteBy) {
+  const full = path.join(baseDir, relPath);
+  if (!fs.existsSync(full)) return { imports: [], body: '' };
+  const raw = fs.readFileSync(full, 'utf8');
+  const imports = extractImports(raw);
+  let body = parseFrontmatter(raw).body;
+  body = removeImportLines(body);
+  body = stripLeadingH1(body);
+  if (demoteBy &gt; 0) body = demoteHeadings(body, demoteBy);
+  body = normalizeBodyLocal(body);
+  return { imports, body };
+}
+
+function resolveInstallOrConfig(baseDir, networkKey, kind) {
+  const sourceDir = resolveMediationSourceDir(networkKey);
+  return firstExisting(baseDir, [
+    `${sourceDir}/${kind}.mdx`,
+    `${sourceDir}/${kind}.md`,
+  ]);
+}
+
+function resolveReadme(baseDir, networkKey) {
+  const sourceDir = resolveMediationSourceDir(networkKey);
+  return firstExisting(baseDir, [
+    `${sourceDir}.mdx`,
+    `${sourceDir}/README.mdx`,
+    `${sourceDir}/README.md`,
+  ]);
+}
+
+function hasInstallation(baseDir, networkKey) {
+  return Boolean(resolveInstallOrConfig(baseDir, networkKey, 'installation'));
+}
+
+function discoverMediations(engineDir, fixedList) {
+  if (fixedList) {
+    return fixedList.filter((key) =&gt; hasInstallation(engineDir, key));
+  }
+  return NETWORK_ORDER.filter((key) =&gt; hasInstallation(engineDir, key));
+}
+
+function readProductIntro(product, os) {
+  const engineKey = `${product.wrapper}-${os}-engine`;
+  const baseDir = path.join(product.contentRoot, engineKey);
+  if (product.introSource === 'platform-mdx') {
+    const rel = `${engineKey}.mdx`;
+    if (fs.existsSync(path.join(product.contentRoot, rel))) {
+      return readSection(product.contentRoot, rel, 0);
+    }
+  }
+  return readSection(baseDir, 'README.mdx', 0);
+}
+
+function writeMdx(filePath, frontmatter, importSet, body) {
+  const imports = [...importSet].sort().join('\n');
+  const output = `---
+title: ${frontmatter.title}
+description: &gt;-
+  ${frontmatter.description}
+---
+
+${imports ? `${imports}\n\n` : ''}${body}
+`;
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, output.replace(/\r\n/g, '\n'), 'utf8');
+}
+
+function buildProductForOs(os, productKey) {
+  const product = PRODUCT_CONFIG[productKey];
+  if (!product.platforms.includes(os)) return [];
+
+  const osMeta = OS_CONFIG[os];
+  const engineDir = path.join(
+    product.contentRoot,
+    `${product.wrapper}-${osMeta.engineSuffix}`,
+  );
+  if (!fs.existsSync(engineDir)) return [];
+
+  const mediations = discoverMediations(engineDir, product.mediations);
+  const outDir = path.join(guidesDir, os, productKey);
+  const generated = [];
+
+  const intro = readProductIntro(product, os);
+
+  for (const networkKey of mediations) {
+    const title = NETWORK_TITLES[networkKey];
+    const pageImports = new Set();
+
+    const configRel = resolveInstallOrConfig(engineDir, networkKey, 'configuration');
+    const config = configRel ? readSection(engineDir, configRel, 1) : { imports: [], body: '' };
+
+    let body;
+    if (productKey === 'custom-adapter-gma-sdk') {
+      const assembled = assembleNativeOsPage({
+        os,
+        mediation: networkKey,
+        gitbookConfig: config.body,
+      });
+      assembled.imports.forEach((i) =&gt; pageImports.add(i));
+      body = assembled.body;
+    } else if (productKey === 'custom-adapter-gma-next-gen-sdk') {
+      const assembled = assembleNextGenPage({ mediation: networkKey });
+      assembled.imports.forEach((i) =&gt; pageImports.add(i));
+      body = assembled.body;
+    } else {
+      intro.imports.forEach((i) =&gt; pageImports.add(i));
+      const readmeRel = resolveReadme(engineDir, networkKey);
+      const readme = readmeRel ? readSection(engineDir, readmeRel, 0) : { imports: [], body: '' };
+      readme.imports.forEach((i) =&gt; pageImports.add(i));
+      const installRel = resolveInstallOrConfig(engineDir, networkKey, 'installation');
+      const install = installRel ? readSection(engineDir, installRel, 1) : { imports: [], body: '' };
+      install.imports.forEach((i) =&gt; pageImports.add(i));
+      config.imports.forEach((i) =&gt; pageImports.add(i));
+      body = `## Installation
+
+${install.body}
+
+---
+
+## Configuration
+
+${config.body}
+`;
+    }
+
+    const pagePath = path.join(outDir, `${networkKey}.mdx`);
+    writeMdx(
+      pagePath,
+      {
+        title,
+        description: `${title} ${osMeta.label} guide for ${product.label}.`,
+      },
+      pageImports,
+      body,
+    );
+    generated.push(path.relative(rootDir, pagePath).replace(/\\/g, '/'));
+  }
+
+  return { productKey, os, mediations, generated };
+}
+
+function removeProductOverviewPages() {
+  const removed = [];
+  for (const os of Object.keys(OS_CONFIG)) {
+    for (const productKey of Object.keys(PRODUCT_CONFIG)) {
+      const overviewPath = path.join(guidesDir, os, productKey, 'overview.mdx');
+      if (fs.existsSync(overviewPath)) {
+        fs.unlinkSync(overviewPath);
+        removed.push(path.relative(rootDir, overviewPath).replace(/\\/g, '/'));
+      }
+    }
+  }
+  return removed;
+}
+
+function removeStaleMediationPages() {
+  const removed = [];
+  for (const r of results) {
+    if (!r.generated?.length) continue;
+    const outDir = path.join(guidesDir, r.os, r.productKey);
+    if (!fs.existsSync(outDir)) continue;
+    const keep = new Set(r.generated.map((p) =&gt; path.basename(p)));
+    for (const file of fs.readdirSync(outDir)) {
+      if (!file.endsWith('.mdx') || keep.has(file)) continue;
+      const full = path.join(outDir, file);
+      fs.unlinkSync(full);
+      removed.push(path.relative(rootDir, full).replace(/\\/g, '/'));
+    }
+  }
+  return removed;
+}
+
+const results = [];
+for (const os of Object.keys(OS_CONFIG)) {
+  for (const productKey of Object.keys(PRODUCT_CONFIG)) {
+    const r = buildProductForOs(os, productKey);
+    if (r &amp;&amp; r.generated) results.push(r);
+  }
+}
+
+const removedOverviews = removeProductOverviewPages();
+if (removedOverviews.length) {
+  console.log('Removed product overview pages:', removedOverviews.join(', '));
+}
+
+const removedStale = removeStaleMediationPages();
+if (removedStale.length) {
+  console.log('Removed stale mediation pages:', removedStale.join(', '));
+}
+
+fs.writeFileSync(
+  path.join(__dirname, 'os-mediation-build-manifest.json'),
+  JSON.stringify(results, null, 2),
+);
+
+console.log('Built OS × mediation guides:');
+for (const r of results) {
+  console.log(`  ${r.os}/${r.productKey}: ${r.generated?.length || 0} pages`);
+}
+
+module.exports = { buildProductForOs, results };
+</pre>
+  </section>
+</body>
+</html>

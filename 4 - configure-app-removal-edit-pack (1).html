@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Pack — Remove "Configure your app" + Extract SKAN</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171b21; --line:#2a313b; --ink:#e6e9ee; --mut:#9aa4b2;
+    --add-line:#2f6b3a; --rem-line:#7a3a3a; --rep-line:#6d4a8a; --new-line:#2f5f6b;
+    --warn:#2a2417; --warn-line:#8a6d1f; --accent:#5aa9ff; --code:#0c0f13;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:32px 20px;}
+  .wrap{max-width:920px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:18px;margin:30px 0 8px;padding-top:18px;border-top:1px solid var(--line)}
+  h3{font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--mut);margin:16px 0 6px}
+  p{margin:8px 0}
+  a{color:var(--accent)}
+  .sub{color:var(--mut);font-size:13px;margin:0 0 20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+  .banner{background:#14261a;border:1px solid var(--add-line);border-radius:10px;padding:14px 16px;margin:0 0 16px}
+  .warnbox{background:var(--warn);border:1px solid var(--warn-line);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .warnbox b{color:#f0d98a}
+  .box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin:12px 0}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:5px;margin-right:8px;vertical-align:middle}
+  .t-rem{background:#2a1e1e;color:#f2a6a6;border:1px solid var(--rem-line)}
+  .t-rep{background:#241f2c;color:#c9a6f2;border:1px solid var(--rep-line)}
+  .t-new{background:#16262b;color:#a6dbe8;border:1px solid var(--new-line)}
+  .apply{font-size:12px;color:var(--mut);margin:2px 0 10px}
+  .apply b{color:var(--ink)}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:auto;margin:8px 0;font-size:12.5px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+  pre.rem{border-left:3px solid var(--rem-line)}
+  pre.add{border-left:3px solid var(--add-line)}
+  pre.new{border-left:3px solid var(--new-line)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace}
+  .why{font-size:13px;color:var(--mut);margin:6px 0 0}
+  .why b{color:var(--ink)}
+  ul{margin:8px 0;padding-left:20px}li{margin:5px 0}
+  .elide{color:#f0c674;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Edit Pack — Remove &ldquo;Configure your app&rdquo; &amp; extract SKAN</h1>
+  <p class="sub">11 pages touched (8 integration + 2 shared + 1 new) &middot; docs.tapmind.io / JamDesk MDX &middot; all remove/replace text is verbatim from the confirmed pages</p>
+
+  <div class="banner">
+    <b>Status:</b> all 10 existing pages confirmed verbatim; all decisions locked. Remove/replace strings below are exact matches to source. The one new file (<code>/reference/skadnetwork-ids</code>) is authored here.
+  </div>
+
+  <div class="warnbox">
+    <b>Verify before deploy</b> (flagged uncertainties — not blockers for the edits, but check these):
+    <ul>
+      <li><b>SKAN list currency.</b> The array below is <b>50 IDs</b> as they appear on your iOS pages today. Google revises this list; I&rsquo;m not certain it&rsquo;s current. Verify against Google&rsquo;s published list before treating the reference page as canonical.</li>
+      <li><b>minSdk floors vs the pinned SDK.</b> Option B preserves whatever the Compatibility Matrix says (native <code>23</code>/<code>12.0</code>) — zero accuracy loss vs current docs. But the pages pin <code>play-services-ads:25.0.0</code>; I&rsquo;m not certain <code>23</code>/<code>12.0</code> are correct floors for that SDK major (25.x may require Android 24; current GMA iOS may need 13+/14+). This is a docs-vs-actual-SDK check, separate from B — verify with Hardik / GMA release notes.</li>
+      <li><b>Matrix is now load-bearing.</b> Every integration page will link the Compatibility Matrix after B, and every iOS page links the new SKAN page. The pre-existing open question on the Matrix&rsquo;s <b>Cocos row</b> (iOS <code>18.0</code>, Android <code>25</code> vs Tirth&rsquo;s stated <code>26</code>) isn&rsquo;t in these 8 pages, but close it soon — more pages now depend on the Matrix being right.</li>
+    </ul>
+  </div>
+
+  <!-- NEW PAGE -->
+  <h2>A &nbsp;New file: <code>/reference/skadnetwork-ids</code></h2>
+  <div class="card">
+    <p><span class="tag t-new">CREATE</span> new MDX page</p>
+    <p class="apply"><b>Then:</b> all 4 iOS integration pages link here (handled in section C).</p>
+    <pre class="new">---
+title: SKAdNetwork IDs
+description: The SKAdNetworkItems array required in Info.plist for iOS attribution across TapMind integrations.
+---
+
+&gt; **For AI agents:** the complete documentation index is at [llms.txt](/llms.txt). Append `.md` to any page URL for its markdown version.
+
+Add the `SKAdNetworkItems` array below to your app's `Info.plist`. These identifiers let the ad networks serving through TapMind receive Apple's install-attribution (SKAdNetwork) postbacks. This page is the single source of truth for the list - each iOS integration page links here so it never drifts between pages.
+
+If your app already serves Google demand, most of these IDs are likely already present. Add any you are missing - a publisher not already running Google-sourced demand may not have the full list.
+
+Keep this list complete and current against the list [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks).
+
+```
+&lt;key&gt;SKAdNetworkItems&lt;/key&gt;
+&lt;array&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;cstr6suwn9.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;4fzdc2evr5.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;2fnua5tdw4.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;ydx93a7ass.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;p78axxw29g.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;v72qych5uu.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;ludvb6z3bs.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;cp8zw746q7.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;3sh42y64q3.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;c6k4g5qg8m.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;s39g8k73mm.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;wg4vff78zm.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;3qy4746246.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;f38h382jlk.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;hs6bdukanm.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;mlmmfzh3r3.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;v4nxqhlyqp.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;wzmmz9fp6w.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;su67r6k2v3.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;yclnxrl5pm.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;t38b2kh725.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;7ug5zh24hu.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;gta9lk7p23.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;vutu7akeur.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;y5ghdn5j9k.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;v9wttpbfk9.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;n38lu8286q.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;47vhws6wlr.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;kbd757ywx3.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;9t245vhmpl.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;a2p9lx4jpn.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;22mmun2rn5.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;44jx6755aq.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;k674qkevps.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;4468km3ulz.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;2u9pt9hc89.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;8s468mfl3y.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;klf5c3l5u5.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;ppxm28t8ap.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;kbmxgpxpgc.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;uw77j35x4d.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;578prtvx9j.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;4dzt52r2t5.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;tl55sbb4fm.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;c3frkrj4fj.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;e5fvkxwrpn.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;8c4e2ghe7u.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;3rd42ekr43.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;97r2b46745.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+  &lt;dict&gt;&lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;&lt;string&gt;3qcr597p9d.skadnetwork&lt;/string&gt;&lt;/dict&gt;
+&lt;/array&gt;
+```</pre>
+    <p class="why"><b>Note:</b> I collapsed each <code>&lt;dict&gt;</code> onto one line for readability; the expanded multi-line form from your pages is equally valid — use whichever your JamDesk formatting prefers. The 50 IDs and their order are verbatim from the pages.</p>
+  </div>
+
+  <!-- ANDROID -->
+  <h2>B &nbsp;Android integration pages &times;4</h2>
+  <p class="apply"><b>Applies to:</b> <code>/guides/android/custom-adapter-gma-sdk/</code> &rarr; <code>admob</code>, <code>google-ad-manager</code>, <code>applovin</code>, <code>levelplay</code>. The two blocks below are byte-identical across all four.</p>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> the <b>App prerequisites</b> bullet list (minSdk B + app-ID verify line)</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting</pre>
+    <h3>Replace with</h3>
+    <pre class="add">* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID meta-data (`com.google.android.gms.ads.APPLICATION_ID`) set in `AndroidManifest.xml`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
+* An ad unit must already be in place which will be used for targeting</pre>
+    <p class="why"><b>Why:</b> B — numbers move to the Matrix (single source of truth); the app-ID requirement survives as a one-line verification pointing at the existing Troubleshooting crash section.</p>
+  </div>
+
+  <div class="card">
+    <p><span class="tag t-rem">REMOVE</span> the entire <b>Configure your app</b> section</p>
+    <h3>Delete (verbatim, whole section)</h3>
+    <pre class="rem">## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+&lt;manifest&gt;
+  &lt;application&gt;
+    &lt;!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 --&gt;
+    &lt;meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="YOUR_ADMOB_APP_ID"/&gt;
+  &lt;/application&gt;
+&lt;/manifest&gt;
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.</pre>
+    <p class="why"><b>Why:</b> redundant for the target reader (already-monetizing apps have the app ID). The crash safety-net lives in Troubleshooting; the verification is now in Prerequisites above.</p>
+  </div>
+
+  <!-- iOS -->
+  <h2>C &nbsp;iOS integration pages &times;4</h2>
+  <p class="apply"><b>Applies to:</b> <code>/guides/ios/custom-adapter-gma-sdk/</code> &rarr; <code>admob</code>, <code>google-ad-manager</code>, <code>applovin</code>, <code>levelplay</code>. Both blocks below are byte-identical across all four.</p>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> the <b>App prerequisites</b> bullet list (minSdk B + app-ID verify + SKAN link)</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">* iOS **12.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting</pre>
+    <h3>Replace with</h3>
+    <pre class="add">* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum iOS version for this package.
+* The Google Mobile Ads (GMA) SDK integrated in your app, with `GADApplicationIdentifier` set in `Info.plist`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
+* Your `Info.plist` includes the `SKAdNetworkItems` array for attribution - see [SKAdNetwork IDs](/reference/skadnetwork-ids). Add any IDs you don't already have; a publisher not already running Google demand may be missing them.
+* An ad unit must already be in place which will be used for targeting</pre>
+    <p class="why"><b>Why:</b> both iOS concerns become Prerequisites lines — app-ID (&rarr; Troubleshooting, crash risk) and SKAN (&rarr; reference page, attribution config). SKAN kept out of Troubleshooting because a missing array doesn&rsquo;t crash — it silently degrades attribution.</p>
+  </div>
+
+  <div class="card">
+    <p><span class="tag t-rem">REMOVE</span> the entire <b>Configure your app</b> section (heading &rarr; SKAN closing line)</p>
+    <h3>Delete the whole section — boundaries shown verbatim</h3>
+    <pre class="rem">## Configure your app
+
+*Performed by: Developer*
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+&lt;key&gt;GADApplicationIdentifier&lt;/key&gt;
+&lt;!-- Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511 --&gt;
+&lt;string&gt;YOUR_ADMOB_APP_ID&lt;/string&gt;
+&lt;key&gt;SKAdNetworkItems&lt;/key&gt;
+&lt;array&gt;
+<span class="elide">  ... all 50 SKAdNetworkItems entries (delete these too) ...</span>
+&lt;/array&gt;
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.</pre>
+    <p class="why"><b>Why:</b> app-ID &rarr; Prerequisites/Troubleshooting; the SKAN array &rarr; the new reference page (section A). The whole inline section goes, symmetric with Android. <span class="elide">The 50 entries elided here for brevity are the exact list now living on <code>/reference/skadnetwork-ids</code> — delete all of them from the page.</span></p>
+  </div>
+
+  <!-- LEVELPLAY BLEED -->
+  <h2>D &nbsp;LevelPlay-key bleed fix (on-page Troubleshooting line) &mdash; tailored</h2>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> — on the <b>6 non-LevelPlay pages</b> (AdMob + GAM + AppLovin, Android &amp; iOS)</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.</pre>
+    <h3>Replace with</h3>
+    <pre class="add">Before diving into logs, confirm adapter class names against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.</pre>
+    <p class="why"><b>Why:</b> &ldquo;LevelPlay network key&rdquo; is boilerplate bleed on an AdMob/GAM/AppLovin page — those use a class name, not a network key.</p>
+  </div>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> — on the <b>2 LevelPlay pages</b> (Android &amp; iOS), the same line is inverted-wrong</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.</pre>
+    <h3>Replace with</h3>
+    <pre class="add">Before diving into logs, confirm the LevelPlay network key against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.</pre>
+    <p class="why"><b>Why:</b> LevelPlay uses a <b>network key and no class name</b> — so here we drop &ldquo;adapter class names&rdquo; and keep the key. Same source line, opposite fix.</p>
+  </div>
+
+  <!-- SHARED TROUBLESHOOTING -->
+  <h2>E &nbsp;<code>/reference/troubleshooting</code> &times;1 — two stale references</h2>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> the crash row fix cell in the <b>Common issues</b> table</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">| App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID exactly as shown on your integration page - see [App crashes on launch](#app-crashes-on-launch) |</pre>
+    <h3>Replace with</h3>
+    <pre class="add">| App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID to native config - see [App crashes on launch](#app-crashes-on-launch) |</pre>
+    <p class="why"><b>Why:</b> the integration pages no longer show the snippet after removal, so &ldquo;as shown on your integration page&rdquo; is stale. The on-page anchor still resolves (it already carries both snippets).</p>
+  </div>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> the closing line of the <b>App crashes on launch</b> section</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">Use the exact snippet shown on your platform's integration page.</pre>
+    <h3>Replace with</h3>
+    <pre class="add">Use the exact snippet for your platform shown above.</pre>
+    <p class="why"><b>Why:</b> same stale pointer; the Android and iOS snippets are already directly above this line in the section. No new section is added — this page already owns the app-ID snippet. Legit LevelPlay references on this page are left untouched.</p>
+  </div>
+
+  <!-- UNIVERSAL PREREQS -->
+  <h2>F &nbsp;<code>/getting-started/prerequisites</code> &times;1</h2>
+
+  <div class="card">
+    <p><span class="tag t-rep">REPLACE</span> the GMA SDK bullet</p>
+    <h3>Find (verbatim)</h3>
+    <pre class="rem">- The Google Mobile Ads (GMA) SDK integrated in your app (TapMind's adapters run on top of it).</pre>
+    <h3>Replace with</h3>
+    <pre class="add">- The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID key set - `com.google.android.gms.ads.APPLICATION_ID` in `AndroidManifest.xml` (Android) or `GADApplicationIdentifier` in `Info.plist` (iOS). TapMind's adapters run on top of the GMA SDK, which crashes on launch without it. Any app already serving Google ads has this set - see [Troubleshooting](/reference/troubleshooting#app-crashes-on-launch) if the app crashes on init.</pre>
+    <p class="why"><b>Why:</b> anchors the app-ID requirement canonically for all integrations (you confirmed GMA is required for MAX/LevelPlay too). Network-neutral, both platforms. SKAN deliberately kept off this page (iOS-only).</p>
+  </div>
+
+  <!-- EXECUTION -->
+  <h2>Execution</h2>
+  <div class="box">
+    <p><b>One commit, one <code>jamdesk validate &rarr; deploy</code>.</b> The most repeated edits (B prereq blocks, Configure removal, LevelPlay-key line) are byte-identical across their page sets — run them as single find-and-replace passes via the JamDesk Claude Code MCP rather than editing page-by-page.</p>
+    <ul>
+      <li><b>A</b> — create <code>/reference/skadnetwork-ids</code> (1 file).</li>
+      <li><b>B</b> — 2 replacements &times; 4 Android pages.</li>
+      <li><b>C</b> — 2 replacements &times; 4 iOS pages.</li>
+      <li><b>D</b> — 1 replacement &times; 6 pages (non-LevelPlay) + 1 replacement &times; 2 LevelPlay pages.</li>
+      <li><b>E</b> — 2 replacements on Troubleshooting.</li>
+      <li><b>F</b> — 1 replacement on the universal Prerequisites page.</li>
+    </ul>
+    <p class="why">After deploy, spot-check that <code>/reference/skadnetwork-ids</code> renders the array, the 4 iOS Prerequisites links resolve to it, and the <code>#app-crashes-on-launch</code> anchor still resolves from the new Prerequisites links.</p>
+  </div>
+
+</div>
+</body>
+</html>

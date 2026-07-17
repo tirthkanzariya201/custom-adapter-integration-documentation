@@ -1,0 +1,154 @@
+[
+  {
+    "wrapper": "native",
+    "product": "custom-adapter",
+    "slug": "guides/native/custom-adapter",
+    "outFile": "guides/native/custom-adapter.mdx",
+    "mediations": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "sizeKb": 44,
+    "mergedSources": [
+      "native-android-engine intro",
+      "admob/README.mdx",
+      "native-android-engine/admob/installation.mdx",
+      "native-ios-engine/admob/installation.mdx",
+      "native-android-engine/admob/configuration.mdx",
+      "native-ios-engine/admob/configuration.mdx",
+      "google-ad-manager/README.mdx",
+      "native-android-engine/google-ad-manager/installation.mdx",
+      "native-ios-engine/google-ad-manager/installation.mdx",
+      "native-android-engine/google-ad-manager/configuration.mdx",
+      "native-ios-engine/google-ad-manager/configuration.mdx",
+      "applovin/README.mdx",
+      "native-android-engine/applovin/installation.mdx",
+      "native-ios-engine/applovin/installation.mdx",
+      "native-android-engine/applovin/configuration.mdx",
+      "native-ios-engine/applovin/configuration.mdx",
+      "ironsource-levelplay/README.mdx",
+      "native-android-engine/ironsource-levelplay/installation.mdx",
+      "native-ios-engine/ironsource-levelplay/installation.mdx",
+      "native-android-engine/ironsource-levelplay/configuration.mdx",
+      "native-ios-engine/ironsource-levelplay/configuration.mdx"
+    ]
+  },
+  {
+    "wrapper": "unity",
+    "product": "custom-adapter",
+    "slug": "guides/unity/custom-adapter",
+    "outFile": "guides/unity/custom-adapter.mdx",
+    "mediations": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "sizeKb": 27,
+    "mergedSources": [
+      "unity-android-engine intro",
+      "admob/README.mdx",
+      "unity-android-engine/admob/installation.mdx",
+      "unity-ios-engine/admob/installation.mdx",
+      "unity-android-engine/admob/configuration.mdx",
+      "unity-ios-engine/admob/configuration.mdx",
+      "google-ad-manager/README.mdx",
+      "unity-android-engine/google-ad-manager/installation.mdx",
+      "unity-ios-engine/google-ad-manager/installation.mdx",
+      "unity-android-engine/google-ad-manager/configuration.mdx",
+      "unity-ios-engine/google-ad-manager/configuration.mdx",
+      "applovin/README.mdx",
+      "unity-android-engine/applovin/installation.mdx",
+      "unity-ios-engine/applovin/installation.mdx",
+      "unity-android-engine/applovin/configuration.mdx",
+      "unity-ios-engine/applovin/configuration.mdx",
+      "ironsource-levelplay/README.mdx",
+      "unity-android-engine/ironsource-levelplay/installation.mdx",
+      "unity-ios-engine/ironsource-levelplay/installation.mdx",
+      "unity-android-engine/ironsource-levelplay/configuration.mdx",
+      "unity-ios-engine/ironsource-levelplay/configuration.mdx"
+    ]
+  },
+  {
+    "wrapper": "flutter",
+    "product": "custom-adapter",
+    "slug": "guides/flutter/custom-adapter",
+    "outFile": "guides/flutter/custom-adapter.mdx",
+    "mediations": [
+      "AdMob",
+      "Google Ad Manager",
+      "AppLovin",
+      "IronSource LevelPlay"
+    ],
+    "sizeKb": 28,
+    "mergedSources": [
+      "flutter-android-engine intro",
+      "admob/README.mdx",
+      "flutter-android-engine/admob/installation.mdx",
+      "flutter-ios-engine/admob/installation.mdx",
+      "flutter-android-engine/admob/configuration.mdx",
+      "flutter-ios-engine/admob/configuration.mdx",
+      "google-ad-manager/README.mdx",
+      "flutter-android-engine/google-ad-manager/installation.mdx",
+      "flutter-ios-engine/google-ad-manager/installation.mdx",
+      "flutter-android-engine/google-ad-manager/configuration.mdx",
+      "flutter-ios-engine/google-ad-manager/configuration.mdx",
+      "applovin/README.mdx",
+      "flutter-android-engine/applovin/installation.mdx",
+      "flutter-ios-engine/applovin/installation.mdx",
+      "flutter-android-engine/applovin/configuration.mdx",
+      "flutter-ios-engine/applovin/configuration.mdx",
+      "ironsource-levelplay/README.mdx",
+      "flutter-android-engine/ironsource-levelplay/installation.mdx",
+      "flutter-ios-engine/ironsource-levelplay/installation.mdx",
+      "flutter-android-engine/ironsource-levelplay/configuration.mdx",
+      "flutter-ios-engine/ironsource-levelplay/configuration.mdx"
+    ]
+  },
+  {
+    "wrapper": "cocos",
+    "product": "custom-adapter",
+    "slug": "guides/cocos/custom-adapter",
+    "outFile": "guides/cocos/custom-adapter.mdx",
+    "mediations": [
+      "AdMob",
+      "Google Ad Manager"
+    ],
+    "sizeKb": 14,
+    "mergedSources": [
+      "cocos-android-engine intro",
+      "admob/README.mdx",
+      "cocos-android-engine/admob/installation.mdx",
+      "cocos-ios-engine/admob/installation.mdx",
+      "cocos-android-engine/admob/configuration.mdx",
+      "cocos-ios-engine/admob/configuration.mdx",
+      "google-ad-manager/README.mdx",
+      "cocos-android-engine/google-ad-manager/installation.mdx",
+      "cocos-ios-engine/google-ad-manager/installation.mdx",
+      "cocos-android-engine/google-ad-manager/configuration.mdx",
+      "cocos-ios-engine/google-ad-manager/configuration.mdx"
+    ]
+  },
+  {
+    "wrapper": "native",
+    "product": "next-gen",
+    "slug": "guides/native/next-gen",
+    "outFile": "guides/native/next-gen.mdx",
+    "mediations": [
+      "AdMob",
+      "Google Ad Manager"
+    ],
+    "sizeKb": 7,
+    "mergedSources": [
+      "native-android-engine intro",
+      "admob.mdx",
+      "native-android-engine/admob/installation.mdx",
+      "native-android-engine/admob/configuration.mdx",
+      "google-ad-manager.mdx",
+      "native-android-engine/google-ad-manager/installation.mdx",
+      "native-android-engine/google-ad-manager/configuration.mdx"
+    ]
+  }
+]

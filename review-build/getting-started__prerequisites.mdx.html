@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: getting-started/prerequisites.mdx</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>getting-started/prerequisites.mdx</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>---</code></div>
+<div class="line added"><span class="ln">2</span><code>title: Prerequisites</code></div>
+<div class="line added"><span class="ln">3</span><code>description: What you need before you start any integration.</code></div>
+<div class="line added"><span class="ln">4</span><code>---</code></div>
+<div class="line added"><span class="ln">5</span><code></code></div>
+<div class="line added"><span class="ln">6</span><code>Before integrating any TapMind SDK, make sure you have:</code></div>
+<div class="line added"><span class="ln">7</span><code></code></div>
+<div class="line added"><span class="ln">8</span><code>- A mediation account with the partner you're integrating (AdMob, GAM, AppLovin MAX, or Unity LevelPlay).</code></div>
+<div class="line added"><span class="ln">9</span><code>- An ad unit already created in that platform - TapMind targets your existing ad units.</code></div>
+<div class="line added"><span class="ln">10</span><code>- The Google Mobile Ads (GMA) SDK integrated in your app (TapMind's adapters run on top of it).</code></div>
+<div class="line added"><span class="ln">11</span><code>- Your TapMind values, provided by your account manager (see the split below).</code></div>
+<div class="line added"><span class="ln">12</span><code></code></div>
+<div class="line added"><span class="ln">13</span><code>## What TapMind provides</code></div>
+<div class="line added"><span class="ln">14</span><code></code></div>
+<div class="line added"><span class="ln">15</span><code>Your account manager provides the values below. Enter each **exactly** as given - `placementName` and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.</code></div>
+<div class="line added"><span class="ln">16</span><code></code></div>
+<div class="line added"><span class="ln">17</span><code>### Static SDK values (from the Class &amp; Network Key Registry)</code></div>
+<div class="line added"><span class="ln">18</span><code></code></div>
+<div class="line added"><span class="ln">19</span><code>Same for every publisher:</code></div>
+<div class="line added"><span class="ln">20</span><code></code></div>
+<div class="line added"><span class="ln">21</span><code>- **Adapter class name** (or LevelPlay network key) - exact string</code></div>
+<div class="line added"><span class="ln">22</span><code></code></div>
+<div class="line added"><span class="ln">23</span><code>### Your account values (from your account manager)</code></div>
+<div class="line added"><span class="ln">24</span><code></code></div>
+<div class="line added"><span class="ln">25</span><code>- **placementName** - case-sensitive, exact match</code></div>
+<div class="line added"><span class="ln">26</span><code>- **eCPM / rate** - the value to configure in your waterfall</code></div>
+<div class="line added"><span class="ln">27</span><code></code></div>
+<div class="line added"><span class="ln">28</span><code>&lt;Info&gt;</code></div>
+<div class="line added"><span class="ln">29</span><code>**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class &amp; Network Key Registry](/reference/class-network-key-registry). Your `placementName` and eCPM / rate come directly from your account manager - not the Registry.</code></div>
+<div class="line added"><span class="ln">30</span><code>&lt;/Info&gt;</code></div>
+<div class="line added"><span class="ln">31</span><code></code></div>
+<div class="line added"><span class="ln">32</span><code>&lt;Info&gt;</code></div>
+<div class="line added"><span class="ln">33</span><code>**Minimum OS:** see the [Compatibility Matrix](/reference/compatibility-matrix) for minimum Android and iOS versions per package and framework.</code></div>
+<div class="line added"><span class="ln">34</span><code>&lt;/Info&gt;</code></div>
+<div class="line added"><span class="ln">35</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">---
+title: Prerequisites
+description: What you need before you start any integration.
+---
+
+Before integrating any TapMind SDK, make sure you have:
+
+- A mediation account with the partner you're integrating (AdMob, GAM, AppLovin MAX, or Unity LevelPlay).
+- An ad unit already created in that platform - TapMind targets your existing ad units.
+- The Google Mobile Ads (GMA) SDK integrated in your app (TapMind's adapters run on top of it).
+- Your TapMind values, provided by your account manager (see the split below).
+
+## What TapMind provides
+
+Your account manager provides the values below. Enter each **exactly** as given - `placementName` and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.
+
+### Static SDK values (from the Class &amp; Network Key Registry)
+
+Same for every publisher:
+
+- **Adapter class name** (or LevelPlay network key) - exact string
+
+### Your account values (from your account manager)
+
+- **placementName** - case-sensitive, exact match
+- **eCPM / rate** - the value to configure in your waterfall
+
+&lt;Info&gt;
+**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class &amp; Network Key Registry](/reference/class-network-key-registry). Your `placementName` and eCPM / rate come directly from your account manager - not the Registry.
+&lt;/Info&gt;
+
+&lt;Info&gt;
+**Minimum OS:** see the [Compatibility Matrix](/reference/compatibility-matrix) for minimum Android and iOS versions per package and framework.
+&lt;/Info&gt;
+</pre>
+  </section>
+</body>
+</html>

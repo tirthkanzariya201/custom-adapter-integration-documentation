@@ -1,0 +1,571 @@
+{
+  "rootCause": "JamDesk runtime (ISR + dev content-loader) resolves pages as {slug}.mdx only. GitBook migration left 94 navigation pages as .md files. Navigation slugs in docs.json were correct, but production could not load .md sources from R2.",
+  "renamedCount": 94,
+  "mapping": [
+    {
+      "currentRoute": "README",
+      "actualFile": "README.mdx",
+      "expectedRoute": "/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "gradle-setup/for-gradle-version-7+",
+      "actualFile": "gradle-setup/for-gradle-version-7+.mdx",
+      "expectedRoute": "/gradle-setup/for-gradle-version-7+",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/admob/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/installation",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/README",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/README.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/README",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration",
+      "status": "PASS"
+    },
+    {
+      "currentRoute": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation",
+      "actualFile": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation.mdx",
+      "expectedRoute": "/tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation",
+      "status": "PASS"
+    }
+  ],
+  "renamed": []
+}

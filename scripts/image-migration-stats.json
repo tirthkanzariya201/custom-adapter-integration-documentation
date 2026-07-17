@@ -1,0 +1,183 @@
+{
+  "moved": [],
+  "referencesUpdated": [],
+  "unusedAssets": [
+    "images/ironsource-configuration.jpeg",
+    "images/cocos-extension-guide.png",
+    "images/cocos-extension-guide-alt.png",
+    "images/image-1.png",
+    "images/image-2.png",
+    "images/image-3.png",
+    "images/image-4.png",
+    "images/image-5.png",
+    "images/image.png"
+  ],
+  "validation": [
+    {
+      "status": "error",
+      "message": "Missing source asset: image (9).jpeg"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: cocos-extension-guide (1).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: cocos-extension-guide.png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image (1).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image (2).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image (3).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image (4).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image (5).png"
+    },
+    {
+      "status": "error",
+      "message": "Missing source asset: image.png"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/admob/installation.md",
+      "src": "/images/cocos-extension-guide.png"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/installation.md",
+      "src": "/images/cocos-extension-guide.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/admob/installation.md",
+      "src": "/images/cocos-extension-guide.png"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/installation.md",
+      "src": "/images/cocos-extension-guide.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/native-android-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/native-android-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/native-ios-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/native-ios-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/applovin/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity/settings_app_ids.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-android-engine/ironsource-levelplay/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity/settings_app_ids.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/applovin/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity/settings_app_ids.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/google-ad-manager/README.md",
+      "src": "https://ca-docs.adster.tech/custom-adapter-integration/android"
+    },
+    {
+      "status": "ok",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/configuration.md",
+      "src": "/images/ironsource-configuration.jpeg"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity_gma_inspector_menu.png"
+    },
+    {
+      "status": "external",
+      "file": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/ironsource-levelplay/installation.md",
+      "src": "https://developers.google.com/static/admob/images/unity/settings_app_ids.png"
+    }
+  ]
+}

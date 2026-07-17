@@ -1,0 +1,7203 @@
+# TapMind SDK Documentation - Complete Documentation
+
+> This file contains the complete documentation for TapMind SDK Documentation.
+> Total pages: 39
+
+---
+
+## Introduction
+
+*Source: /getting-started/introduction*
+
+TapMind connects your app to premium ad demand through your existing mediation stack. You add TapMind as a custom adapter inside the mediation platform you already use - AdMob, Google Ad Manager, AppLovin MAX, or Unity LevelPlay - and TapMind competes for your ad requests like any other network.
+
+## Choose your SDK
+
+Check with your TapMind account manager to confirm which SDK is suitable for your app.
+
+- **Custom Adapter (GMA SDK)**: a lightweight adapter for an existing mediation stack. Android, iOS, and four cross-platform frameworks.
+- **Custom Adapter (GMA Next-Gen SDK)**: native Android integration for AdMob and Google Ad Manager on the next-generation GMA API.
+- **Orchestration SDK**: lightweight Android ad serving through placement codes, with no third-party mediation platform.
+
+## How to use these docs
+
+Pick your SDK product, then your platform, then your mediation partner.
+
+Every page follows the same six steps:
+
+1. Prerequisites
+2. Install
+3. Configure your app
+4. Configure the mediation dashboard
+5. Verify
+6. Troubleshoot
+
+**Need help?** Contact your TapMind account manager for the placement values and configuration specific to your account.
+
+---
+
+## How TapMind custom adapters work
+
+*Source: /getting-started/how-custom-adapters-work*
+
+The one idea to hold onto: with the Custom Adapter SDKs, you do not call TapMind directly. You integrate your mediation SDK exactly as you normally would, and TapMind rides inside it as a custom network. Your mediation platform loads the TapMind adapter and asks it for an ad whenever TapMind's line item is eligible.
+
+## The request flow
+
+Your app → Mediation SDK (AdMob / MAX / LevelPlay / GAM)
+
+→ picks TapMind from the waterfall
+
+→ loads the TapMind adapter class
+
+→ TapMind backend returns an ad
+
+→ ad renders in your app
+
+## What this means in practice
+
+- You add TapMind in two places: a dependency in your build, and a custom-event/custom-network entry in your mediation dashboard.
+- After that, you request ads through your mediation SDK's normal API - there is no separate TapMind "load ad" call (the Orchestration SDK is the exception; it has its own API).
+- TapMind only serves when your waterfall reaches its line item, at the eCPM you configure.
+
+## Key terms
+
+| Term | Meaning |
+|------|---------|
+| Custom event / custom network | The mechanism your mediation platform uses to call a third-party adapter like TapMind. |
+| Class name | The exact adapter class your mediation dashboard loads. Must match the published SDK exactly. |
+| placementName | A per-placement identifier you enter in the dashboard. Provided by your account manager. Case-sensitive, exact-match. |
+| Network key | A per-account key that identifies TapMind in Unity LevelPlay. |
+| eCPM / rate | The manual price that sets TapMind's position in your waterfall. |
+
+**Note:** This page is the prerequisite mental model for every integration page. If an ad isn't serving, 90% of the time it traces back to one of the five values above not matching exactly.
+
+---
+
+## Prerequisites
+
+*Source: /getting-started/prerequisites*
+
+Before integrating any TapMind SDK, make sure you have:
+
+- A mediation account with the partner you're integrating (AdMob, GAM, AppLovin MAX, or Unity LevelPlay).
+- An ad unit already created in that platform - TapMind targets your existing ad units.
+- The Google Mobile Ads (GMA) SDK integrated in your app (TapMind's adapters run on top of it).
+- Your TapMind values, provided by your account manager (see the split below).
+
+## What TapMind provides
+
+Your account manager provides the values below. Enter each **exactly** as given - `placementName` and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.
+
+### Static SDK values (from the Class & Network Key Registry)
+
+Same for every publisher:
+
+- **Adapter class name** (or LevelPlay network key) - exact string
+
+### Your account values (from your account manager)
+
+- **placementName** - case-sensitive, exact match
+- **eCPM / rate** - the value to configure in your waterfall
+
+
+**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class & Network Key Registry](/reference/class-network-key-registry). Your `placementName` and eCPM / rate come directly from your account manager - not the Registry.
+
+
+
+**Minimum OS:** see the [Compatibility Matrix](/reference/compatibility-matrix) for minimum Android and iOS versions per package and framework.
+
+---
+
+## Gradle Setup (For Gradle Version 7+)
+
+*Source: /gradle-setup/for-gradle-version-7-plus*
+
+On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:
+
+
+
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+
+
+**Important:** Remove any `allprojects { repositories { … } }` block from your root `build.gradle` when using this pattern. With `FAIL_ON_PROJECT_REPOS`, leaving `allprojects` repositories in place causes a Gradle error.
+
+For projects that still use the legacy `allprojects` pattern, see the repository block on individual mediation pages - use **one** approach, not both.
+
+---
+
+## AdMob
+
+*Source: /guides/android/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-admob:2.1.13")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/android/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-gam:2.1.13")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android** →
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterGAM
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AppLovin
+
+*Source: /guides/android/custom-adapter-gma-sdk/applovin*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-applovin:2.1.16")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Unity LevelPlay
+
+*Source: /guides/android/custom-adapter-gma-sdk/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-ironsource:2.1.15")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/ios/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* iOS **12.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### CocoaPods
+
+1. Open your project's Podfile and add:
+
+```
+pod 'TapMindAdapter', '2.1.13'
+```
+
+2. Run `pod install` and open the `.xcworkspace` file.
+
+### Swift Package Manager (SPM)
+
+1. In Xcode: **File → Add Package Dependencies**
+2. Add: `https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git`
+3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/ios/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* iOS **12.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### CocoaPods
+
+1. Open your project's Podfile and add:
+
+```
+pod 'TapMindAdapter', '2.1.13'
+```
+
+2. Run `pod install` and open the `.xcworkspace` file.
+
+### Swift Package Manager (SPM)
+
+1. In Xcode: **File → Add Package Dependencies**
+2. Add: `https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git`
+3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **iOS** →
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : TapMindMediationAdapterGAM
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AppLovin
+
+*Source: /guides/ios/custom-adapter-gma-sdk/applovin*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* iOS **12.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### CocoaPods
+
+1. Open your project's Podfile and add:
+
+```
+pod 'TapMindALAdapter', '2.1.13'
+```
+
+2. Run `pod install` and open the `.xcworkspace` file.
+
+### Swift Package Manager (SPM)
+
+1. In Xcode: **File → Add Package Dependencies**
+2. Add: `https://github.com/tapmind-tech/TapMind-CA-Applovin-iOS.git`
+3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+iOS Class      : TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Unity LevelPlay
+
+*Source: /guides/ios/custom-adapter-gma-sdk/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* iOS **12.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### CocoaPods
+
+1. Open your project's Podfile and add:
+
+```
+pod 'TapMindISAdapter', '2.1.12'
+```
+
+2. Run `pod install` and open the `.xcworkspace` file.
+
+### Swift Package Manager (SPM)
+
+1. In Xcode: **File → Add Package Dependencies**
+2. Add: `https://github.com/tapmind-tech/TapMind-CA-Unity-Levelplay-iOS.git`
+3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/flutter/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher (`platform :ios, '15.0'` in your Podfile)
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Open `pubspec.yaml` and add:
+
+```
+dependencies:
+  tapmind_ads_admob_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+### iOS
+
+Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+
+```
+dependencies:
+  tapmind_ads_admob_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+### Android
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/flutter/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher (`platform :ios, '15.0'` in your Podfile)
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Open `pubspec.yaml` and add:
+
+```
+dependencies:
+  tapmind_ads_admob_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+### iOS
+
+Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+
+```
+dependencies:
+  tapmind_ads_admob_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
+
+### Android
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AppLovin
+
+*Source: /guides/flutter/custom-adapter-gma-sdk/applovin*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher (`platform :ios, '15.0'` in your Podfile)
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Open `pubspec.yaml` and add:
+
+```
+dependencies:
+  tapmind_ads_applovin_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
+
+### iOS
+
+Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+
+```
+dependencies:
+  tapmind_ads_applovin_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
+iOS Class      : TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Unity LevelPlay
+
+*Source: /guides/flutter/custom-adapter-gma-sdk/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher (`platform :ios, '15.0'` in your Podfile)
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Open `pubspec.yaml` and add:
+
+```
+dependencies:
+  tapmind_ads_ironsource_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
+
+### iOS
+
+Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+
+```
+dependencies:
+  tapmind_ads_ironsource_flutter: ^1.0.2
+  google_mobile_ads: ^5.0.0
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/react-native/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_admob: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+### iOS
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_admob: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+Add the following `post_install` hook to your app's **Podfile** (alongside `use_native_modules!` and `react_native_post_install`):
+
+```ruby
+post_install do |installer|
+  react_native_post_install(
+    installer,
+    config[:reactNativePath],
+    :mac_catalyst_enabled => false,
+  )
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS'] = 'NO'
+      config.build_settings['GCC_WARN_PEDANTIC'] = 'NO'
+      if target.name == 'fmt'
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
+  end
+end
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+### Android
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/react-native/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_gam: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+### iOS
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_gam: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+Add the following `post_install` hook to your app's **Podfile** (alongside `use_native_modules!` and `react_native_post_install`):
+
+```ruby
+post_install do |installer|
+  react_native_post_install(
+    installer,
+    config[:reactNativePath],
+    :mac_catalyst_enabled => false,
+  )
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS'] = 'NO'
+      config.build_settings['GCC_WARN_PEDANTIC'] = 'NO'
+      if target.name == 'fmt'
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
+  end
+end
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
+
+### Android
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AppLovin
+
+*Source: /guides/react-native/custom-adapter-gma-sdk/applovin*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_applovin: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution.
+
+### iOS
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_applovin: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+Add the following `post_install` hook to your app's **Podfile** (alongside `use_native_modules!` and `react_native_post_install`):
+
+```ruby
+post_install do |installer|
+  react_native_post_install(
+    installer,
+    config[:reactNativePath],
+    :mac_catalyst_enabled => false,
+  )
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS'] = 'NO'
+      config.build_settings['GCC_WARN_PEDANTIC'] = 'NO'
+      if target.name == 'fmt'
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
+  end
+end
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
+iOS Class      : TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Unity LevelPlay
+
+*Source: /guides/react-native/custom-adapter-gma-sdk/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **24** or higher
+* iOS **15.0** or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_ironsource: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution.
+
+### iOS
+
+Add to `package.json` and install via npm/yarn:
+
+```
+tapmind_ads_ironsource: "2.1.4"
+```
+
+Also require `react-native-google-mobile-ads`.
+
+Add the following `post_install` hook to your app's **Podfile** (alongside `use_native_modules!` and `react_native_post_install`):
+
+```ruby
+post_install do |installer|
+  react_native_post_install(
+    installer,
+    config[:reactNativePath],
+    :mac_catalyst_enabled => false,
+  )
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS'] = 'NO'
+      config.build_settings['GCC_WARN_PEDANTIC'] = 'NO'
+      if target.name == 'fmt'
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
+  end
+end
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/unity/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+### Android
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/unity/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
+
+### Android
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AppLovin
+
+*Source: /guides/unity/custom-adapter-gma-sdk/applovin*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
+iOS Class      : TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Unity LevelPlay
+
+*Source: /guides/unity/custom-adapter-gma-sdk/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Ironsource-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+
+```
+Instance Name : provided by your account manager
+eCPM / Rate   : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/cocos/custom-adapter-gma-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **25** or higher
+* iOS **18.0** or higher
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Install the TapMind AdMob extension:
+
+1. **Extension → Extension Manager → Install from File**
+2. Download the TapMind extension ZIP: [TapMind-CA-Admob-Cocos (main)](https://github.com/tapmind-tech/TapMind-CA-Admob-Cocos/archive/refs/heads/main.zip)
+3. Select the downloaded ZIP, install, then **Enable** the extension in the **Installed** tab.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+### Android
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : TapMindMediationAdapterAdmob
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/cocos/custom-adapter-gma-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **25** or higher
+* iOS **18.0** or higher
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Install the TapMind GAM extension:
+
+1. **Extension → Extension Manager → Install from File**
+2. Download the TapMind extension ZIP: [TapMind-CA-Admob-Cocos (main)](https://github.com/tapmind-tech/TapMind-CA-Admob-Cocos/archive/refs/heads/main.zip)
+3. Select the downloaded ZIP, install, then **Enable** the extension in the **Installed** tab.
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+Add `GADApplicationIdentifier` to your app's `Info.plist`, plus the `SKAdNetworkItems` array for attribution.
+
+```
+GADApplicationIdentifier
+
+YOUR_ADMOB_APP_ID
+SKAdNetworkItems
+
+  
+    SKAdNetworkIdentifier
+    cstr6suwn9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4fzdc2evr5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2fnua5tdw4.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ydx93a7ass.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    p78axxw29g.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v72qych5uu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ludvb6z3bs.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    cp8zw746q7.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3sh42y64q3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c6k4g5qg8m.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    s39g8k73mm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wg4vff78zm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qy4746246.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    f38h382jlk.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    hs6bdukanm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    mlmmfzh3r3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v4nxqhlyqp.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    wzmmz9fp6w.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    su67r6k2v3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    yclnxrl5pm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    t38b2kh725.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    7ug5zh24hu.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    gta9lk7p23.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    vutu7akeur.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    y5ghdn5j9k.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    v9wttpbfk9.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    n38lu8286q.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    47vhws6wlr.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbd757ywx3.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    9t245vhmpl.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    a2p9lx4jpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    22mmun2rn5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    44jx6755aq.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    k674qkevps.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4468km3ulz.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    2u9pt9hc89.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8s468mfl3y.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    klf5c3l5u5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    ppxm28t8ap.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    kbmxgpxpgc.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    uw77j35x4d.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    578prtvx9j.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    4dzt52r2t5.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    tl55sbb4fm.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    c3frkrj4fj.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    e5fvkxwrpn.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    8c4e2ghe7u.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3rd42ekr43.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    97r2b46745.skadnetwork
+  
+  
+    SKAdNetworkIdentifier
+    3qcr597p9d.skadnetwork
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431).
+
+Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
+
+### Android
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+### iOS
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : TapMindMediationAdapterAdmob
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /guides/android/custom-adapter-gma-next-gen-sdk/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
+* An ad unit must already be in place which will be used for targeting
+
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Google Ad Manager
+
+*Source: /guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
+* An ad unit must already be in place which will be used for targeting
+
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-gam-nextgen:2.0.1")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+
+  
+    
+    
+  
+
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android** →
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.mediation.ng.TapMindGamAdapter
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## Overview
+
+*Source: /guides/android/orchestration-sdk/overview*
+
+The Orchestration SDK is a lightweight Android library that enables ad serving through defined placement codes. It allows developers to monetize specific moments within the app by associating placements with screen transitions or user interactions.
+
+---
+
+## Requirements & Setup
+
+*Source: /guides/android/orchestration-sdk/requirements-and-setup*
+
+### Prerequisites
+
+Before integrating the Orchestration SDK, ensure your app meets the following requirements:
+
+* Android API Level: 24 (Android 7.0) or higher
+* Google Play Services: Available and updated on the targeted device
+
+---
+
+### Add Orchestration SDK
+
+Add the Orchestration SDK dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```
+dependencies {
+ implementation("io.github.tapmind-tech:orchestration:1.0.0")
+}
+```
+
+> **Note:**
+> After adding this dependencies, make sure to sync your project with Gradle files.
+
+---
+
+### Required Dependencies
+
+The Orchestration use the following core dependencies inside the SDK to handle data processing, lifecycle monitoring and ad rendering.
+
+#### Dependency Purpose
+
+| Dependency        | Purpose                                                                             |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| Gson              | JSON serialization and deserialization for SDK configuration and API responses      |
+| Lifecycle Process | Monitors application lifecycle states such as foreground and background transitions |
+| Play Services Ads | Provides advertising and ad rendering services required by the SDK                  |
+
+> **Note:**
+> Required dependencies version are regularly updated to ensure the latest fixes, security patches and performance improvements are maintained.
+
+---
+
+### Manifest Configuration
+
+To initialize the underlying Google Ads services, add your Google Ad Manager (GAM) Application ID to your application's `AndroidManifest.xml` file.
+
+```
+
+  
+    
+    "/>
+  
+
+```
+
+> **Note:**
+> Replace YOUR_APP_ID with your Google Ad Manager (GAM) Application ID. While testing, use the Test Ad Manager app ID shown in the previous example.
+
+---
+
+## Initialize the SDK
+
+*Source: /guides/android/orchestration-sdk/initialize-the-sdk*
+
+To ensure the SDK is ready to serve ads when needed, initialize the Orchestration SDK once during your application startup. It is highly recommended to perform this initialization inside your custom Application class to maintain availability across the entire application.
+
+Create or update your custom `Application` class and initialize the Orchestration SDK within the `onCreate()` method.
+
+```
+class MyApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        // Configure SDK settings
+        val orchConfig = OrchConfig.Builder()
+            .testMode(BuildConfig.DEBUG)
+            .build()
+
+        // Initialize the ORCH SDK
+        OrchSdk.initialize(
+            this,
+            orchConfig,
+            object : OrchInitListener {
+                override fun onInitSuccess() {
+                    // SDK initialized successfully
+                }
+
+                override fun onInitError(error: OrchError) {
+                    Log.e("ORCH", "SDK Initialization Failed: " + error.message)
+                }
+            }
+        )
+    }
+}
+```
+
+> **Important:**
+> Don't forget to register your custom `Application` class (`MyApp`) in your `AndroidManifest.xml` using the `android:name` attribute inside the `` tag.
+
+### Initialization Parameters
+
+| Parameter  | Description                                                                                                                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context`  | The application context used to initialize the SDK. Using the application context helps prevent memory leaks compared to an Activity context. |
+| `config`   | Configuration object used to define SDK settings and behavior.                                                                                |
+| `listener` | Callback interface used to receive SDK initialization success and failure events.                                                             |
+
+---
+
+### OrchConfig Methods
+
+| Method              | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| `testMode(Boolean)` | Enables or disables test ads and logs during development and testing. |
+
+> **Note:**
+> `testMode(BuildConfig.DEBUG)` automatically enables test ads for debug builds and disables them for release builds. This ensures test ads are only shown during development and are automatically disabled in production applications.
+
+---
+
+## Load & Show Ads
+
+*Source: /guides/android/orchestration-sdk/load-and-show-ads*
+
+Use a placement code to request and display an ad. Call `loadAd()` whenever you want to present an ad to the user. Once a valid placement code is provided, the Orchestration SDK automatically handles the ad request, loading, and display process.
+
+```
+OrchAd.loadAd(this, "")
+```
+
+> **Note:**
+> The `` is a unique identifier configured for each ad placement. Placement codes are provided and managed by the TapMind team through Dashboard.
+
+> **Important:**
+> Ensure the SDK has been successfully initialized before calling `loadAd()`. Attempting to load ads before initialization completes may result in ad request failures.
+
+---
+
+### Ad Lifecycle Callbacks
+
+Implement `OrchAdListener` and register it to receive ad lifecycle events and monitor the ad serving process.
+
+```
+OrchAd.setListener(this)
+```
+
+```
+interface OrchAdListener {
+    fun onAdLoaded()
+    fun onAdImpression()
+    fun onAdDismissed()
+    fun onAdClicked()
+    fun onAdFailedToLoad(error: OrchError)
+    fun onAdFailedToShow(error: OrchError)
+}
+```
+
+---
+
+### Callback Reference
+
+| Callback                  | Description                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| `onAdLoaded()`            | Called when the ad loads successfully and is ready to be displayed.                 |
+| `onAdImpression()`        | Called when an ad impression is recorded.                                           |
+| `onAdClicked()`           | Called when the user clicks the advertisement.                                      |
+| `onAdDismissed()`         | Called when the ad is closed or dismissed by the user.                              |
+| `onAdFailedToLoad(error)` | Called when the ad fails to load. Refer to the Error Reference section for details. |
+| `onAdFailedToShow(error)` | Called when the ad loads successfully but fails to display.                         |
+
+---
+
+### Example Implementation
+
+```
+class MainActivity : AppCompatActivity(), OrchAdListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        OrchAd.setListener(this)
+        OrchAd.loadAd(this, "")
+    }
+
+    override fun onAdLoaded() {
+        Log.d("ORCH", "Ad Loaded")
+    }
+
+    override fun onAdImpression() {
+        Log.d("ORCH", "Ad Impression")
+    }
+
+    override fun onAdDismissed() {
+        Log.d("ORCH", "Ad Dismissed")
+    }
+
+    override fun onAdClicked() {
+        Log.d("ORCH", "Ad Clicked")
+    }
+
+    override fun onAdFailedToLoad(error: OrchError) {
+        Log.d("ORCH", "Failed to load: " + error.message)
+    }
+
+    override fun onAdFailedToShow(error: OrchError) {
+        Log.d("ORCH", "Failed to show: " + error.message)
+    }
+}
+```
+
+---
+
+## Privacy & Consent
+
+*Source: /guides/android/orchestration-sdk/privacy-and-consent*
+
+To support compliance with privacy regulations and platform requirements, the Orchestration SDK is compatible with Google's User Messaging Platform (UMP). UMP enables applications to collect, manage and update user consent before requesting advertisements.
+
+Add the following dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```
+dependencies {
+ implementation("com.google.android.ump:user-messaging-platform:4.0.0")
+}
+```
+
+---
+
+#### Consent Flow 
+
+Before calling `OrchAd.loadAd(...)`, initialize the consent flow during application startup or before the first ad request.
+
+### Step 1: Create ConsentInformation Instance
+
+Create a `ConsentInformation` instance to manage and track the user's consent status.
+
+```
+val consentInformation = UserMessagingPlatform.getConsentInformation(context)
+```
+
+---
+
+### Step 2: Request Consent Information Update
+
+Request the latest consent information and fetch the most recent consent status based on the user's geographic region and applicable privacy regulations.
+
+```
+consentInformation.requestConsentInfoUpdate(
+    activity,
+    ConsentRequestParameters.Builder().build(),
+    {
+        // Called when consent information is updated successfully.
+    },
+    { requestConsentError ->
+        // Called when there is an error updating consent information.
+    }
+)
+```
+
+---
+
+### Step 3: Load & Show Consent Form
+
+Load and display the consent form when required. Once the consent flow is completed, ad requests can proceed according to the user's consent choices.
+
+```
+consentInformation.loadAndShowConsentFormIfRequired(activity) { formError ->
+    // Consent process completed.
+    // Ads can now be requested if consent is granted.
+}
+```
+
+> **Note:**
+> The consent form is displayed only when required based on the user's region and applicable privacy requirements. If no consent form is needed, the UMP SDK automatically completes the consent flow.
+
+---
+
+## Error Reference
+
+*Source: /guides/android/orchestration-sdk/error-reference*
+
+The Orchestration SDK provides standardized error codes and messages to help diagnose initialization, configuration, network and ad-serving issues. Use the following reference to understand common error conditions and recommended troubleshooting steps.
+
+### SDK Error Codes & Messages
+
+| Error Code | Error Name             | Description                                                         | Recommended Action                                                                        |
+| ---------- | ---------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `1001`     | `SDK_NOT_INITIALIZED`  | SDK initialization has not completed before an ad request was made. | Initialize the SDK and wait for the `onInitSuccess()` callback before calling `loadAd()`. |
+| `1002`     | `INVALID_PLACEMENT`    | Invalid or empty placement code provided.                           | Verify and match the placement code that provided by TapMind team.                        |
+| `1003`     | `NO_NETWORK`           | No network connection available.                                    | Check the device's internet connectivity and retry the ad request.                        |
+| `1004`     | `CONFIG_ERROR`         | SDK configuration request failed or timed out.                      | Retry the request. Contact TapMind support if the issue persists.                         |
+| `1005`     | `NO_FILL`              | No demand source returned an ad for the requested placement.        | This is a normal runtime condition. Retry later or use a fallback flow if applicable.     |
+| `1006`     | `AD_EXPIRED`           | The ad has expired and can no longer to be displayed.               | No action required. This process is managed automatically by the SDK.                     |
+| `1007`     | `PKG_MISSING`          | Package name is missing or invalid.                                 | Verify SDK initialization parameters and application configuration.                       |
+| `1008`     | `PLAY_SERVICE_MISSING` | Google Play Services are unavailable or unsupported on the device.  | Ensure Google Play Services are installed, enabled, and up to date.                       |
+| `1009`     | `UNSUPPORTED_VERSION`  | The Android version is not supported by the SDK.                    | Upgrade the device OS or use a supported Android version.                                 |
+
+---
+
+### Error Handling Best Practices
+
+* Always initialize the SDK before requesting ads.
+* Verify placement codes before making ad requests.
+* Handle network interruptions gracefully.
+* Implement `onAdFailedToLoad()` and `onAdFailedToShow()` callbacks for better error visibility.
+* Log error messages during development to simplify troubleshooting.
+* Use the error code and message together when contacting TapMind support.
+
+---
+
+### Example Error Handling
+
+```
+override fun onAdFailedToLoad(error: OrchError) {
+    Log.d("ORCH", "Error Code: " + error.code)
+    Log.d("ORCH", "Error Message: " + error.message)
+}
+
+override fun onAdFailedToShow(error: OrchError) {
+    Log.d("ORCH", "Error Code: " + error.code)
+    Log.d("ORCH", "Error Message: " + error.message)
+}
+```
+
+---
+
+## Support
+
+*Source: /guides/android/orchestration-sdk/support*
+
+Contact your TapMind Account Manager for Orchestration SDK support.
+
+Include in your request:
+
+- The **error code** and **error message** from `OrchError` (see [Error Reference](/guides/android/orchestration-sdk/error-reference))
+- The **placement code** you are using
+- Log output filtered by **`ORCH`**
+- Android OS version and whether Google Play Services is available on the device
+
+---
+
+## Class & Network Key Registry
+
+*Source: /reference/class-network-key-registry*
+
+Every integration page references class names and network keys. This page is the single source of truth - integration pages link here instead of duplicating values.
+
+## How to use this page
+
+1. Find your SDK product, framework, and mediation partner in the tables below.
+2. Copy the class name (or network key for LevelPlay) **exactly** into your mediation dashboard.
+3. If ads fail in release builds, see [Troubleshooting](/reference/troubleshooting) - consumer ProGuard rules ship in the published AARs.
+
+## Custom Adapter (GMA SDK)
+
+| Package | Mediation | Android class | iOS class |
+| --- | --- | --- | --- |
+| Native | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Native | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterGAM` | `TapMindMediationAdapterGAM` |
+| Native | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
+| Native | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
+| Flutter | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Flutter | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Flutter | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
+| Flutter | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
+| React Native | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| React Native | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| React Native | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
+| React Native | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
+| Unity | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Unity | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Unity | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
+| Unity | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
+| Cocos | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Cocos | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Cocos | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
+| Cocos | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
+
+## Custom Adapter (GMA Next-Gen SDK)
+
+| Package | Mediation | Android class | iOS class |
+| --- | --- | --- | --- |
+| Native | AdMob | `com.tapmind.mediation.ng.TapMindAdmobAdapter` | n/a |
+| Native | Google Ad Manager | `com.tapmind.mediation.ng.TapMindGamAdapter` | n/a |
+
+---
+
+## Compatibility Matrix
+
+*Source: /reference/compatibility-matrix*
+
+Use this page to confirm your app meets minimum OS requirements and dependency versions before integrating.
+
+## Package compatibility
+
+| Mediation Platform | Required GMA SDK | Required mediation SDK | Min Android | Min iOS |
+|--------------------|------------------|------------------------|-------------|---------|
+| AdMob | 25.0.0 | AdMob SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| Google Ad Manager | 25.0.0 | GAM SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| AppLovin | Compatible resolution (wrappers) | AppLovin MAX SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| Unity LevelPlay | Compatible resolution (wrappers) | Unity LevelPlay SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| AdMob (GMA Next-Gen) | 25.0.0 | AdMob SDK | 23 | n/a |
+| Google Ad Manager (GMA Next-Gen) | 25.0.0 | GAM SDK | 23 | n/a |
+| Orchestration SDK | - | - | 24 | n/a |
+
+AdMob and GAM adapters require GMA SDK **25.0.0** on Android. Confirm current minimums with your account manager before upgrading.
+
+## Framework notes
+
+| Framework | Min Android | Min iOS | Notes |
+|-----------|-------------|---------|-------|
+| Native Android | 23 | - | compileSdk 36 recommended |
+| Native iOS | - | 12.0 | |
+| Flutter | 24 | 15.0 (`platform :ios, '15.0'`) | Requires `google_mobile_ads` |
+| React Native | 24 | 15.0 | Requires `react-native-google-mobile-ads` |
+| Unity | 23 | 12.0 | GMA Unity plugin required; post-processing script adds native dependency |
+| Cocos | 25 | 18.0 | Extension ZIP install |
+
+Contact your account manager if you need confirmation for a specific package version before upgrading.
+
+---
+
+## Troubleshooting
+
+*Source: /reference/troubleshooting*
+
+Most integration issues trace back to one of four values not matching exactly: adapter class name, `placementName`, the Unity LevelPlay network key, or eCPM/rate. Adapter class names and the network key live in the [Class & Network Key Registry](/reference/class-network-key-registry); your `placementName` and eCPM/rate come directly from your account manager. Check these before diving into logs.
+
+## Common issues
+
+These apply to every mediation partner. Partner-specific problems are in [Mediation-specific issues](#mediation-specific-issues) below.
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the Registry exactly; TapMind AARs ship consumer ProGuard rules automatically (see [Release vs debug](#release-vs-debug)) |
+| No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm your waterfall position |
+| App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID exactly as shown on your integration page - see [App crashes on launch](#app-crashes-on-launch) |
+
+## App crashes on launch 
+
+The Google Mobile Ads (GMA) SDK reads your app ID from native config **at process startup - before your own code runs**. If the app ID is missing or malformed, initialization throws and the app crashes on launch. The crash looks like an ad problem but happens before any ad is requested, so check your native config, not your ad-loading code. This applies to both AdMob and Google Ad Manager (same GMA SDK).
+
+**Android** - add inside the `` element in `AndroidManifest.xml`:
+
+```xml
+
+```
+
+**iOS** - add to `Info.plist`:
+
+```xml
+GADApplicationIdentifier
+ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy
+```
+
+**Common mistakes**
+
+- **App ID vs ad unit ID.** The value here is your **app ID** (contains a tilde: `ca-app-pub-…~…`), not an **ad unit ID** (contains a slash: `ca-app-pub-…/…`). The ad unit ID here still crashes.
+- **Sample ID left in.** The `ca-app-pub-3940256099942544~…` values in examples are Google's test IDs. Replace with your real app ID before release.
+- **Wrapper frameworks still need this.** On Flutter, React Native, Unity, and Cocos the plugin does **not** inject the app ID for you - you must still edit the native `AndroidManifest.xml` and `Info.plist` (or the Unity/Cocos equivalent). This is the most common wrapper-integration crash.
+
+Use the exact snippet shown on your platform's integration page.
+
+## Mediation-specific issues 
+
+The problems below are specific to how each mediation platform is configured. Find your partner.
+
+### AdMob (custom event)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind never competes in the mediation group | Custom event not added to the group, or the group doesn't target this ad unit / format / platform | In Mediation → your group, confirm the custom event is added and the group targets the correct ad format, platform (Android/iOS), and ad units |
+| Ad source configured but never fills | Class or `"placementName"` parameter wrong, or eCPM too low to win the waterfall | Verify the Class and the `"placementName"` JSON exactly; raise the manual eCPM to test whether it's a waterfall-position issue |
+| iOS custom event never loads (Android works) | Android class string used on the iOS custom event | Use the iOS class (`TapMindMediationAdapterAdmob`, no package prefix) from the Registry |
+
+### Google Ad Manager (yield group)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind not selectable as a yield partner | TapMind company not created, or Mediation not toggled on for the company | Admin → Companies → TapMind: confirm type is **Ad Network** and **Mediation** is toggled on |
+| Yield partner active but no delivery | Yield group inventory type not **Mobile**, partner status not **Active**, or group not targeting the ad units | Confirm the yield group targets the right ad units, inventory type is Mobile, and partner Status = Active |
+| Wrong class on wrapper vs native | Wrappers use the AdMob class for GAM; native uses the dedicated GAM class | Native: `…TapMindMediationAdapterGAM`. Flutter/RN/Unity/Cocos: use the AdMob class per the [Registry](/reference/class-network-key-registry) |
+
+> **Verify:** GAM dashboard changes can take time to propagate before delivery begins - confirm the expected delay with your account manager before assuming a misconfiguration.
+
+### AppLovin MAX (custom network)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind never appears in MAX | Custom Network created but not enabled on the ad unit | MAX → Mediation → Ad Units → your unit → enable TapMind |
+| "Adapter not found" / no fill | Wrong Android or iOS Class in the Custom Network, or network type not set to SDK | Verify both the Android Class and iOS Class exactly; Network type must be **SDK** |
+| Can't tell whether the adapter loaded | n/a | Run the **MAX Mediation Debugger** in a debug build to confirm the TapMind adapter loads and view its status |
+
+> **Verify:** confirm the MAX Mediation Debugger surfaces custom-network adapters as described in your setup.
+
+### Unity LevelPlay (network key)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind network never appears | Wrong network key, or "Custom Adapter" not selected | Add via SDK Networks → **Custom Adapter** → enter the LevelPlay network key from the Registry |
+| Network appears but no fill | No instance created, or the instance rate is too low for its waterfall order | Setup → Instances → add a TapMind instance **per ad format**; set the eCPM/Rate |
+| Looking for a class string and can't find one | LevelPlay uses a **network key**, not a class string | Use the network key from the Registry; there is no class string for LevelPlay |
+
+## Release vs debug 
+
+If ads work in debug but not in release, suspect the class string or **R8/ProGuard stripping** adapter classes in release builds.
+
+### ProGuard / R8 keep rules (Android)
+
+Each shipped TapMind adapter AAR includes populated consumer ProGuard rules (`consumer-rules.pro`), packaged as consumer rules inside the artifact. These are **applied automatically** when you integrate the published Maven packages - you do not need to copy manual keep rules for normal integration.
+
+Consumer rules cover both the standard adapter namespace (`com.tapmind.tech.*`) and the GMA Next-Gen namespace (`com.tapmind.mediation.ng.*`).
+
+If you still see release-only failures after confirming class strings, contact your account manager with release logcat output.
+
+> **Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads (test mode is build-type driven: debug = test, release = live).
+
+## Diagnostic logging
+
+- **Android:** filter logcat by `TapMindAdapter` (the Orchestration SDK uses `ORCH`).
+- **iOS:** filter the Xcode console / device log by the TapMind subsystem. _[Insert the exact iOS log subsystem or filter string used by the SDK.]_
+
+## Escalation
+
+Contact your account manager with:
+
+- The mediation platform and framework
+- The adapter class name and `placementName` you are using
+- Log output filtered by `TapMindAdapter` (Android) or the iOS subsystem
+- For Orchestration: error code and message from `OrchError`
+
+Integration pages include partner-specific verification steps under **Verify integration** on each mediation page.
+
+---
+
+## Privacy & Consent
+
+*Source: /reference/privacy-consent*
+
+TapMind adapters operate within your existing mediation stack (Custom Adapter SDKs) or via Google's ad stack (Orchestration SDK). Your app is responsible for collecting user consent and passing signals to the mediation or ads SDK **before** ad requests are made.
+
+## Custom Adapter SDKs
+
+1. Implement a consent mechanism appropriate for your users' jurisdiction (GDPR/TCF, US state privacy laws, and other applicable regulations).
+2. Pass consent signals to your **mediation SDK** using that platform's recommended API before initializing ads or requesting fill.
+3. TapMind receives consent indirectly through the mediation layer - configure consent at the mediation SDK level first.
+
+### Partner-specific consent APIs
+
+| Mediation | Documentation |
+|-----------|---------------|
+| AdMob / Google Ad Manager | [Google UMP SDK](https://developers.google.com/admob/ump/android/quick-start) |
+| AppLovin MAX | [MAX consent APIs](https://developers.applovin.com/en/max/android/overview/terms-and-privacy-policy-flow) |
+| Unity LevelPlay | [LevelPlay regulation settings](https://developers.is.com/ironsource-mobile/android/regulation-advanced-settings/) |
+
+### iOS: App Tracking Transparency (ATT)
+
+- Request ATT authorization when required before accessing IDFA-dependent ad features.
+- Configure your `Info.plist` with `NSUserTrackingUsageDescription` when using ATT.
+- Pass consent/ATT state to your mediation SDK per Apple's and your mediation partner's guidance.
+
+### iOS: Privacy Manifest
+
+- Declare required-reason API usage and data collection in your app's **Privacy Manifest** (`PrivacyInfo.xcprivacy`) per Apple requirements.
+- Include third-party SDK privacy manifests bundled with Google Mobile Ads and your mediation SDKs.
+- Review TapMind adapter dependencies when submitting App Store privacy nutrition labels.
+
+### Android: Google Play Data Safety
+
+- Complete the **Data Safety** section in Google Play Console to reflect data collected through ads SDKs in your app.
+- Disclose ad-related data types (device identifiers, diagnostics, etc.) per Google's form guidance.
+- Coordinate declarations with your mediation SDK vendor documentation.
+
+## Orchestration SDK
+
+The Orchestration SDK supports Google's User Messaging Platform (UMP) for consent collection. See [Orchestration Privacy & Consent](/guides/android/orchestration-sdk/privacy-and-consent) for integration steps.
+
+## Questions
+
+For account-specific privacy questions, data processing agreements, or regional compliance, contact your TapMind account manager.
+
+---

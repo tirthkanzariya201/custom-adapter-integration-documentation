@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestration SDK — Android Integration Guide</title>
+<style>
+  :root {
+    --ink: #1c2530;
+    --muted: #5b6b7c;
+    --accent: #2b6cb0;
+    --accent-dark: #1a4e82;
+    --line: #e3e8ee;
+    --code-bg: #f6f8fa;
+    --note-bg: #eaf7ee;
+    --note-line: #4caf7d;
+    --warn-bg: #fdecec;
+    --warn-line: #e05252;
+    --info-bg: #eef4fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); margin: 0; line-height: 1.6; background: #fff;
+  }
+  .wrap { display: flex; max-width: 1180px; margin: 0 auto; gap: 48px; padding: 0 24px; }
+  main { flex: 1; min-width: 0; padding: 36px 0 80px; }
+  aside {
+    width: 230px; flex-shrink: 0; padding: 36px 0;
+    position: sticky; top: 0; align-self: flex-start; height: fit-content;
+    font-size: 13px;
+  }
+  aside .otp-title { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  aside a { display: block; color: var(--muted); text-decoration: none; padding: 4px 0 4px 12px; border-left: 2px solid var(--line); }
+  aside a:hover { color: var(--accent); border-left-color: var(--accent); }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); margin: 0 0 28px; font-size: 15px; }
+  h2 {
+    font-size: 21px; color: var(--accent-dark); margin: 44px 0 12px;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+  h3 { font-size: 15.5px; margin: 22px 0 8px; }
+  p, li { font-size: 14.5px; }
+  code { font-family: "SF Mono", Consolas, Monaco, monospace; background: var(--code-bg); border: 1px solid var(--line); padding: 1px 5px; border-radius: 4px; font-size: 12.8px; }
+  pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  pre code { background: none; border: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 13.5px; }
+  th, td { border: 1px solid #d5dce4; padding: 8px 11px; text-align: left; vertical-align: top; }
+  th { background: #f0f4f8; font-weight: 600; }
+  .note { background: var(--note-bg); border-left: 4px solid var(--note-line); border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 14px 0; font-size: 13.8px; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn-line); border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 14px 0; font-size: 13.8px; }
+  .info { background: var(--info-bg); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 14px 0; font-size: 13.8px; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<main>
+
+<h1>Orchestration SDK</h1>
+<p class="subtitle">Android integration guide &nbsp;·&nbsp; SDK version 1.0.0</p>
+
+<!-- ================= OVERVIEW ================= -->
+<h2 id="overview">Overview</h2>
+<p>The TapMind Orchestration SDK (Orch SDK) lets you monetize specific moments in your app — screen transitions, level completions, or any natural break in your user flow — through dedicated ad placements that run alongside your existing monetization stack. Orch SDK does not replace your current mediation setup; it adds incremental ad opportunities on top of it.</p>
+<p>The integration model is simple:</p>
+<ol>
+  <li><strong>Initialize once.</strong> After initialization, the SDK automatically preloads ads for your configured placements and keeps them cached and ready.</li>
+  <li><strong>Trigger a placement.</strong> At a natural break in your user flow, call the placement with a single method. If a cached ad is available, it displays immediately. If not, the SDK fetches a fresh ad and displays it once loaded.</li>
+  <li><strong>Receive callbacks.</strong> Your listener is notified of the full ad lifecycle — loaded, shown, clicked, dismissed, or failed.</li>
+</ol>
+<p>Your TapMind account manager provides your placement codes and all account-level configuration. No dashboard setup is required on your side.</p>
+
+<!-- ================= REQUIREMENTS ================= -->
+<h2 id="requirements">Requirements</h2>
+<ul>
+  <li><strong>Android API level 24 (Android 7.0)</strong> or higher at runtime. Your app can keep a lower <code>minSdk</code> (e.g., 23) and will still compile; on devices below API 24, the SDK does not initialize and returns an <code>UNSUPPORTED_VERSION</code> error through the init listener. Your app is unaffected on those devices.</li>
+  <li><strong>Google Play services</strong> available on the device.</li>
+  <li><strong>Kotlin or Java</strong> Android project using Gradle with the <code>mavenCentral()</code> repository.</li>
+</ul>
+<div class="note"><strong>Already using AdMob?</strong> No app ID changes are needed. If your <code>AndroidManifest.xml</code> already contains the <code>com.google.android.gms.ads.APPLICATION_ID</code> meta-data entry (standard for AdMob apps), leave it unchanged — Orch SDK works with your existing configuration and does not require a separate app ID or ad manager account. If your app does not yet have this entry, your TapMind account manager will provide the value to add.</div>
+
+<!-- ================= ADD THE SDK ================= -->
+<h2 id="add-the-sdk">Add the SDK</h2>
+<p>Ensure <code>mavenCentral()</code> is included in your repositories, then add the dependency:</p>
+<pre><code>repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.github.tapmind-tech:orchestration:1.0.0")
+}</code></pre>
+<p>Sync your project. No ProGuard or R8 configuration is required — the SDK ships with bundled consumer rules that apply automatically.</p>
+
+<!-- ================= INITIALIZE ================= -->
+<h2 id="initialize-the-sdk">Initialize the SDK</h2>
+<p>Initialize Orch SDK once, early in your app lifecycle — typically in your launch Activity.</p>
+<div class="info"><strong>Before you initialize:</strong> ensure your app has written its consent signals (see <a href="#consent-and-privacy">Consent &amp; Privacy</a>). The SDK reads consent at initialization.</div>
+<pre><code>val config = OrchConfig.Builder()
+    .testMode(BuildConfig.DEBUG)   // test ads during development — see Testing
+    .build()
+
+OrchSdk.initialize(this, config, object : OrchInitListener {
+    override fun onInitSuccess() {
+        // SDK is ready. Ad preloading begins automatically.
+    }
+
+    override fun onInitError(error: OrchError) {
+        // Initialization failed — see the Error Reference for codes.
+    }
+})</code></pre>
+<h3>What happens after initialization</h3>
+<ul>
+  <li>The SDK automatically preloads one ad per configured placement and keeps it cached, so your first ad display is fast.</li>
+  <li>On devices in a low-memory state, preloading is skipped to protect app performance; ads are then fetched on demand when a placement is triggered.</li>
+  <li>Initialization is safe to call from any thread — the SDK moves the operation to the main thread automatically.</li>
+  <li>Call <code>initialize()</code> only once per app session. Repeated calls after successful initialization return an error through <code>onInitError</code>.</li>
+</ul>
+
+<!-- ================= SHOW AN AD ================= -->
+<h2 id="show-an-ad">Show an Ad</h2>
+<p>Showing an ad is a single call. Trigger it at a natural break in your user flow — a screen transition, a level completion, or a similar user-driven moment.</p>
+<div class="warn"><strong>Trigger placements on user-flow events only.</strong> Do not trigger a placement on app launch or inside <code>onCreate()</code> of your first screen. Full-screen ads shown without a user-initiated action can violate Google ad policies and put your app's monetization at risk.</div>
+
+<h3>1. Register your ad listener</h3>
+<p>Set a listener to receive ad lifecycle callbacks. Callbacks are delivered for the placement request initiated by the calling Activity.</p>
+<pre><code>OrchAd.setListener(object : OrchAdListener {
+    override fun onAdLoaded() {
+        // Ad is loaded and ready
+    }
+
+    override fun onAdImpression() {
+        // Ad was displayed to the user
+    }
+
+    override fun onAdClicked() {
+        // User tapped the ad
+    }
+
+    override fun onAdDismissed() {
+        // User closed the ad — resume your app flow here
+    }
+
+    override fun onAdFailedToLoad(error: OrchError) {
+        // Load failed — continue your app flow without an ad
+    }
+
+    override fun onAdFailedToShow(error: OrchError) {
+        // Display failed — continue your app flow without an ad
+    }
+})</code></pre>
+
+<h3>2. Trigger the placement</h3>
+<pre><code>// At a natural break in your user flow:
+OrchAd.loadAd(activity, "YOUR_PLACEMENT_CODE")</code></pre>
+<p>Use the placement code shared by your TapMind account manager.</p>
+
+<h3>How <code>loadAd()</code> behaves</h3>
+<ul>
+  <li><strong>Cached ad available:</strong> the ad is displayed immediately.</li>
+  <li><strong>No cached ad:</strong> the SDK requests a fresh ad and displays it once the load completes. A short delay is possible in this case; design your trigger points with this in mind.</li>
+  <li><strong>Activity parameter:</strong> <code>loadAd()</code> requires an Activity (not a Context). Calls from a background thread are automatically moved to the main thread by the SDK.</li>
+  <li><strong>Resume on dismissal:</strong> continue your app flow in <code>onAdDismissed()</code> (and in the failure callbacks, so your flow never blocks on an ad).</li>
+</ul>
+
+<!-- ================= CONSENT & PRIVACY ================= -->
+<h2 id="consent-and-privacy">Consent &amp; Privacy</h2>
+<p>Orch SDK reads the standard IABTCF consent signals your app provides and forwards them to demand partners; it does not collect or prompt for consent itself. Ensure your app writes these signals through your CMP before initializing Orch SDK, as they are read at initialization. Where consent signals are absent, no data is passed to demand partners for that traffic.</p>
+<p>No additional integration steps are required — once your consent management platform has written the standard IABTCF values, Orch SDK picks them up automatically.</p>
+
+<!-- ================= TESTING ================= -->
+<h2 id="testing">Testing</h2>
+<p>Always develop and test with test mode enabled. Test mode serves test ads, so you can verify your integration end to end without generating live traffic against your account.</p>
+<pre><code>val config = OrchConfig.Builder()
+    .testMode(true)
+    .build()</code></pre>
+<p>Use the same placement code shared by your TapMind account manager — no separate test code is needed.</p>
+<div class="warn"><strong>Never click live ads in development.</strong> Interacting with live ads during testing is treated as invalid traffic and can put your ad serving at risk. Keep <code>testMode(true)</code> until release.</div>
+
+<h3>Verify your integration</h3>
+<p>With test mode enabled, the SDK writes diagnostic logs to Logcat under the <code>ORCH</code> tag. Use the checks below to confirm each step:</p>
+<table>
+  <tr><th>Step</th><th>What to check</th><th>Where</th></tr>
+  <tr><td>SDK initialized</td><td><code>onInitSuccess()</code> fires; Logcat shows <code>SDK is running in TEST mode</code></td><td>Init listener / Logcat (<code>ORCH</code>)</td></tr>
+  <tr><td>Initialization failed</td><td><code>onInitError(error)</code> fires with an error code and message</td><td>Init listener — see Error Reference</td></tr>
+  <tr><td>Ad loaded</td><td><code>onAdLoaded()</code> fires after triggering the placement</td><td>Ad listener</td></tr>
+  <tr><td>Ad displayed</td><td>Test ad appears; <code>onAdImpression()</code> fires</td><td>On device / Ad listener</td></tr>
+  <tr><td>Click tracked</td><td><code>onAdClicked()</code> fires when the test ad is tapped</td><td>Ad listener</td></tr>
+  <tr><td>Ad dismissed</td><td><code>onAdDismissed()</code> fires; your app flow resumes</td><td>Ad listener</td></tr>
+  <tr><td>Load failed</td><td><code>onAdFailedToLoad(error)</code> fires with an error code</td><td>Ad listener — see Error Reference</td></tr>
+</table>
+
+<!-- ================= ERROR REFERENCE ================= -->
+<h2 id="error-reference">Error Reference</h2>
+<p>Errors are delivered as <code>OrchError</code> objects through the init and ad listeners. Each error carries a code and a descriptive message.</p>
+<table>
+  <tr><th>Code</th><th>Name</th><th>Meaning</th><th>Recommended action</th></tr>
+  <tr><td>1001</td><td><code>SDK_NOT_INITIALIZED</code></td><td>The SDK is not in a ready state for the requested operation.</td><td>Ensure <code>initialize()</code> completed successfully before triggering placements, and initialize only once per session.</td></tr>
+  <tr><td>1002</td><td><code>INVALID_PLACEMENT</code></td><td>The placement code is not recognized.</td><td>Verify the placement code with your TapMind account manager.</td></tr>
+  <tr><td>1003</td><td><code>NO_NETWORK</code></td><td>No usable network connection was available.</td><td>Retry when connectivity is restored; your app flow should continue without an ad.</td></tr>
+  <tr><td>1004</td><td><code>CONFIG_ERROR</code></td><td>The SDK could not retrieve or apply its configuration.</td><td>Retry later; if persistent, contact your account manager.</td></tr>
+  <tr><td>1005</td><td><code>NO_FILL</code></td><td>No ad was available for this request.</td><td>No action needed — continue your app flow. Fill varies by geography and time.</td></tr>
+  <tr><td>1006</td><td><code>AD_EXPIRED</code></td><td>A cached ad expired before it could be shown.</td><td>No action needed — the SDK manages refresh automatically.</td></tr>
+  <tr><td>1007</td><td><code>UNSUPPORTED_VERSION</code></td><td>The device is running an Android version below API 24.</td><td>No action needed — the SDK safely stays inactive on unsupported devices.</td></tr>
+  <tr><td>1008</td><td><code>PLAY_SERVICE_MISSING</code></td><td>Google Play services is unavailable or misconfigured on the device.</td><td>No action needed for your integration; ads are unavailable on this device.</td></tr>
+  <tr><td>1009</td><td><code>PKG_MISSING</code></td><td>The application package name could not be resolved.</td><td>Verify your app's package configuration; contact support if persistent.</td></tr>
+</table>
+
+<!-- ================= GO LIVE ================= -->
+<h2 id="go-live-checklist">Go Live Checklist</h2>
+<ol>
+  <li><strong>Disable test mode.</strong> Set <code>testMode(false)</code> (or tie it to <code>BuildConfig.DEBUG</code>) before building your release.</li>
+  <li><strong>Publish your app-ads.txt entries.</strong> Add the entries shared by your TapMind account manager to the app-ads.txt file on your developer website. Missing entries reduce the demand available to your placements.</li>
+  <li><strong>Verify one live placement.</strong> Confirm your placement triggers correctly in the release build and that lifecycle callbacks fire as expected.</li>
+  <li><strong>Release.</strong></li>
+</ol>
+
+<!-- ================= SUPPORT ================= -->
+<h2 id="support">Support</h2>
+<p>Your TapMind account manager is your first point of contact for placement codes, app-ads.txt entries, account configuration, and go-live assistance.</p>
+<p>For technical integration questions, contact <a href="mailto:developer@tapmind.com">developer@tapmind.com</a>. Include your SDK version, a description of the issue, and relevant Logcat output under the <code>ORCH</code> tag where possible.</p>
+
+</main>
+
+<aside>
+  <div class="otp-title">On this page</div>
+  <a href="#overview">Overview</a>
+  <a href="#requirements">Requirements</a>
+  <a href="#add-the-sdk">Add the SDK</a>
+  <a href="#initialize-the-sdk">Initialize the SDK</a>
+  <a href="#show-an-ad">Show an Ad</a>
+  <a href="#consent-and-privacy">Consent &amp; Privacy</a>
+  <a href="#testing">Testing</a>
+  <a href="#error-reference">Error Reference</a>
+  <a href="#go-live-checklist">Go Live Checklist</a>
+  <a href="#support">Support</a>
+</aside>
+</div>
+</body>
+</html>

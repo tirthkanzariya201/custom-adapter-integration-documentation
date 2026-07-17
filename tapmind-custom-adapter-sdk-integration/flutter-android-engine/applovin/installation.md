@@ -30,7 +30,7 @@ Find the dependencies block and add from below for respective mediation platform
 
 ```
 dependencies  
-tapmind_ads_applovin: ^0.0.9
+tapmind_ads_applovin_flutter: ^1.0.2
 ```
 
 #### Import Google Mobile Ads SDK <a href="#import" id="import"></a>

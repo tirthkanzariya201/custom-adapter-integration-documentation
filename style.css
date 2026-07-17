@@ -1,0 +1,468 @@
+/* TapMind — header logo */
+header img[alt$=" logo"],
+nav img[alt$=" logo"] {
+  height: 52px !important;
+  max-width: 320px !important;
+  width: auto !important;
+}
+
+/* ─── Sidebar hierarchy ─────────────────────────────────────────── */
+
+/* Section labels: "Product", "Overview" */
+aside .sidebar-nav-groups .ml-6 > button > span {
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #94a3b8) !important;
+}
+
+/* Product folders: "Custom Adapter GMA SDK", etc. */
+aside .nav-group-l1 {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-primary) !important;
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}
+
+aside .nav-group-l1 + div {
+  margin-left: 0.5rem !important;
+  padding-left: 0.625rem !important;
+  border-left: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+/* Mediation / leaf pages under a product */
+aside .nav-group-l1 + div ul li a {
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  color: var(--color-text-secondary) !important;
+  padding-left: 0.5rem !important;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+aside .nav-group-l1 + div ul li a.nav-active {
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}
+
+/* Top-level pages: "Introduction", "Gradle Setup" */
+aside .sidebar-nav-groups .ml-6 > div > ul > li > a {
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  padding-left: 0.625rem !important;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+aside .sidebar-nav-groups .ml-6 > div > ul > li > a.nav-active {
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}
+
+/* ─── Section headings (balanced separator rhythm) ───────────────── */
+
+#content-area h2,
+article h2,
+.prose h2 {
+  margin-top: 2rem !important;
+  margin-bottom: 0.875rem !important;
+  padding-top: 0.875rem !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.09) !important;
+}
+
+#content-area h2:first-of-type,
+article h2:first-of-type,
+.prose h2:first-of-type {
+  margin-top: 1rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+#content-area h2 + div[class*="grid"],
+article h2 + div[class*="grid"],
+.prose h2 + div[class*="grid"] {
+  margin-top: 0 !important;
+}
+
+#content-area h3,
+article h3,
+.prose h3 {
+  margin-top: 0.85rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+#content-area h4,
+article h4,
+.prose h4 {
+  margin-top: 0.65rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+#content-area p,
+article p,
+.prose p {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.55rem !important;
+  line-height: 1.55 !important;
+}
+
+#content-area ul,
+#content-area ol,
+article ul,
+article ol,
+.prose ul,
+.prose ol {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.55rem !important;
+  padding-left: 1.25rem;
+}
+
+#content-area li,
+article li,
+.prose li {
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.1rem !important;
+  line-height: 1.5 !important;
+}
+
+#content-area li > p,
+article li > p,
+.prose li > p {
+  margin-top: 0 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* ─── Info callouts — GitBook-style (no outer border box) ───────── */
+
+.prose div:has(> .callout-content),
+#content-area div:has(> .callout-content),
+article div:has(> .callout-content) {
+  background: #f0f7fd !important;
+  border: none !important;
+  border-left: 3px solid #60a5fa !important;
+  border-radius: 6px !important;
+  padding: 0.6rem 0.85rem !important;
+  margin: 0.65rem 0 !important;
+  box-shadow: none !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+}
+
+.prose div:has(> .callout-content) > .flex-shrink-0,
+#content-area div:has(> .callout-content) > .flex-shrink-0 {
+  display: none !important;
+}
+
+.callout-content {
+  color: #334155 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+.callout-content strong {
+  display: inline;
+  font-weight: 600 !important;
+  color: #1e3a5f !important;
+  font-size: inherit !important;
+}
+
+/* Prerequisite titles above bullet lists */
+.callout-content > p:has(+ ul) > strong {
+  display: block;
+  margin-bottom: 0.25rem !important;
+  color: #1e40af !important;
+  font-size: 0.875rem !important;
+}
+
+/* Arrow-path hints — single horizontal flow (GitBook style) */
+.callout-content > p {
+  margin: 0 !important;
+  line-height: 1.45 !important;
+}
+
+.callout-content > p:only-child {
+  display: block;
+}
+
+.callout-content ul {
+  margin: 0 !important;
+  padding-left: 1.1rem !important;
+}
+
+.callout-content li {
+  margin: 0.1rem 0 !important;
+}
+
+/* Warning callouts */
+.prose div:has(> .callout-content)[style*="warning"],
+.prose div:has(> .callout-content):has(.fa-triangle-exclamation) {
+  background: #fffbeb !important;
+  border-left-color: #f59e0b !important;
+}
+
+/* ─── Overview / hub cards — compact, no stretched empty space ──── */
+
+.prose div[class*="grid"][class*="gap-4"] {
+  gap: 0.75rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.prose div[class*="grid"] > div[style*="height:100%"] {
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.prose div[class*="grid"] div[style*="padding:1rem"] {
+  padding: 0.7rem 0.85rem !important;
+  gap: 0.35rem !important;
+  flex: 0 1 auto !important;
+}
+
+.prose div[class*="grid"] div[style*="flex:1"] {
+  flex: 0 1 auto !important;
+}
+
+.prose .card-content,
+.prose div[class*="card-content"] {
+  font-size: 0.875rem !important;
+  line-height: 1.45 !important;
+}
+
+.prose .card-content p,
+.prose div[class*="card-content"] p {
+  margin: 0 !important;
+  line-height: 1.45 !important;
+}
+
+/* ─── Steps component — compact CloudX-style rhythm ─────────────── */
+
+.prose div:has(> [data-step-number]) {
+  margin-top: 0.35rem !important;
+  margin-bottom: 1rem !important;
+}
+
+[data-step-number] {
+  padding-bottom: 1rem !important;
+}
+
+[data-step-number]:last-child {
+  padding-bottom: 0 !important;
+}
+
+/* Tighter gap between step title and body */
+[data-step-number] > div[class*="ml-"] {
+  padding-top: 0.125rem !important;
+  margin-left: 2.25rem !important;
+}
+
+[data-step-number] > div[class*="ml-"] p,
+[data-step-number] > div[class*="ml-"] div p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.55 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Step header row */
+[data-step-number] > div[style*="display:flex"] {
+  gap: 0.625rem !important;
+}
+
+[data-step-number] > div[style*="display:flex"] > div[style*="border-radius:50%"] {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  font-size: 11px !important;
+}
+
+[data-step-number] > div[style*="display:flex"] span {
+  font-size: 0.9375rem !important;
+  line-height: 1.35 !important;
+}
+
+/* Vertical connector between steps */
+[data-step-number] > div[style*="position:absolute"] {
+  top: 22px !important;
+  left: 11px !important;
+}
+
+/* ─── General prose readability (CloudX-like density) ─────────── */
+
+.prose p.text-theme-text-secondary,
+#content-area p.text-theme-text-secondary,
+article p.text-theme-text-secondary {
+  line-height: 1.6 !important;
+}
+
+.prose > p.text-theme-text-secondary:first-of-type {
+  margin-bottom: 0.75rem !important;
+}
+
+/* ─── Code blocks — GitBook-style config snippets ─────────────── */
+
+.prose pre:not([class*="shiki"]),
+#content-area pre:not([class*="shiki"]),
+article pre:not([class*="shiki"]) {
+  background: #f6f8fa !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 0.65rem 0.9rem !important;
+  margin: 0.35rem 0 0.6rem !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  overflow-x: auto;
+  box-shadow: none !important;
+}
+
+.prose pre:not([class*="shiki"]) code,
+#content-area pre:not([class*="shiki"]) code,
+article pre:not([class*="shiki"]) code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  color: #3c4043 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  font-size: inherit !important;
+}
+
+/* Gradle setup — tighter vertical spacing in repository code blocks */
+.gradle-code-compact pre,
+.gradle-code-compact pre code {
+  line-height: 1.3 !important;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  margin: 0 !important;
+}
+
+.prose pre.shiki,
+#content-area pre.shiki,
+article pre.shiki {
+  margin: 0.45rem 0 0.65rem !important;
+  border-radius: 6px !important;
+  font-size: 0.8125rem !important;
+  border: 1px solid #e1e4e8 !important;
+}
+
+.prose p + pre,
+.prose pre + p,
+#content-area p + pre,
+#content-area pre + p {
+  margin-top: 0.35rem !important;
+}
+
+.prose :not(pre) > code,
+#content-area :not(pre) > code {
+  background: #f0f2f5 !important;
+  padding: 0.12em 0.35em !important;
+  border-radius: 4px !important;
+  font-size: 0.875em !important;
+  border: none !important;
+}
+
+/* Horizontal rules between guide sections */
+#content-area hr,
+article hr,
+.prose hr {
+  margin: 0.85rem 0 !important;
+  border: none;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+/* ─── Class & Network Key Registry tables (4-column only) ───────── */
+
+/* Scope to registry page tables only — not Orchestration error reference or other 4-col tables */
+#content-area table.registry-table,
+article table.registry-table,
+.prose table.registry-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+}
+
+#content-area table.registry-table th:nth-child(1),
+#content-area table.registry-table td:nth-child(1),
+article table.registry-table th:nth-child(1),
+article table.registry-table td:nth-child(1),
+.prose table.registry-table th:nth-child(1),
+.prose table.registry-table td:nth-child(1) {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+  vertical-align: top !important;
+  width: 13% !important;
+}
+
+#content-area table.registry-table th:nth-child(2),
+#content-area table.registry-table td:nth-child(2),
+article table.registry-table th:nth-child(2),
+article table.registry-table td:nth-child(2),
+.prose table.registry-table th:nth-child(2),
+.prose table.registry-table td:nth-child(2) {
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+  vertical-align: top !important;
+  padding-left: 0.65rem !important;
+  padding-right: 0.65rem !important;
+}
+
+#content-area table.registry-table th:nth-child(2),
+#content-area table.registry-table td:nth-child(2),
+article table.registry-table th:nth-child(2),
+article table.registry-table td:nth-child(2),
+.prose table.registry-table th:nth-child(2),
+.prose table.registry-table td:nth-child(2) {
+  width: 18% !important;
+}
+
+#content-area table.registry-table th:nth-child(3),
+#content-area table.registry-table td:nth-child(3),
+#content-area table.registry-table th:nth-child(4),
+#content-area table.registry-table td:nth-child(4),
+article table.registry-table th:nth-child(3),
+article table.registry-table td:nth-child(3),
+article table.registry-table th:nth-child(4),
+article table.registry-table td:nth-child(4),
+.prose table.registry-table th:nth-child(3),
+.prose table.registry-table td:nth-child(3),
+.prose table.registry-table th:nth-child(4),
+.prose table.registry-table td:nth-child(4) {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  vertical-align: top !important;
+  width: 34.5% !important;
+}
+
+#content-area table.registry-table td:nth-child(3) code,
+#content-area table.registry-table td:nth-child(4) code,
+article table.registry-table td:nth-child(3) code,
+article table.registry-table td:nth-child(4) code,
+.prose table.registry-table td:nth-child(3) code,
+.prose table.registry-table td:nth-child(4) code {
+  white-space: normal !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  display: inline !important;
+  line-height: 1.45 !important;
+  user-select: all !important;
+  cursor: text !important;
+}
+
+/* Safety rule for any other tables with long inline code tokens */
+#content-area table td code,
+article table td code,
+.prose table td code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

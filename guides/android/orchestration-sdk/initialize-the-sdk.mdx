@@ -1,0 +1,60 @@
+---
+title: Initialize the SDK
+description: >-
+  Initialize the SDK for TapMind Orchestration SDK on Android.
+---
+
+To ensure the SDK is ready to serve ads when needed, initialize the Orchestration SDK once during your application startup. It is highly recommended to perform this initialization inside your custom Application class to maintain availability across the entire application.
+
+Create or update your custom `Application` class and initialize the Orchestration SDK within the `onCreate()` method.
+
+```
+class MyApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        // Configure SDK settings
+        val orchConfig = OrchConfig.Builder()
+            .testMode(BuildConfig.DEBUG)
+            .build()
+
+        // Initialize the ORCH SDK
+        OrchSdk.initialize(
+            this,
+            orchConfig,
+            object : OrchInitListener {
+                override fun onInitSuccess() {
+                    // SDK initialized successfully
+                }
+
+                override fun onInitError(error: OrchError) {
+                    Log.e("ORCH", "SDK Initialization Failed: " + error.message)
+                }
+            }
+        )
+    }
+}
+```
+
+> **Important:**
+> Don't forget to register your custom `Application` class (`MyApp`) in your `AndroidManifest.xml` using the `android:name` attribute inside the `<application>` tag.
+
+### Initialization Parameters
+
+| Parameter  | Description                                                                                                                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context`  | The application context used to initialize the SDK. Using the application context helps prevent memory leaks compared to an Activity context. |
+| `config`   | Configuration object used to define SDK settings and behavior.                                                                                |
+| `listener` | Callback interface used to receive SDK initialization success and failure events.                                                             |
+
+---
+
+### OrchConfig Methods
+
+| Method              | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| `testMode(Boolean)` | Enables or disables test ads and logs during development and testing. |
+
+> **Note:**
+> `testMode(BuildConfig.DEBUG)` automatically enables test ads for debug builds and disables them for release builds. This ensures test ads are only shown during development and are automatically disabled in production applications.

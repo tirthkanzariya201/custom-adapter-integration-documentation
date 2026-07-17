@@ -12,14 +12,14 @@
 
 **Create a** TapMind **waterfall Network**
 
-Please go through the below steps to integrate **TapMind** as a demand partner with your **IRONSOUCE-LEVELPLAY** account. To begin with the integration, login to your **IRONSOUCE-LEVELPLAY** account and follow the below steps.
+Please go through the below steps to integrate **TapMind** as a demand partner with your **IRONSOURCE-LEVELPLAY** account. To begin with the integration, login to your **IRONSOURCE-LEVELPLAY** account and follow the below steps.
 
 1. On the Ironsource platform, select Monetize → Setup → SDK Networks.
 2. Select Available Networks → Manage Networks. In the dropdown list of available networks, select Custom Adapte&#x72;**.**
 
 <figure><img src="../../../.gitbook/assets/image (9).jpeg" alt=""><figcaption></figcaption></figure>
 
-3. To enable the **TapMind Adapter**, input <mark style="background-color:$primary;">**Network Key**</mark> <mark style="background-color:$primary;">15c101ba1</mark>,then click on the Enter key, and save. The name of the network should appear as **TapMind**.
+3. To enable the **TapMind Adapter**, input <mark style="background-color:$primary;">**Network Key**</mark> <mark style="background-color:$primary;">15c11cb1d</mark>,then click on the Enter key, and save. The name of the network should appear as **TapMind**.
 4. Click save, your TapMind network is now ready.
 
 {% hint style="info" %}

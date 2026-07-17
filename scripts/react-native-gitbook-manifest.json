@@ -1,0 +1,30 @@
+{
+  "downloaded": [
+    "tapmind-custom-adapter-sdk-integration\\react-native-android-engine.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/admob/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/admob/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/admob.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/applovin/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/applovin/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/applovin.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/google-ad-manager/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/google-ad-manager/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/google-ad-manager.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/ironsource-levelplay/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/ironsource-levelplay/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-android-engine/ironsource-levelplay.mdx",
+    "tapmind-custom-adapter-sdk-integration\\react-native-ios-engine.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/admob/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/admob/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/admob.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/applovin/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/applovin/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/applovin.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/google-ad-manager/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/google-ad-manager/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/google-ad-manager.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/ironsource-levelplay/installation.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/ironsource-levelplay/configuration.mdx",
+    "tapmind-custom-adapter-sdk-integration/react-native-ios-engine/ironsource-levelplay.mdx"
+  ]
+}

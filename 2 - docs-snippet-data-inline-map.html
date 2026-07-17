@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs refactor — snippet / data / inline map</title>
+<style>
+  :root{--ink:#16181d;--mut:#5b616e;--line:#e2e4e9;--snip:#2563a0;--data:#7c3aed;--inline:#b45309;--bg:#fbfbfc;}
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:var(--ink);line-height:1.5;background:var(--bg);}
+  h1{font-size:19px;margin-bottom:2px;}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:16px;}
+  h2{font-size:14px;margin:24px 0 8px;border-bottom:2px solid var(--ink);padding-bottom:5px;}
+  table{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0;background:#fff;}
+  th{text-align:left;padding:7px 9px;background:#f4f4f6;border:1px solid var(--line);font-size:11px;}
+  td{padding:7px 9px;border:1px solid var(--line);vertical-align:top;}
+  .tag{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;color:#fff;white-space:nowrap;}
+  .t-snip{background:var(--snip);} .t-data{background:var(--data);} .t-inline{background:var(--inline);}
+  code{background:#eef0f3;padding:1px 4px;border-radius:3px;font-family:"SF Mono",Consolas,monospace;font-size:11px;}
+  .legend{font-size:12px;margin:8px 0;}
+  .legend span{margin-right:14px;}
+  ol{margin:6px 0;padding-left:20px;} li{margin:5px 0;font-size:13px;}
+  .box{background:#fff;border:1px solid var(--line);border-left:3px solid var(--data);border-radius:5px;padding:11px 14px;margin:10px 0;font-size:13px;}
+  .note{font-size:12px;color:var(--mut);}
+</style>
+</head>
+<body>
+
+<h1>Docs refactor — what's a snippet, what's data, what stays inline</h1>
+<div class="sub">Grounded in all 40 pages. Sorted by sharing axis, because that decides where each block lives.</div>
+
+<div class="legend">
+<span><span class="tag t-snip">PROSE SNIPPET</span> identical text, one source</span>
+<span><span class="tag t-data">DATA REF</span> a value, lives in Registry/Matrix</span>
+<span><span class="tag t-inline">KEEP INLINE</span> genuinely page-unique</span>
+</div>
+
+<h2>Global — same on (nearly) every page</h2>
+<table>
+<thead><tr><th>Block</th><th>Treatment</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><code>placementName</code> case-sensitive callout</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Identical wording everywhere it appears. One snippet.</td></tr>
+<tr><td>Test mode / "Verify integration" note</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Already aligned across GMA pages — collapse to one source.</td></tr>
+<tr><td>Prerequisites intro + "What TapMind provides" table</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Use the redesigned version. Values inside it are <span class="tag t-data">DATA REF</span>.</td></tr>
+<tr><td>Troubleshooting (per-page)</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Replace inline tables with the one-line reference link (already decided).</td></tr>
+</tbody>
+</table>
+
+<h2>Per-framework — same across all mediations within a framework</h2>
+<table>
+<thead><tr><th>Block</th><th>Treatment</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Gradle 7+ repositories block</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Android only. One source; the whole fleet's Android build depends on it.</td></tr>
+<tr><td>SKAdNetwork <code>Info.plist</code> list</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>iOS only. Long, identical, and its own note already says "single source of truth" — yet it's duplicated. Prime candidate.</td></tr>
+<tr><td>Manifest App-ID / "Configure your app" step</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Same for all GMA mediations per platform.</td></tr>
+<tr><td>Install mechanics: iOS Podfile, RN <code>package.json</code>+hook, Flutter pubspec, Unity Git install, Cocos zip install</td><td><span class="tag t-snip">PROSE SNIPPET</span> + <span class="tag t-data">DATA REF</span></td><td>Structure is per-framework snippet; the package name + version inside are data.</td></tr>
+<tr><td>minSdk / min iOS</td><td><span class="tag t-data">DATA REF</span></td><td>From Compatibility Matrix.</td></tr>
+</tbody>
+</table>
+
+<h2>Per-mediation — same across all frameworks for one partner</h2>
+<table>
+<thead><tr><th>Block</th><th>Treatment</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>AdMob custom-event dashboard steps</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>The AdMob dashboard UI is the same whether the app is native, Flutter, or Unity. Class strings referenced inside are <span class="tag t-data">DATA REF</span>.</td></tr>
+<tr><td>GAM yield-group dashboard steps</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Company + Mediation-toggle + yield group. Platform-independent prose.</td></tr>
+<tr><td>AppLovin MAX custom-network steps</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Add Custom Network + enable on ad unit.</td></tr>
+<tr><td>LevelPlay network-key + instance steps</td><td><span class="tag t-snip">PROSE SNIPPET</span></td><td>Network key + instances. Key value is <span class="tag t-data">DATA REF</span>.</td></tr>
+</tbody>
+</table>
+<p class="note">I'm inferring the dashboard steps are framework-independent from the rendered content — very likely, but confirm there are no per-framework quirks buried in them before merging into one snippet each.</p>
+
+<h2>Values — never prose, always one data source</h2>
+<table>
+<thead><tr><th>Value</th><th>Lives in</th></tr></thead>
+<tbody>
+<tr><td>Adapter class strings, LevelPlay network key</td><td><span class="tag t-data">DATA REF</span> — Class &amp; Network Key Registry</td></tr>
+<tr><td>Package names + versions</td><td><span class="tag t-data">DATA REF</span> — release registry / a values file</td></tr>
+<tr><td>minSdk, min iOS</td><td><span class="tag t-data">DATA REF</span> — Compatibility Matrix</td></tr>
+</tbody>
+</table>
+
+<h2>Keep inline — genuinely unique</h2>
+<p class="note">Very little survives here once you decompose. Mainly: the page's assembly/order, and any true one-off note for that exact framework×mediation cell. If a page has more than a few lines of unique prose, that's a signal it's carrying something that should have been a snippet.</p>
+
+<h2>Lean rollout — highest ROI, lowest risk first (don't boil the ocean)</h2>
+<ol>
+<li><strong>Confirm current state first</strong> (dev-team, 2 min): diff the MDX source of two AdMob pages. Snippets already in use, or raw duplication? Don't refactor blind.</li>
+<li><strong>Phase 1 — the safe, high-duplication wins:</strong> placementName callout, SKAdNetwork list, Gradle repos, test-mode note, troubleshooting link. Pure prose, identical everywhere, zero logic. Immediate drift kill, near-zero risk.</li>
+<li><strong>Phase 2 — data-reference the values:</strong> point class strings / keys / versions at the Registry + Matrix so the values you've already seen drift (Flutter LevelPlay 1.0.0, the network key) can't diverge again.</li>
+<li><strong>Phase 3 — the structural snippets:</strong> per-framework install blocks and per-mediation dashboard blocks. Higher payoff, but touches page assembly, so do it after the easy wins prove the mechanism.</li>
+</ol>
+
+<div class="box">
+<strong>What to think about that you're not asking:</strong> the end state — a page as <em>composition of snippets + data</em> — is one step short of <strong>generating pages from the release registry</strong>. You already have the registry pieces in flight (Jira → GitHub → JamDesk). Building from scratch, you can make docs a build artifact of the release: cut a version, pages regenerate, drift becomes structurally impossible. Incumbents with hand-written legacy doc estates can't cheaply get there. <strong>But don't build the generator now</strong> — Phases 1–2 are lean and ship this week; just structure the snippets/data so a generator can consume them later without a rewrite. Extensible, not over-engineered.
+</div>
+
+<p class="note">Verify: I'm not certain of JamDesk's exact snippet syntax (MDX <code>import</code> vs a <code>&lt;Snippet&gt;</code> component vs a <code>/snippets</code> convention) — confirm in JamDesk's docs before scoping. This whole map assumes JamDesk supports transclusion + a values/frontmatter source it can read; if it can't do data-reference natively, the "values" rows may need a small build step.</p>
+
+</body>
+</html>

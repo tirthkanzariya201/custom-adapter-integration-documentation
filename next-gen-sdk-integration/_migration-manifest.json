@@ -1,0 +1,663 @@
+{
+  "baseUrl": "https://tapminds.gitbook.io/next-gen-sdk-integration",
+  "pages": [
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration",
+      "rel": "overview",
+      "file": "next-gen-sdk-integration\\overview.mdx",
+      "ok": true,
+      "title": "Page Not Found"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine",
+      "rel": "next-gen-integration-sdk/native-android-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine.mdx",
+      "ok": true,
+      "title": "Native-Android Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/admob",
+      "rel": "next-gen-integration-sdk/native-android-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/native-android-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/native-android-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/applovin",
+      "rel": "next-gen-integration-sdk/native-android-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/native-android-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/native-android-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/native-android-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/native-android-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/native-android-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/native-android-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/native-android-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-android-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/native-android-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-android-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine",
+      "rel": "next-gen-integration-sdk/native-ios-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine.mdx",
+      "ok": true,
+      "title": "Native-IOS Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/admob",
+      "rel": "next-gen-integration-sdk/native-ios-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/native-ios-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/native-ios-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/applovin",
+      "rel": "next-gen-integration-sdk/native-ios-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/native-ios-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/native-ios-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/native-ios-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/native-ios-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/native-ios-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/native-ios-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/native-ios-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/native-ios-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/native-ios-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\native-ios-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine",
+      "rel": "next-gen-integration-sdk/unity-android-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine.mdx",
+      "ok": true,
+      "title": "Unity-Android Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/admob",
+      "rel": "next-gen-integration-sdk/unity-android-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/unity-android-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/unity-android-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/applovin",
+      "rel": "next-gen-integration-sdk/unity-android-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/unity-android-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/unity-android-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/unity-android-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/unity-android-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/unity-android-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/unity-android-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/unity-android-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-android-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/unity-android-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-android-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine",
+      "rel": "next-gen-integration-sdk/unity-ios-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine.mdx",
+      "ok": true,
+      "title": "Unity-IOS Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/admob",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/applovin",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/unity-ios-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\unity-ios-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine",
+      "rel": "next-gen-integration-sdk/flutter-android-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine.mdx",
+      "ok": true,
+      "title": "Flutter-Android Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/admob",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/applovin",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/flutter-android-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-android-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine.mdx",
+      "ok": true,
+      "title": "Flutter-IOS Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/admob",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/applovin",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/applovin",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\applovin.mdx",
+      "ok": true,
+      "title": "Applovin"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/applovin/installation",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/applovin/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\applovin\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/applovin/configuration",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/applovin/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\applovin\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\ironsource-levelplay.mdx",
+      "ok": true,
+      "title": "Ironsource - Levelplay"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay/installation",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\ironsource-levelplay\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay/configuration",
+      "rel": "next-gen-integration-sdk/flutter-ios-engine/ironsource-levelplay/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\flutter-ios-engine\\ironsource-levelplay\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine",
+      "rel": "next-gen-integration-sdk/cocos-android-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine.mdx",
+      "ok": true,
+      "title": "Cocos-Android Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/admob",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-android-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/cocos-android-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-android-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine.mdx",
+      "ok": true,
+      "title": "Cocos-IOS Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/admob",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/admob",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\admob.mdx",
+      "ok": true,
+      "title": "AdMob"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/admob/installation",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/admob/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\admob\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/admob/configuration",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/admob/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\admob\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/google-ad-manager",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/google-ad-manager",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\google-ad-manager.mdx",
+      "ok": true,
+      "title": "Google Ad Manager"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/google-ad-manager/installation",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/google-ad-manager/installation",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\google-ad-manager\\installation.mdx",
+      "ok": true,
+      "title": "Installation"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/next-gen-integration-sdk/cocos-ios-engine/google-ad-manager/configuration",
+      "rel": "next-gen-integration-sdk/cocos-ios-engine/google-ad-manager/configuration",
+      "file": "next-gen-sdk-integration\\next-gen-integration-sdk\\cocos-ios-engine\\google-ad-manager\\configuration.mdx",
+      "ok": true,
+      "title": "Configuration"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/next-gen-sdk-integration/gradel-setup/for-gradle-version-7+",
+      "rel": "gradel-setup/for-gradle-version-7+",
+      "file": "next-gen-sdk-integration\\gradel-setup\\for-gradle-version-7+.mdx",
+      "ok": true,
+      "title": "For Gradle Version 7+"
+    }
+  ]
+}

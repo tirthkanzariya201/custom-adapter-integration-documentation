@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapMind Integration Docs — JAMdesk Structure Brief</title>
+<style>
+  :root{
+    --ink:#16191d; --soft:#4a5560; --faint:#8a95a0; --line:#e3e7eb; --line2:#c8d0d8;
+    --paper:#fff; --panel:#f6f8fa; --panel2:#eef2f5;
+    --accent:#0f6e56; --accent-bg:#e1f5ee; --accent-line:#9fe1cb;
+    --new:#185fa5; --new-bg:#e6f1fb; --new-line:#b5d4f4;
+    --warn:#854f0b; --warn-bg:#faeeda; --warn-line:#fac775;
+    --block:#a32d2d; --block-bg:#fcebeb; --block-line:#f7c1c1;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eceff2;color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:34px 22px 90px}
+  h1{font-size:26px;letter-spacing:-.01em;margin:6px 0 6px}
+  h2{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:0 0 3px;font-weight:700}
+  .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);font-weight:700}
+  .lead{font-size:15px;color:var(--soft);margin:0}
+  header.doc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 30px}
+  .meta{display:flex;flex-wrap:wrap;gap:7px 22px;margin-top:16px;font-size:12.5px;color:var(--soft)}
+  .meta b{color:var(--ink)}
+
+  section{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 30px;margin-top:18px}
+  .sec-h{margin:0 0 14px}
+  .sec-h .t{font-size:19px;font-weight:600;letter-spacing:-.01em;display:block;margin-top:2px}
+  p{margin:0 0 12px;font-size:14.5px}
+  .soft{color:var(--soft)}
+  code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);padding:1px 6px;border-radius:5px;color:#0b2b22;word-break:break-word}
+  b{font-weight:600}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:4px}
+  .fact{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .fact .h{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;margin-bottom:4px}
+  .fact .h .ic{width:24px;height:24px;border-radius:6px;background:var(--accent-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none}
+  .fact p{font-size:12.5px;color:var(--soft);margin:0}
+
+  /* funnel-path-loop band */
+  .fpl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:6px 0 4px}
+  .fpl .c{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:var(--panel)}
+  .fpl .c .n{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.08em}
+  .fpl .c h4{margin:4px 0 5px;font-size:15px}
+  .fpl .c p{font-size:12.5px;color:var(--soft);margin:0}
+  .fpl .arrow{display:none}
+  @media(max-width:760px){.fpl{grid-template-columns:1fr}}
+
+  /* tree */
+  .tree{background:#0f1720;color:#dbe4ec;border-radius:12px;padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.75;overflow:auto}
+  .tree .d{color:#7fd4b6}.tree .f{color:#cbd5df}.tree .nw{color:#7fb6f0}.tree .st{color:#f0c674}.tree .cm{color:#6b7682}
+  .tree .pill{font-family:var(--sans);font-size:10px;padding:0 6px;border-radius:5px;margin-left:6px;vertical-align:1px}
+  .p-new{background:#13314f;color:#9fc8f5}.p-stub{background:#4a3712;color:#f0c674}.p-src{background:#143a30;color:#8fdcc0}
+
+  /* loop steps */
+  .loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+  .step{border:1px solid var(--line);border-radius:11px;padding:13px 14px;background:var(--panel);position:relative}
+  .step .num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--soft)}
+  .step h4{margin:3px 0 6px;font-size:14px}
+  .step .who{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:5px}
+  .dev{background:var(--accent-bg);color:var(--accent)}
+  .ops{background:#fbeaf0;color:#993556}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+  th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);font-weight:700;padding:9px 12px;background:var(--panel);border-bottom:1px solid var(--line2)}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+  .s-ready{background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent-line)}
+  .s-new{background:var(--new-bg);color:var(--new);border:1px solid var(--new-line)}
+  .s-block{background:var(--block-bg);color:var(--block);border:1px solid var(--block-line)}
+  .s-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-line)}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:6px}
+  .flow .f{flex:1;min-width:130px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--panel)}
+  .flow .f .n{font-family:var(--mono);font-size:11px;color:var(--soft)}
+  .flow .f h4{margin:3px 0 3px;font-size:13.5px}
+  .flow .f p{font-size:11.5px;color:var(--soft);margin:0}
+
+  .callout{border-left:4px solid var(--warn);background:var(--warn-bg);border-radius:0 10px 10px 0;padding:13px 16px;margin-top:10px}
+  .callout b{color:#6b3f08}
+  .callout p{margin:0;font-size:13px;color:#553700}
+
+  ul.own{list-style:none;padding:0;margin:6px 0 0}
+  ul.own li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+  ul.own li:last-child{border:none}
+  ul.own .role{font-weight:600;min-width:150px;flex:none}
+  ul.own .role span{display:block;font-size:11.5px;color:var(--faint);font-weight:400}
+
+  footer{margin-top:24px;font-size:11.5px;color:var(--faint);text-align:center}
+  @media print{body{background:#fff}.wrap{max-width:none;padding:0}section,header.doc{border-color:#ccc;break-inside:avoid}.tree{background:#f4f6f8;color:#1a2630}.tree .d{color:#0f6e56}.tree .nw{color:#185fa5}.tree .st{color:#854f0b}.tree .cm{color:#8a95a0}.tree .f{color:#3a444d}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <div class="kicker">TapMind · Integration Documentation · Structure Brief</div>
+    <h1>How the JAMdesk integration doc is built</h1>
+    <p class="lead">The complete structure — platform model, organizing system, modules, and the path from edit to live — for planning and tracking the rebuild of <code>docs.tapmind.io</code>.</p>
+    <div class="meta">
+      <span><b>For:</b> John Britto (PM)</span>
+      <span><b>Covers:</b> CA-GMA · CA Next-Gen · Orchestration</span>
+      <span><b>Platform:</b> JAMdesk (Git-backed MDX)</span>
+    </div>
+  </header>
+
+  <!-- 1 -->
+  <section>
+    <div class="sec-h"><h2>1 · The platform</h2><span class="t">How JAMdesk works (the model to hold in your head)</span></div>
+    <p class="soft">JAMdesk is not a CMS you log into and type pages — it is a <b>code-backed docs site</b>. The whole site is a folder of text files in a GitHub repo; pushing to the repo rebuilds and publishes the site. Five facts cover it:</p>
+    <div class="facts">
+      <div class="fact"><div class="h"><span class="ic">1</span>Pages are files</div><p>Each page is an <code>.mdx</code> file (Markdown + reusable components) in the repo. No database.</p></div>
+      <div class="fact"><div class="h"><span class="ic">2</span>One nav config</div><p><code>docs.json</code> defines the entire sidebar — order, grouping, tabs. Change structure here, not in pages.</p></div>
+      <div class="fact"><div class="h"><span class="ic">3</span>Reusable snippets</div><p>Shared blocks live in <code>/snippets</code> and are imported into pages. Write once, appears everywhere.</p></div>
+      <div class="fact"><div class="h"><span class="ic">4</span>Auto AI feed</div><p>JAMdesk auto-generates <code>llms.txt</code> so AI tools read the live docs — no extra work.</p></div>
+      <div class="fact"><div class="h"><span class="ic">5</span>Git = publish</div><p>Push to GitHub → JAMdesk builds → live on <code>docs.tapmind.io</code>. Preview locally before pushing.</p></div>
+    </div>
+    <div class="callout"><p><b>Launch gate:</b> the site is currently behind a login wall (returns “401”). Publishers must reach it without our credentials. Confirm the access model is set to public before launch — an integration doc readers can’t open is a non-starter.</p></div>
+    <p class="soft" style="margin-top:12px;font-size:12.5px"><i>JAMdesk is a Mintlify-family toolchain; exact CLI commands and snippet capabilities should be confirmed against JAMdesk’s own docs before relying on them.</i></p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <div class="sec-h"><h2>2 · The organizing model</h2><span class="t">Funnel → Path → Loop</span></div>
+    <p class="soft">A reader doesn’t think in pages; they think “I am <i>this</i> kind of integrator, on <i>this</i> framework, using <i>this</i> mediation.” The doc is built to route them down one line and run the same shape every time. This single idea drives every structural decision below.</p>
+    <div class="fpl">
+      <div class="c"><span class="n">FUNNEL</span><h4>Narrow the reader</h4><p>Front-door pages move them from “what is this” → which SDK → which framework + mediation, before any code.</p></div>
+      <div class="c"><span class="n">PATH</span><h4>One page per cell</h4><p>Each framework × mediation × SDK combination is one page. The reader follows exactly one.</p></div>
+      <div class="c"><span class="n">LOOP</span><h4>Same 6 steps, always</h4><p>Every page runs the identical 6-step sequence — so once you’ve done one, you can do any.</p></div>
+    </div>
+    <p class="soft" style="margin-top:10px">Today’s doc is the opposite: 33 near-duplicate pages, each assembled differently, with no front door. That inconsistency is <b>why</b> wrong values (a typo’d class, a transposed key) spread across the fleet unnoticed.</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <div class="sec-h"><h2>3 · Information architecture</h2><span class="t">The sidebar (defined in <code>docs.json</code>)</span></div>
+    <p class="soft">Two tabs: <b>Guides</b> (follow a path) and <b>Reference</b> (look up a fact). Orchestration sits on its own — it’s a different product, not a third flavour of the adapter.</p>
+    <div class="tree">
+<span class="cm"># GUIDES tab</span>
+<span class="d">Get started/</span>
+  <span class="f">index</span> · <span class="f">concepts</span><span class="pill p-new">new</span> · <span class="f">choose-your-sdk</span><span class="pill p-new">new</span> · <span class="f">prerequisites</span><span class="pill p-new">new</span> · <span class="f">gradle-setup</span><span class="pill p-stub">fill stub</span>
+<span class="d">Custom Adapter GMA/</span>
+  <span class="d">Native Android/</span>  admob · applovin · gam · ironsource
+  <span class="d">Native iOS/</span>      admob · applovin · gam · ironsource
+  <span class="d">Flutter/</span>         admob · applovin · gam · ironsource
+  <span class="d">React Native/</span>    admob · applovin · gam · ironsource
+  <span class="d">Unity/</span>           admob · applovin · gam · ironsource
+  <span class="d">Cocos/</span>           admob · gam   <span class="cm">(applovin · ironsource = pending coverage)</span>
+<span class="d">Custom Adapter Next-Gen/</span>  admob · gam   <span class="cm">(Android only)</span>
+<span class="d">Orchestration SDK/</span>  overview → requirements → initialize → load &amp; show → privacy → errors → support
+
+<span class="cm"># REFERENCE tab — the single-source-of-truth shelf</span>
+<span class="d">Reference/</span>
+  <span class="f">class-network-key-registry</span><span class="pill p-new">new</span>  <span class="cm">← every class string + the network key live here</span>
+  <span class="f">compatibility-matrix</span><span class="pill p-new">new</span>
+  <span class="f">troubleshooting</span><span class="pill p-new">new</span>
+  <span class="f">privacy-consent</span><span class="pill p-new">new</span>
+    </div>
+    <p class="soft" style="margin-top:12px;font-size:12.5px"><b>Restructure is nearly free.</b> The 33 existing pages keep their URLs — they’re only re-parented in the sidebar. The blue items are the genuinely new pages to write (≈6), plus one stub to fill.</p>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <div class="sec-h"><h2>4 · The module system</h2><span class="t">Pages, snippets, and the anti-drift principle</span></div>
+    <p class="soft">The core engineering idea: <b>every fact lives in exactly one place.</b> A page is thin; anything repeated across pages is a snippet that pages import. The class string and network key live in <i>one</i> snippet each — fix it once, all pages update. This is the structural fix for how a single typo reached 30 pages.</p>
+    <div class="tree">
+<span class="d">repo/</span>
+  <span class="f">docs.json</span>                         <span class="cm"># the sidebar (Section 3)</span>
+  <span class="f">index.mdx  concepts.mdx  choose-your-sdk.mdx  prerequisites.mdx</span>
+  <span class="d">guides/</span><span class="f">{framework}/{product}/{mediation}.mdx</span>   <span class="cm"># the 33 thin pages — each is the 6-step Loop</span>
+  <span class="d">reference/</span>
+    <span class="f">class-network-key-registry.mdx</span>   <span class="cm"># human-readable source of truth</span>
+    <span class="f">compatibility-matrix.mdx  troubleshooting.mdx  privacy-consent.mdx</span>
+  <span class="d">snippets/</span>
+    <span class="d">config/</span>   <span class="nw">admob-dashboard · max-dashboard · levelplay-dashboard · gam-dashboard</span>
+              <span class="cm">↑ hold the dashboard steps + the canonical class string / network key</span>
+    <span class="d">shared/</span>   prerequisites-* · android-gradle-repos · app-id-* · verify-ad · troubleshoot
+              <span class="cm">↑ blocks repeated across many pages (install repo block, verify step, etc.)</span>
+    </div>
+    <div class="callout" style="border-color:var(--accent);background:var(--accent-bg)"><p style="color:#0c4734"><b style="color:#0c4734">Why this matters to you as PM:</b> it converts a recurring quality problem into a one-line fix. When the dev confirms the correct class string, it’s changed in a single snippet — not hunted across 30 pages. It also means the bulk of the “rebuild” is wiring, not writing.</p></div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <div class="sec-h"><h2>5 · Page anatomy</h2><span class="t">The 6-step Loop — every mediation page, same order</span></div>
+    <p class="soft">Each page runs these six steps. Steps are tagged by who performs them, so the developer and the ad-ops operator can each skip to their part — something none of our competitors’ docs do cleanly.</p>
+    <div class="loop">
+      <div class="step"><div class="num">01</div><h4>Prerequisites</h4><span class="who dev">dev</span></div>
+      <div class="step"><div class="num">02</div><h4>Install the SDK</h4><span class="who dev">dev</span></div>
+      <div class="step"><div class="num">03</div><h4>Configure the app</h4><span class="who dev">dev</span></div>
+      <div class="step"><div class="num">04</div><h4>Configure mediation</h4><span class="who ops">ad ops</span></div>
+      <div class="step"><div class="num">05</div><h4>Verify the ad</h4><span class="who dev">dev</span></div>
+      <div class="step"><div class="num">06</div><h4>Troubleshoot</h4><span class="who dev">dev</span></div>
+    </div>
+    <p class="soft" style="margin-top:12px">Only <b>Step 2</b> is unique per page (the install line). <b>Step 4</b> is the imported dashboard snippet that carries the class string. <b>Steps 5–6</b> close the loop and catch failures — both missing from today’s doc. Writing a new page = copy the template, fill the install line, swap one import.</p>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <div class="sec-h"><h2>6 · From edit to live</h2><span class="t">The publish flow</span></div>
+    <div class="flow">
+      <div class="f"><span class="n">step 1</span><h4>Edit MDX</h4><p>Change a page or snippet in the repo.</p></div>
+      <div class="f"><span class="n">step 2</span><h4>Preview</h4><p>JAMdesk CLI dev server renders it locally.</p></div>
+      <div class="f"><span class="n">step 3</span><h4>Push to GitHub</h4><p>Commit goes to the connected repo.</p></div>
+      <div class="f"><span class="n">step 4</span><h4>Auto-build</h4><p>JAMdesk builds &amp; deploys to <code>docs.tapmind.io</code>.</p></div>
+      <div class="f"><span class="n">step 5</span><h4>AI feed refreshes</h4><p><code>llms.txt</code> regenerates automatically.</p></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <div class="sec-h"><h2>7 · Status &amp; dependencies</h2><span class="t">What can ship now vs what is blocked</span></div>
+    <table>
+      <thead><tr><th>Workstream</th><th>What it is</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>Restructure</b></td><td>Re-parent the 33 pages under the new sidebar (URLs unchanged)</td><td><span class="pill s-ready">ready now</span></td></tr>
+        <tr><td><b>Copy fixes (Lane A)</b></td><td>Disambiguate titles, remove “G-sheet” jargon, fix typos, add the exact-match warning</td><td><span class="pill s-ready">ready now</span></td></tr>
+        <tr><td><b>Snippet wiring</b></td><td>Build the 4 config + shared snippets and the page template</td><td><span class="pill s-ready">ready now</span> <span class="soft" style="font-size:12px">· structure only</span></td></tr>
+        <tr><td><b>New front-door pages</b></td><td><code>concepts</code>, <code>choose-your-sdk</code>, <code>prerequisites</code></td><td><span class="pill s-new">new — writeable</span></td></tr>
+        <tr><td><b>Reference shelf</b></td><td>Registry, compatibility matrix, troubleshooting, privacy</td><td><span class="pill s-warn">new — partly blocked</span></td></tr>
+        <tr><td><b>Class strings &amp; network key</b></td><td>The actual values inside the config snippets</td><td><span class="pill s-block">blocked · dev</span></td></tr>
+        <tr><td><b>ProGuard / release-build claim</b></td><td>Whether keep-rules actually ship (production no-fill risk)</td><td><span class="pill s-block">blocked · dev</span></td></tr>
+        <tr><td><b>Content gaps (Lane B)</b></td><td>Troubleshooting content, privacy mechanism, app-side verify step, min-iOS</td><td><span class="pill s-block">blocked · dev/product</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><p><b>The load-bearing dependency:</b> a dev verification checklist (already prepared) must confirm the real class strings and ProGuard state against the <i>shipped</i> packages. Source inspection showed the documented strings don’t match the code — so this may turn out to be a <b>package republish</b>, not a doc edit, best folded into the GAM&nbsp;3.0.0 / class-name standardization sprint. Docs regenerate after that lands.</p></div>
+  </section>
+
+  <footer>Structure brief · pairs with the Dev Verification Checklist and the proposed <code>docs.json</code> nav tree. JAMdesk specifics to be confirmed against the platform’s own documentation.</footer>
+
+</div>
+</body>
+</html>

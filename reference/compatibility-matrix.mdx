@@ -1,0 +1,37 @@
+---
+title: Compatibility Matrix
+description: Minimum OS versions and SDK compatibility per published package.
+---
+
+Use this page to confirm your app meets minimum OS requirements and dependency versions before integrating.
+
+## Package compatibility
+
+### Custom Adapter (GMA SDK)
+
+| Mediation Platform | Required GMA SDK | Required mediation SDK | Min Android | Min iOS |
+|--------------------|------------------|------------------------|-------------|---------|
+| AdMob | 25.0.0 | GAM SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| Google Ad Manager | 25.0.0 | GAM SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| AppLovin | Compatible resolution (wrappers) | AppLovin MAX SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| Unity LevelPlay | Compatible resolution (wrappers) | Unity LevelPlay SDK | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+
+### Custom Adapter (GMA Next-Gen SDK)
+
+| Mediation Platform | Required GMA SDK | Required mediation SDK | Min Android | Min iOS |
+|--------------------|------------------|------------------------|-------------|---------|
+| AdMob | 25.0.0 | GMA Next-Gen SDK | 23 | n/a |
+| Google Ad Manager | 25.0.0 | GMA Next-Gen SDK | 23 | n/a |
+
+## Framework notes
+
+| Framework | Min Android | Min iOS | Notes |
+|-----------|-------------|---------|-------|
+| Native Android | 23 | - | compileSdk 36 recommended |
+| Native iOS | - | 12.0 | |
+| Flutter | 24 | 15.0 (`platform :ios, '15.0'`) | Requires `google_mobile_ads` |
+| React Native | 24 | 15.0 | Requires `react-native-google-mobile-ads` |
+| Unity | 23 | 12.0 | GMA Unity plugin required; post-processing script adds native dependency |
+| Cocos | 25 | 18.0 | Extension ZIP install |
+
+Contact your account manager if you need confirmation for a specific package version before upgrading.

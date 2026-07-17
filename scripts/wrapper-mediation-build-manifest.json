@@ -1,0 +1,62 @@
+[
+  {
+    "wrapper": "unity",
+    "productKey": "custom-adapter-gma-sdk",
+    "mediations": [
+      "admob",
+      "google-ad-manager",
+      "applovin",
+      "levelplay"
+    ],
+    "generated": [
+      "guides/unity/custom-adapter-gma-sdk/admob.mdx",
+      "guides/unity/custom-adapter-gma-sdk/google-ad-manager.mdx",
+      "guides/unity/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/unity/custom-adapter-gma-sdk/levelplay.mdx"
+    ]
+  },
+  {
+    "wrapper": "flutter",
+    "productKey": "custom-adapter-gma-sdk",
+    "mediations": [
+      "admob",
+      "google-ad-manager",
+      "applovin",
+      "levelplay"
+    ],
+    "generated": [
+      "guides/flutter/custom-adapter-gma-sdk/admob.mdx",
+      "guides/flutter/custom-adapter-gma-sdk/google-ad-manager.mdx",
+      "guides/flutter/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/flutter/custom-adapter-gma-sdk/levelplay.mdx"
+    ]
+  },
+  {
+    "wrapper": "cocos",
+    "productKey": "custom-adapter-gma-sdk",
+    "mediations": [
+      "admob",
+      "google-ad-manager"
+    ],
+    "generated": [
+      "guides/cocos/custom-adapter-gma-sdk/admob.mdx",
+      "guides/cocos/custom-adapter-gma-sdk/google-ad-manager.mdx"
+    ]
+  },
+  {
+    "wrapper": "react-native",
+    "productKey": "custom-adapter-gma-sdk",
+    "mediations": [
+      "admob",
+      "google-ad-manager",
+      "applovin",
+      "levelplay"
+    ],
+    "generated": [
+      "guides/react-native/custom-adapter-gma-sdk/admob.mdx",
+      "guides/react-native/custom-adapter-gma-sdk/google-ad-manager.mdx",
+      "guides/react-native/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/react-native/custom-adapter-gma-sdk/levelplay.mdx"
+    ]
+  }
+]

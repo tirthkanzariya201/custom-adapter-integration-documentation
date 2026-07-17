@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: gradle-setup/for-gradle-version-7-plus.mdx</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>gradle-setup/for-gradle-version-7-plus.mdx</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>---</code></div>
+<div class="line added"><span class="ln">2</span><code>title: Gradle Setup (For Gradle Version 7+)</code></div>
+<div class="line added"><span class="ln">3</span><code>description: Repository configuration for Android-based integrations on Gradle 7 and above.</code></div>
+<div class="line added"><span class="ln">4</span><code>---</code></div>
+<div class="line added"><span class="ln">5</span><code></code></div>
+<div class="line added"><span class="ln">6</span><code>On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:</code></div>
+<div class="line added"><span class="ln">7</span><code></code></div>
+<div class="line added"><span class="ln">8</span><code>&lt;div class="gradle-code-compact"&gt;</code></div>
+<div class="line added"><span class="ln">9</span><code></code></div>
+<div class="line added"><span class="ln">10</span><code>```</code></div>
+<div class="line added"><span class="ln">11</span><code>dependencyResolutionManagement {</code></div>
+<div class="line added"><span class="ln">12</span><code>    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)</code></div>
+<div class="line added"><span class="ln">13</span><code>    repositories {</code></div>
+<div class="line added"><span class="ln">14</span><code>        google()</code></div>
+<div class="line added"><span class="ln">15</span><code>        mavenCentral()</code></div>
+<div class="line added"><span class="ln">16</span><code>        maven { url = uri("https://jitpack.io") }</code></div>
+<div class="line added"><span class="ln">17</span><code>    }</code></div>
+<div class="line added"><span class="ln">18</span><code>}</code></div>
+<div class="line added"><span class="ln">19</span><code>```</code></div>
+<div class="line added"><span class="ln">20</span><code></code></div>
+<div class="line added"><span class="ln">21</span><code>&lt;/div&gt;</code></div>
+<div class="line added"><span class="ln">22</span><code></code></div>
+<div class="line added"><span class="ln">23</span><code>**Important:** Remove any `allprojects { repositories { … } }` block from your root `build.gradle` when using this pattern. With `FAIL_ON_PROJECT_REPOS`, leaving `allprojects` repositories in place causes a Gradle error.</code></div>
+<div class="line added"><span class="ln">24</span><code></code></div>
+<div class="line added"><span class="ln">25</span><code>For projects that still use the legacy `allprojects` pattern, see the repository block on individual mediation pages - use **one** approach, not both.</code></div>
+<div class="line added"><span class="ln">26</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">---
+title: Gradle Setup (For Gradle Version 7+)
+description: Repository configuration for Android-based integrations on Gradle 7 and above.
+---
+
+On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:
+
+&lt;div class="gradle-code-compact"&gt;
+
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+&lt;/div&gt;
+
+**Important:** Remove any `allprojects { repositories { … } }` block from your root `build.gradle` when using this pattern. With `FAIL_ON_PROJECT_REPOS`, leaving `allprojects` repositories in place causes a Gradle error.
+
+For projects that still use the legacy `allprojects` pattern, see the repository block on individual mediation pages - use **one** approach, not both.
+</pre>
+  </section>
+</body>
+</html>

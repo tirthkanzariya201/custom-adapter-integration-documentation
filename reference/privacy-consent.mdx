@@ -1,0 +1,46 @@
+---
+title: Privacy & Consent
+description: Privacy, consent, and regulatory guidance for TapMind SDK integrations.
+---
+
+TapMind adapters operate within your existing mediation stack (Custom Adapter SDKs) or via Google's ad stack (Orchestration SDK). Your app is responsible for collecting user consent and passing signals to the mediation or ads SDK **before** ad requests are made.
+
+## Custom Adapter SDKs
+
+1. Implement a consent mechanism appropriate for your users' jurisdiction (GDPR/TCF, US state privacy laws, and other applicable regulations).
+2. Pass consent signals to your **mediation SDK** using that platform's recommended API before initializing ads or requesting fill.
+3. TapMind receives consent indirectly through the mediation layer - configure consent at the mediation SDK level first.
+
+### Partner-specific consent APIs
+
+| Mediation | Documentation |
+|-----------|---------------|
+| AdMob / Google Ad Manager | [Google UMP SDK](https://developers.google.com/admob/ump/android/quick-start) |
+| AppLovin MAX | [MAX consent APIs](https://developers.applovin.com/en/max/android/overview/terms-and-privacy-policy-flow) |
+| Unity LevelPlay | [LevelPlay regulation settings](https://developers.is.com/ironsource-mobile/android/regulation-advanced-settings/) |
+
+### iOS: App Tracking Transparency (ATT)
+
+- Request ATT authorization when required before accessing IDFA-dependent ad features.
+- Configure your `Info.plist` with `NSUserTrackingUsageDescription` when using ATT.
+- Pass consent/ATT state to your mediation SDK per Apple's and your mediation partner's guidance.
+
+### iOS: Privacy Manifest
+
+- Declare required-reason API usage and data collection in your app's **Privacy Manifest** (`PrivacyInfo.xcprivacy`) per Apple requirements.
+- Include third-party SDK privacy manifests bundled with Google Mobile Ads and your mediation SDKs.
+- Review TapMind adapter dependencies when submitting App Store privacy nutrition labels.
+
+### Android: Google Play Data Safety
+
+- Complete the **Data Safety** section in Google Play Console to reflect data collected through ads SDKs in your app.
+- Disclose ad-related data types (device identifiers, diagnostics, etc.) per Google's form guidance.
+- Coordinate declarations with your mediation SDK vendor documentation.
+
+## Orchestration SDK
+
+Orch SDK reads the standard IABTCF consent signals your app provides and forwards them to demand partners; it does not collect or prompt for consent itself. Ensure your app writes these signals through your CMP before initializing Orch SDK. See [Orchestration SDK — Consent & Privacy](/guides/android/orchestration-sdk/overview#consent--privacy) on the Native Android integration guide.
+
+## Questions
+
+For account-specific privacy questions, data processing agreements, or regional compliance, contact your TapMind account manager.

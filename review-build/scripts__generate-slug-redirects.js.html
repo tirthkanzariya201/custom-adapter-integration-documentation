@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: scripts/generate-slug-redirects.js</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>scripts/generate-slug-redirects.js</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>/**</code></div>
+<div class="line added"><span class="ln">2</span><code> * Emits redirect entries for custom-adapter → custom-adapter-gma-sdk</code></div>
+<div class="line added"><span class="ln">3</span><code> * and next-gen → custom-adapter-gma-next-gen-sdk slug migration.</code></div>
+<div class="line added"><span class="ln">4</span><code> */</code></div>
+<div class="line added"><span class="ln">5</span><code>const GMA_PLATFORMS = {</code></div>
+<div class="line added"><span class="ln">6</span><code>  android: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],</code></div>
+<div class="line added"><span class="ln">7</span><code>  ios: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],</code></div>
+<div class="line added"><span class="ln">8</span><code>  flutter: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],</code></div>
+<div class="line added"><span class="ln">9</span><code>  'react-native': ['admob', 'google-ad-manager', 'applovin', 'levelplay'],</code></div>
+<div class="line added"><span class="ln">10</span><code>  unity: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],</code></div>
+<div class="line added"><span class="ln">11</span><code>  cocos: ['admob', 'google-ad-manager'],</code></div>
+<div class="line added"><span class="ln">12</span><code>};</code></div>
+<div class="line added"><span class="ln">13</span><code></code></div>
+<div class="line added"><span class="ln">14</span><code>const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager'];</code></div>
+<div class="line added"><span class="ln">15</span><code></code></div>
+<div class="line added"><span class="ln">16</span><code>const redirects = [];</code></div>
+<div class="line added"><span class="ln">17</span><code></code></div>
+<div class="line added"><span class="ln">18</span><code>for (const [platform, mediations] of Object.entries(GMA_PLATFORMS)) {</code></div>
+<div class="line added"><span class="ln">19</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">20</span><code>    source: `/guides/${platform}/custom-adapter`,</code></div>
+<div class="line added"><span class="ln">21</span><code>    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,</code></div>
+<div class="line added"><span class="ln">22</span><code>    permanent: true,</code></div>
+<div class="line added"><span class="ln">23</span><code>  });</code></div>
+<div class="line added"><span class="ln">24</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">25</span><code>    source: `/guides/${platform}/custom-adapter-gma-sdk`,</code></div>
+<div class="line added"><span class="ln">26</span><code>    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,</code></div>
+<div class="line added"><span class="ln">27</span><code>    permanent: false,</code></div>
+<div class="line added"><span class="ln">28</span><code>  });</code></div>
+<div class="line added"><span class="ln">29</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">30</span><code>    source: `/guides/${platform}/custom-adapter/overview`,</code></div>
+<div class="line added"><span class="ln">31</span><code>    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,</code></div>
+<div class="line added"><span class="ln">32</span><code>    permanent: true,</code></div>
+<div class="line added"><span class="ln">33</span><code>  });</code></div>
+<div class="line added"><span class="ln">34</span><code>  for (const mediation of mediations) {</code></div>
+<div class="line added"><span class="ln">35</span><code>    redirects.push({</code></div>
+<div class="line added"><span class="ln">36</span><code>      source: `/guides/${platform}/custom-adapter/${mediation}`,</code></div>
+<div class="line added"><span class="ln">37</span><code>      destination: `/guides/${platform}/custom-adapter-gma-sdk/${mediation}`,</code></div>
+<div class="line added"><span class="ln">38</span><code>      permanent: true,</code></div>
+<div class="line added"><span class="ln">39</span><code>    });</code></div>
+<div class="line added"><span class="ln">40</span><code>  }</code></div>
+<div class="line added"><span class="ln">41</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">42</span><code>    source: `/guides/${platform}/custom-adapter/ironsource-levelplay`,</code></div>
+<div class="line added"><span class="ln">43</span><code>    destination: `/guides/${platform}/custom-adapter-gma-sdk/levelplay`,</code></div>
+<div class="line added"><span class="ln">44</span><code>    permanent: true,</code></div>
+<div class="line added"><span class="ln">45</span><code>  });</code></div>
+<div class="line added"><span class="ln">46</span><code>}</code></div>
+<div class="line added"><span class="ln">47</span><code></code></div>
+<div class="line added"><span class="ln">48</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">49</span><code>  source: '/guides/native/custom-adapter',</code></div>
+<div class="line added"><span class="ln">50</span><code>  destination: '/guides/android/custom-adapter-gma-sdk/admob',</code></div>
+<div class="line added"><span class="ln">51</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">52</span><code>});</code></div>
+<div class="line added"><span class="ln">53</span><code></code></div>
+<div class="line added"><span class="ln">54</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">55</span><code>  source: '/guides/android/next-gen',</code></div>
+<div class="line added"><span class="ln">56</span><code>  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',</code></div>
+<div class="line added"><span class="ln">57</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">58</span><code>});</code></div>
+<div class="line added"><span class="ln">59</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">60</span><code>  source: '/guides/android/custom-adapter-gma-next-gen-sdk',</code></div>
+<div class="line added"><span class="ln">61</span><code>  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',</code></div>
+<div class="line added"><span class="ln">62</span><code>  permanent: false,</code></div>
+<div class="line added"><span class="ln">63</span><code>});</code></div>
+<div class="line added"><span class="ln">64</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">65</span><code>  source: '/guides/android/next-gen/overview',</code></div>
+<div class="line added"><span class="ln">66</span><code>  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',</code></div>
+<div class="line added"><span class="ln">67</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">68</span><code>});</code></div>
+<div class="line added"><span class="ln">69</span><code>for (const mediation of NEXTGEN_MEDIATIONS) {</code></div>
+<div class="line added"><span class="ln">70</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">71</span><code>    source: `/guides/android/next-gen/${mediation}`,</code></div>
+<div class="line added"><span class="ln">72</span><code>    destination: `/guides/android/custom-adapter-gma-next-gen-sdk/${mediation}`,</code></div>
+<div class="line added"><span class="ln">73</span><code>    permanent: true,</code></div>
+<div class="line added"><span class="ln">74</span><code>  });</code></div>
+<div class="line added"><span class="ln">75</span><code>}</code></div>
+<div class="line added"><span class="ln">76</span><code></code></div>
+<div class="line added"><span class="ln">77</span><code>for (const platform of ['unity', 'flutter', 'cocos', 'react-native']) {</code></div>
+<div class="line added"><span class="ln">78</span><code>  redirects.push({</code></div>
+<div class="line added"><span class="ln">79</span><code>    source: `/guides/${platform}/next-gen`,</code></div>
+<div class="line added"><span class="ln">80</span><code>    destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',</code></div>
+<div class="line added"><span class="ln">81</span><code>    permanent: true,</code></div>
+<div class="line added"><span class="ln">82</span><code>  });</code></div>
+<div class="line added"><span class="ln">83</span><code>}</code></div>
+<div class="line added"><span class="ln">84</span><code></code></div>
+<div class="line added"><span class="ln">85</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">86</span><code>  source: '/guides/cocos/custom-adapter/applovin',</code></div>
+<div class="line added"><span class="ln">87</span><code>  destination: '/guides/cocos/custom-adapter-gma-sdk/admob',</code></div>
+<div class="line added"><span class="ln">88</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">89</span><code>});</code></div>
+<div class="line added"><span class="ln">90</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">91</span><code>  source: '/guides/react-native/overview',</code></div>
+<div class="line added"><span class="ln">92</span><code>  destination: '/guides/react-native/custom-adapter-gma-sdk/admob',</code></div>
+<div class="line added"><span class="ln">93</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">94</span><code>});</code></div>
+<div class="line added"><span class="ln">95</span><code>redirects.push({</code></div>
+<div class="line added"><span class="ln">96</span><code>  source: '/guides/react-native/custom-adapter',</code></div>
+<div class="line added"><span class="ln">97</span><code>  destination: '/guides/react-native/custom-adapter-gma-sdk/admob',</code></div>
+<div class="line added"><span class="ln">98</span><code>  permanent: true,</code></div>
+<div class="line added"><span class="ln">99</span><code>});</code></div>
+<div class="line added"><span class="ln">100</span><code></code></div>
+<div class="line added"><span class="ln">101</span><code>console.log(JSON.stringify(redirects, null, 2));</code></div>
+<div class="line added"><span class="ln">102</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">/**
+ * Emits redirect entries for custom-adapter → custom-adapter-gma-sdk
+ * and next-gen → custom-adapter-gma-next-gen-sdk slug migration.
+ */
+const GMA_PLATFORMS = {
+  android: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  ios: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  flutter: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  'react-native': ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  unity: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  cocos: ['admob', 'google-ad-manager'],
+};
+
+const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager'];
+
+const redirects = [];
+
+for (const [platform, mediations] of Object.entries(GMA_PLATFORMS)) {
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,
+    permanent: true,
+  });
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter-gma-sdk`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,
+    permanent: false,
+  });
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter/overview`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/admob`,
+    permanent: true,
+  });
+  for (const mediation of mediations) {
+    redirects.push({
+      source: `/guides/${platform}/custom-adapter/${mediation}`,
+      destination: `/guides/${platform}/custom-adapter-gma-sdk/${mediation}`,
+      permanent: true,
+    });
+  }
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter/ironsource-levelplay`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/levelplay`,
+    permanent: true,
+  });
+}
+
+redirects.push({
+  source: '/guides/native/custom-adapter',
+  destination: '/guides/android/custom-adapter-gma-sdk/admob',
+  permanent: true,
+});
+
+redirects.push({
+  source: '/guides/android/next-gen',
+  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',
+  permanent: true,
+});
+redirects.push({
+  source: '/guides/android/custom-adapter-gma-next-gen-sdk',
+  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',
+  permanent: false,
+});
+redirects.push({
+  source: '/guides/android/next-gen/overview',
+  destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',
+  permanent: true,
+});
+for (const mediation of NEXTGEN_MEDIATIONS) {
+  redirects.push({
+    source: `/guides/android/next-gen/${mediation}`,
+    destination: `/guides/android/custom-adapter-gma-next-gen-sdk/${mediation}`,
+    permanent: true,
+  });
+}
+
+for (const platform of ['unity', 'flutter', 'cocos', 'react-native']) {
+  redirects.push({
+    source: `/guides/${platform}/next-gen`,
+    destination: '/guides/android/custom-adapter-gma-next-gen-sdk/admob',
+    permanent: true,
+  });
+}
+
+redirects.push({
+  source: '/guides/cocos/custom-adapter/applovin',
+  destination: '/guides/cocos/custom-adapter-gma-sdk/admob',
+  permanent: true,
+});
+redirects.push({
+  source: '/guides/react-native/overview',
+  destination: '/guides/react-native/custom-adapter-gma-sdk/admob',
+  permanent: true,
+});
+redirects.push({
+  source: '/guides/react-native/custom-adapter',
+  destination: '/guides/react-native/custom-adapter-gma-sdk/admob',
+  permanent: true,
+});
+
+console.log(JSON.stringify(redirects, null, 2));
+</pre>
+  </section>
+</body>
+</html>

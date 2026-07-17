@@ -1,0 +1,34 @@
+---
+title: Prerequisites
+description: What you need before you start any integration.
+---
+
+Before integrating any TapMind SDK, make sure you have:
+
+- A mediation account with the partner you're integrating (AdMob, GAM, AppLovin MAX, or Unity LevelPlay).
+- An ad unit already created in that platform - TapMind targets your existing ad units.
+- The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID key set - `com.google.android.gms.ads.APPLICATION_ID` in `AndroidManifest.xml` (Android) or `GADApplicationIdentifier` in `Info.plist` (iOS). TapMind's adapters run on top of the GMA SDK, which crashes on launch without it. Any app already serving Google ads has this set - see [Troubleshooting](/reference/troubleshooting#app-crashes-on-launch) if the app crashes on init.
+- Your TapMind values, provided by your account manager (see the split below).
+
+## What TapMind provides
+
+Your account manager provides the values below. Enter each **exactly** as given - `placementName` and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.
+
+### Static SDK values (from the Class & Network Key Registry)
+
+Same for every publisher:
+
+- **Adapter class name** (or LevelPlay network key) - exact string
+
+### Your account values (from your account manager)
+
+- **placementName** - case-sensitive, exact match
+- **eCPM / rate** - the value to configure in your waterfall
+
+<Info>
+**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class & Network Key Registry](/reference/class-network-key-registry). Your `placementName` and eCPM / rate come directly from your account manager - not the Registry.
+</Info>
+
+<Info>
+**Minimum OS:** see the [Compatibility Matrix](/reference/compatibility-matrix) for minimum Android and iOS versions per package and framework.
+</Info>

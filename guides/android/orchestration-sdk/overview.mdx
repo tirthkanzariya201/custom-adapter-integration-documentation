@@ -1,0 +1,213 @@
+---
+title: Native Android
+description: >-
+  Native Android for TapMind Orchestration SDK on Android.
+---
+
+## Overview
+
+The TapMind Orchestration SDK (Orch SDK) lets you monetize specific moments in your app - screen transitions, level completions, or any natural break in your user flow - through dedicated ad placements that run alongside your existing monetization stack.
+Orch SDK does not replace your current mediation setup; it adds incremental ad opportunities on top of it.
+
+The integration model is simple:
+
+1. **Initialize once.** After initialization, the SDK automatically preloads ads for your configured placements and keeps them cached and ready.
+2. **Trigger a placement.** At a natural break in your user flow, call the placement with a single method. If a cached ad is available, it displays immediately. If not, the SDK fetches a fresh ad and displays it once loaded.
+3. **Receive callbacks.** Your listener is notified of the full ad lifecycle - loaded, shown, clicked, dismissed, or failed.
+
+Your TapMind account manager provides your placement codes and all account-level configuration.
+
+## Requirements
+
+- **Android API level 24 (Android 7.0)** or higher at runtime.
+  Your app can keep a lower `minSdk` (e.g., 23) and will still compile; on devices below API 24, the SDK does not initialize and returns an `UNSUPPORTED_VERSION` error through the init listener.
+  Your app is unaffected on those devices.
+- **Google Play services** available on the device.
+- **Kotlin or Java** Android project using Gradle with the `mavenCentral()` repository.
+
+> **Already using AdMob?**
+> No app ID changes are needed.
+> If your `AndroidManifest.xml` already contains the `com.google.android.gms.ads.APPLICATION_ID` meta-data entry (standard for AdMob apps), leave it unchanged.
+> Orch SDK works with your existing configuration and does not require a separate app ID or ad manager account.
+> If your app does not yet have this entry, your TapMind account manager will provide the value to add.
+
+## Add the SDK
+
+Ensure `mavenCentral()` is included in your repositories, then add the dependency:
+
+```
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.github.tapmind-tech:orchestration:1.0.2")
+}
+```
+
+Sync your project.
+No ProGuard or R8 configuration is required - the SDK ships with bundled consumer rules that apply automatically.
+
+## Initialize the SDK
+
+Initialize Orch SDK once, early in your app lifecycle - typically in your Application class or in your launch Activity.
+
+> **Before you initialize:** ensure your app has written its consent signals (see [Consent & Privacy](#consent--privacy)).
+> The SDK reads consent at initialization.
+
+```
+val config = OrchConfig.Builder()
+    .testMode(BuildConfig.DEBUG)   // test ads during development - see Testing
+    .build()
+
+OrchSdk.initialize(this, config, object : OrchInitListener {
+    override fun onInitSuccess() {
+        // SDK is ready. Ad preloading begins automatically.
+    }
+
+    override fun onInitError(error: OrchError) {
+        // Initialization failed - see the Error Reference for codes.
+    }
+})
+```
+
+### What happens after initialization
+
+- The SDK automatically preloads one ad per configured placement and keeps it cached, so your first ad display is fast.
+- On devices in a low-memory state, preloading is skipped to protect app performance; ads are then fetched on demand when a placement is triggered.
+- Initialization is safe to call from any thread - the SDK moves the operation to the main thread automatically.
+- Call `initialize()` only once per app session.
+  Repeated calls after successful initialization return an error through `onInitError`.
+
+## Show an Ad
+
+Showing an ad is a single call.
+Trigger it at a natural break in your user flow - a screen transition, a level completion, or a similar user-driven moment.
+
+> **Trigger placements on user-flow events only.**
+> Do not trigger a placement on app launch or inside `onCreate()` of your first screen.
+> Full-screen ads shown without a user-initiated action can violate Google ad policies and put your app's monetization at risk.
+
+### 1. Register your ad listener
+
+Set a listener to receive ad lifecycle callbacks.
+Callbacks are delivered for the placement request initiated by the calling Activity.
+
+```
+OrchAd.setListener(object : OrchAdListener {
+    override fun onAdLoaded() {
+        // Ad is loaded and ready
+    }
+
+    override fun onAdImpression() {
+        // Ad was displayed to the user
+    }
+
+    override fun onAdClicked() {
+        // User tapped the ad
+    }
+
+    override fun onAdDismissed() {
+        // User closed the ad - resume your app flow here
+    }
+
+    override fun onAdFailedToLoad(error: OrchError) {
+        // Load failed - continue your app flow without an ad
+    }
+
+    override fun onAdFailedToShow(error: OrchError) {
+        // Display failed - continue your app flow without an ad
+    }
+})
+```
+
+### 2. Trigger the placement
+
+```
+// At a natural break in your user flow:
+OrchAd.loadAd(activity, "YOUR_PLACEMENT_CODE")
+```
+
+Use the placement code shared by your TapMind account manager.
+
+### How `loadAd()` behaves
+
+- **Cached ad available:** the ad is displayed immediately.
+- **No cached ad:** the SDK requests a fresh ad and displays it once the load completes.
+  A short delay is possible in this case; design your trigger points with this in mind.
+- **Activity parameter:** `loadAd()` requires an Activity (not a Context).
+  Calls from a background thread are automatically moved to the main thread by the SDK.
+- **Resume on dismissal:** continue your app flow in `onAdDismissed()` (and in the failure callbacks, so your flow never blocks on an ad).
+
+## Consent & Privacy
+
+Orch SDK reads the standard IABTCF consent signals your app provides and forwards them to demand partners.
+It does not collect or prompt for consent itself.
+Ensure your app writes these signals through your CMP before initializing Orch SDK, as they are read at initialization.
+Where consent signals are absent, no data is passed to demand partners for that traffic.
+
+No additional integration steps are required - once your consent management platform has written the standard IABTCF values, Orch SDK picks them up automatically.
+
+## Testing
+
+Always develop and test with test mode enabled.
+Test mode serves test ads, so you can verify your integration end to end without generating live traffic against your account.
+
+```
+val config = OrchConfig.Builder()
+    .testMode(true)
+    .build()
+```
+
+Use the same placement code shared by your TapMind account manager - no separate test code is needed.
+
+> **Never click live ads in development.**
+> Interacting with live ads during testing is treated as invalid traffic and can put your ad serving at risk.
+> Keep `testMode(true)` until release.
+
+### Verify your integration
+
+With test mode enabled, the SDK writes diagnostic logs to Logcat under the `ORCH` tag.
+Use the checks below to confirm each step:
+
+| Step | What to check | Where |
+| --- | --- | --- |
+| SDK initialized | `onInitSuccess()` fires; Logcat shows `SDK is running in TEST mode` | Init listener / Logcat (`ORCH`) |
+| Initialization failed | `onInitError(error)` fires with an error code and message | Init listener - see Error Reference |
+| Ad loaded | `onAdLoaded()` fires after triggering the placement | Ad listener |
+| Ad displayed | Test ad appears; `onAdImpression()` fires | On device / Ad listener |
+| Click tracked | `onAdClicked()` fires when the test ad is tapped | Ad listener |
+| Ad dismissed | `onAdDismissed()` fires; your app flow resumes | Ad listener |
+| Load failed | `onAdFailedToLoad(error)` fires with an error code | Ad listener - see Error Reference |
+
+## Error Reference
+
+Errors are delivered as `OrchError` objects through the init and ad listeners.
+Each error carries a code and a descriptive message.
+
+| Code | Name | Meaning | Recommended action |
+| --- | --- | --- | --- |
+| `1001` | `SDK_NOT_INITIALIZED` | The SDK is not in a ready state for the requested operation. | Ensure `initialize()` completed successfully before triggering placements, and initialize only once per session. |
+| `1002` | `INVALID_PLACEMENT` | The placement code is not recognized. | Verify the placement code with your TapMind account manager. |
+| `1003` | `NO_NETWORK` | No usable network connection was available. | Retry when connectivity is restored; your app flow should continue without an ad. |
+| `1004` | `CONFIG_ERROR` | The SDK could not retrieve or apply its configuration. | Retry later; if persistent, contact your account manager. |
+| `1005` | `NO_FILL` | No ad was available for this request. | No action needed - continue your app flow. Fill varies by geography and time. |
+| `1006` | `AD_EXPIRED` | A cached ad expired before it could be shown. | No action needed - the SDK manages refresh automatically. |
+| `1007` | `UNSUPPORTED_VERSION` | The device is running an Android version below API 24. | No action needed - the SDK safely stays inactive on unsupported devices. |
+| `1008` | `PLAY_SERVICE_MISSING` | Google Play services is unavailable or misconfigured on the device. | No action needed for your integration; ads are unavailable on this device. |
+| `1009` | `PKG_MISSING` | The application package name could not be resolved. | Verify your app's package configuration; contact support if persistent. |
+| `1010` | `SDK_INITIALIZED` | The SDK is already initialized and active. There is no need to initialize it again. | No action is required. You can immediately proceed to use the SDK and load ads. |
+
+## Go Live Checklist
+
+1. **Disable test mode.** Set `testMode(false)` (or tie it to `BuildConfig.DEBUG`) before building your release.
+2. **Publish your app-ads.txt entries.** Add the entries shared by your TapMind account manager to the app-ads.txt file on your developer website.
+   Missing entries reduce the demand available to your placements.
+3. **Verify one live placement.** Confirm your placement triggers correctly in the release build and that lifecycle callbacks fire as expected.
+4. **Release.**
+
+## Support
+
+Your TapMind account manager is your single point of contact for all queries - placement codes, app-ads.txt entries, account configuration, technical integration questions, and go-live assistance.
+
+For technical issues, share your SDK version, a description of the issue, and relevant Logcat output under the `ORCH` tag with your account manager to help resolve it faster.

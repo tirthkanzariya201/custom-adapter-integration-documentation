@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: guides/android/custom-adapter-gma-next-gen-sdk/admob.mdx</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>guides/android/custom-adapter-gma-next-gen-sdk/admob.mdx</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>---</code></div>
+<div class="line added"><span class="ln">2</span><code>title: AdMob</code></div>
+<div class="line added"><span class="ln">3</span><code>description: &gt;-</code></div>
+<div class="line added"><span class="ln">4</span><code>  AdMob Android guide for Custom Adapter (GMA Next-Gen SDK).</code></div>
+<div class="line added"><span class="ln">5</span><code>---</code></div>
+<div class="line added"><span class="ln">6</span><code></code></div>
+<div class="line added"><span class="ln">7</span><code>## Prerequisites</code></div>
+<div class="line added"><span class="ln">8</span><code></code></div>
+<div class="line added"><span class="ln">9</span><code>*Performed by: Developer*</code></div>
+<div class="line added"><span class="ln">10</span><code></code></div>
+<div class="line added"><span class="ln">11</span><code>**App prerequisites**</code></div>
+<div class="line added"><span class="ln">12</span><code></code></div>
+<div class="line added"><span class="ln">13</span><code>* minSdkVersion of **23** or higher</code></div>
+<div class="line added"><span class="ln">14</span><code>* compileSdkVersion of 36 or higher</code></div>
+<div class="line added"><span class="ln">15</span><code>* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)</code></div>
+<div class="line added"><span class="ln">16</span><code>* An ad unit must already be in place which will be used for targeting</code></div>
+<div class="line added"><span class="ln">17</span><code></code></div>
+<div class="line added"><span class="ln">18</span><code>**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.</code></div>
+<div class="line added"><span class="ln">19</span><code></code></div>
+<div class="line added"><span class="ln">20</span><code>## Install the SDK</code></div>
+<div class="line added"><span class="ln">21</span><code></code></div>
+<div class="line added"><span class="ln">22</span><code>*Performed by: Developer*</code></div>
+<div class="line added"><span class="ln">23</span><code></code></div>
+<div class="line added"><span class="ln">24</span><code>Ensure your `android/build.gradle` (project-level) includes the required repositories:</code></div>
+<div class="line added"><span class="ln">25</span><code></code></div>
+<div class="line added"><span class="ln">26</span><code>```</code></div>
+<div class="line added"><span class="ln">27</span><code>allprojects {</code></div>
+<div class="line added"><span class="ln">28</span><code>    repositories {</code></div>
+<div class="line added"><span class="ln">29</span><code>        google()</code></div>
+<div class="line added"><span class="ln">30</span><code>        mavenCentral()</code></div>
+<div class="line added"><span class="ln">31</span><code>        maven { url 'https://jitpack.io' }</code></div>
+<div class="line added"><span class="ln">32</span><code>    }</code></div>
+<div class="line added"><span class="ln">33</span><code>}</code></div>
+<div class="line added"><span class="ln">34</span><code>```</code></div>
+<div class="line added"><span class="ln">35</span><code></code></div>
+<div class="line added"><span class="ln">36</span><code>**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.</code></div>
+<div class="line added"><span class="ln">37</span><code></code></div>
+<div class="line added"><span class="ln">38</span><code>Open the `build.gradle` (Module: app) file and add:</code></div>
+<div class="line added"><span class="ln">39</span><code></code></div>
+<div class="line added"><span class="ln">40</span><code>```</code></div>
+<div class="line added"><span class="ln">41</span><code>dependencies {</code></div>
+<div class="line added"><span class="ln">42</span><code>    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1")</code></div>
+<div class="line added"><span class="ln">43</span><code>    implementation("com.google.android.gms:play-services-ads:25.0.0")</code></div>
+<div class="line added"><span class="ln">44</span><code>}</code></div>
+<div class="line added"><span class="ln">45</span><code>```</code></div>
+<div class="line added"><span class="ln">46</span><code></code></div>
+<div class="line added"><span class="ln">47</span><code>## Configure your app</code></div>
+<div class="line added"><span class="ln">48</span><code></code></div>
+<div class="line added"><span class="ln">49</span><code>*Performed by: Developer*</code></div>
+<div class="line added"><span class="ln">50</span><code></code></div>
+<div class="line added"><span class="ln">51</span><code>Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.</code></div>
+<div class="line added"><span class="ln">52</span><code></code></div>
+<div class="line added"><span class="ln">53</span><code>```</code></div>
+<div class="line added"><span class="ln">54</span><code>&lt;manifest&gt;</code></div>
+<div class="line added"><span class="ln">55</span><code>  &lt;application&gt;</code></div>
+<div class="line added"><span class="ln">56</span><code>    &lt;!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 --&gt;</code></div>
+<div class="line added"><span class="ln">57</span><code>    &lt;meta-data</code></div>
+<div class="line added"><span class="ln">58</span><code>        android:name="com.google.android.gms.ads.APPLICATION_ID"</code></div>
+<div class="line added"><span class="ln">59</span><code>        android:value="YOUR_ADMOB_APP_ID"/&gt;</code></div>
+<div class="line added"><span class="ln">60</span><code>  &lt;/application&gt;</code></div>
+<div class="line added"><span class="ln">61</span><code>&lt;/manifest&gt;</code></div>
+<div class="line added"><span class="ln">62</span><code>```</code></div>
+<div class="line added"><span class="ln">63</span><code></code></div>
+<div class="line added"><span class="ln">64</span><code>Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.</code></div>
+<div class="line added"><span class="ln">65</span><code></code></div>
+<div class="line added"><span class="ln">66</span><code>## Configure AdMob</code></div>
+<div class="line added"><span class="ln">67</span><code></code></div>
+<div class="line added"><span class="ln">68</span><code>*Performed by: Ad ops*</code></div>
+<div class="line added"><span class="ln">69</span><code></code></div>
+<div class="line added"><span class="ln">70</span><code>**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.</code></div>
+<div class="line added"><span class="ln">71</span><code></code></div>
+<div class="line added"><span class="ln">72</span><code>**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:</code></div>
+<div class="line added"><span class="ln">73</span><code></code></div>
+<div class="line added"><span class="ln">74</span><code>```</code></div>
+<div class="line added"><span class="ln">75</span><code>Mapping name : provided by your account manager</code></div>
+<div class="line added"><span class="ln">76</span><code>eCPM         : provided by your account manager</code></div>
+<div class="line added"><span class="ln">77</span><code>Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter</code></div>
+<div class="line added"><span class="ln">78</span><code>Parameter    : {"placementName": "provided by your account manager"}</code></div>
+<div class="line added"><span class="ln">79</span><code>```</code></div>
+<div class="line added"><span class="ln">80</span><code></code></div>
+<div class="line added"><span class="ln">81</span><code>&gt; The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.</code></div>
+<div class="line added"><span class="ln">82</span><code></code></div>
+<div class="line added"><span class="ln">83</span><code>**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)</code></div>
+<div class="line added"><span class="ln">84</span><code></code></div>
+<div class="line added"><span class="ln">85</span><code>## Verify integration</code></div>
+<div class="line added"><span class="ln">86</span><code></code></div>
+<div class="line added"><span class="ln">87</span><code>*Performed by: Developer*</code></div>
+<div class="line added"><span class="ln">88</span><code></code></div>
+<div class="line added"><span class="ln">89</span><code>After install and dashboard configuration:</code></div>
+<div class="line added"><span class="ln">90</span><code></code></div>
+<div class="line added"><span class="ln">91</span><code>1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.</code></div>
+<div class="line added"><span class="ln">92</span><code>2. Request an ad through your mediation SDK as you normally would.</code></div>
+<div class="line added"><span class="ln">93</span><code>3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.</code></div>
+<div class="line added"><span class="ln">94</span><code>4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.</code></div>
+<div class="line added"><span class="ln">95</span><code></code></div>
+<div class="line added"><span class="ln">96</span><code>**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.</code></div>
+<div class="line added"><span class="ln">97</span><code></code></div>
+<div class="line added"><span class="ln">98</span><code>**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.</code></div>
+<div class="line added"><span class="ln">99</span><code></code></div>
+<div class="line added"><span class="ln">100</span><code>## Troubleshooting</code></div>
+<div class="line added"><span class="ln">101</span><code></code></div>
+<div class="line added"><span class="ln">102</span><code>*Performed by: Developer*</code></div>
+<div class="line added"><span class="ln">103</span><code></code></div>
+<div class="line added"><span class="ln">104</span><code>Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.</code></div>
+<div class="line added"><span class="ln">105</span><code></code></div>
+<div class="line added"><span class="ln">106</span><code>See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.</code></div>
+<div class="line added"><span class="ln">107</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">---
+title: AdMob
+description: &gt;-
+  AdMob Android guide for Custom Adapter (GMA Next-Gen SDK).
+---
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** or higher
+* compileSdkVersion of 36 or higher
+* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
+* An ad unit must already be in place which will be used for targeting
+
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+## Configure your app
+
+*Performed by: Developer*
+
+Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
+
+```
+&lt;manifest&gt;
+  &lt;application&gt;
+    &lt;!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 --&gt;
+    &lt;meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="YOUR_ADMOB_APP_ID"/&gt;
+  &lt;/application&gt;
+&lt;/manifest&gt;
+```
+
+Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+
+**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
+Parameter    : {"placementName": "provided by your account manager"}
+```
+
+&gt; The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class &amp; Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+</pre>
+  </section>
+</body>
+</html>

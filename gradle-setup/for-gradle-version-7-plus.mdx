@@ -1,0 +1,25 @@
+---
+title: Gradle Setup (For Gradle Version 7+)
+description: Repository configuration for Android-based integrations on Gradle 7 and above.
+---
+
+On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:
+
+<div class="gradle-code-compact">
+
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+</div>
+
+**Important:** Remove any `allprojects { repositories { … } }` block from your root `build.gradle` when using this pattern. With `FAIL_ON_PROJECT_REPOS`, leaving `allprojects` repositories in place causes a Gradle error.
+
+For projects that still use the legacy `allprojects` pattern, see the repository block on individual mediation pages - use **one** approach, not both.

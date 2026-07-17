@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 1 snippet rollout — runbook for Tirth</title>
+<style>
+  :root{--ink:#16181d;--mut:#5b616e;--line:#e2e4e9;--ok:#15803d;--warn:#b45309;--step:#2563a0;--bg:#fbfbfc;}
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;max-width:860px;margin:32px auto;padding:0 20px;color:var(--ink);line-height:1.5;background:var(--bg);}
+  h1{font-size:19px;margin-bottom:2px;}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:16px;}
+  h2{font-size:14px;margin:24px 0 8px;border-bottom:2px solid var(--ink);padding-bottom:5px;}
+  code{background:#eef0f3;padding:1px 5px;border-radius:3px;font-family:"SF Mono",Consolas,monospace;font-size:12px;}
+  pre{background:#16181d;color:#e6e6e6;padding:11px 13px;border-radius:6px;overflow-x:auto;font-size:12px;line-height:1.5;margin:8px 0;}
+  ol{margin:6px 0;padding-left:22px;} li{margin:6px 0;font-size:13.5px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0;background:#fff;}
+  th{text-align:left;padding:7px 10px;background:#f4f4f6;border:1px solid var(--line);font-size:11.5px;}
+  td{padding:7px 10px;border:1px solid var(--line);vertical-align:top;}
+  .box{background:#fff;border:1px solid var(--line);border-left:3px solid var(--step);border-radius:5px;padding:11px 14px;margin:10px 0;font-size:13px;}
+  .box.ok{border-left-color:var(--ok);} .box.warn{border-left-color:var(--warn);}
+  .note{font-size:12px;color:var(--mut);}
+  .verified{font-size:11px;font-weight:700;color:var(--ok);}
+</style>
+</head>
+<body>
+
+<h1>Phase 1 — Snippet rollout runbook</h1>
+<div class="sub">For Tirth · Scope: 5 pure-prose blocks, no variables · Goal: kill the highest-duplication drift with near-zero risk</div>
+
+<div class="box ok">
+<span class="verified">VERIFIED (JamDesk docs)</span> — Snippets live in <code>/snippets/*.mdx</code> and are inserted with <code>&lt;Snippet file="name.mdx" /&gt;</code>. Pages are MDX; nav is in <code>docs.json</code>. Deploy is <code>jamdesk validate</code> → <code>jamdesk deploy</code> (your confirmed manual workflow — git push alone doesn't publish for your project).
+</div>
+
+<h2>Golden rule: pilot one, then scale</h2>
+<p style="font-size:13.5px">Prove the mechanism on <strong>one snippet, one page</strong> and deploy it before touching 30 pages. If the pilot renders correctly live, the pattern is safe to repeat mechanically.</p>
+
+<h2>The repeatable procedure (per snippet)</h2>
+<ol>
+<li><strong>Create the snippet file.</strong> Add <code>snippets/&lt;name&gt;.mdx</code> containing only the canonical block (no <code>title</code>/<code>description</code> frontmatter — snippets are fragments, not pages).</li>
+<li><strong>Replace one inline copy.</strong> On the pilot page, delete the inline block and insert <code>&lt;Snippet file="&lt;name&gt;.mdx" /&gt;</code> in its place.</li>
+<li><strong>Validate:</strong> run <code>jamdesk validate</code> — catches broken references and MDX errors before deploy.</li>
+<li><strong>Deploy &amp; eyeball:</strong> <code>jamdesk deploy</code>, then open the live pilot page and confirm the block renders identically to before.</li>
+<li><strong>Scale:</strong> once confirmed, repeat step 2 (delete inline → insert the same <code>&lt;Snippet&gt;</code> tag) on every other page carrying that block. Validate, deploy.</li>
+</ol>
+
+<h2>The 5 Phase-1 snippets — order by ROI × safety</h2>
+<table>
+<thead><tr><th>#</th><th>Snippet file</th><th>Replaces on</th><th>~Pages</th></tr></thead>
+<tbody>
+<tr><td>0</td><td><code>placementname-callout.mdx</code> <em>(pilot)</em></td><td>AdMob, GAM, AppLovin — all frameworks (not LevelPlay)</td><td>~18</td></tr>
+<tr><td>1</td><td><code>troubleshooting-link.mdx</code></td><td>Every mediation page (replaces the inline table — the biggest duplication)</td><td>~30</td></tr>
+<tr><td>2</td><td><code>skadnetwork-items.mdx</code></td><td>All iOS pages (long, identical list)</td><td>~4</td></tr>
+<tr><td>3</td><td><code>verify-integration.mdx</code> (test-mode note)</td><td>All GMA mediation pages</td><td>~22</td></tr>
+<tr><td>4</td><td><code>gradle-repositories.mdx</code></td><td>Android pages <strong>only if duplicated</strong> — verify first (may already be centralized on the Gradle Setup page)</td><td>TBD</td></tr>
+</tbody>
+</table>
+<p class="note">Counts are approximate — confirm against the repo. Use <code>placementname-callout</code> as the pilot (#0): it's a single clean line, lowest risk to prove the pattern. Then do <code>troubleshooting-link</code> first for real ROI, since it also completes the inline-table removal you already decided on.</p>
+
+<h2>Worked example — the pilot snippet</h2>
+<p style="font-size:13px;margin-bottom:2px"><code>snippets/placementname-callout.mdx</code>:</p>
+<pre>The `placementName` value is **case-sensitive** and must exactly
+match the Placement Name configured in the TapMind Dashboard.</pre>
+<p style="font-size:13px;margin-bottom:2px">On each page, replace the inline callout with:</p>
+<pre>&lt;Snippet file="placementname-callout.mdx" /&gt;</pre>
+
+<h2 style="color:var(--warn)">Verify before you start (don't assume)</h2>
+<div class="box warn">
+<ul style="margin:0;padding-left:18px">
+<li><strong>Is <code>&lt;Snippet&gt;</code> globally available</strong> or does it need an import line at the top of each MDX file? Confirm on the pilot page — if the pilot renders without an import, it's global.</li>
+<li><strong>Exact local-preview command.</strong> I know <code>jamdesk validate</code> and <code>jamdesk deploy</code> are real; I'm not certain of the local live-preview command — check <code>jamdesk --help</code> so Tirth can preview before deploying rather than eyeballing production.</li>
+<li><strong>Gradle block (#4):</strong> confirm it's actually duplicated on Android pages vs already linked to the Gradle Setup page. If it's already a link, skip it — it's done.</li>
+</ul>
+</div>
+
+<h2 style="color:var(--ok)">Most cost-effective way to run the bulk edits</h2>
+<div class="box ok">
+Don't do the ~30-page find-and-replace by hand, and don't run it through the chat interface (expensive, slow). <span class="verified">VERIFIED:</span> JamDesk supports <strong>Claude Code with an MCP connection + a <code>CLAUDE.md</code></strong> that reads your whole repo. Point Claude Code at the repo and have it (a) extract each block into <code>/snippets</code>, (b) replace every inline copy with the <code>&lt;Snippet&gt;</code> tag, and (c) run its drift-detection to confirm no page diverged. Full repo context, one session, far lower compute than manual or chat. Tirth reviews the diff and runs <code>jamdesk validate</code> / <code>deploy</code>. Keep a human on the deploy step.
+</div>
+
+<h2>Phase 1 done = definition</h2>
+<p style="font-size:13px">All 5 blocks exist once in <code>/snippets</code>; every page references them; <code>jamdesk validate</code> passes; a spot-check of one page per framework renders correctly. Then — the gate: agree that any future edit to these blocks happens in the snippet, never inline, or the drift comes back.</p>
+
+<p class="note">Not in Phase 1: values (class strings, keys, versions). Those are Phase 2 <em>data-reference</em>, and I'm not certain JamDesk snippets accept props/variables the way Mintlify-style platforms do — verify JamDesk's variables mechanism before scoping Phase 2. Phase 1 needs none of that.</p>
+
+</body>
+</html>

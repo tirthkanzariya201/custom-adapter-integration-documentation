@@ -1,0 +1,36 @@
+---
+title: How TapMind custom adapters work
+description: The mental model that makes every integration page make sense.
+---
+
+The one idea to hold onto: with the Custom Adapter SDKs, you do not call TapMind directly. You integrate your mediation SDK exactly as you normally would, and TapMind rides inside it as a custom network. Your mediation platform loads the TapMind adapter and asks it for an ad whenever TapMind's line item is eligible.
+
+## The request flow
+
+Your app → Mediation SDK (AdMob / MAX / LevelPlay / GAM)
+
+→ picks TapMind from the waterfall
+
+→ loads the TapMind adapter class
+
+→ TapMind backend returns an ad
+
+→ ad renders in your app
+
+## What this means in practice
+
+- You add TapMind in two places: a dependency in your build, and a custom-event/custom-network entry in your mediation dashboard.
+- After that, you request ads through your mediation SDK's normal API - there is no separate TapMind "load ad" call (the Orchestration SDK is the exception; it has its own API).
+- TapMind only serves when your waterfall reaches its line item, at the eCPM you configure.
+
+## Key terms
+
+| Term | Meaning |
+|------|---------|
+| Custom event / custom network | The mechanism your mediation platform uses to call a third-party adapter like TapMind. |
+| Class name | The exact adapter class your mediation dashboard loads. Must match the published SDK exactly. |
+| placementName | A per-placement identifier you enter in the dashboard. Provided by your account manager. Case-sensitive, exact-match. |
+| Network key | A per-account key that identifies TapMind in Unity LevelPlay. |
+| eCPM / rate | The manual price that sets TapMind's position in your waterfall. |
+
+**Note:** This page is the prerequisite mental model for every integration page. If an ad isn't serving, 90% of the time it traces back to one of the five values above not matching exactly.

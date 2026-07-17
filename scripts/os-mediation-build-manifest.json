@@ -1,0 +1,46 @@
+[
+  {
+    "productKey": "custom-adapter-gma-sdk",
+    "os": "android",
+    "mediations": [
+      "admob",
+      "google-ad-manager",
+      "applovin",
+      "levelplay"
+    ],
+    "generated": [
+      "guides/android/custom-adapter-gma-sdk/admob.mdx",
+      "guides/android/custom-adapter-gma-sdk/google-ad-manager.mdx",
+      "guides/android/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/android/custom-adapter-gma-sdk/levelplay.mdx"
+    ]
+  },
+  {
+    "productKey": "custom-adapter-gma-next-gen-sdk",
+    "os": "android",
+    "mediations": [
+      "admob",
+      "google-ad-manager"
+    ],
+    "generated": [
+      "guides/android/custom-adapter-gma-next-gen-sdk/admob.mdx",
+      "guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager.mdx"
+    ]
+  },
+  {
+    "productKey": "custom-adapter-gma-sdk",
+    "os": "ios",
+    "mediations": [
+      "admob",
+      "google-ad-manager",
+      "applovin",
+      "levelplay"
+    ],
+    "generated": [
+      "guides/ios/custom-adapter-gma-sdk/admob.mdx",
+      "guides/ios/custom-adapter-gma-sdk/google-ad-manager.mdx",
+      "guides/ios/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/ios/custom-adapter-gma-sdk/levelplay.mdx"
+    ]
+  }
+]

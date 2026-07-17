@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: reference/compatibility-matrix.mdx</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>reference/compatibility-matrix.mdx</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>---</code></div>
+<div class="line added"><span class="ln">2</span><code>title: Compatibility Matrix</code></div>
+<div class="line added"><span class="ln">3</span><code>description: Minimum OS versions and SDK compatibility per published package.</code></div>
+<div class="line added"><span class="ln">4</span><code>---</code></div>
+<div class="line added"><span class="ln">5</span><code></code></div>
+<div class="line added"><span class="ln">6</span><code>Use this page to confirm your app meets minimum OS requirements and dependency versions before integrating.</code></div>
+<div class="line added"><span class="ln">7</span><code></code></div>
+<div class="line added"><span class="ln">8</span><code>## Package compatibility</code></div>
+<div class="line added"><span class="ln">9</span><code></code></div>
+<div class="line added"><span class="ln">10</span><code>| TapMind package | Required GMA SDK | Min Android | Min iOS |</code></div>
+<div class="line added"><span class="ln">11</span><code>|-----------------|------------------|-------------|---------|</code></div>
+<div class="line added"><span class="ln">12</span><code>| AdMob Adapter | 25.0.0 | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |</code></div>
+<div class="line added"><span class="ln">13</span><code>| GAM Adapter | 25.0.0 | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |</code></div>
+<div class="line added"><span class="ln">14</span><code>| AppLovin Adapter | Compatible resolution (wrappers) | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |</code></div>
+<div class="line added"><span class="ln">15</span><code>| Unity LevelPlay Adapter | Compatible resolution (wrappers) | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |</code></div>
+<div class="line added"><span class="ln">16</span><code>| AdMob Adapter (GMA Next-Gen) | 25.0.0 | 23 | n/a |</code></div>
+<div class="line added"><span class="ln">17</span><code>| GAM Adapter (GMA Next-Gen) | 25.0.0 | 23 | n/a |</code></div>
+<div class="line added"><span class="ln">18</span><code>| Orchestration SDK | - | 24 | n/a |</code></div>
+<div class="line added"><span class="ln">19</span><code></code></div>
+<div class="line added"><span class="ln">20</span><code>AdMob and GAM adapters require GMA SDK **25.0.0** on Android. Confirm current minimums with your account manager before upgrading.</code></div>
+<div class="line added"><span class="ln">21</span><code></code></div>
+<div class="line added"><span class="ln">22</span><code>## Custom adapter classes</code></div>
+<div class="line added"><span class="ln">23</span><code></code></div>
+<div class="line added"><span class="ln">24</span><code>Copy class strings **exactly** from the blocks below or from the full [Class &amp; Network Key Registry](/reference/class-network-key-registry).</code></div>
+<div class="line added"><span class="ln">25</span><code></code></div>
+<div class="line added"><span class="ln">26</span><code>**Native · AdMob · Android**</code></div>
+<div class="line added"><span class="ln">27</span><code></code></div>
+<div class="line added"><span class="ln">28</span><code>```</code></div>
+<div class="line added"><span class="ln">29</span><code>com.tapmind.tech.TapMindMediationAdapterAdmob</code></div>
+<div class="line added"><span class="ln">30</span><code>```</code></div>
+<div class="line added"><span class="ln">31</span><code></code></div>
+<div class="line added"><span class="ln">32</span><code>**Native · AdMob · iOS**</code></div>
+<div class="line added"><span class="ln">33</span><code></code></div>
+<div class="line added"><span class="ln">34</span><code>```</code></div>
+<div class="line added"><span class="ln">35</span><code>TapMindMediationAdapterAdmob</code></div>
+<div class="line added"><span class="ln">36</span><code>```</code></div>
+<div class="line added"><span class="ln">37</span><code></code></div>
+<div class="line added"><span class="ln">38</span><code>**Native · Google Ad Manager · Android**</code></div>
+<div class="line added"><span class="ln">39</span><code></code></div>
+<div class="line added"><span class="ln">40</span><code>```</code></div>
+<div class="line added"><span class="ln">41</span><code>com.tapmind.tech.TapMindMediationAdapterGAM</code></div>
+<div class="line added"><span class="ln">42</span><code>```</code></div>
+<div class="line added"><span class="ln">43</span><code></code></div>
+<div class="line added"><span class="ln">44</span><code>**Native · Google Ad Manager · iOS**</code></div>
+<div class="line added"><span class="ln">45</span><code></code></div>
+<div class="line added"><span class="ln">46</span><code>```</code></div>
+<div class="line added"><span class="ln">47</span><code>TapMindMediationAdapterGAM</code></div>
+<div class="line added"><span class="ln">48</span><code>```</code></div>
+<div class="line added"><span class="ln">49</span><code></code></div>
+<div class="line added"><span class="ln">50</span><code>**Native · AppLovin · Android**</code></div>
+<div class="line added"><span class="ln">51</span><code></code></div>
+<div class="line added"><span class="ln">52</span><code>```</code></div>
+<div class="line added"><span class="ln">53</span><code>com.tapmind.tech.TapMindMediationAdapterApplovin</code></div>
+<div class="line added"><span class="ln">54</span><code>```</code></div>
+<div class="line added"><span class="ln">55</span><code></code></div>
+<div class="line added"><span class="ln">56</span><code>**Native · AppLovin · iOS**</code></div>
+<div class="line added"><span class="ln">57</span><code></code></div>
+<div class="line added"><span class="ln">58</span><code>```</code></div>
+<div class="line added"><span class="ln">59</span><code>TapMindMediationAdapterApplovin</code></div>
+<div class="line added"><span class="ln">60</span><code>```</code></div>
+<div class="line added"><span class="ln">61</span><code></code></div>
+<div class="line added"><span class="ln">62</span><code>**Unity LevelPlay · network key (all platforms)**</code></div>
+<div class="line added"><span class="ln">63</span><code></code></div>
+<div class="line added"><span class="ln">64</span><code>```</code></div>
+<div class="line added"><span class="ln">65</span><code>15c11cb1d</code></div>
+<div class="line added"><span class="ln">66</span><code>```</code></div>
+<div class="line added"><span class="ln">67</span><code></code></div>
+<div class="line added"><span class="ln">68</span><code>**GMA Next-Gen · AdMob · Android**</code></div>
+<div class="line added"><span class="ln">69</span><code></code></div>
+<div class="line added"><span class="ln">70</span><code>```</code></div>
+<div class="line added"><span class="ln">71</span><code>com.tapmind.mediation.ng.TapMindAdmobAdapter</code></div>
+<div class="line added"><span class="ln">72</span><code>```</code></div>
+<div class="line added"><span class="ln">73</span><code></code></div>
+<div class="line added"><span class="ln">74</span><code>**GMA Next-Gen · Google Ad Manager · Android**</code></div>
+<div class="line added"><span class="ln">75</span><code></code></div>
+<div class="line added"><span class="ln">76</span><code>```</code></div>
+<div class="line added"><span class="ln">77</span><code>com.tapmind.mediation.ng.TapMindGamAdapter</code></div>
+<div class="line added"><span class="ln">78</span><code>```</code></div>
+<div class="line added"><span class="ln">79</span><code></code></div>
+<div class="line added"><span class="ln">80</span><code>## Framework notes</code></div>
+<div class="line added"><span class="ln">81</span><code></code></div>
+<div class="line added"><span class="ln">82</span><code>| Framework | Min Android | Min iOS | Notes |</code></div>
+<div class="line added"><span class="ln">83</span><code>|-----------|-------------|---------|-------|</code></div>
+<div class="line added"><span class="ln">84</span><code>| Native Android | 23 | - | compileSdk 36 recommended |</code></div>
+<div class="line added"><span class="ln">85</span><code>| Native iOS | - | 12.0 | |</code></div>
+<div class="line added"><span class="ln">86</span><code>| Flutter | 24 | 15.0 (`platform :ios, '15.0'`) | Requires `google_mobile_ads` |</code></div>
+<div class="line added"><span class="ln">87</span><code>| React Native | 24 | 15.0 | Requires `react-native-google-mobile-ads` |</code></div>
+<div class="line added"><span class="ln">88</span><code>| Unity | 23 | 12.0 | GMA Unity plugin required; post-processing script adds native dependencies |</code></div>
+<div class="line added"><span class="ln">89</span><code>| Cocos | 25 | 18.0 | Extension ZIP install |</code></div>
+<div class="line added"><span class="ln">90</span><code></code></div>
+<div class="line added"><span class="ln">91</span><code>Contact your account manager if you need confirmation for a specific package version before upgrading.</code></div>
+<div class="line added"><span class="ln">92</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">---
+title: Compatibility Matrix
+description: Minimum OS versions and SDK compatibility per published package.
+---
+
+Use this page to confirm your app meets minimum OS requirements and dependency versions before integrating.
+
+## Package compatibility
+
+| TapMind package | Required GMA SDK | Min Android | Min iOS |
+|-----------------|------------------|-------------|---------|
+| AdMob Adapter | 25.0.0 | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| GAM Adapter | 25.0.0 | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| AppLovin Adapter | Compatible resolution (wrappers) | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| Unity LevelPlay Adapter | Compatible resolution (wrappers) | 23 (native), 24 (Flutter/RN) | 12.0 (native), 15.0 (Flutter/RN) |
+| AdMob Adapter (GMA Next-Gen) | 25.0.0 | 23 | n/a |
+| GAM Adapter (GMA Next-Gen) | 25.0.0 | 23 | n/a |
+| Orchestration SDK | - | 24 | n/a |
+
+AdMob and GAM adapters require GMA SDK **25.0.0** on Android. Confirm current minimums with your account manager before upgrading.
+
+## Custom adapter classes
+
+Copy class strings **exactly** from the blocks below or from the full [Class &amp; Network Key Registry](/reference/class-network-key-registry).
+
+**Native · AdMob · Android**
+
+```
+com.tapmind.tech.TapMindMediationAdapterAdmob
+```
+
+**Native · AdMob · iOS**
+
+```
+TapMindMediationAdapterAdmob
+```
+
+**Native · Google Ad Manager · Android**
+
+```
+com.tapmind.tech.TapMindMediationAdapterGAM
+```
+
+**Native · Google Ad Manager · iOS**
+
+```
+TapMindMediationAdapterGAM
+```
+
+**Native · AppLovin · Android**
+
+```
+com.tapmind.tech.TapMindMediationAdapterApplovin
+```
+
+**Native · AppLovin · iOS**
+
+```
+TapMindMediationAdapterApplovin
+```
+
+**Unity LevelPlay · network key (all platforms)**
+
+```
+15c11cb1d
+```
+
+**GMA Next-Gen · AdMob · Android**
+
+```
+com.tapmind.mediation.ng.TapMindAdmobAdapter
+```
+
+**GMA Next-Gen · Google Ad Manager · Android**
+
+```
+com.tapmind.mediation.ng.TapMindGamAdapter
+```
+
+## Framework notes
+
+| Framework | Min Android | Min iOS | Notes |
+|-----------|-------------|---------|-------|
+| Native Android | 23 | - | compileSdk 36 recommended |
+| Native iOS | - | 12.0 | |
+| Flutter | 24 | 15.0 (`platform :ios, '15.0'`) | Requires `google_mobile_ads` |
+| React Native | 24 | 15.0 | Requires `react-native-google-mobile-ads` |
+| Unity | 23 | 12.0 | GMA Unity plugin required; post-processing script adds native dependencies |
+| Cocos | 25 | 18.0 | Extension ZIP install |
+
+Contact your account manager if you need confirmation for a specific package version before upgrading.
+</pre>
+  </section>
+</body>
+</html>

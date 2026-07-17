@@ -1,0 +1,61 @@
+{
+  "baseUrl": "https://tapminds.gitbook.io/orchestration-sdk-integration",
+  "pages": [
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration",
+      "rel": "overview",
+      "file": "orchestration-sdk-integration\\overview.mdx",
+      "ok": true,
+      "title": "Page Not Found"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine.mdx",
+      "ok": true,
+      "title": "Native-Android Engine"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/requirements-and-setup",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/requirements-and-setup",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\requirements-and-setup.mdx",
+      "ok": true,
+      "title": "Requirements & Setup"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/initialize-the-sdk",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/initialize-the-sdk",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\initialize-the-sdk.mdx",
+      "ok": true,
+      "title": "Initialize the SDK"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/load-and-show-ads",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/load-and-show-ads",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\load-and-show-ads.mdx",
+      "ok": true,
+      "title": "Load & Show Ads"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/privacy-and-consent",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/privacy-and-consent",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\privacy-and-consent.mdx",
+      "ok": true,
+      "title": "Privacy & Consent"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/error-reference",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/error-reference",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\error-reference.mdx",
+      "ok": true,
+      "title": "Error Reference"
+    },
+    {
+      "loc": "https://tapminds.gitbook.io/orchestration-sdk-integration/tapmind-orchestration-sdk-integration/native-android-engine/support",
+      "rel": "tapmind-orchestration-sdk-integration/native-android-engine/support",
+      "file": "orchestration-sdk-integration\\tapmind-orchestration-sdk-integration\\native-android-engine\\support.mdx",
+      "ok": true,
+      "title": "Support"
+    }
+  ]
+}

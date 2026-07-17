@@ -1,0 +1,64 @@
+---
+title: Requirements & Setup
+description: >-
+  Requirements & Setup for TapMind Orchestration SDK on Android.
+---
+
+### Prerequisites
+
+Before integrating the Orchestration SDK, ensure your app meets the following requirements:
+
+* Android API Level: 24 (Android 7.0) or higher
+* Google Play Services: Available and updated on the targeted device
+
+---
+
+### Add Orchestration SDK
+
+Add the Orchestration SDK dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```
+dependencies {
+ implementation("io.github.tapmind-tech:orchestration:1.0.0")
+}
+```
+
+> **Note:**
+> After adding this dependencies, make sure to sync your project with Gradle files.
+
+---
+
+### Required Dependencies
+
+The Orchestration use the following core dependencies inside the SDK to handle data processing, lifecycle monitoring and ad rendering.
+
+#### Dependency Purpose
+
+| Dependency        | Purpose                                                                             |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| Gson              | JSON serialization and deserialization for SDK configuration and API responses      |
+| Lifecycle Process | Monitors application lifecycle states such as foreground and background transitions |
+| Play Services Ads | Provides advertising and ad rendering services required by the SDK                  |
+
+> **Note:**
+> Required dependencies version are regularly updated to ensure the latest fixes, security patches and performance improvements are maintained.
+
+---
+
+### Manifest Configuration
+
+To initialize the underlying Google Ads services, add your Google Ad Manager (GAM) Application ID to your application's `AndroidManifest.xml` file.
+
+```
+<manifest>
+  <application>
+    <!-- Test Ad Manager app ID: ca-app-pub-3940256099942544~3347511713 -->
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="<YOUR_APP_ID>"/>
+  </application>
+</manifest>
+```
+
+> **Note:**
+> Replace YOUR\_APP\_ID with your Google Ad Manager (GAM) Application ID. While testing, use the Test Ad Manager app ID shown in the previous example.

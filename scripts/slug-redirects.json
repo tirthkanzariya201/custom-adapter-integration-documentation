@@ -1,0 +1,297 @@
+﻿[
+  {
+    "source": "/guides/android/custom-adapter",
+    "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter-gma-sdk",
+    "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/android/custom-adapter/overview",
+    "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter/admob",
+    "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter/google-ad-manager",
+    "destination": "/guides/android/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter/applovin",
+    "destination": "/guides/android/custom-adapter-gma-sdk/applovin",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter/levelplay",
+    "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter-gma-sdk",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/ios/custom-adapter/overview",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter/admob",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter/google-ad-manager",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter/applovin",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/applovin",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter/levelplay",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/ios/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter-gma-sdk",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/overview",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/admob",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/google-ad-manager",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/applovin",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/levelplay",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter-gma-sdk",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/overview",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/admob",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/google-ad-manager",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/applovin",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/levelplay",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter-gma-sdk",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/unity/custom-adapter/overview",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter/admob",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter/google-ad-manager",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter/applovin",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/applovin",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter/levelplay",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter-gma-sdk",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/cocos/custom-adapter/overview",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter/admob",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter/google-ad-manager",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter/ironsource-levelplay",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/levelplay",
+    "permanent": true
+  },
+  {
+    "source": "/guides/native/custom-adapter",
+    "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/next-gen",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/custom-adapter-next-gen-sdk",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": false
+  },
+  {
+    "source": "/guides/android/next-gen/overview",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/next-gen/admob",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/android/next-gen/google-ad-manager",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/google-ad-manager",
+    "permanent": true
+  },
+  {
+    "source": "/guides/unity/next-gen",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/flutter/next-gen",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/next-gen",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/next-gen",
+    "destination": "/guides/android/custom-adapter-next-gen-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/cocos/custom-adapter/applovin",
+    "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/overview",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  },
+  {
+    "source": "/guides/react-native/custom-adapter",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+    "permanent": true
+  }
+]

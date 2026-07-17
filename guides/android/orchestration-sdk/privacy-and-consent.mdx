@@ -1,0 +1,64 @@
+---
+title: Privacy & Consent
+description: >-
+  Privacy & Consent for TapMind Orchestration SDK on Android.
+---
+
+To support compliance with privacy regulations and platform requirements, the Orchestration SDK is compatible with Google's User Messaging Platform (UMP). UMP enables applications to collect, manage and update user consent before requesting advertisements.
+
+Add the following dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```
+dependencies {
+ implementation("com.google.android.ump:user-messaging-platform:4.0.0")
+}
+```
+
+---
+
+#### Consent Flow 
+
+Before calling `OrchAd.loadAd(...)`, initialize the consent flow during application startup or before the first ad request.
+
+### Step 1: Create ConsentInformation Instance
+
+Create a `ConsentInformation` instance to manage and track the user's consent status.
+
+```
+val consentInformation = UserMessagingPlatform.getConsentInformation(context)
+```
+
+---
+
+### Step 2: Request Consent Information Update
+
+Request the latest consent information and fetch the most recent consent status based on the user's geographic region and applicable privacy regulations.
+
+```
+consentInformation.requestConsentInfoUpdate(
+    activity,
+    ConsentRequestParameters.Builder().build(),
+    {
+        // Called when consent information is updated successfully.
+    },
+    { requestConsentError ->
+        // Called when there is an error updating consent information.
+    }
+)
+```
+
+---
+
+### Step 3: Load & Show Consent Form
+
+Load and display the consent form when required. Once the consent flow is completed, ad requests can proceed according to the user's consent choices.
+
+```
+consentInformation.loadAndShowConsentFormIfRequired(activity) { formError ->
+    // Consent process completed.
+    // Ads can now be requested if consent is granted.
+}
+```
+
+> **Note:**
+> The consent form is displayed only when required based on the user's region and applicable privacy requirements. If no consent form is needed, the UMP SDK automatically completes the consent flow.

@@ -1,0 +1,50 @@
+---
+title: Error Reference
+description: Error Reference
+---
+
+# Error Reference
+
+The Orchestration SDK provides standardized error codes and messages to help diagnose initialization, configuration, network and ad-serving issues. Use the following reference to understand common error conditions and recommended troubleshooting steps.
+
+### SDK Error Codes & Messages
+
+| Error Code | Error Name             | Description                                                         | Recommended Action                                                                        |
+| ---------- | ---------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `1001`     | `SDK_NOT_INITIALIZED`  | SDK initialization has not completed before an ad request was made. | Initialize the SDK and wait for the `onInitSuccess()` callback before calling `loadAd()`. |
+| `1002`     | `INVALID_PLACEMENT`    | Invalid or empty placement code provided.                           | Verify and match the placement code that provided by TapMind team.                        |
+| `1003`     | `NO_NETWORK`           | No network connection available.                                    | Check the device's internet connectivity and retry the ad request.                        |
+| `1004`     | `CONFIG_ERROR`         | SDK configuration request failed or timed out.                      | Retry the request. Contact TapMind support if the issue persists.                         |
+| `1005`     | `NO_FILL`              | No demand source returned an ad for the requested placement.        | This is a normal runtime condition. Retry later or use a fallback flow if applicable.     |
+| `1006`     | `AD_EXPIRED`           | The ad has expired and can no longer to be displayed.               | No action required. This process is managed automatically by the SDK.                     |
+| `1007`     | `PKG_MISSING`          | Package name is missing or invalid.                                 | Verify SDK initialization parameters and application configuration.                       |
+| `1008`     | `PLAY_SERVICE_MISSING` | Google Play Services are unavailable or unsupported on the device.  | Ensure Google Play Services are installed, enabled, and up to date.                       |
+| `1009`     | `UNSUPPORTED_VERSION`  | The Android version is not supported by the SDK.                    | Upgrade the device OS or use a supported Android version.                                 |
+
+---
+
+### Error Handling Best Practices
+
+* Always initialize the SDK before requesting ads.
+* Verify placement codes before making ad requests.
+* Handle network interruptions gracefully.
+* Implement `onAdFailedToLoad()` and `onAdFailedToShow()` callbacks for better error visibility.
+* Log error messages during development to simplify troubleshooting.
+* Use the error code and message together when contacting TapMind support.
+
+---
+
+### Example Error Handling
+
+```kotlin
+override fun onAdFailedToLoad(error: OrchError) {
+    Log.d("ORCH", "Error Code: " + error.code)
+    Log.d("ORCH", "Error Message: " + error.message)
+}
+
+override fun onAdFailedToShow(error: OrchError) {
+    Log.d("ORCH", "Error Code: " + error.code)
+    Log.d("ORCH", "Error Message: " + error.message)
+}
+```
+

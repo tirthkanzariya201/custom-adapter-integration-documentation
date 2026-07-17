@@ -1,0 +1,37 @@
+---
+title: Installation
+---
+
+# Installation
+
+<Info>
+**App Prerequisite**
+
+* minSdkVersion of 24 or higher
+* compileSdkVersion of 36 or higher
+</Info>
+
+### Configuration Steps
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }  
+    }
+}
+```
+
+Open the `package.json` file.
+
+Find the dependencies block and add from below for respective mediation platform.
+
+```
+tapmind_ads_admob: "2.1.4"
+```
+
+
+---

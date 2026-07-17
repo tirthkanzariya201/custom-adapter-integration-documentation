@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: docs.json</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>docs.json</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line same"><span class="ln">1</span><code>{</code></div>
+<div class="line same"><span class="ln">2</span><code>  "$schema": "https://jamdesk.com/docs.json",</code></div>
+<div class="line same"><span class="ln">3</span><code>  "projectId": "q4LJ64aPcqgAnhkqpp3z",</code></div>
+<div class="line removed"><span class="ln">4</span><code>  "name": "TapMind Custom Adapter SDK Integration",</code></div>
+<div class="line added"><span class="ln">→</span><code>  "name": "TapMind SDK Documentation",</code></div>
+<div class="line removed"><span class="ln">5</span><code>  "description": "Integration guide for TapMind Custom Adapter SDK across mobile platforms and game engines.",</code></div>
+<div class="line added"><span class="ln">→</span><code>  "description": "Integration guides for TapMind Custom Adapter (GMA SDK), Custom Adapter (GMA Next-Gen SDK), and Orchestration SDKs.",</code></div>
+<div class="line same"><span class="ln">6</span><code>  "theme": "jam",</code></div>
+<div class="line removed"><span class="ln">7</span><code>  "colors": {</code></div>
+<div class="line added"><span class="ln">→</span><code>  "tabsPosition": "top",</code></div>
+<div class="line removed"><span class="ln">8</span><code>    "primary": "#FE7B49",</code></div>
+<div class="line added"><span class="ln">→</span><code>  "colors": {</code></div>
+<div class="line removed"><span class="ln">9</span><code>    "light": "#FE7B49",</code></div>
+<div class="line added"><span class="ln">→</span><code>    "primary": "#FE7B49",</code></div>
+<div class="line removed"><span class="ln">10</span><code>    "dark": "#FE7B49"</code></div>
+<div class="line added"><span class="ln">→</span><code>    "light": "#FE7B49",</code></div>
+<div class="line removed"><span class="ln">11</span><code>  },</code></div>
+<div class="line added"><span class="ln">→</span><code>    "dark": "#FE7B49"</code></div>
+<div class="line removed"><span class="ln">12</span><code>  "favicon": "/images/favicon.png",</code></div>
+<div class="line added"><span class="ln">→</span><code>  },</code></div>
+<div class="line removed"><span class="ln">13</span><code>  "logo": {</code></div>
+<div class="line added"><span class="ln">→</span><code>  "favicon": "/images/favicon.png",</code></div>
+<div class="line removed"><span class="ln">14</span><code>    "light": "/images/logo-light.png",</code></div>
+<div class="line added"><span class="ln">→</span><code>  "logo": {</code></div>
+<div class="line removed"><span class="ln">15</span><code>    "dark": "/images/logo-dark.png"</code></div>
+<div class="line added"><span class="ln">→</span><code>    "light": "/images/logo-light.png",</code></div>
+<div class="line removed"><span class="ln">16</span><code>  },</code></div>
+<div class="line added"><span class="ln">→</span><code>    "dark": "/images/logo-dark.png"</code></div>
+<div class="line removed"><span class="ln">17</span><code>  "auth": {</code></div>
+<div class="line added"><span class="ln">→</span><code>  },</code></div>
+<div class="line removed"><span class="ln">18</span><code>    "password": {</code></div>
+<div class="line added"><span class="ln">→</span><code>  "interaction": {</code></div>
+<div class="line removed"><span class="ln">19</span><code>      "enabled": true,</code></div>
+<div class="line added"><span class="ln">→</span><code>    "drilldown": false</code></div>
+<div class="line removed"><span class="ln">20</span><code>      "hint": "Optional hint shown on the lock screen"</code></div>
+<div class="line added"><span class="ln">→</span><code>  },</code></div>
+<div class="line removed"><span class="ln">21</span><code>    }</code></div>
+<div class="line added"><span class="ln">→</span><code>  "appearance": {</code></div>
+<div class="line removed"><span class="ln">22</span><code>  },</code></div>
+<div class="line added"><span class="ln">→</span><code>    "default": "system",</code></div>
+<div class="line removed"><span class="ln">23</span><code>  "navbar": {</code></div>
+<div class="line added"><span class="ln">→</span><code>    "strict": true</code></div>
+<div class="line removed"><span class="ln">24</span><code>    "primary": {</code></div>
+<div class="line added"><span class="ln">→</span><code>  },</code></div>
+<div class="line removed"><span class="ln">25</span><code>      "type": "button",</code></div>
+<div class="line added"><span class="ln">→</span><code>  "navbar": {</code></div>
+<div class="line removed"><span class="ln">26</span><code>      "label": "Get Started",</code></div>
+<div class="line added"><span class="ln">→</span><code>    "primary": {</code></div>
+<div class="line removed"><span class="ln">27</span><code>      "href": "/README"</code></div>
+<div class="line added"><span class="ln">→</span><code>      "type": "button",</code></div>
+<div class="line removed"><span class="ln">28</span><code>    }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "label": "Get Started",</code></div>
+<div class="line removed"><span class="ln">29</span><code>  },</code></div>
+<div class="line added"><span class="ln">→</span><code>      "href": "/getting-started/introduction"</code></div>
+<div class="line removed"><span class="ln">30</span><code>  "navigation": {</code></div>
+<div class="line added"><span class="ln">→</span><code>    }</code></div>
+<div class="line removed"><span class="ln">31</span><code>    "tabs": [</code></div>
+<div class="line added"><span class="ln">→</span><code>  },</code></div>
+<div class="line removed"><span class="ln">32</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>  "redirects": [</code></div>
+<div class="line removed"><span class="ln">33</span><code>        "tab": "Overview",</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">34</span><code>        "icon": "book-open",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/",</code></div>
+<div class="line removed"><span class="ln">35</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/getting-started/introduction",</code></div>
+<div class="line removed"><span class="ln">36</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">37</span><code>            "group": "Getting Started",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">38</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">39</span><code>              "README"</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/README",</code></div>
+<div class="line removed"><span class="ln">40</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/getting-started/introduction",</code></div>
+<div class="line removed"><span class="ln">41</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">42</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">43</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">44</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/overview",</code></div>
+<div class="line removed"><span class="ln">45</span><code>        "tab": "Native-Android Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/getting-started/introduction",</code></div>
+<div class="line removed"><span class="ln">46</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">47</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">48</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">49</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/gradle-setup/for-gradle-version-7+",</code></div>
+<div class="line removed"><span class="ln">50</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/gradle-setup/for-gradle-version-7-plus",</code></div>
+<div class="line removed"><span class="ln">51</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">52</span><code>                "page": "tapmind-custom-adapter-sdk-integration/native-android-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">53</span><code>                "title": "Native Android"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">54</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/orchestration-sdk",</code></div>
+<div class="line removed"><span class="ln">55</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/orchestration-sdk/overview",</code></div>
+<div class="line removed"><span class="ln">56</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">57</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">58</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">59</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter",</code></div>
+<div class="line removed"><span class="ln">60</span><code>        "tab": "Native-iOS Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">61</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">62</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">63</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">64</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter-gma-sdk",</code></div>
+<div class="line removed"><span class="ln">65</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">66</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">67</span><code>                "page": "tapmind-custom-adapter-sdk-integration/native-ios-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">68</span><code>                "title": "Native iOS"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">69</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/overview",</code></div>
+<div class="line removed"><span class="ln">70</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">71</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">72</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">73</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">74</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/admob",</code></div>
+<div class="line removed"><span class="ln">75</span><code>        "tab": "Unity-Android Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">76</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">77</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">78</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">79</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">80</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">81</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">82</span><code>                "page": "tapmind-custom-adapter-sdk-integration/unity-android-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">83</span><code>                "title": "Unity Android"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">84</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/applovin",</code></div>
+<div class="line removed"><span class="ln">85</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line removed"><span class="ln">86</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">87</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">88</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">89</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/levelplay",</code></div>
+<div class="line removed"><span class="ln">90</span><code>        "tab": "Unity-iOS Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">91</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">92</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">93</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">94</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/android/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line removed"><span class="ln">95</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">96</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">97</span><code>                "page": "tapmind-custom-adapter-sdk-integration/unity-ios-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">98</span><code>                "title": "Unity iOS"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">99</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter",</code></div>
+<div class="line removed"><span class="ln">100</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">101</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">102</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">103</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">104</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter-gma-sdk",</code></div>
+<div class="line removed"><span class="ln">105</span><code>        "tab": "Flutter-Android Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">106</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">107</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">108</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">109</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/overview",</code></div>
+<div class="line removed"><span class="ln">110</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">111</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">112</span><code>                "page": "tapmind-custom-adapter-sdk-integration/flutter-android-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">113</span><code>                "title": "Flutter Android"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">114</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/admob",</code></div>
+<div class="line removed"><span class="ln">115</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">116</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">117</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">118</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">119</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">120</span><code>        "tab": "Flutter-iOS Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">121</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">122</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">123</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">124</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/applovin",</code></div>
+<div class="line removed"><span class="ln">125</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line removed"><span class="ln">126</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">127</span><code>                "page": "tapmind-custom-adapter-sdk-integration/flutter-ios-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">128</span><code>                "title": "Flutter iOS"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">129</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/levelplay",</code></div>
+<div class="line removed"><span class="ln">130</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">131</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">132</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">133</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">134</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/ios/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line removed"><span class="ln">135</span><code>        "tab": "Cocos-Android Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">136</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">137</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">138</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">139</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter",</code></div>
+<div class="line removed"><span class="ln">140</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">141</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">142</span><code>                "page": "tapmind-custom-adapter-sdk-integration/cocos-android-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">143</span><code>                "title": "Cocos Android"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">144</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter-gma-sdk",</code></div>
+<div class="line removed"><span class="ln">145</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">146</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": false</code></div>
+<div class="line removed"><span class="ln">147</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">148</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">149</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/overview",</code></div>
+<div class="line removed"><span class="ln">150</span><code>        "tab": "Cocos-iOS Engine",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">151</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">152</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">153</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">154</span><code>            "group": "Documentation",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/admob",</code></div>
+<div class="line removed"><span class="ln">155</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line removed"><span class="ln">156</span><code>              {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">157</span><code>                "page": "tapmind-custom-adapter-sdk-integration/cocos-ios-engine/integration-guide",</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">158</span><code>                "title": "Cocos iOS"</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">159</span><code>              }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">160</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line removed"><span class="ln">161</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">162</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">163</span><code>      },</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">164</span><code>      {</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/applovin",</code></div>
+<div class="line removed"><span class="ln">165</span><code>        "tab": "Gradle Setup",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line removed"><span class="ln">166</span><code>        "icon": "wrench",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">167</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">168</span><code>          {</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">169</span><code>            "group": "Gradle Setup",</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/levelplay",</code></div>
+<div class="line removed"><span class="ln">170</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">171</span><code>              "gradle-setup/for-gradle-version-7+"</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">172</span><code>            ]</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">173</span><code>          }</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">174</span><code>        ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/flutter/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line removed"><span class="ln">175</span><code>      }</code></div>
+<div class="line added"><span class="ln">→</span><code>      "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line removed"><span class="ln">176</span><code>    ]</code></div>
+<div class="line added"><span class="ln">→</span><code>      "permanent": true</code></div>
+<div class="line removed"><span class="ln">177</span><code>  }</code></div>
+<div class="line added"><span class="ln">→</span><code>    },</code></div>
+<div class="line removed"><span class="ln">178</span><code>}</code></div>
+<div class="line added"><span class="ln">→</span><code>    {</code></div>
+<div class="line removed"><span class="ln">179</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>      "source": "/guides/react-native/custom-adapter",</code></div>
+<div class="line added"><span class="ln">180</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">181</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">182</span><code>    },</code></div>
+<div class="line added"><span class="ln">183</span><code>    {</code></div>
+<div class="line added"><span class="ln">184</span><code>      "source": "/guides/react-native/custom-adapter-gma-sdk",</code></div>
+<div class="line added"><span class="ln">185</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">186</span><code>      "permanent": false</code></div>
+<div class="line added"><span class="ln">187</span><code>    },</code></div>
+<div class="line added"><span class="ln">188</span><code>    {</code></div>
+<div class="line added"><span class="ln">189</span><code>      "source": "/guides/react-native/custom-adapter/overview",</code></div>
+<div class="line added"><span class="ln">190</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">191</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">192</span><code>    },</code></div>
+<div class="line added"><span class="ln">193</span><code>    {</code></div>
+<div class="line added"><span class="ln">194</span><code>      "source": "/guides/react-native/custom-adapter/admob",</code></div>
+<div class="line added"><span class="ln">195</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">196</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">197</span><code>    },</code></div>
+<div class="line added"><span class="ln">198</span><code>    {</code></div>
+<div class="line added"><span class="ln">199</span><code>      "source": "/guides/react-native/custom-adapter/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">200</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">201</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">202</span><code>    },</code></div>
+<div class="line added"><span class="ln">203</span><code>    {</code></div>
+<div class="line added"><span class="ln">204</span><code>      "source": "/guides/react-native/custom-adapter/applovin",</code></div>
+<div class="line added"><span class="ln">205</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">206</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">207</span><code>    },</code></div>
+<div class="line added"><span class="ln">208</span><code>    {</code></div>
+<div class="line added"><span class="ln">209</span><code>      "source": "/guides/react-native/custom-adapter/levelplay",</code></div>
+<div class="line added"><span class="ln">210</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">211</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">212</span><code>    },</code></div>
+<div class="line added"><span class="ln">213</span><code>    {</code></div>
+<div class="line added"><span class="ln">214</span><code>      "source": "/guides/react-native/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line added"><span class="ln">215</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">216</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">217</span><code>    },</code></div>
+<div class="line added"><span class="ln">218</span><code>    {</code></div>
+<div class="line added"><span class="ln">219</span><code>      "source": "/guides/unity/custom-adapter",</code></div>
+<div class="line added"><span class="ln">220</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">221</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">222</span><code>    },</code></div>
+<div class="line added"><span class="ln">223</span><code>    {</code></div>
+<div class="line added"><span class="ln">224</span><code>      "source": "/guides/unity/custom-adapter-gma-sdk",</code></div>
+<div class="line added"><span class="ln">225</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">226</span><code>      "permanent": false</code></div>
+<div class="line added"><span class="ln">227</span><code>    },</code></div>
+<div class="line added"><span class="ln">228</span><code>    {</code></div>
+<div class="line added"><span class="ln">229</span><code>      "source": "/guides/unity/custom-adapter/overview",</code></div>
+<div class="line added"><span class="ln">230</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">231</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">232</span><code>    },</code></div>
+<div class="line added"><span class="ln">233</span><code>    {</code></div>
+<div class="line added"><span class="ln">234</span><code>      "source": "/guides/unity/custom-adapter/admob",</code></div>
+<div class="line added"><span class="ln">235</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">236</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">237</span><code>    },</code></div>
+<div class="line added"><span class="ln">238</span><code>    {</code></div>
+<div class="line added"><span class="ln">239</span><code>      "source": "/guides/unity/custom-adapter/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">240</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">241</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">242</span><code>    },</code></div>
+<div class="line added"><span class="ln">243</span><code>    {</code></div>
+<div class="line added"><span class="ln">244</span><code>      "source": "/guides/unity/custom-adapter/applovin",</code></div>
+<div class="line added"><span class="ln">245</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">246</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">247</span><code>    },</code></div>
+<div class="line added"><span class="ln">248</span><code>    {</code></div>
+<div class="line added"><span class="ln">249</span><code>      "source": "/guides/unity/custom-adapter/levelplay",</code></div>
+<div class="line added"><span class="ln">250</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">251</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">252</span><code>    },</code></div>
+<div class="line added"><span class="ln">253</span><code>    {</code></div>
+<div class="line added"><span class="ln">254</span><code>      "source": "/guides/unity/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line added"><span class="ln">255</span><code>      "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">256</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">257</span><code>    },</code></div>
+<div class="line added"><span class="ln">258</span><code>    {</code></div>
+<div class="line added"><span class="ln">259</span><code>      "source": "/guides/cocos/custom-adapter",</code></div>
+<div class="line added"><span class="ln">260</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">261</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">262</span><code>    },</code></div>
+<div class="line added"><span class="ln">263</span><code>    {</code></div>
+<div class="line added"><span class="ln">264</span><code>      "source": "/guides/cocos/custom-adapter-gma-sdk",</code></div>
+<div class="line added"><span class="ln">265</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">266</span><code>      "permanent": false</code></div>
+<div class="line added"><span class="ln">267</span><code>    },</code></div>
+<div class="line added"><span class="ln">268</span><code>    {</code></div>
+<div class="line added"><span class="ln">269</span><code>      "source": "/guides/cocos/custom-adapter/overview",</code></div>
+<div class="line added"><span class="ln">270</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">271</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">272</span><code>    },</code></div>
+<div class="line added"><span class="ln">273</span><code>    {</code></div>
+<div class="line added"><span class="ln">274</span><code>      "source": "/guides/cocos/custom-adapter/admob",</code></div>
+<div class="line added"><span class="ln">275</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">276</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">277</span><code>    },</code></div>
+<div class="line added"><span class="ln">278</span><code>    {</code></div>
+<div class="line added"><span class="ln">279</span><code>      "source": "/guides/cocos/custom-adapter/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">280</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">281</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">282</span><code>    },</code></div>
+<div class="line added"><span class="ln">283</span><code>    {</code></div>
+<div class="line added"><span class="ln">284</span><code>      "source": "/guides/cocos/custom-adapter/ironsource-levelplay",</code></div>
+<div class="line added"><span class="ln">285</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">286</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">287</span><code>    },</code></div>
+<div class="line added"><span class="ln">288</span><code>    {</code></div>
+<div class="line added"><span class="ln">289</span><code>      "source": "/guides/native/custom-adapter",</code></div>
+<div class="line added"><span class="ln">290</span><code>      "destination": "/guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">291</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">292</span><code>    },</code></div>
+<div class="line added"><span class="ln">293</span><code>    {</code></div>
+<div class="line added"><span class="ln">294</span><code>      "source": "/guides/android/next-gen",</code></div>
+<div class="line added"><span class="ln">295</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">296</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">297</span><code>    },</code></div>
+<div class="line added"><span class="ln">298</span><code>    {</code></div>
+<div class="line added"><span class="ln">299</span><code>      "source": "/guides/android/custom-adapter-gma-next-gen-sdk",</code></div>
+<div class="line added"><span class="ln">300</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">301</span><code>      "permanent": false</code></div>
+<div class="line added"><span class="ln">302</span><code>    },</code></div>
+<div class="line added"><span class="ln">303</span><code>    {</code></div>
+<div class="line added"><span class="ln">304</span><code>      "source": "/guides/android/next-gen/overview",</code></div>
+<div class="line added"><span class="ln">305</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">306</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">307</span><code>    },</code></div>
+<div class="line added"><span class="ln">308</span><code>    {</code></div>
+<div class="line added"><span class="ln">309</span><code>      "source": "/guides/android/next-gen/admob",</code></div>
+<div class="line added"><span class="ln">310</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">311</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">312</span><code>    },</code></div>
+<div class="line added"><span class="ln">313</span><code>    {</code></div>
+<div class="line added"><span class="ln">314</span><code>      "source": "/guides/android/next-gen/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">315</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">316</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">317</span><code>    },</code></div>
+<div class="line added"><span class="ln">318</span><code>    {</code></div>
+<div class="line added"><span class="ln">319</span><code>      "source": "/guides/unity/next-gen",</code></div>
+<div class="line added"><span class="ln">320</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">321</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">322</span><code>    },</code></div>
+<div class="line added"><span class="ln">323</span><code>    {</code></div>
+<div class="line added"><span class="ln">324</span><code>      "source": "/guides/flutter/next-gen",</code></div>
+<div class="line added"><span class="ln">325</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">326</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">327</span><code>    },</code></div>
+<div class="line added"><span class="ln">328</span><code>    {</code></div>
+<div class="line added"><span class="ln">329</span><code>      "source": "/guides/cocos/next-gen",</code></div>
+<div class="line added"><span class="ln">330</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">331</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">332</span><code>    },</code></div>
+<div class="line added"><span class="ln">333</span><code>    {</code></div>
+<div class="line added"><span class="ln">334</span><code>      "source": "/guides/react-native/next-gen",</code></div>
+<div class="line added"><span class="ln">335</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">336</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">337</span><code>    },</code></div>
+<div class="line added"><span class="ln">338</span><code>    {</code></div>
+<div class="line added"><span class="ln">339</span><code>      "source": "/guides/cocos/custom-adapter/applovin",</code></div>
+<div class="line added"><span class="ln">340</span><code>      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">341</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">342</span><code>    },</code></div>
+<div class="line added"><span class="ln">343</span><code>    {</code></div>
+<div class="line added"><span class="ln">344</span><code>      "source": "/guides/react-native/overview",</code></div>
+<div class="line added"><span class="ln">345</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">346</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">347</span><code>    },</code></div>
+<div class="line added"><span class="ln">348</span><code>    {</code></div>
+<div class="line added"><span class="ln">349</span><code>      "source": "/guides/react-native/custom-adapter",</code></div>
+<div class="line added"><span class="ln">350</span><code>      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">351</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">352</span><code>    },</code></div>
+<div class="line added"><span class="ln">353</span><code>    {</code></div>
+<div class="line added"><span class="ln">354</span><code>      "source": "/getting-started/choose-your-sdk",</code></div>
+<div class="line added"><span class="ln">355</span><code>      "destination": "/getting-started/introduction",</code></div>
+<div class="line added"><span class="ln">356</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">357</span><code>    },</code></div>
+<div class="line added"><span class="ln">358</span><code>    {</code></div>
+<div class="line added"><span class="ln">359</span><code>      "source": "/guides/android/custom-adapter-next-gen-sdk",</code></div>
+<div class="line added"><span class="ln">360</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">361</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">362</span><code>    },</code></div>
+<div class="line added"><span class="ln">363</span><code>    {</code></div>
+<div class="line added"><span class="ln">364</span><code>      "source": "/guides/android/custom-adapter-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">365</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">366</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">367</span><code>    },</code></div>
+<div class="line added"><span class="ln">368</span><code>    {</code></div>
+<div class="line added"><span class="ln">369</span><code>      "source": "/guides/android/custom-adapter-next-gen-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">370</span><code>      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">371</span><code>      "permanent": true</code></div>
+<div class="line added"><span class="ln">372</span><code>    }</code></div>
+<div class="line added"><span class="ln">373</span><code>  ],</code></div>
+<div class="line added"><span class="ln">374</span><code>  "navigation": {</code></div>
+<div class="line added"><span class="ln">375</span><code>    "tabs": [</code></div>
+<div class="line added"><span class="ln">376</span><code>      {</code></div>
+<div class="line added"><span class="ln">377</span><code>        "tab": "Guides",</code></div>
+<div class="line added"><span class="ln">378</span><code>        "icon": "book-open",</code></div>
+<div class="line added"><span class="ln">379</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">380</span><code>          {</code></div>
+<div class="line added"><span class="ln">381</span><code>            "group": "Getting Started",</code></div>
+<div class="line added"><span class="ln">382</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">383</span><code>              {</code></div>
+<div class="line added"><span class="ln">384</span><code>                "page": "getting-started/introduction",</code></div>
+<div class="line added"><span class="ln">385</span><code>                "title": "Introduction"</code></div>
+<div class="line added"><span class="ln">386</span><code>              },</code></div>
+<div class="line added"><span class="ln">387</span><code>              {</code></div>
+<div class="line added"><span class="ln">388</span><code>                "page": "getting-started/how-custom-adapters-work",</code></div>
+<div class="line added"><span class="ln">389</span><code>                "title": "How Custom Adapters Work"</code></div>
+<div class="line added"><span class="ln">390</span><code>              },</code></div>
+<div class="line added"><span class="ln">391</span><code>              {</code></div>
+<div class="line added"><span class="ln">392</span><code>                "page": "getting-started/prerequisites",</code></div>
+<div class="line added"><span class="ln">393</span><code>                "title": "Prerequisites"</code></div>
+<div class="line added"><span class="ln">394</span><code>              },</code></div>
+<div class="line added"><span class="ln">395</span><code>              {</code></div>
+<div class="line added"><span class="ln">396</span><code>                "page": "gradle-setup/for-gradle-version-7-plus",</code></div>
+<div class="line added"><span class="ln">397</span><code>                "title": "Gradle Setup"</code></div>
+<div class="line added"><span class="ln">398</span><code>              }</code></div>
+<div class="line added"><span class="ln">399</span><code>            ]</code></div>
+<div class="line added"><span class="ln">400</span><code>          }</code></div>
+<div class="line added"><span class="ln">401</span><code>        ]</code></div>
+<div class="line added"><span class="ln">402</span><code>      },</code></div>
+<div class="line added"><span class="ln">403</span><code>      {</code></div>
+<div class="line added"><span class="ln">404</span><code>        "tab": "Custom Adapter (GMA SDK)",</code></div>
+<div class="line added"><span class="ln">405</span><code>        "icon": "mobile-screen",</code></div>
+<div class="line added"><span class="ln">406</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">407</span><code>          {</code></div>
+<div class="line added"><span class="ln">408</span><code>            "group": "Integration guides",</code></div>
+<div class="line added"><span class="ln">409</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">410</span><code>              {</code></div>
+<div class="line added"><span class="ln">411</span><code>                "group": "Native Android",</code></div>
+<div class="line added"><span class="ln">412</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">413</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">414</span><code>                  {</code></div>
+<div class="line added"><span class="ln">415</span><code>                    "page": "guides/android/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">416</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">417</span><code>                  },</code></div>
+<div class="line added"><span class="ln">418</span><code>                  {</code></div>
+<div class="line added"><span class="ln">419</span><code>                    "page": "guides/android/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">420</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">421</span><code>                  },</code></div>
+<div class="line added"><span class="ln">422</span><code>                  {</code></div>
+<div class="line added"><span class="ln">423</span><code>                    "page": "guides/android/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">424</span><code>                    "title": "AppLovin"</code></div>
+<div class="line added"><span class="ln">425</span><code>                  },</code></div>
+<div class="line added"><span class="ln">426</span><code>                  {</code></div>
+<div class="line added"><span class="ln">427</span><code>                    "page": "guides/android/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">428</span><code>                    "title": "Unity LevelPlay"</code></div>
+<div class="line added"><span class="ln">429</span><code>                  }</code></div>
+<div class="line added"><span class="ln">430</span><code>                ]</code></div>
+<div class="line added"><span class="ln">431</span><code>              },</code></div>
+<div class="line added"><span class="ln">432</span><code>              {</code></div>
+<div class="line added"><span class="ln">433</span><code>                "group": "Native iOS",</code></div>
+<div class="line added"><span class="ln">434</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">435</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">436</span><code>                  {</code></div>
+<div class="line added"><span class="ln">437</span><code>                    "page": "guides/ios/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">438</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">439</span><code>                  },</code></div>
+<div class="line added"><span class="ln">440</span><code>                  {</code></div>
+<div class="line added"><span class="ln">441</span><code>                    "page": "guides/ios/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">442</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">443</span><code>                  },</code></div>
+<div class="line added"><span class="ln">444</span><code>                  {</code></div>
+<div class="line added"><span class="ln">445</span><code>                    "page": "guides/ios/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">446</span><code>                    "title": "AppLovin"</code></div>
+<div class="line added"><span class="ln">447</span><code>                  },</code></div>
+<div class="line added"><span class="ln">448</span><code>                  {</code></div>
+<div class="line added"><span class="ln">449</span><code>                    "page": "guides/ios/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">450</span><code>                    "title": "Unity LevelPlay"</code></div>
+<div class="line added"><span class="ln">451</span><code>                  }</code></div>
+<div class="line added"><span class="ln">452</span><code>                ]</code></div>
+<div class="line added"><span class="ln">453</span><code>              },</code></div>
+<div class="line added"><span class="ln">454</span><code>              {</code></div>
+<div class="line added"><span class="ln">455</span><code>                "group": "Flutter",</code></div>
+<div class="line added"><span class="ln">456</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">457</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">458</span><code>                  {</code></div>
+<div class="line added"><span class="ln">459</span><code>                    "page": "guides/flutter/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">460</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">461</span><code>                  },</code></div>
+<div class="line added"><span class="ln">462</span><code>                  {</code></div>
+<div class="line added"><span class="ln">463</span><code>                    "page": "guides/flutter/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">464</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">465</span><code>                  },</code></div>
+<div class="line added"><span class="ln">466</span><code>                  {</code></div>
+<div class="line added"><span class="ln">467</span><code>                    "page": "guides/flutter/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">468</span><code>                    "title": "AppLovin"</code></div>
+<div class="line added"><span class="ln">469</span><code>                  },</code></div>
+<div class="line added"><span class="ln">470</span><code>                  {</code></div>
+<div class="line added"><span class="ln">471</span><code>                    "page": "guides/flutter/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">472</span><code>                    "title": "Unity LevelPlay"</code></div>
+<div class="line added"><span class="ln">473</span><code>                  }</code></div>
+<div class="line added"><span class="ln">474</span><code>                ]</code></div>
+<div class="line added"><span class="ln">475</span><code>              },</code></div>
+<div class="line added"><span class="ln">476</span><code>              {</code></div>
+<div class="line added"><span class="ln">477</span><code>                "group": "React Native",</code></div>
+<div class="line added"><span class="ln">478</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">479</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">480</span><code>                  {</code></div>
+<div class="line added"><span class="ln">481</span><code>                    "page": "guides/react-native/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">482</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">483</span><code>                  },</code></div>
+<div class="line added"><span class="ln">484</span><code>                  {</code></div>
+<div class="line added"><span class="ln">485</span><code>                    "page": "guides/react-native/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">486</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">487</span><code>                  },</code></div>
+<div class="line added"><span class="ln">488</span><code>                  {</code></div>
+<div class="line added"><span class="ln">489</span><code>                    "page": "guides/react-native/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">490</span><code>                    "title": "AppLovin"</code></div>
+<div class="line added"><span class="ln">491</span><code>                  },</code></div>
+<div class="line added"><span class="ln">492</span><code>                  {</code></div>
+<div class="line added"><span class="ln">493</span><code>                    "page": "guides/react-native/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">494</span><code>                    "title": "Unity LevelPlay"</code></div>
+<div class="line added"><span class="ln">495</span><code>                  }</code></div>
+<div class="line added"><span class="ln">496</span><code>                ]</code></div>
+<div class="line added"><span class="ln">497</span><code>              },</code></div>
+<div class="line added"><span class="ln">498</span><code>              {</code></div>
+<div class="line added"><span class="ln">499</span><code>                "group": "Unity",</code></div>
+<div class="line added"><span class="ln">500</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">501</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">502</span><code>                  {</code></div>
+<div class="line added"><span class="ln">503</span><code>                    "page": "guides/unity/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">504</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">505</span><code>                  },</code></div>
+<div class="line added"><span class="ln">506</span><code>                  {</code></div>
+<div class="line added"><span class="ln">507</span><code>                    "page": "guides/unity/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">508</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">509</span><code>                  },</code></div>
+<div class="line added"><span class="ln">510</span><code>                  {</code></div>
+<div class="line added"><span class="ln">511</span><code>                    "page": "guides/unity/custom-adapter-gma-sdk/applovin",</code></div>
+<div class="line added"><span class="ln">512</span><code>                    "title": "AppLovin"</code></div>
+<div class="line added"><span class="ln">513</span><code>                  },</code></div>
+<div class="line added"><span class="ln">514</span><code>                  {</code></div>
+<div class="line added"><span class="ln">515</span><code>                    "page": "guides/unity/custom-adapter-gma-sdk/levelplay",</code></div>
+<div class="line added"><span class="ln">516</span><code>                    "title": "Unity LevelPlay"</code></div>
+<div class="line added"><span class="ln">517</span><code>                  }</code></div>
+<div class="line added"><span class="ln">518</span><code>                ]</code></div>
+<div class="line added"><span class="ln">519</span><code>              },</code></div>
+<div class="line added"><span class="ln">520</span><code>              {</code></div>
+<div class="line added"><span class="ln">521</span><code>                "group": "Cocos",</code></div>
+<div class="line added"><span class="ln">522</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">523</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">524</span><code>                  {</code></div>
+<div class="line added"><span class="ln">525</span><code>                    "page": "guides/cocos/custom-adapter-gma-sdk/admob",</code></div>
+<div class="line added"><span class="ln">526</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">527</span><code>                  },</code></div>
+<div class="line added"><span class="ln">528</span><code>                  {</code></div>
+<div class="line added"><span class="ln">529</span><code>                    "page": "guides/cocos/custom-adapter-gma-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">530</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">531</span><code>                  }</code></div>
+<div class="line added"><span class="ln">532</span><code>                ]</code></div>
+<div class="line added"><span class="ln">533</span><code>              }</code></div>
+<div class="line added"><span class="ln">534</span><code>            ]</code></div>
+<div class="line added"><span class="ln">535</span><code>          }</code></div>
+<div class="line added"><span class="ln">536</span><code>        ]</code></div>
+<div class="line added"><span class="ln">537</span><code>      },</code></div>
+<div class="line added"><span class="ln">538</span><code>      {</code></div>
+<div class="line added"><span class="ln">539</span><code>        "tab": "Custom Adapter (GMA Next-Gen SDK)",</code></div>
+<div class="line added"><span class="ln">540</span><code>        "icon": "sparkles",</code></div>
+<div class="line added"><span class="ln">541</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">542</span><code>          {</code></div>
+<div class="line added"><span class="ln">543</span><code>            "group": "Integration guides",</code></div>
+<div class="line added"><span class="ln">544</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">545</span><code>              {</code></div>
+<div class="line added"><span class="ln">546</span><code>                "group": "Native Android",</code></div>
+<div class="line added"><span class="ln">547</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">548</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">549</span><code>                  {</code></div>
+<div class="line added"><span class="ln">550</span><code>                    "page": "guides/android/custom-adapter-gma-next-gen-sdk/admob",</code></div>
+<div class="line added"><span class="ln">551</span><code>                    "title": "AdMob"</code></div>
+<div class="line added"><span class="ln">552</span><code>                  },</code></div>
+<div class="line added"><span class="ln">553</span><code>                  {</code></div>
+<div class="line added"><span class="ln">554</span><code>                    "page": "guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",</code></div>
+<div class="line added"><span class="ln">555</span><code>                    "title": "Google Ad Manager"</code></div>
+<div class="line added"><span class="ln">556</span><code>                  }</code></div>
+<div class="line added"><span class="ln">557</span><code>                ]</code></div>
+<div class="line added"><span class="ln">558</span><code>              }</code></div>
+<div class="line added"><span class="ln">559</span><code>            ]</code></div>
+<div class="line added"><span class="ln">560</span><code>          }</code></div>
+<div class="line added"><span class="ln">561</span><code>        ]</code></div>
+<div class="line added"><span class="ln">562</span><code>      },</code></div>
+<div class="line added"><span class="ln">563</span><code>      {</code></div>
+<div class="line added"><span class="ln">564</span><code>        "tab": "Orchestration SDK",</code></div>
+<div class="line added"><span class="ln">565</span><code>        "icon": "code",</code></div>
+<div class="line added"><span class="ln">566</span><code>        "groups": [</code></div>
+<div class="line added"><span class="ln">567</span><code>          {</code></div>
+<div class="line added"><span class="ln">568</span><code>            "group": "Integration guides",</code></div>
+<div class="line added"><span class="ln">569</span><code>            "pages": [</code></div>
+<div class="line added"><span class="ln">570</span><code>              {</code></div>
+<div class="line added"><span class="ln">571</span><code>                "group": "Native Android",</code></div>
+<div class="line added"><span class="ln">572</span><code>                "expanded": false,</code></div>
+<div class="line added"><span class="ln">573</span><code>                "pages": [</code></div>
+<div class="line added"><span class="ln">574</span><code>                  {</code></div>
+<div class="line added"><span class="ln">575</span><code>                    "page": "guides/android/orchestration-sdk/overview",</code></div>
+<div class="line added"><span class="ln">576</span><code>                    "title": "Overview"</code></div>
+<div class="line added"><span class="ln">577</span><code>                  },</code></div>
+<div class="line added"><span class="ln">578</span><code>                  {</code></div>
+<div class="line added"><span class="ln">579</span><code>                    "page": "guides/android/orchestration-sdk/requirements-and-setup",</code></div>
+<div class="line added"><span class="ln">580</span><code>                    "title": "Requirements &amp; Setup"</code></div>
+<div class="line added"><span class="ln">581</span><code>                  },</code></div>
+<div class="line added"><span class="ln">582</span><code>                  {</code></div>
+<div class="line added"><span class="ln">583</span><code>                    "page": "guides/android/orchestration-sdk/initialize-the-sdk",</code></div>
+<div class="line added"><span class="ln">584</span><code>                    "title": "Initialize the SDK"</code></div>
+<div class="line added"><span class="ln">585</span><code>                  },</code></div>
+<div class="line added"><span class="ln">586</span><code>                  {</code></div>
+<div class="line added"><span class="ln">587</span><code>                    "page": "guides/android/orchestration-sdk/load-and-show-ads",</code></div>
+<div class="line added"><span class="ln">588</span><code>                    "title": "Load &amp; Show Ads"</code></div>
+<div class="line added"><span class="ln">589</span><code>                  },</code></div>
+<div class="line added"><span class="ln">590</span><code>                  {</code></div>
+<div class="line added"><span class="ln">591</span><code>                    "page": "guides/android/orchestration-sdk/privacy-and-consent",</code></div>
+<div class="line added"><span class="ln">592</span><code>                    "title": "Privacy &amp; Consent"</code></div>
+<div class="line added"><span class="ln">593</span><code>                  },</code></div>
+<div class="line added"><span class="ln">594</span><code>                  {</code></div>
+<div class="line added"><span class="ln">595</span><code>                    "page": "guides/android/orchestration-sdk/error-reference",</code></div>
+<div class="line added"><span class="ln">596</span><code>                    "title": "Error Reference"</code></div>
+<div class="line added"><span class="ln">597</span><code>                  },</code></div>
+<div class="line added"><span class="ln">598</span><code>                  {</code></div>
+<div class="line added"><span class="ln">599</span><code>                    "page": "guides/android/orchestration-sdk/support",</code></div>
+<div class="line added"><span class="ln">600</span><code>                    "title": "Support"</code></div>
+<div class="line added"><span class="ln">601</span><code>                  }</code></div>
+<div class="line added"><span class="ln">602</span><code>                ]</code></div>
+<div class="line added"><span class="ln">603</span><code>              }</code></div>
+<div class="line added"><span class="ln">604</span><code>            ]</code></div>
+<div class="line added"><span class="ln">605</span><code>          }</code></div>
+<div class="line added"><span class="ln">606</span><code>        ]</code></div>
+<div class="line added"><span class="ln">607</span><code>      },</code></div>
+<div class="line added"><span class="ln">608</span><code>      {</code></div>
+<div class="line added"><span class="ln">609</span><code>        "tab": "Reference",</code></div>
+<div class="line added"><span class="ln">610</span><code>        "icon": "book",</code></div>
+<div class="line added"><span class="ln">611</span><code>        "pages": [</code></div>
+<div class="line added"><span class="ln">612</span><code>          {</code></div>
+<div class="line added"><span class="ln">613</span><code>            "page": "reference/class-network-key-registry",</code></div>
+<div class="line added"><span class="ln">614</span><code>            "title": "Class &amp; Network Key Registry"</code></div>
+<div class="line added"><span class="ln">615</span><code>          },</code></div>
+<div class="line added"><span class="ln">616</span><code>          {</code></div>
+<div class="line added"><span class="ln">617</span><code>            "page": "reference/compatibility-matrix",</code></div>
+<div class="line added"><span class="ln">618</span><code>            "title": "Compatibility Matrix"</code></div>
+<div class="line added"><span class="ln">619</span><code>          },</code></div>
+<div class="line added"><span class="ln">620</span><code>          {</code></div>
+<div class="line added"><span class="ln">621</span><code>            "page": "reference/troubleshooting",</code></div>
+<div class="line added"><span class="ln">622</span><code>            "title": "Troubleshooting"</code></div>
+<div class="line added"><span class="ln">623</span><code>          },</code></div>
+<div class="line added"><span class="ln">624</span><code>          {</code></div>
+<div class="line added"><span class="ln">625</span><code>            "page": "reference/privacy-consent",</code></div>
+<div class="line added"><span class="ln">626</span><code>            "title": "Privacy &amp; Consent"</code></div>
+<div class="line added"><span class="ln">627</span><code>          }</code></div>
+<div class="line added"><span class="ln">628</span><code>        ]</code></div>
+<div class="line added"><span class="ln">629</span><code>      }</code></div>
+<div class="line added"><span class="ln">630</span><code>    ]</code></div>
+<div class="line added"><span class="ln">631</span><code>  }</code></div>
+<div class="line added"><span class="ln">632</span><code>}</code></div>
+<div class="line added"><span class="ln">633</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">{
+  "$schema": "https://jamdesk.com/docs.json",
+  "projectId": "q4LJ64aPcqgAnhkqpp3z",
+  "name": "TapMind SDK Documentation",
+  "description": "Integration guides for TapMind Custom Adapter (GMA SDK), Custom Adapter (GMA Next-Gen SDK), and Orchestration SDKs.",
+  "theme": "jam",
+  "tabsPosition": "top",
+  "colors": {
+    "primary": "#FE7B49",
+    "light": "#FE7B49",
+    "dark": "#FE7B49"
+  },
+  "favicon": "/images/favicon.png",
+  "logo": {
+    "light": "/images/logo-light.png",
+    "dark": "/images/logo-dark.png"
+  },
+  "interaction": {
+    "drilldown": false
+  },
+  "appearance": {
+    "default": "system",
+    "strict": true
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "/getting-started/introduction"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/README",
+      "destination": "/getting-started/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/overview",
+      "destination": "/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/gradle-setup/for-gradle-version-7+",
+      "destination": "/gradle-setup/for-gradle-version-7-plus",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/orchestration-sdk",
+      "destination": "/guides/android/orchestration-sdk/overview",
+      "permanent": false
+    },
+    {
+      "source": "/guides/android/custom-adapter",
+      "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-gma-sdk",
+      "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/android/custom-adapter/overview",
+      "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter/admob",
+      "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter/google-ad-manager",
+      "destination": "/guides/android/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter/applovin",
+      "destination": "/guides/android/custom-adapter-gma-sdk/applovin",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter/levelplay",
+      "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/android/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter-gma-sdk",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/ios/custom-adapter/overview",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter/admob",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter/google-ad-manager",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter/applovin",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/applovin",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter/levelplay",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter-gma-sdk",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/overview",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/admob",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/google-ad-manager",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/applovin",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/levelplay",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter-gma-sdk",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/overview",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/admob",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/google-ad-manager",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/applovin",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/levelplay",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter-gma-sdk",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/unity/custom-adapter/overview",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter/admob",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter/google-ad-manager",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter/applovin",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/applovin",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter/levelplay",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter-gma-sdk",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/cocos/custom-adapter/overview",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter/admob",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter/google-ad-manager",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter/ironsource-levelplay",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/guides/native/custom-adapter",
+      "destination": "/guides/android/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/next-gen",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-gma-next-gen-sdk",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": false
+    },
+    {
+      "source": "/guides/android/next-gen/overview",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/next-gen/admob",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/next-gen/google-ad-manager",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/next-gen",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/next-gen",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/next-gen",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/next-gen",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos/custom-adapter/applovin",
+      "destination": "/guides/cocos/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/overview",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/choose-your-sdk",
+      "destination": "/getting-started/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-next-gen-sdk",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-next-gen-sdk/admob",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-next-gen-sdk/google-ad-manager",
+      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",
+      "permanent": true
+    }
+  ],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              {
+                "page": "getting-started/introduction",
+                "title": "Introduction"
+              },
+              {
+                "page": "getting-started/how-custom-adapters-work",
+                "title": "How Custom Adapters Work"
+              },
+              {
+                "page": "getting-started/prerequisites",
+                "title": "Prerequisites"
+              },
+              {
+                "page": "gradle-setup/for-gradle-version-7-plus",
+                "title": "Gradle Setup"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Custom Adapter (GMA SDK)",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Integration guides",
+            "pages": [
+              {
+                "group": "Native Android",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/android/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/android/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/android/custom-adapter-gma-sdk/applovin",
+                    "title": "AppLovin"
+                  },
+                  {
+                    "page": "guides/android/custom-adapter-gma-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Native iOS",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/ios/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/ios/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/ios/custom-adapter-gma-sdk/applovin",
+                    "title": "AppLovin"
+                  },
+                  {
+                    "page": "guides/ios/custom-adapter-gma-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Flutter",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/flutter/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/flutter/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/flutter/custom-adapter-gma-sdk/applovin",
+                    "title": "AppLovin"
+                  },
+                  {
+                    "page": "guides/flutter/custom-adapter-gma-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "React Native",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/react-native/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/react-native/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/react-native/custom-adapter-gma-sdk/applovin",
+                    "title": "AppLovin"
+                  },
+                  {
+                    "page": "guides/react-native/custom-adapter-gma-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Unity",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/unity/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/unity/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/unity/custom-adapter-gma-sdk/applovin",
+                    "title": "AppLovin"
+                  },
+                  {
+                    "page": "guides/unity/custom-adapter-gma-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Cocos",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/cocos/custom-adapter-gma-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/cocos/custom-adapter-gma-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Custom Adapter (GMA Next-Gen SDK)",
+        "icon": "sparkles",
+        "groups": [
+          {
+            "group": "Integration guides",
+            "pages": [
+              {
+                "group": "Native Android",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/android/custom-adapter-gma-next-gen-sdk/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Orchestration SDK",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Integration guides",
+            "pages": [
+              {
+                "group": "Native Android",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/android/orchestration-sdk/overview",
+                    "title": "Overview"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/requirements-and-setup",
+                    "title": "Requirements &amp; Setup"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/initialize-the-sdk",
+                    "title": "Initialize the SDK"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/load-and-show-ads",
+                    "title": "Load &amp; Show Ads"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/privacy-and-consent",
+                    "title": "Privacy &amp; Consent"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/error-reference",
+                    "title": "Error Reference"
+                  },
+                  {
+                    "page": "guides/android/orchestration-sdk/support",
+                    "title": "Support"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "icon": "book",
+        "pages": [
+          {
+            "page": "reference/class-network-key-registry",
+            "title": "Class &amp; Network Key Registry"
+          },
+          {
+            "page": "reference/compatibility-matrix",
+            "title": "Compatibility Matrix"
+          },
+          {
+            "page": "reference/troubleshooting",
+            "title": "Troubleshooting"
+          },
+          {
+            "page": "reference/privacy-consent",
+            "title": "Privacy &amp; Consent"
+          }
+        ]
+      }
+    ]
+  }
+}
+</pre>
+  </section>
+</body>
+</html>

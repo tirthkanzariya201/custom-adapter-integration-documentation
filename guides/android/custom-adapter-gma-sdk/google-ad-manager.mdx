@@ -1,0 +1,87 @@
+---
+title: Google Ad Manager
+description: >-
+  Google Ad Manager Android guide for Custom Adapter (GMA SDK).
+---
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID meta-data (`com.google.android.gms.ads.APPLICATION_ID`) set in `AndroidManifest.xml`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-gam:2.1.14")
+    implementation("com.google.android.gms:play-services-ads:25.0.0")
+}
+```
+
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
+
+**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
+
+**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android** →
+
+```
+Default CPM : provided by your account manager
+Label       : provided by your account manager
+Class Name  : com.tapmind.tech.TapMindMediationAdapterGAM
+Parameter   : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.

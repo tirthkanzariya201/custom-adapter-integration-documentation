@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review: style.css</title>
+  <link rel="stylesheet" href="review-highlights.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← All changes</a>
+    <h1>style.css</h1>
+    <p class="legend">
+      <span class="tag added">🟢 Added</span>
+      <span class="tag removed">🔴 Removed</span>
+      <span class="tag modified">🟡 Modified (paired remove + add)</span>
+    </p>
+  </header>
+  <section>
+    <h2>Highlighted diff (HEAD → local)</h2>
+    <div class="diff"><div class="line removed"><span class="ln">1</span><code></code></div>
+<div class="line added"><span class="ln">→</span><code>/* TapMind — header logo */</code></div>
+<div class="line added"><span class="ln">2</span><code>header img[alt$=" logo"],</code></div>
+<div class="line added"><span class="ln">3</span><code>nav img[alt$=" logo"] {</code></div>
+<div class="line added"><span class="ln">4</span><code>  height: 52px !important;</code></div>
+<div class="line added"><span class="ln">5</span><code>  max-width: 320px !important;</code></div>
+<div class="line added"><span class="ln">6</span><code>  width: auto !important;</code></div>
+<div class="line added"><span class="ln">7</span><code>}</code></div>
+<div class="line added"><span class="ln">8</span><code></code></div>
+<div class="line added"><span class="ln">9</span><code>/* ─── Sidebar hierarchy ─────────────────────────────────────────── */</code></div>
+<div class="line added"><span class="ln">10</span><code></code></div>
+<div class="line added"><span class="ln">11</span><code>/* Section labels: "Product", "Overview" */</code></div>
+<div class="line added"><span class="ln">12</span><code>aside .sidebar-nav-groups .ml-6 &gt; button &gt; span {</code></div>
+<div class="line added"><span class="ln">13</span><code>  font-size: 0.6875rem !important;</code></div>
+<div class="line added"><span class="ln">14</span><code>  font-weight: 700 !important;</code></div>
+<div class="line added"><span class="ln">15</span><code>  letter-spacing: 0.08em;</code></div>
+<div class="line added"><span class="ln">16</span><code>  text-transform: uppercase;</code></div>
+<div class="line added"><span class="ln">17</span><code>  color: var(--color-text-muted, #94a3b8) !important;</code></div>
+<div class="line added"><span class="ln">18</span><code>}</code></div>
+<div class="line added"><span class="ln">19</span><code></code></div>
+<div class="line added"><span class="ln">20</span><code>/* Product folders: "Custom Adapter GMA SDK", etc. */</code></div>
+<div class="line added"><span class="ln">21</span><code>aside .nav-group-l1 {</code></div>
+<div class="line added"><span class="ln">22</span><code>  font-size: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">23</span><code>  font-weight: 600 !important;</code></div>
+<div class="line added"><span class="ln">24</span><code>  color: var(--color-text-primary) !important;</code></div>
+<div class="line added"><span class="ln">25</span><code>  padding-top: 0.2rem !important;</code></div>
+<div class="line added"><span class="ln">26</span><code>  padding-bottom: 0.2rem !important;</code></div>
+<div class="line added"><span class="ln">27</span><code>}</code></div>
+<div class="line added"><span class="ln">28</span><code></code></div>
+<div class="line added"><span class="ln">29</span><code>aside .nav-group-l1 + div {</code></div>
+<div class="line added"><span class="ln">30</span><code>  margin-left: 0.5rem !important;</code></div>
+<div class="line added"><span class="ln">31</span><code>  padding-left: 0.625rem !important;</code></div>
+<div class="line added"><span class="ln">32</span><code>  border-left: 1px solid rgba(148, 163, 184, 0.35);</code></div>
+<div class="line added"><span class="ln">33</span><code>}</code></div>
+<div class="line added"><span class="ln">34</span><code></code></div>
+<div class="line added"><span class="ln">35</span><code>/* Mediation / leaf pages under a product */</code></div>
+<div class="line added"><span class="ln">36</span><code>aside .nav-group-l1 + div ul li a {</code></div>
+<div class="line added"><span class="ln">37</span><code>  font-size: 0.8125rem !important;</code></div>
+<div class="line added"><span class="ln">38</span><code>  font-weight: 400 !important;</code></div>
+<div class="line added"><span class="ln">39</span><code>  color: var(--color-text-secondary) !important;</code></div>
+<div class="line added"><span class="ln">40</span><code>  padding-left: 0.5rem !important;</code></div>
+<div class="line added"><span class="ln">41</span><code>  border-left: 2px solid transparent;</code></div>
+<div class="line added"><span class="ln">42</span><code>  border-radius: 0 6px 6px 0 !important;</code></div>
+<div class="line added"><span class="ln">43</span><code>}</code></div>
+<div class="line added"><span class="ln">44</span><code></code></div>
+<div class="line added"><span class="ln">45</span><code>aside .nav-group-l1 + div ul li a.nav-active {</code></div>
+<div class="line added"><span class="ln">46</span><code>  color: var(--color-primary) !important;</code></div>
+<div class="line added"><span class="ln">47</span><code>  font-weight: 600 !important;</code></div>
+<div class="line added"><span class="ln">48</span><code>  border-left-color: var(--color-primary) !important;</code></div>
+<div class="line added"><span class="ln">49</span><code>  background: transparent !important;</code></div>
+<div class="line added"><span class="ln">50</span><code>}</code></div>
+<div class="line added"><span class="ln">51</span><code></code></div>
+<div class="line added"><span class="ln">52</span><code>/* Top-level pages: "Introduction", "Gradle Setup" */</code></div>
+<div class="line added"><span class="ln">53</span><code>aside .sidebar-nav-groups .ml-6 &gt; div &gt; ul &gt; li &gt; a {</code></div>
+<div class="line added"><span class="ln">54</span><code>  font-size: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">55</span><code>  font-weight: 400 !important;</code></div>
+<div class="line added"><span class="ln">56</span><code>  padding-left: 0.625rem !important;</code></div>
+<div class="line added"><span class="ln">57</span><code>  border-left: 2px solid transparent;</code></div>
+<div class="line added"><span class="ln">58</span><code>  border-radius: 0 6px 6px 0 !important;</code></div>
+<div class="line added"><span class="ln">59</span><code>}</code></div>
+<div class="line added"><span class="ln">60</span><code></code></div>
+<div class="line added"><span class="ln">61</span><code>aside .sidebar-nav-groups .ml-6 &gt; div &gt; ul &gt; li &gt; a.nav-active {</code></div>
+<div class="line added"><span class="ln">62</span><code>  font-weight: 600 !important;</code></div>
+<div class="line added"><span class="ln">63</span><code>  border-left-color: var(--color-primary) !important;</code></div>
+<div class="line added"><span class="ln">64</span><code>  background: transparent !important;</code></div>
+<div class="line added"><span class="ln">65</span><code>}</code></div>
+<div class="line added"><span class="ln">66</span><code></code></div>
+<div class="line added"><span class="ln">67</span><code>/* ─── Section headings (balanced separator rhythm) ───────────────── */</code></div>
+<div class="line added"><span class="ln">68</span><code></code></div>
+<div class="line added"><span class="ln">69</span><code>#content-area h2,</code></div>
+<div class="line added"><span class="ln">70</span><code>article h2,</code></div>
+<div class="line added"><span class="ln">71</span><code>.prose h2 {</code></div>
+<div class="line added"><span class="ln">72</span><code>  margin-top: 2rem !important;</code></div>
+<div class="line added"><span class="ln">73</span><code>  margin-bottom: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">74</span><code>  padding-top: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">75</span><code>  border-top: 1px solid rgba(15, 23, 42, 0.09) !important;</code></div>
+<div class="line added"><span class="ln">76</span><code>}</code></div>
+<div class="line added"><span class="ln">77</span><code></code></div>
+<div class="line added"><span class="ln">78</span><code>#content-area h2:first-of-type,</code></div>
+<div class="line added"><span class="ln">79</span><code>article h2:first-of-type,</code></div>
+<div class="line added"><span class="ln">80</span><code>.prose h2:first-of-type {</code></div>
+<div class="line added"><span class="ln">81</span><code>  margin-top: 1rem !important;</code></div>
+<div class="line added"><span class="ln">82</span><code>  margin-bottom: 0.75rem !important;</code></div>
+<div class="line added"><span class="ln">83</span><code>  padding-top: 0 !important;</code></div>
+<div class="line added"><span class="ln">84</span><code>  border-top: none !important;</code></div>
+<div class="line added"><span class="ln">85</span><code>}</code></div>
+<div class="line added"><span class="ln">86</span><code></code></div>
+<div class="line added"><span class="ln">87</span><code>#content-area h2 + div[class*="grid"],</code></div>
+<div class="line added"><span class="ln">88</span><code>article h2 + div[class*="grid"],</code></div>
+<div class="line added"><span class="ln">89</span><code>.prose h2 + div[class*="grid"] {</code></div>
+<div class="line added"><span class="ln">90</span><code>  margin-top: 0 !important;</code></div>
+<div class="line added"><span class="ln">91</span><code>}</code></div>
+<div class="line added"><span class="ln">92</span><code></code></div>
+<div class="line added"><span class="ln">93</span><code>#content-area h3,</code></div>
+<div class="line added"><span class="ln">94</span><code>article h3,</code></div>
+<div class="line added"><span class="ln">95</span><code>.prose h3 {</code></div>
+<div class="line added"><span class="ln">96</span><code>  margin-top: 0.85rem !important;</code></div>
+<div class="line added"><span class="ln">97</span><code>  margin-bottom: 0.35rem !important;</code></div>
+<div class="line added"><span class="ln">98</span><code>}</code></div>
+<div class="line added"><span class="ln">99</span><code></code></div>
+<div class="line added"><span class="ln">100</span><code>#content-area h4,</code></div>
+<div class="line added"><span class="ln">101</span><code>article h4,</code></div>
+<div class="line added"><span class="ln">102</span><code>.prose h4 {</code></div>
+<div class="line added"><span class="ln">103</span><code>  margin-top: 0.65rem !important;</code></div>
+<div class="line added"><span class="ln">104</span><code>  margin-bottom: 0.25rem !important;</code></div>
+<div class="line added"><span class="ln">105</span><code>}</code></div>
+<div class="line added"><span class="ln">106</span><code></code></div>
+<div class="line added"><span class="ln">107</span><code>#content-area p,</code></div>
+<div class="line added"><span class="ln">108</span><code>article p,</code></div>
+<div class="line added"><span class="ln">109</span><code>.prose p {</code></div>
+<div class="line added"><span class="ln">110</span><code>  margin-top: 0.3rem !important;</code></div>
+<div class="line added"><span class="ln">111</span><code>  margin-bottom: 0.55rem !important;</code></div>
+<div class="line added"><span class="ln">112</span><code>  line-height: 1.55 !important;</code></div>
+<div class="line added"><span class="ln">113</span><code>}</code></div>
+<div class="line added"><span class="ln">114</span><code></code></div>
+<div class="line added"><span class="ln">115</span><code>#content-area ul,</code></div>
+<div class="line added"><span class="ln">116</span><code>#content-area ol,</code></div>
+<div class="line added"><span class="ln">117</span><code>article ul,</code></div>
+<div class="line added"><span class="ln">118</span><code>article ol,</code></div>
+<div class="line added"><span class="ln">119</span><code>.prose ul,</code></div>
+<div class="line added"><span class="ln">120</span><code>.prose ol {</code></div>
+<div class="line added"><span class="ln">121</span><code>  margin-top: 0.3rem !important;</code></div>
+<div class="line added"><span class="ln">122</span><code>  margin-bottom: 0.55rem !important;</code></div>
+<div class="line added"><span class="ln">123</span><code>  padding-left: 1.25rem;</code></div>
+<div class="line added"><span class="ln">124</span><code>}</code></div>
+<div class="line added"><span class="ln">125</span><code></code></div>
+<div class="line added"><span class="ln">126</span><code>#content-area li,</code></div>
+<div class="line added"><span class="ln">127</span><code>article li,</code></div>
+<div class="line added"><span class="ln">128</span><code>.prose li {</code></div>
+<div class="line added"><span class="ln">129</span><code>  margin-top: 0.1rem !important;</code></div>
+<div class="line added"><span class="ln">130</span><code>  margin-bottom: 0.1rem !important;</code></div>
+<div class="line added"><span class="ln">131</span><code>  line-height: 1.5 !important;</code></div>
+<div class="line added"><span class="ln">132</span><code>}</code></div>
+<div class="line added"><span class="ln">133</span><code></code></div>
+<div class="line added"><span class="ln">134</span><code>#content-area li &gt; p,</code></div>
+<div class="line added"><span class="ln">135</span><code>article li &gt; p,</code></div>
+<div class="line added"><span class="ln">136</span><code>.prose li &gt; p {</code></div>
+<div class="line added"><span class="ln">137</span><code>  margin-top: 0 !important;</code></div>
+<div class="line added"><span class="ln">138</span><code>  margin-bottom: 0.25rem !important;</code></div>
+<div class="line added"><span class="ln">139</span><code>}</code></div>
+<div class="line added"><span class="ln">140</span><code></code></div>
+<div class="line added"><span class="ln">141</span><code>/* ─── Info callouts — GitBook-style (no outer border box) ───────── */</code></div>
+<div class="line added"><span class="ln">142</span><code></code></div>
+<div class="line added"><span class="ln">143</span><code>.prose div:has(&gt; .callout-content),</code></div>
+<div class="line added"><span class="ln">144</span><code>#content-area div:has(&gt; .callout-content),</code></div>
+<div class="line added"><span class="ln">145</span><code>article div:has(&gt; .callout-content) {</code></div>
+<div class="line added"><span class="ln">146</span><code>  background: #f0f7fd !important;</code></div>
+<div class="line added"><span class="ln">147</span><code>  border: none !important;</code></div>
+<div class="line added"><span class="ln">148</span><code>  border-left: 3px solid #60a5fa !important;</code></div>
+<div class="line added"><span class="ln">149</span><code>  border-radius: 6px !important;</code></div>
+<div class="line added"><span class="ln">150</span><code>  padding: 0.6rem 0.85rem !important;</code></div>
+<div class="line added"><span class="ln">151</span><code>  margin: 0.65rem 0 !important;</code></div>
+<div class="line added"><span class="ln">152</span><code>  box-shadow: none !important;</code></div>
+<div class="line added"><span class="ln">153</span><code>  align-items: flex-start !important;</code></div>
+<div class="line added"><span class="ln">154</span><code>  gap: 0 !important;</code></div>
+<div class="line added"><span class="ln">155</span><code>}</code></div>
+<div class="line added"><span class="ln">156</span><code></code></div>
+<div class="line added"><span class="ln">157</span><code>.prose div:has(&gt; .callout-content) &gt; .flex-shrink-0,</code></div>
+<div class="line added"><span class="ln">158</span><code>#content-area div:has(&gt; .callout-content) &gt; .flex-shrink-0 {</code></div>
+<div class="line added"><span class="ln">159</span><code>  display: none !important;</code></div>
+<div class="line added"><span class="ln">160</span><code>}</code></div>
+<div class="line added"><span class="ln">161</span><code></code></div>
+<div class="line added"><span class="ln">162</span><code>.callout-content {</code></div>
+<div class="line added"><span class="ln">163</span><code>  color: #334155 !important;</code></div>
+<div class="line added"><span class="ln">164</span><code>  font-size: 0.9rem !important;</code></div>
+<div class="line added"><span class="ln">165</span><code>  line-height: 1.5 !important;</code></div>
+<div class="line added"><span class="ln">166</span><code>}</code></div>
+<div class="line added"><span class="ln">167</span><code></code></div>
+<div class="line added"><span class="ln">168</span><code>.callout-content strong {</code></div>
+<div class="line added"><span class="ln">169</span><code>  display: inline;</code></div>
+<div class="line added"><span class="ln">170</span><code>  font-weight: 600 !important;</code></div>
+<div class="line added"><span class="ln">171</span><code>  color: #1e3a5f !important;</code></div>
+<div class="line added"><span class="ln">172</span><code>  font-size: inherit !important;</code></div>
+<div class="line added"><span class="ln">173</span><code>}</code></div>
+<div class="line added"><span class="ln">174</span><code></code></div>
+<div class="line added"><span class="ln">175</span><code>/* Prerequisite titles above bullet lists */</code></div>
+<div class="line added"><span class="ln">176</span><code>.callout-content &gt; p:has(+ ul) &gt; strong {</code></div>
+<div class="line added"><span class="ln">177</span><code>  display: block;</code></div>
+<div class="line added"><span class="ln">178</span><code>  margin-bottom: 0.25rem !important;</code></div>
+<div class="line added"><span class="ln">179</span><code>  color: #1e40af !important;</code></div>
+<div class="line added"><span class="ln">180</span><code>  font-size: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">181</span><code>}</code></div>
+<div class="line added"><span class="ln">182</span><code></code></div>
+<div class="line added"><span class="ln">183</span><code>/* Arrow-path hints — single horizontal flow (GitBook style) */</code></div>
+<div class="line added"><span class="ln">184</span><code>.callout-content &gt; p {</code></div>
+<div class="line added"><span class="ln">185</span><code>  margin: 0 !important;</code></div>
+<div class="line added"><span class="ln">186</span><code>  line-height: 1.45 !important;</code></div>
+<div class="line added"><span class="ln">187</span><code>}</code></div>
+<div class="line added"><span class="ln">188</span><code></code></div>
+<div class="line added"><span class="ln">189</span><code>.callout-content &gt; p:only-child {</code></div>
+<div class="line added"><span class="ln">190</span><code>  display: block;</code></div>
+<div class="line added"><span class="ln">191</span><code>}</code></div>
+<div class="line added"><span class="ln">192</span><code></code></div>
+<div class="line added"><span class="ln">193</span><code>.callout-content ul {</code></div>
+<div class="line added"><span class="ln">194</span><code>  margin: 0 !important;</code></div>
+<div class="line added"><span class="ln">195</span><code>  padding-left: 1.1rem !important;</code></div>
+<div class="line added"><span class="ln">196</span><code>}</code></div>
+<div class="line added"><span class="ln">197</span><code></code></div>
+<div class="line added"><span class="ln">198</span><code>.callout-content li {</code></div>
+<div class="line added"><span class="ln">199</span><code>  margin: 0.1rem 0 !important;</code></div>
+<div class="line added"><span class="ln">200</span><code>}</code></div>
+<div class="line added"><span class="ln">201</span><code></code></div>
+<div class="line added"><span class="ln">202</span><code>/* Warning callouts */</code></div>
+<div class="line added"><span class="ln">203</span><code>.prose div:has(&gt; .callout-content)[style*="warning"],</code></div>
+<div class="line added"><span class="ln">204</span><code>.prose div:has(&gt; .callout-content):has(.fa-triangle-exclamation) {</code></div>
+<div class="line added"><span class="ln">205</span><code>  background: #fffbeb !important;</code></div>
+<div class="line added"><span class="ln">206</span><code>  border-left-color: #f59e0b !important;</code></div>
+<div class="line added"><span class="ln">207</span><code>}</code></div>
+<div class="line added"><span class="ln">208</span><code></code></div>
+<div class="line added"><span class="ln">209</span><code>/* ─── Overview / hub cards — compact, no stretched empty space ──── */</code></div>
+<div class="line added"><span class="ln">210</span><code></code></div>
+<div class="line added"><span class="ln">211</span><code>.prose div[class*="grid"][class*="gap-4"] {</code></div>
+<div class="line added"><span class="ln">212</span><code>  gap: 0.75rem !important;</code></div>
+<div class="line added"><span class="ln">213</span><code>  margin-top: 0 !important;</code></div>
+<div class="line added"><span class="ln">214</span><code>  margin-bottom: 0.75rem !important;</code></div>
+<div class="line added"><span class="ln">215</span><code>}</code></div>
+<div class="line added"><span class="ln">216</span><code></code></div>
+<div class="line added"><span class="ln">217</span><code>.prose div[class*="grid"] &gt; div[style*="height:100%"] {</code></div>
+<div class="line added"><span class="ln">218</span><code>  height: auto !important;</code></div>
+<div class="line added"><span class="ln">219</span><code>  margin: 0 !important;</code></div>
+<div class="line added"><span class="ln">220</span><code>}</code></div>
+<div class="line added"><span class="ln">221</span><code></code></div>
+<div class="line added"><span class="ln">222</span><code>.prose div[class*="grid"] div[style*="padding:1rem"] {</code></div>
+<div class="line added"><span class="ln">223</span><code>  padding: 0.7rem 0.85rem !important;</code></div>
+<div class="line added"><span class="ln">224</span><code>  gap: 0.35rem !important;</code></div>
+<div class="line added"><span class="ln">225</span><code>  flex: 0 1 auto !important;</code></div>
+<div class="line added"><span class="ln">226</span><code>}</code></div>
+<div class="line added"><span class="ln">227</span><code></code></div>
+<div class="line added"><span class="ln">228</span><code>.prose div[class*="grid"] div[style*="flex:1"] {</code></div>
+<div class="line added"><span class="ln">229</span><code>  flex: 0 1 auto !important;</code></div>
+<div class="line added"><span class="ln">230</span><code>}</code></div>
+<div class="line added"><span class="ln">231</span><code></code></div>
+<div class="line added"><span class="ln">232</span><code>.prose .card-content,</code></div>
+<div class="line added"><span class="ln">233</span><code>.prose div[class*="card-content"] {</code></div>
+<div class="line added"><span class="ln">234</span><code>  font-size: 0.875rem !important;</code></div>
+<div class="line added"><span class="ln">235</span><code>  line-height: 1.45 !important;</code></div>
+<div class="line added"><span class="ln">236</span><code>}</code></div>
+<div class="line added"><span class="ln">237</span><code></code></div>
+<div class="line added"><span class="ln">238</span><code>.prose .card-content p,</code></div>
+<div class="line added"><span class="ln">239</span><code>.prose div[class*="card-content"] p {</code></div>
+<div class="line added"><span class="ln">240</span><code>  margin: 0 !important;</code></div>
+<div class="line added"><span class="ln">241</span><code>  line-height: 1.45 !important;</code></div>
+<div class="line added"><span class="ln">242</span><code>}</code></div>
+<div class="line added"><span class="ln">243</span><code></code></div>
+<div class="line added"><span class="ln">244</span><code>/* ─── Steps component — compact CloudX-style rhythm ─────────────── */</code></div>
+<div class="line added"><span class="ln">245</span><code></code></div>
+<div class="line added"><span class="ln">246</span><code>.prose div:has(&gt; [data-step-number]) {</code></div>
+<div class="line added"><span class="ln">247</span><code>  margin-top: 0.35rem !important;</code></div>
+<div class="line added"><span class="ln">248</span><code>  margin-bottom: 1rem !important;</code></div>
+<div class="line added"><span class="ln">249</span><code>}</code></div>
+<div class="line added"><span class="ln">250</span><code></code></div>
+<div class="line added"><span class="ln">251</span><code>[data-step-number] {</code></div>
+<div class="line added"><span class="ln">252</span><code>  padding-bottom: 1rem !important;</code></div>
+<div class="line added"><span class="ln">253</span><code>}</code></div>
+<div class="line added"><span class="ln">254</span><code></code></div>
+<div class="line added"><span class="ln">255</span><code>[data-step-number]:last-child {</code></div>
+<div class="line added"><span class="ln">256</span><code>  padding-bottom: 0 !important;</code></div>
+<div class="line added"><span class="ln">257</span><code>}</code></div>
+<div class="line added"><span class="ln">258</span><code></code></div>
+<div class="line added"><span class="ln">259</span><code>/* Tighter gap between step title and body */</code></div>
+<div class="line added"><span class="ln">260</span><code>[data-step-number] &gt; div[class*="ml-"] {</code></div>
+<div class="line added"><span class="ln">261</span><code>  padding-top: 0.125rem !important;</code></div>
+<div class="line added"><span class="ln">262</span><code>  margin-left: 2.25rem !important;</code></div>
+<div class="line added"><span class="ln">263</span><code>}</code></div>
+<div class="line added"><span class="ln">264</span><code></code></div>
+<div class="line added"><span class="ln">265</span><code>[data-step-number] &gt; div[class*="ml-"] p,</code></div>
+<div class="line added"><span class="ln">266</span><code>[data-step-number] &gt; div[class*="ml-"] div p {</code></div>
+<div class="line added"><span class="ln">267</span><code>  margin-top: 0 !important;</code></div>
+<div class="line added"><span class="ln">268</span><code>  margin-bottom: 0 !important;</code></div>
+<div class="line added"><span class="ln">269</span><code>  line-height: 1.55 !important;</code></div>
+<div class="line added"><span class="ln">270</span><code>  font-size: 0.9rem !important;</code></div>
+<div class="line added"><span class="ln">271</span><code>}</code></div>
+<div class="line added"><span class="ln">272</span><code></code></div>
+<div class="line added"><span class="ln">273</span><code>/* Step header row */</code></div>
+<div class="line added"><span class="ln">274</span><code>[data-step-number] &gt; div[style*="display:flex"] {</code></div>
+<div class="line added"><span class="ln">275</span><code>  gap: 0.625rem !important;</code></div>
+<div class="line added"><span class="ln">276</span><code>}</code></div>
+<div class="line added"><span class="ln">277</span><code></code></div>
+<div class="line added"><span class="ln">278</span><code>[data-step-number] &gt; div[style*="display:flex"] &gt; div[style*="border-radius:50%"] {</code></div>
+<div class="line added"><span class="ln">279</span><code>  width: 24px !important;</code></div>
+<div class="line added"><span class="ln">280</span><code>  height: 24px !important;</code></div>
+<div class="line added"><span class="ln">281</span><code>  min-width: 24px !important;</code></div>
+<div class="line added"><span class="ln">282</span><code>  font-size: 11px !important;</code></div>
+<div class="line added"><span class="ln">283</span><code>}</code></div>
+<div class="line added"><span class="ln">284</span><code></code></div>
+<div class="line added"><span class="ln">285</span><code>[data-step-number] &gt; div[style*="display:flex"] span {</code></div>
+<div class="line added"><span class="ln">286</span><code>  font-size: 0.9375rem !important;</code></div>
+<div class="line added"><span class="ln">287</span><code>  line-height: 1.35 !important;</code></div>
+<div class="line added"><span class="ln">288</span><code>}</code></div>
+<div class="line added"><span class="ln">289</span><code></code></div>
+<div class="line added"><span class="ln">290</span><code>/* Vertical connector between steps */</code></div>
+<div class="line added"><span class="ln">291</span><code>[data-step-number] &gt; div[style*="position:absolute"] {</code></div>
+<div class="line added"><span class="ln">292</span><code>  top: 22px !important;</code></div>
+<div class="line added"><span class="ln">293</span><code>  left: 11px !important;</code></div>
+<div class="line added"><span class="ln">294</span><code>}</code></div>
+<div class="line added"><span class="ln">295</span><code></code></div>
+<div class="line added"><span class="ln">296</span><code>/* ─── General prose readability (CloudX-like density) ─────────── */</code></div>
+<div class="line added"><span class="ln">297</span><code></code></div>
+<div class="line added"><span class="ln">298</span><code>.prose p.text-theme-text-secondary,</code></div>
+<div class="line added"><span class="ln">299</span><code>#content-area p.text-theme-text-secondary,</code></div>
+<div class="line added"><span class="ln">300</span><code>article p.text-theme-text-secondary {</code></div>
+<div class="line added"><span class="ln">301</span><code>  line-height: 1.6 !important;</code></div>
+<div class="line added"><span class="ln">302</span><code>}</code></div>
+<div class="line added"><span class="ln">303</span><code></code></div>
+<div class="line added"><span class="ln">304</span><code>.prose &gt; p.text-theme-text-secondary:first-of-type {</code></div>
+<div class="line added"><span class="ln">305</span><code>  margin-bottom: 0.75rem !important;</code></div>
+<div class="line added"><span class="ln">306</span><code>}</code></div>
+<div class="line added"><span class="ln">307</span><code></code></div>
+<div class="line added"><span class="ln">308</span><code>/* ─── Code blocks — GitBook-style config snippets ─────────────── */</code></div>
+<div class="line added"><span class="ln">309</span><code></code></div>
+<div class="line added"><span class="ln">310</span><code>.prose pre:not([class*="shiki"]),</code></div>
+<div class="line added"><span class="ln">311</span><code>#content-area pre:not([class*="shiki"]),</code></div>
+<div class="line added"><span class="ln">312</span><code>article pre:not([class*="shiki"]) {</code></div>
+<div class="line added"><span class="ln">313</span><code>  background: #f6f8fa !important;</code></div>
+<div class="line added"><span class="ln">314</span><code>  border: 1px solid #e1e4e8 !important;</code></div>
+<div class="line added"><span class="ln">315</span><code>  border-radius: 6px !important;</code></div>
+<div class="line added"><span class="ln">316</span><code>  padding: 0.65rem 0.9rem !important;</code></div>
+<div class="line added"><span class="ln">317</span><code>  margin: 0.35rem 0 0.6rem !important;</code></div>
+<div class="line added"><span class="ln">318</span><code>  font-size: 0.8125rem !important;</code></div>
+<div class="line added"><span class="ln">319</span><code>  line-height: 1.5 !important;</code></div>
+<div class="line added"><span class="ln">320</span><code>  overflow-x: auto;</code></div>
+<div class="line added"><span class="ln">321</span><code>  box-shadow: none !important;</code></div>
+<div class="line added"><span class="ln">322</span><code>}</code></div>
+<div class="line added"><span class="ln">323</span><code></code></div>
+<div class="line added"><span class="ln">324</span><code>.prose pre:not([class*="shiki"]) code,</code></div>
+<div class="line added"><span class="ln">325</span><code>#content-area pre:not([class*="shiki"]) code,</code></div>
+<div class="line added"><span class="ln">326</span><code>article pre:not([class*="shiki"]) code {</code></div>
+<div class="line added"><span class="ln">327</span><code>  background: transparent !important;</code></div>
+<div class="line added"><span class="ln">328</span><code>  padding: 0 !important;</code></div>
+<div class="line added"><span class="ln">329</span><code>  border: none !important;</code></div>
+<div class="line added"><span class="ln">330</span><code>  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;</code></div>
+<div class="line added"><span class="ln">331</span><code>  color: #3c4043 !important;</code></div>
+<div class="line added"><span class="ln">332</span><code>  white-space: pre-wrap !important;</code></div>
+<div class="line added"><span class="ln">333</span><code>  word-break: break-word;</code></div>
+<div class="line added"><span class="ln">334</span><code>  font-size: inherit !important;</code></div>
+<div class="line added"><span class="ln">335</span><code>}</code></div>
+<div class="line added"><span class="ln">336</span><code></code></div>
+<div class="line added"><span class="ln">337</span><code>/* Gradle setup — tighter vertical spacing in repository code blocks */</code></div>
+<div class="line added"><span class="ln">338</span><code>.gradle-code-compact pre,</code></div>
+<div class="line added"><span class="ln">339</span><code>.gradle-code-compact pre code {</code></div>
+<div class="line added"><span class="ln">340</span><code>  line-height: 1.3 !important;</code></div>
+<div class="line added"><span class="ln">341</span><code>  padding-top: 0.45rem !important;</code></div>
+<div class="line added"><span class="ln">342</span><code>  padding-bottom: 0.45rem !important;</code></div>
+<div class="line added"><span class="ln">343</span><code>  margin: 0 !important;</code></div>
+<div class="line added"><span class="ln">344</span><code>}</code></div>
+<div class="line added"><span class="ln">345</span><code></code></div>
+<div class="line added"><span class="ln">346</span><code>.prose pre.shiki,</code></div>
+<div class="line added"><span class="ln">347</span><code>#content-area pre.shiki,</code></div>
+<div class="line added"><span class="ln">348</span><code>article pre.shiki {</code></div>
+<div class="line added"><span class="ln">349</span><code>  margin: 0.45rem 0 0.65rem !important;</code></div>
+<div class="line added"><span class="ln">350</span><code>  border-radius: 6px !important;</code></div>
+<div class="line added"><span class="ln">351</span><code>  font-size: 0.8125rem !important;</code></div>
+<div class="line added"><span class="ln">352</span><code>  border: 1px solid #e1e4e8 !important;</code></div>
+<div class="line added"><span class="ln">353</span><code>}</code></div>
+<div class="line added"><span class="ln">354</span><code></code></div>
+<div class="line added"><span class="ln">355</span><code>.prose p + pre,</code></div>
+<div class="line added"><span class="ln">356</span><code>.prose pre + p,</code></div>
+<div class="line added"><span class="ln">357</span><code>#content-area p + pre,</code></div>
+<div class="line added"><span class="ln">358</span><code>#content-area pre + p {</code></div>
+<div class="line added"><span class="ln">359</span><code>  margin-top: 0.35rem !important;</code></div>
+<div class="line added"><span class="ln">360</span><code>}</code></div>
+<div class="line added"><span class="ln">361</span><code></code></div>
+<div class="line added"><span class="ln">362</span><code>.prose :not(pre) &gt; code,</code></div>
+<div class="line added"><span class="ln">363</span><code>#content-area :not(pre) &gt; code {</code></div>
+<div class="line added"><span class="ln">364</span><code>  background: #f0f2f5 !important;</code></div>
+<div class="line added"><span class="ln">365</span><code>  padding: 0.12em 0.35em !important;</code></div>
+<div class="line added"><span class="ln">366</span><code>  border-radius: 4px !important;</code></div>
+<div class="line added"><span class="ln">367</span><code>  font-size: 0.875em !important;</code></div>
+<div class="line added"><span class="ln">368</span><code>  border: none !important;</code></div>
+<div class="line added"><span class="ln">369</span><code>}</code></div>
+<div class="line added"><span class="ln">370</span><code></code></div>
+<div class="line added"><span class="ln">371</span><code>/* Horizontal rules between guide sections */</code></div>
+<div class="line added"><span class="ln">372</span><code>#content-area hr,</code></div>
+<div class="line added"><span class="ln">373</span><code>article hr,</code></div>
+<div class="line added"><span class="ln">374</span><code>.prose hr {</code></div>
+<div class="line added"><span class="ln">375</span><code>  margin: 0.85rem 0 !important;</code></div>
+<div class="line added"><span class="ln">376</span><code>  border: none;</code></div>
+<div class="line added"><span class="ln">377</span><code>  border-top: 1px solid rgba(15, 23, 42, 0.1);</code></div>
+<div class="line added"><span class="ln">378</span><code>}</code></div>
+<div class="line added"><span class="ln">379</span><code></code></div></div>
+  </section>
+  <section>
+    <h2>Local file (current)</h2>
+    <pre class="current">/* TapMind — header logo */
+header img[alt$=" logo"],
+nav img[alt$=" logo"] {
+  height: 52px !important;
+  max-width: 320px !important;
+  width: auto !important;
+}
+
+/* ─── Sidebar hierarchy ─────────────────────────────────────────── */
+
+/* Section labels: "Product", "Overview" */
+aside .sidebar-nav-groups .ml-6 &gt; button &gt; span {
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #94a3b8) !important;
+}
+
+/* Product folders: "Custom Adapter GMA SDK", etc. */
+aside .nav-group-l1 {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-primary) !important;
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}
+
+aside .nav-group-l1 + div {
+  margin-left: 0.5rem !important;
+  padding-left: 0.625rem !important;
+  border-left: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+/* Mediation / leaf pages under a product */
+aside .nav-group-l1 + div ul li a {
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  color: var(--color-text-secondary) !important;
+  padding-left: 0.5rem !important;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+aside .nav-group-l1 + div ul li a.nav-active {
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}
+
+/* Top-level pages: "Introduction", "Gradle Setup" */
+aside .sidebar-nav-groups .ml-6 &gt; div &gt; ul &gt; li &gt; a {
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  padding-left: 0.625rem !important;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+aside .sidebar-nav-groups .ml-6 &gt; div &gt; ul &gt; li &gt; a.nav-active {
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}
+
+/* ─── Section headings (balanced separator rhythm) ───────────────── */
+
+#content-area h2,
+article h2,
+.prose h2 {
+  margin-top: 2rem !important;
+  margin-bottom: 0.875rem !important;
+  padding-top: 0.875rem !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.09) !important;
+}
+
+#content-area h2:first-of-type,
+article h2:first-of-type,
+.prose h2:first-of-type {
+  margin-top: 1rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+#content-area h2 + div[class*="grid"],
+article h2 + div[class*="grid"],
+.prose h2 + div[class*="grid"] {
+  margin-top: 0 !important;
+}
+
+#content-area h3,
+article h3,
+.prose h3 {
+  margin-top: 0.85rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+#content-area h4,
+article h4,
+.prose h4 {
+  margin-top: 0.65rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+#content-area p,
+article p,
+.prose p {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.55rem !important;
+  line-height: 1.55 !important;
+}
+
+#content-area ul,
+#content-area ol,
+article ul,
+article ol,
+.prose ul,
+.prose ol {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.55rem !important;
+  padding-left: 1.25rem;
+}
+
+#content-area li,
+article li,
+.prose li {
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.1rem !important;
+  line-height: 1.5 !important;
+}
+
+#content-area li &gt; p,
+article li &gt; p,
+.prose li &gt; p {
+  margin-top: 0 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* ─── Info callouts — GitBook-style (no outer border box) ───────── */
+
+.prose div:has(&gt; .callout-content),
+#content-area div:has(&gt; .callout-content),
+article div:has(&gt; .callout-content) {
+  background: #f0f7fd !important;
+  border: none !important;
+  border-left: 3px solid #60a5fa !important;
+  border-radius: 6px !important;
+  padding: 0.6rem 0.85rem !important;
+  margin: 0.65rem 0 !important;
+  box-shadow: none !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+}
+
+.prose div:has(&gt; .callout-content) &gt; .flex-shrink-0,
+#content-area div:has(&gt; .callout-content) &gt; .flex-shrink-0 {
+  display: none !important;
+}
+
+.callout-content {
+  color: #334155 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+.callout-content strong {
+  display: inline;
+  font-weight: 600 !important;
+  color: #1e3a5f !important;
+  font-size: inherit !important;
+}
+
+/* Prerequisite titles above bullet lists */
+.callout-content &gt; p:has(+ ul) &gt; strong {
+  display: block;
+  margin-bottom: 0.25rem !important;
+  color: #1e40af !important;
+  font-size: 0.875rem !important;
+}
+
+/* Arrow-path hints — single horizontal flow (GitBook style) */
+.callout-content &gt; p {
+  margin: 0 !important;
+  line-height: 1.45 !important;
+}
+
+.callout-content &gt; p:only-child {
+  display: block;
+}
+
+.callout-content ul {
+  margin: 0 !important;
+  padding-left: 1.1rem !important;
+}
+
+.callout-content li {
+  margin: 0.1rem 0 !important;
+}
+
+/* Warning callouts */
+.prose div:has(&gt; .callout-content)[style*="warning"],
+.prose div:has(&gt; .callout-content):has(.fa-triangle-exclamation) {
+  background: #fffbeb !important;
+  border-left-color: #f59e0b !important;
+}
+
+/* ─── Overview / hub cards — compact, no stretched empty space ──── */
+
+.prose div[class*="grid"][class*="gap-4"] {
+  gap: 0.75rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.prose div[class*="grid"] &gt; div[style*="height:100%"] {
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.prose div[class*="grid"] div[style*="padding:1rem"] {
+  padding: 0.7rem 0.85rem !important;
+  gap: 0.35rem !important;
+  flex: 0 1 auto !important;
+}
+
+.prose div[class*="grid"] div[style*="flex:1"] {
+  flex: 0 1 auto !important;
+}
+
+.prose .card-content,
+.prose div[class*="card-content"] {
+  font-size: 0.875rem !important;
+  line-height: 1.45 !important;
+}
+
+.prose .card-content p,
+.prose div[class*="card-content"] p {
+  margin: 0 !important;
+  line-height: 1.45 !important;
+}
+
+/* ─── Steps component — compact CloudX-style rhythm ─────────────── */
+
+.prose div:has(&gt; [data-step-number]) {
+  margin-top: 0.35rem !important;
+  margin-bottom: 1rem !important;
+}
+
+[data-step-number] {
+  padding-bottom: 1rem !important;
+}
+
+[data-step-number]:last-child {
+  padding-bottom: 0 !important;
+}
+
+/* Tighter gap between step title and body */
+[data-step-number] &gt; div[class*="ml-"] {
+  padding-top: 0.125rem !important;
+  margin-left: 2.25rem !important;
+}
+
+[data-step-number] &gt; div[class*="ml-"] p,
+[data-step-number] &gt; div[class*="ml-"] div p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.55 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Step header row */
+[data-step-number] &gt; div[style*="display:flex"] {
+  gap: 0.625rem !important;
+}
+
+[data-step-number] &gt; div[style*="display:flex"] &gt; div[style*="border-radius:50%"] {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  font-size: 11px !important;
+}
+
+[data-step-number] &gt; div[style*="display:flex"] span {
+  font-size: 0.9375rem !important;
+  line-height: 1.35 !important;
+}
+
+/* Vertical connector between steps */
+[data-step-number] &gt; div[style*="position:absolute"] {
+  top: 22px !important;
+  left: 11px !important;
+}
+
+/* ─── General prose readability (CloudX-like density) ─────────── */
+
+.prose p.text-theme-text-secondary,
+#content-area p.text-theme-text-secondary,
+article p.text-theme-text-secondary {
+  line-height: 1.6 !important;
+}
+
+.prose &gt; p.text-theme-text-secondary:first-of-type {
+  margin-bottom: 0.75rem !important;
+}
+
+/* ─── Code blocks — GitBook-style config snippets ─────────────── */
+
+.prose pre:not([class*="shiki"]),
+#content-area pre:not([class*="shiki"]),
+article pre:not([class*="shiki"]) {
+  background: #f6f8fa !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 0.65rem 0.9rem !important;
+  margin: 0.35rem 0 0.6rem !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  overflow-x: auto;
+  box-shadow: none !important;
+}
+
+.prose pre:not([class*="shiki"]) code,
+#content-area pre:not([class*="shiki"]) code,
+article pre:not([class*="shiki"]) code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  color: #3c4043 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  font-size: inherit !important;
+}
+
+/* Gradle setup — tighter vertical spacing in repository code blocks */
+.gradle-code-compact pre,
+.gradle-code-compact pre code {
+  line-height: 1.3 !important;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  margin: 0 !important;
+}
+
+.prose pre.shiki,
+#content-area pre.shiki,
+article pre.shiki {
+  margin: 0.45rem 0 0.65rem !important;
+  border-radius: 6px !important;
+  font-size: 0.8125rem !important;
+  border: 1px solid #e1e4e8 !important;
+}
+
+.prose p + pre,
+.prose pre + p,
+#content-area p + pre,
+#content-area pre + p {
+  margin-top: 0.35rem !important;
+}
+
+.prose :not(pre) &gt; code,
+#content-area :not(pre) &gt; code {
+  background: #f0f2f5 !important;
+  padding: 0.12em 0.35em !important;
+  border-radius: 4px !important;
+  font-size: 0.875em !important;
+  border: none !important;
+}
+
+/* Horizontal rules between guide sections */
+#content-area hr,
+article hr,
+.prose hr {
+  margin: 0.85rem 0 !important;
+  border: none;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+</pre>
+  </section>
+</body>
+</html>

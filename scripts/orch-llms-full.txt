@@ -1,0 +1,335 @@
+# TapMind Orchestration SDK Integration
+
+The Orchestration SDK is a lightweight Android library that enables ad serving through defined placement codes. It allows developers to monetize specific moments within the app by associating placements with screen transitions or user interactions.
+
+
+# Native-Android Engine
+
+This guide explains how to integrate the Orchestration SDK into your Android application. The SDK enables dynamic ad delivery through configurable placement codes, allowing developers to serve ads at predefined moments within the app while maintaining full control over the user experience and monetization strategy.
+
+
+# Requirements & Setup
+
+In this article, you will learn how to integrate, configure, and initialize the Orchestration SDK in your Android application.
+
+### Prerequisites
+
+Before integrating the Orchestration SDK, ensure your app meets the following requirements:
+
+* Android API Level: 24 (Android 7.0) or higher
+* Google Play Services: Available and updated on the targeted device
+
+***
+
+### Add Orchestration SDK
+
+Add the Orchestration SDK dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```gradle
+dependencies {
+ implementation("io.github.tapmind-tech:orchestration:1.0.0")
+}
+```
+
+> **Note:**\
+> After adding this dependencies, make sure to sync your project with Gradle files.
+
+***
+
+### Required Dependencies
+
+The Orchestration use the following core dependencies inside the SDK to handle data processing, lifecycle monitoring and ad rendering.
+
+#### Dependency Purpose
+
+| Dependency        | Purpose                                                                             |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| Gson              | JSON serialization and deserialization for SDK configuration and API responses      |
+| Lifecycle Process | Monitors application lifecycle states such as foreground and background transitions |
+| Play Services Ads | Provides advertising and ad rendering services required by the SDK                  |
+
+> **Note:**\
+> Required dependencies version are regularly updated to ensure the latest fixes, security patches and performance improvements are maintained.
+
+***
+
+### Manifest Configuration
+
+To initialize the underlying Google Ads services, add your Google Ad Manager (GAM) Application ID to your application's `AndroidManifest.xml` file.
+
+```xml
+<manifest>
+  <application>
+    <!-- Test Ad Manager app ID: ca-app-pub-3940256099942544~3347511713 -->
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="<YOUR_APP_ID>"/>
+  </application>
+</manifest>
+```
+
+> **Note:**\
+> Replace YOUR\_APP\_ID with your Google Ad Manager (GAM) Application ID. While testing, use the Test Ad Manager app ID shown in the previous example.
+
+
+# Initialize the SDK
+
+To ensure the SDK is ready to serve ads when needed, initialize the Orchestration SDK once during your application startup. It is highly recommended to perform this initialization inside your custom Application class to maintain availability across the entire application.\
+\
+Create or update your custom `Application` class and initialize the Orchestration SDK within the `onCreate()` method.
+
+```kotlin
+class MyApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        // Configure SDK settings
+        val orchConfig = OrchConfig.Builder()
+            .testMode(BuildConfig.DEBUG)
+            .build()
+
+        // Initialize the ORCH SDK
+        OrchSdk.initialize(
+            this,
+            orchConfig,
+            object : OrchInitListener {
+                override fun onInitSuccess() {
+                    // SDK initialized successfully
+                }
+
+                override fun onInitError(error: OrchError) {
+                    Log.e("ORCH", "SDK Initialization Failed: ${error.message}")
+                }
+            }
+        )
+    }
+}
+```
+
+> **Important:**\
+> Don't forget to register your custom `Application` class (`MyApp`) in your `AndroidManifest.xml` using the `android:name` attribute inside the `<application>` tag.
+
+### Initialization Parameters
+
+| Parameter  | Description                                                                                                                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context`  | The application context used to initialize the SDK. Using the application context helps prevent memory leaks compared to an Activity context. |
+| `config`   | Configuration object used to define SDK settings and behavior.                                                                                |
+| `listener` | Callback interface used to receive SDK initialization success and failure events.                                                             |
+
+***
+
+### OrchConfig Methods
+
+| Method              | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| `testMode(Boolean)` | Enables or disables test ads and logs during development and testing. |
+
+> **Note:**\
+> `testMode(BuildConfig.DEBUG)` automatically enables test ads for debug builds and disables them for release builds. This ensures test ads are only shown during development and are automatically disabled in production applications.
+
+***
+
+
+# Load & Show Ads
+
+Use a placement code to request and display an ad. Call `loadAd()` whenever you want to present an ad to the user. Once a valid placement code is provided, the Orchestration SDK automatically handles the ad request, loading, and display process.
+
+```kotlin
+OrchAd.loadAd(this, "<placement_code>")
+```
+
+> **Note:**\
+> The `<placement_code>` is a unique identifier configured for each ad placement. Placement codes are provided and managed by the TapMind team through Dashboard.
+
+> **Important:**\
+> Ensure the SDK has been successfully initialized before calling `loadAd()`. Attempting to load ads before initialization completes may result in ad request failures.
+
+***
+
+### Ad Lifecycle Callbacks
+
+Implement `OrchAdListener` and register it to receive ad lifecycle events and monitor the ad serving process.
+
+```kotlin
+OrchAd.setListener(this)
+```
+
+```kotlin
+interface OrchAdListener {
+    fun onAdLoaded()
+    fun onAdImpression()
+    fun onAdDismissed()
+    fun onAdClicked()
+    fun onAdFailedToLoad(error: OrchError)
+    fun onAdFailedToShow(error: OrchError)
+}
+```
+
+***
+
+### Callback Reference
+
+| Callback                  | Description                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| `onAdLoaded()`            | Called when the ad loads successfully and is ready to be displayed.                 |
+| `onAdImpression()`        | Called when an ad impression is recorded.                                           |
+| `onAdClicked()`           | Called when the user clicks the advertisement.                                      |
+| `onAdDismissed()`         | Called when the ad is closed or dismissed by the user.                              |
+| `onAdFailedToLoad(error)` | Called when the ad fails to load. Refer to the Error Reference section for details. |
+| `onAdFailedToShow(error)` | Called when the ad loads successfully but fails to display.                         |
+
+***
+
+### Example Implementation
+
+```kotlin
+class MainActivity : AppCompatActivity(), OrchAdListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        OrchAd.setListener(this)
+        OrchAd.loadAd(this, "<placement_code>")
+    }
+
+    override fun onAdLoaded() {
+        Log.d("ORCH", "Ad Loaded")
+    }
+
+    override fun onAdImpression() {
+        Log.d("ORCH", "Ad Impression")
+    }
+
+    override fun onAdDismissed() {
+        Log.d("ORCH", "Ad Dismissed")
+    }
+
+    override fun onAdClicked() {
+        Log.d("ORCH", "Ad Clicked")
+    }
+
+    override fun onAdFailedToLoad(error: OrchError) {
+        Log.d("ORCH", "Failed to load: ${error.message}")
+    }
+
+    override fun onAdFailedToShow(error: OrchError) {
+        Log.d("ORCH", "Failed to show: ${error.message}")
+    }
+}
+```
+
+
+# Privacy & Consent
+
+To support compliance with privacy regulations and platform requirements, the Orchestration SDK is compatible with Google's User Messaging Platform (UMP). UMP enables applications to collect, manage and update user consent before requesting advertisements.
+
+Add the following dependency to your app-level `build.gradle` or `build.gradle.kts` file:
+
+```gradle
+dependencies {
+ implementation("com.google.android.ump:user-messaging-platform:4.0.0")
+}
+```
+
+***
+
+#### Consent Flow <a href="#consent-flow" id="consent-flow"></a>
+
+Before calling `OrchAd.loadAd(...)`, initialize the consent flow during application startup or before the first ad request.
+
+### Step 1: Create ConsentInformation Instance
+
+Create a `ConsentInformation` instance to manage and track the user's consent status.
+
+```kotlin
+val consentInformation = UserMessagingPlatform.getConsentInformation(context)
+```
+
+***
+
+### Step 2: Request Consent Information Update
+
+Request the latest consent information and fetch the most recent consent status based on the user's geographic region and applicable privacy regulations.
+
+```kotlin
+consentInformation.requestConsentInfoUpdate(
+    activity,
+    ConsentRequestParameters.Builder().build(),
+    {
+        // Called when consent information is updated successfully.
+    },
+    { requestConsentError ->
+        // Called when there is an error updating consent information.
+    }
+)
+```
+
+***
+
+### Step 3: Load & Show Consent Form
+
+Load and display the consent form when required. Once the consent flow is completed, ad requests can proceed according to the user's consent choices.
+
+```kotlin
+consentInformation.loadAndShowConsentFormIfRequired(activity) { formError ->
+    // Consent process completed.
+    // Ads can now be requested if consent is granted.
+}
+```
+
+> **Note:**\
+> The consent form is displayed only when required based on the user's region and applicable privacy requirements. If no consent form is needed, the UMP SDK automatically completes the consent flow.
+
+
+# Error Reference
+
+The Orchestration SDK provides standardized error codes and messages to help diagnose initialization, configuration, network and ad-serving issues. Use the following reference to understand common error conditions and recommended troubleshooting steps.
+
+### SDK Error Codes & Messages
+
+| Error Code | Error Name             | Description                                                         | Recommended Action                                                                        |
+| ---------- | ---------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `1001`     | `SDK_NOT_INITIALIZED`  | SDK initialization has not completed before an ad request was made. | Initialize the SDK and wait for the `onInitSuccess()` callback before calling `loadAd()`. |
+| `1002`     | `INVALID_PLACEMENT`    | Invalid or empty placement code provided.                           | Verify and match the placement code that provided by TapMind team.                        |
+| `1003`     | `NO_NETWORK`           | No network connection available.                                    | Check the device's internet connectivity and retry the ad request.                        |
+| `1004`     | `CONFIG_ERROR`         | SDK configuration request failed or timed out.                      | Retry the request. Contact TapMind support if the issue persists.                         |
+| `1005`     | `NO_FILL`              | No demand source returned an ad for the requested placement.        | This is a normal runtime condition. Retry later or use a fallback flow if applicable.     |
+| `1006`     | `AD_EXPIRED`           | The ad has expired and can no longer to be displayed.               | No action required. This process is managed automatically by the SDK.                     |
+| `1007`     | `PKG_MISSING`          | Package name is missing or invalid.                                 | Verify SDK initialization parameters and application configuration.                       |
+| `1008`     | `PLAY_SERVICE_MISSING` | Google Play Services are unavailable or unsupported on the device.  | Ensure Google Play Services are installed, enabled, and up to date.                       |
+| `1009`     | `UNSUPPORTED_VERSION`  | The Android version is not supported by the SDK.                    | Upgrade the device OS or use a supported Android version.                                 |
+
+***
+
+### Error Handling Best Practices
+
+* Always initialize the SDK before requesting ads.
+* Verify placement codes before making ad requests.
+* Handle network interruptions gracefully.
+* Implement `onAdFailedToLoad()` and `onAdFailedToShow()` callbacks for better error visibility.
+* Log error messages during development to simplify troubleshooting.
+* Use the error code and message together when contacting TapMind support.
+
+***
+
+### Example Error Handling
+
+```kotlin
+override fun onAdFailedToLoad(error: OrchError) {
+    Log.d("ORCH", "Error Code: ${error.code}")
+    Log.d("ORCH", "Error Message: ${error.message}")
+}
+
+override fun onAdFailedToShow(error: OrchError) {
+    Log.d("ORCH", "Error Code: ${error.code}")
+    Log.d("ORCH", "Error Message: ${error.message}")
+}
+```
+
+
+# Support
+
+For integration issues or custom placement configuration, contact your TapMind Account Manager.
+
+

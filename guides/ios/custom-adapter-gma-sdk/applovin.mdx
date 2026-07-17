@@ -1,0 +1,82 @@
+---
+title: AppLovin
+description: >-
+  AppLovin iOS guide for Custom Adapter (GMA SDK).
+---
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum iOS version for this package.
+* The Google Mobile Ads (GMA) SDK integrated in your app, with `GADApplicationIdentifier` set in `Info.plist`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
+* Your `Info.plist` includes the `SKAdNetworkItems` array for attribution - see [SKAdNetwork IDs](/reference/skadnetwork-ids). Add any IDs you don't already have; a publisher not already running Google demand may be missing them.
+* An ad unit must already be in place which will be used for targeting
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### CocoaPods
+
+1. Open your project's Podfile and add:
+
+```
+pod 'TapMindALAdapter', '2.1.13'
+```
+
+2. Run `pod install` and open the `.xcworkspace` file.
+
+### Swift Package Manager (SPM)
+
+1. In Xcode: **File → Add Package Dependencies**
+2. Add: `https://github.com/tapmind-tech/TapMind-CA-Applovin-iOS.git`
+3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
+
+
+## Configure AppLovin
+
+*Performed by: Ad ops*
+
+**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
+
+```
+Custom Network : TapMind Market Place
+iOS Class      : TapMindMediationAdapterApplovin
+```
+
+**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+eCPM               : provided by your account manager
+Custom Parameters  : {"placementName": "provided by your account manager"}
+```
+
+> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.

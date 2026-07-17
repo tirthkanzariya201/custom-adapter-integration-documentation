@@ -430,13 +430,13 @@ import DocTagAdmobGam from '/snippets/doc-tag-admob-gam.mdx'
 
 | Source | Target |
 |--------|--------|
-| `.gitbook/assets/image (9).jpeg` | `images/ironsource-configuration.jpeg` |
-| `.gitbook/assets/cocos-extension-guide (1).png` | `images/cocos-extension-guide.png` |
+| `/images/ironsource-configuration.jpeg` | `images/ironsource-configuration.jpeg` |
+| `/images/cocos-extension-guide.png` | `images/cocos-extension-guide.png` |
 
 **Update references in 8 content files** from:
 
 ```html
-<img src="../../../.gitbook/assets/image (9).jpeg" ...>
+<img src="/images/ironsource-configuration.jpeg" ...>
 ```
 
 To:

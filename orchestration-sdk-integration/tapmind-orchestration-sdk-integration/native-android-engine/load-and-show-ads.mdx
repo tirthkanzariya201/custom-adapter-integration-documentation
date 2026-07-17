@@ -1,0 +1,92 @@
+---
+title: Load & Show Ads
+description: Load & Show Ads
+---
+
+# Load & Show Ads
+
+Use a placement code to request and display an ad. Call `loadAd()` whenever you want to present an ad to the user. Once a valid placement code is provided, the Orchestration SDK automatically handles the ad request, loading, and display process.
+
+```kotlin
+OrchAd.loadAd(this, "<placement_code>")
+```
+
+> **Note:**
+> The `<placement_code>` is a unique identifier configured for each ad placement. Placement codes are provided and managed by the TapMind team through Dashboard.
+
+> **Important:**
+> Ensure the SDK has been successfully initialized before calling `loadAd()`. Attempting to load ads before initialization completes may result in ad request failures.
+
+---
+
+### Ad Lifecycle Callbacks
+
+Implement `OrchAdListener` and register it to receive ad lifecycle events and monitor the ad serving process.
+
+```kotlin
+OrchAd.setListener(this)
+```
+
+```kotlin
+interface OrchAdListener {
+    fun onAdLoaded()
+    fun onAdImpression()
+    fun onAdDismissed()
+    fun onAdClicked()
+    fun onAdFailedToLoad(error: OrchError)
+    fun onAdFailedToShow(error: OrchError)
+}
+```
+
+---
+
+### Callback Reference
+
+| Callback                  | Description                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| `onAdLoaded()`            | Called when the ad loads successfully and is ready to be displayed.                 |
+| `onAdImpression()`        | Called when an ad impression is recorded.                                           |
+| `onAdClicked()`           | Called when the user clicks the advertisement.                                      |
+| `onAdDismissed()`         | Called when the ad is closed or dismissed by the user.                              |
+| `onAdFailedToLoad(error)` | Called when the ad fails to load. Refer to the Error Reference section for details. |
+| `onAdFailedToShow(error)` | Called when the ad loads successfully but fails to display.                         |
+
+---
+
+### Example Implementation
+
+```kotlin
+class MainActivity : AppCompatActivity(), OrchAdListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        OrchAd.setListener(this)
+        OrchAd.loadAd(this, "<placement_code>")
+    }
+
+    override fun onAdLoaded() {
+        Log.d("ORCH", "Ad Loaded")
+    }
+
+    override fun onAdImpression() {
+        Log.d("ORCH", "Ad Impression")
+    }
+
+    override fun onAdDismissed() {
+        Log.d("ORCH", "Ad Dismissed")
+    }
+
+    override fun onAdClicked() {
+        Log.d("ORCH", "Ad Clicked")
+    }
+
+    override fun onAdFailedToLoad(error: OrchError) {
+        Log.d("ORCH", "Failed to load: " + error.message)
+    }
+
+    override fun onAdFailedToShow(error: OrchError) {
+        Log.d("ORCH", "Failed to show: " + error.message)
+    }
+}
+```
+

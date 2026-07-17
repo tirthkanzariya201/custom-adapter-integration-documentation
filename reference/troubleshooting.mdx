@@ -1,0 +1,107 @@
+---
+title: Troubleshooting
+description: Shared troubleshooting for all TapMind SDK integrations.
+---
+
+Most integration issues trace back to one of four values not matching exactly: adapter class name, `placementName`, the Unity LevelPlay network key, or eCPM/rate. Adapter class names and the network key live in the [Class & Network Key Registry](/reference/class-network-key-registry); your `placementName` and eCPM/rate come directly from your account manager. Check these before diving into logs.
+
+## Common issues
+
+These apply to every mediation partner. Partner-specific problems are in [Mediation-specific issues](#mediation-specific-issues) below.
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the Registry exactly; TapMind AARs ship consumer ProGuard rules automatically (see [Release vs debug](#release-vs-debug)) |
+| No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm your waterfall position |
+| App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID to native config - see [App crashes on launch](#app-crashes-on-launch) |
+
+## App crashes on launch
+
+The Google Mobile Ads (GMA) SDK reads your app ID from native config **at process startup - before your own code runs**. If the app ID is missing or malformed, initialization throws and the app crashes on launch. The crash looks like an ad problem but happens before any ad is requested, so check your native config, not your ad-loading code. This applies to both AdMob and Google Ad Manager (same GMA SDK).
+
+**Android** - add inside the `application` element in `AndroidManifest.xml`:
+
+```xml
+<meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy"/>
+```
+
+**iOS** - add to `Info.plist`:
+
+```xml
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy</string>
+```
+
+**Common mistakes**
+
+- **App ID vs ad unit ID.** The value here is your **app ID** (contains a tilde: `ca-app-pub-…~…`), not an **ad unit ID** (contains a slash: `ca-app-pub-…/…`). The ad unit ID here still crashes.
+- **Sample ID left in.** The `ca-app-pub-3940256099942544~…` values in examples are Google's test IDs. Replace with your real app ID before release.
+- **Wrapper frameworks still need this.** On Flutter, React Native, Unity, and Cocos the plugin does **not** inject the app ID for you - you must still edit the native `AndroidManifest.xml` and `Info.plist` (or the Unity/Cocos equivalent). This is the most common wrapper-integration crash.
+
+Use the exact snippet for your platform shown above.
+
+## Mediation-specific issues
+
+The problems below are specific to how each mediation platform is configured. Find your partner.
+
+### AdMob (custom event)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind never competes in the mediation group | Custom event not added to the group, or the group doesn't target this ad unit / format / platform | In Mediation → your group, confirm the custom event is added and the group targets the correct ad format, platform (Android/iOS), and ad units |
+| Ad source configured but never fills | Class or `placementName` parameter wrong, or eCPM too low to win the waterfall | Verify the Class and the `placementName` JSON exactly; raise the manual eCPM to test whether it's a waterfall-position issue |
+| iOS custom event never loads (Android works) | Android class string used on the iOS custom event | Use the iOS class (`TapMindMediationAdapterAdmob`, no package prefix) from the Registry |
+
+### Google Ad Manager (yield group)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind not selectable as a yield partner | TapMind company not created, or Mediation not toggled on for the company | Admin → Companies → TapMind: confirm type is **Ad Network** and **Mediation** is toggled on |
+| Yield partner active but no delivery | Yield group inventory type not **Mobile**, partner status not **Active**, or group not targeting the ad units | Confirm the yield group targets the right ad units, inventory type is Mobile, and partner Status = Active |
+| Wrong class on wrapper vs native | Wrappers use the AdMob class for GAM; native uses the dedicated GAM class | Native: `…TapMindMediationAdapterGAM`. Flutter/RN/Unity/Cocos: use the AdMob class per the [Registry](/reference/class-network-key-registry) |
+
+> **Verify:** GAM dashboard changes can take time to propagate before delivery begins - confirm the expected delay with your account manager before assuming a misconfiguration.
+
+### AppLovin MAX (custom network)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind never appears in MAX | Custom Network created but not enabled on the ad unit | MAX → Mediation → Ad Units → your unit → enable TapMind |
+| "Adapter not found" / no fill | Wrong Android or iOS Class in the Custom Network, or network type not set to SDK | Verify both the Android Class and iOS Class exactly; Network type must be **SDK** |
+| Can't tell whether the adapter loaded | n/a | Run the **MAX Mediation Debugger** in a debug build to confirm the TapMind adapter loads and view its status |
+
+> **Verify:** confirm the MAX Mediation Debugger surfaces custom-network adapters as described in your setup.
+
+### Unity LevelPlay (network key)
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| TapMind network never appears | Wrong network key, or "Custom Adapter" not selected | Add via SDK Networks → **Custom Adapter** → enter the LevelPlay network key from the Registry |
+| Network appears but no fill | No instance created, or the instance rate is too low for its waterfall order | Setup → Instances → add a TapMind instance **per ad format**; set the eCPM/Rate |
+| Looking for a class string and can't find one | LevelPlay uses a **network key**, not a class string | Use the network key from the Registry; there is no class string for LevelPlay |
+
+## Release vs debug
+
+If ads work in debug but not in release, suspect the class string or **R8/ProGuard stripping** adapter classes in release builds.
+
+### ProGuard / R8 keep rules (Android)
+
+Each shipped TapMind adapter AAR includes populated consumer ProGuard rules (`consumer-rules.pro`), packaged as consumer rules inside the artifact. These are **applied automatically** when you integrate the published Maven packages - you do not need to copy manual keep rules for normal integration.
+
+Consumer rules cover both the standard adapter namespace (`com.tapmind.tech.*`) and the GMA Next-Gen namespace (`com.tapmind.mediation.ng.*`).
+
+If you still see release-only failures after confirming class strings, contact your account manager with release logcat output.
+
+> **Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads (test mode is build-type driven: debug = test, release = live).
+
+## Escalation
+
+Contact your account manager with:
+
+- The mediation platform and framework
+- The adapter class name and `placementName` you are using
+- For Orchestration: error code and message from `OrchError`
+
+Integration pages include partner-specific verification steps under **Verify integration** on each mediation page.

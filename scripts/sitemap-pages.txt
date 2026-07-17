@@ -1,0 +1,43 @@
+# Sitemap page list (39 URLs)
+
+Base: https://docs.tapmind.io
+
+1. https://docs.tapmind.io/getting-started/introduction
+2. https://docs.tapmind.io/getting-started/how-custom-adapters-work
+3. https://docs.tapmind.io/getting-started/prerequisites
+4. https://docs.tapmind.io/gradle-setup/for-gradle-version-7-plus
+5. https://docs.tapmind.io/guides/android/custom-adapter-gma-sdk/admob
+6. https://docs.tapmind.io/guides/android/custom-adapter-gma-sdk/google-ad-manager
+7. https://docs.tapmind.io/guides/android/custom-adapter-gma-sdk/applovin
+8. https://docs.tapmind.io/guides/android/custom-adapter-gma-sdk/levelplay
+9. https://docs.tapmind.io/guides/ios/custom-adapter-gma-sdk/admob
+10. https://docs.tapmind.io/guides/ios/custom-adapter-gma-sdk/google-ad-manager
+11. https://docs.tapmind.io/guides/ios/custom-adapter-gma-sdk/applovin
+12. https://docs.tapmind.io/guides/ios/custom-adapter-gma-sdk/levelplay
+13. https://docs.tapmind.io/guides/flutter/custom-adapter-gma-sdk/admob
+14. https://docs.tapmind.io/guides/flutter/custom-adapter-gma-sdk/google-ad-manager
+15. https://docs.tapmind.io/guides/flutter/custom-adapter-gma-sdk/applovin
+16. https://docs.tapmind.io/guides/flutter/custom-adapter-gma-sdk/levelplay
+17. https://docs.tapmind.io/guides/react-native/custom-adapter-gma-sdk/admob
+18. https://docs.tapmind.io/guides/react-native/custom-adapter-gma-sdk/google-ad-manager
+19. https://docs.tapmind.io/guides/react-native/custom-adapter-gma-sdk/applovin
+20. https://docs.tapmind.io/guides/react-native/custom-adapter-gma-sdk/levelplay
+21. https://docs.tapmind.io/guides/unity/custom-adapter-gma-sdk/admob
+22. https://docs.tapmind.io/guides/unity/custom-adapter-gma-sdk/google-ad-manager
+23. https://docs.tapmind.io/guides/unity/custom-adapter-gma-sdk/applovin
+24. https://docs.tapmind.io/guides/unity/custom-adapter-gma-sdk/levelplay
+25. https://docs.tapmind.io/guides/cocos/custom-adapter-gma-sdk/admob
+26. https://docs.tapmind.io/guides/cocos/custom-adapter-gma-sdk/google-ad-manager
+27. https://docs.tapmind.io/guides/android/custom-adapter-gma-next-gen-sdk/admob
+28. https://docs.tapmind.io/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager
+29. https://docs.tapmind.io/guides/android/orchestration-sdk/overview
+30. https://docs.tapmind.io/guides/android/orchestration-sdk/requirements-and-setup
+31. https://docs.tapmind.io/guides/android/orchestration-sdk/initialize-the-sdk
+32. https://docs.tapmind.io/guides/android/orchestration-sdk/load-and-show-ads
+33. https://docs.tapmind.io/guides/android/orchestration-sdk/privacy-and-consent
+34. https://docs.tapmind.io/guides/android/orchestration-sdk/error-reference
+35. https://docs.tapmind.io/guides/android/orchestration-sdk/support
+36. https://docs.tapmind.io/reference/class-network-key-registry
+37. https://docs.tapmind.io/reference/compatibility-matrix
+38. https://docs.tapmind.io/reference/troubleshooting
+39. https://docs.tapmind.io/reference/privacy-consent
