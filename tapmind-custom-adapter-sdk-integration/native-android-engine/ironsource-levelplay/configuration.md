@@ -34,20 +34,14 @@ It is highly recommended to enter the Rate (that has been provided by TapMind fo
 
 #### Setup Instances
 
-1. In the Left Side Navigation Menu click Instances under Setup.
-2. Click TapMind Network listed under Custom.
-3. Click on Ad Instance and select Ad type as Per the G-sheet Provided.
-
-For the Below details Please reach out TapMind Account Manger
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : As Per the G-sheet Provided
-ecpm : As Per the G-sheet Provided
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
-
-{% hint style="info" %}
-**Setup → Instances → Select TapMind (Custom) → Add Ad Instance → Select Ad Type (from sheet) → Enter Instance Name (from sheet) → Select Mediation Groups → Enter Rate (from sheet)**
-{% endhint %}
 
 ### **Testing instructions** <a href="#setup-instances-for-banner" id="setup-instances-for-banner"></a>
 

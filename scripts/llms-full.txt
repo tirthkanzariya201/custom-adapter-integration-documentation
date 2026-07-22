@@ -517,11 +517,13 @@ Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface
 
 ![](/images/ironsource-configuration.jpeg)
 
-**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : provided by your account manager
-eCPM / Rate   : provided by your account manager
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
 **Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
@@ -1708,11 +1710,13 @@ Include the complete `SKAdNetworkItems` list as [published by Google](https://de
 
 ![](/images/ironsource-configuration.jpeg)
 
-**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : provided by your account manager
-eCPM / Rate   : provided by your account manager
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
 **Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
@@ -3054,11 +3058,13 @@ Include the complete `SKAdNetworkItems` list as [published by Google](https://de
 
 ![](/images/ironsource-configuration.jpeg)
 
-**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : provided by your account manager
-eCPM / Rate   : provided by your account manager
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
 **Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
@@ -4492,11 +4498,13 @@ Include the complete `SKAdNetworkItems` list as [published by Google](https://de
 
 ![](/images/ironsource-configuration.jpeg)
 
-**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : provided by your account manager
-eCPM / Rate   : provided by your account manager
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
 **Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
@@ -5738,11 +5746,13 @@ Include the complete `SKAdNetworkItems` list as [published by Google](https://de
 
 ![](/images/ironsource-configuration.jpeg)
 
-**Set up instances:** Setup → Instances → select TapMind (Custom) → Add ad instance → select ad type →
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Instance Name : provided by your account manager
-eCPM / Rate   : provided by your account manager
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
 **Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
