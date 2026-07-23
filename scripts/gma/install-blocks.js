@@ -4,9 +4,9 @@
 
 const ANDROID_PACKAGES = {
   admob: 'io.github.tapmind-tech:customadapter-admob:3.0.0',
-  applovin: 'io.github.tapmind-tech:customadapter-applovin:2.1.16',
+  applovin: 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.0',
-  levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.16',
+  levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.18',
 };
 
 const GMA_ANDROID = 'com.google.android.gms:play-services-ads:25.0.0';
