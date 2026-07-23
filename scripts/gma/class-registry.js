@@ -7,8 +7,8 @@ const { NETWORK_KEY } = require('./doc-constants');
 
 const REGISTRY = {
   'native-android': {
-    admob: { className: 'com.tapmind.tech.TapMindMediationAdapterAdmob' },
-    'google-ad-manager': { className: 'com.tapmind.tech.TapMindMediationAdapterGAM' },
+    admob: { className: 'com.tapmind.mediation.TapMindAdmobAdapter' },
+    'google-ad-manager': { className: 'com.tapmind.mediation.TapMindGamAdapter' },
     applovin: { className: 'com.tapmind.tech.TapMindMediationAdapterApplovin' },
     levelplay: { networkKey: NETWORK_KEY },
   },

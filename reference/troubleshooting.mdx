@@ -60,7 +60,7 @@ The problems below are specific to how each mediation platform is configured. Fi
 | --- | --- | --- |
 | TapMind not selectable as a yield partner | TapMind company not created, or Mediation not toggled on for the company | Admin → Companies → TapMind: confirm type is **Ad Network** and **Mediation** is toggled on |
 | Yield partner active but no delivery | Yield group inventory type not **Mobile**, partner status not **Active**, or group not targeting the ad units | Confirm the yield group targets the right ad units, inventory type is Mobile, and partner Status = Active |
-| Wrong class on wrapper vs native | Wrappers use the AdMob class for GAM; native uses the dedicated GAM class | Native: `…TapMindMediationAdapterGAM`. Flutter/RN/Unity/Cocos: use the AdMob class per the [Registry](/reference/class-network-key-registry) |
+| Wrong class on wrapper vs native | Wrappers use the AdMob class for GAM; native uses the dedicated GAM class | Native: `…TapMindGamAdapter`. Flutter/RN/Unity/Cocos: use the AdMob class per the [Registry](/reference/class-network-key-registry) |
 
 > **Verify:** GAM dashboard changes can take time to propagate before delivery begins - confirm the expected delay with your account manager before assuming a misconfiguration.
 
