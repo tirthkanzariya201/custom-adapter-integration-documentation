@@ -26,7 +26,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/getting-started/introduction"
+      "href": "https://platform.tapmind.io/"
     }
   },
   "redirects": [
