@@ -1,7 +1,7 @@
 /* TapMind — header logo */
 header img[alt$=" logo"],
 nav img[alt$=" logo"] {
-  height: 52px !important;
+  height: 40px !important;
   max-width: 320px !important;
   width: auto !important;
 }
@@ -64,45 +64,7 @@ aside .sidebar-nav-groups .ml-6 > div > ul > li > a.nav-active {
   background: transparent !important;
 }
 
-/* ─── Section headings (balanced separator rhythm) ───────────────── */
-
-#content-area h2,
-article h2,
-.prose h2 {
-  margin-top: 2rem !important;
-  margin-bottom: 0.875rem !important;
-  padding-top: 0.875rem !important;
-  border-top: 1px solid rgba(15, 23, 42, 0.09) !important;
-}
-
-#content-area h2:first-of-type,
-article h2:first-of-type,
-.prose h2:first-of-type {
-  margin-top: 1rem !important;
-  margin-bottom: 0.75rem !important;
-  padding-top: 0 !important;
-  border-top: none !important;
-}
-
-#content-area h2 + div[class*="grid"],
-article h2 + div[class*="grid"],
-.prose h2 + div[class*="grid"] {
-  margin-top: 0 !important;
-}
-
-#content-area h3,
-article h3,
-.prose h3 {
-  margin-top: 0.85rem !important;
-  margin-bottom: 0.35rem !important;
-}
-
-#content-area h4,
-article h4,
-.prose h4 {
-  margin-top: 0.65rem !important;
-  margin-bottom: 0.25rem !important;
-}
+/* ─── Line spacing / paragraph rhythm (restore previous density) ─── */
 
 #content-area p,
 article p,
@@ -136,6 +98,12 @@ article li > p,
 .prose li > p {
   margin-top: 0 !important;
   margin-bottom: 0.25rem !important;
+}
+
+.prose p.text-theme-text-secondary,
+#content-area p.text-theme-text-secondary,
+article p.text-theme-text-secondary {
+  line-height: 1.55 !important;
 }
 
 /* ─── Info callouts — GitBook-style (no outer border box) ───────── */
@@ -206,105 +174,6 @@ article div:has(> .callout-content) {
   border-left-color: #f59e0b !important;
 }
 
-/* ─── Overview / hub cards — compact, no stretched empty space ──── */
-
-.prose div[class*="grid"][class*="gap-4"] {
-  gap: 0.75rem !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.75rem !important;
-}
-
-.prose div[class*="grid"] > div[style*="height:100%"] {
-  height: auto !important;
-  margin: 0 !important;
-}
-
-.prose div[class*="grid"] div[style*="padding:1rem"] {
-  padding: 0.7rem 0.85rem !important;
-  gap: 0.35rem !important;
-  flex: 0 1 auto !important;
-}
-
-.prose div[class*="grid"] div[style*="flex:1"] {
-  flex: 0 1 auto !important;
-}
-
-.prose .card-content,
-.prose div[class*="card-content"] {
-  font-size: 0.875rem !important;
-  line-height: 1.45 !important;
-}
-
-.prose .card-content p,
-.prose div[class*="card-content"] p {
-  margin: 0 !important;
-  line-height: 1.45 !important;
-}
-
-/* ─── Steps component — compact CloudX-style rhythm ─────────────── */
-
-.prose div:has(> [data-step-number]) {
-  margin-top: 0.35rem !important;
-  margin-bottom: 1rem !important;
-}
-
-[data-step-number] {
-  padding-bottom: 1rem !important;
-}
-
-[data-step-number]:last-child {
-  padding-bottom: 0 !important;
-}
-
-/* Tighter gap between step title and body */
-[data-step-number] > div[class*="ml-"] {
-  padding-top: 0.125rem !important;
-  margin-left: 2.25rem !important;
-}
-
-[data-step-number] > div[class*="ml-"] p,
-[data-step-number] > div[class*="ml-"] div p {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  line-height: 1.55 !important;
-  font-size: 0.9rem !important;
-}
-
-/* Step header row */
-[data-step-number] > div[style*="display:flex"] {
-  gap: 0.625rem !important;
-}
-
-[data-step-number] > div[style*="display:flex"] > div[style*="border-radius:50%"] {
-  width: 24px !important;
-  height: 24px !important;
-  min-width: 24px !important;
-  font-size: 11px !important;
-}
-
-[data-step-number] > div[style*="display:flex"] span {
-  font-size: 0.9375rem !important;
-  line-height: 1.35 !important;
-}
-
-/* Vertical connector between steps */
-[data-step-number] > div[style*="position:absolute"] {
-  top: 22px !important;
-  left: 11px !important;
-}
-
-/* ─── General prose readability (CloudX-like density) ─────────── */
-
-.prose p.text-theme-text-secondary,
-#content-area p.text-theme-text-secondary,
-article p.text-theme-text-secondary {
-  line-height: 1.6 !important;
-}
-
-.prose > p.text-theme-text-secondary:first-of-type {
-  margin-bottom: 0.75rem !important;
-}
-
 /* ─── Code blocks — GitBook-style config snippets ─────────────── */
 
 .prose pre:not([class*="shiki"]),
@@ -366,15 +235,6 @@ article pre.shiki {
   border-radius: 4px !important;
   font-size: 0.875em !important;
   border: none !important;
-}
-
-/* Horizontal rules between guide sections */
-#content-area hr,
-article hr,
-.prose hr {
-  margin: 0.85rem 0 !important;
-  border: none;
-  border-top: 1px solid rgba(15, 23, 42, 0.1);
 }
 
 /* ─── Class & Network Key Registry tables (4-column only) ───────── */

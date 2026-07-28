@@ -3,13 +3,14 @@
  */
 
 const ANDROID_PACKAGES = {
-  admob: 'io.github.tapmind-tech:customadapter-admob:3.0.0',
+  admob: 'io.github.tapmind-tech:customadapter-admob:3.0.1',
   applovin: 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.0',
   levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.18',
 };
 
 const GMA_ANDROID = 'com.google.android.gms:play-services-ads:25.0.0';
+const NEXTGEN_GMA_ANDROID = 'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0';
 
 const NEXTGEN_ANDROID_PACKAGES = {
   admob: 'io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1',
@@ -91,7 +92,7 @@ function nextGenAndroidInstall(mediation) {
 \`\`\`
 dependencies {
     implementation("${pkg}")
-    implementation("${GMA_ANDROID}")
+    implementation("${NEXTGEN_GMA_ANDROID}")
 }
 \`\`\``;
 }
