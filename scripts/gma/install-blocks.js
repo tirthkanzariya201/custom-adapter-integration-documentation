@@ -147,7 +147,9 @@ function flutterInstall(mediation, os) {
       ? ''
       : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.';
   if (os === 'android') {
-    return `Open \`pubspec.yaml\` and add:
+    return `Open the \`pubspec.yaml\` file.
+
+Find the dependencies block and add:
 
 \`\`\`
 dependencies:
@@ -155,7 +157,22 @@ dependencies:
   google_mobile_ads: ^5.0.0
 \`\`\`${gmaNote}`;
   }
-  return `Update your \`ios/Podfile\` Runner target, then add to \`pubspec.yaml\`:
+  return `Update Pod file as per below:
+
+\`\`\`
+target 'Runner' do
+  use_frameworks! :linkage => :static # Add this line for tapmind adapter
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+\`\`\`
+
+Open the \`pubspec.yaml\` file.
+
+Find the dependencies block and add:
 
 \`\`\`
 dependencies:

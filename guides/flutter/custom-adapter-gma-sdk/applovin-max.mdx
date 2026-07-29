@@ -35,7 +35,9 @@ allprojects {
 
 ### Android
 
-Open `pubspec.yaml` and add:
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
@@ -47,7 +49,22 @@ dependencies:
 
 ### iOS
 
-Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+Update Pod file as per below:
+
+```
+target 'Runner' do
+  use_frameworks! :linkage => :static # Add this line for tapmind adapter
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+```
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:

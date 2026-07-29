@@ -1781,21 +1781,38 @@ allprojects {
 
 ### Android
 
-Open `pubspec.yaml` and add:
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.2
+  tapmind_ads_admob_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
 ### iOS
 
-Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+Update Pod file as per below:
+
+```
+target 'Runner' do
+  use_frameworks! :linkage => :static # Add this line for tapmind adapter
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+```
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.2
+  tapmind_ads_admob_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
@@ -2121,21 +2138,38 @@ allprojects {
 
 ### Android
 
-Open `pubspec.yaml` and add:
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.2
+  tapmind_ads_admob_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
 ### iOS
 
-Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+Update Pod file as per below:
+
+```
+target 'Runner' do
+  use_frameworks! :linkage => :static
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+```
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.2
+  tapmind_ads_admob_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
@@ -2463,23 +2497,40 @@ allprojects {
 
 ### Android
 
-Open `pubspec.yaml` and add:
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_applovin_flutter: ^1.0.2
+  tapmind_ads_applovin_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
-**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
 
 ### iOS
 
-Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+Update Pod file as per below:
+
+```
+target 'Runner' do
+  use_frameworks! :linkage => :static
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+```
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_applovin_flutter: ^1.0.2
+  tapmind_ads_applovin_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
@@ -2798,23 +2849,40 @@ allprojects {
 
 ### Android
 
-Open `pubspec.yaml` and add:
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_ironsource_flutter: ^1.0.2
+  tapmind_ads_ironsource_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
-**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
 
 ### iOS
 
-Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
+Update Pod file as per below:
+
+```
+target 'Runner' do
+  use_frameworks! :linkage => :static
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+```
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_ironsource_flutter: ^1.0.2
+  tapmind_ads_ironsource_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
