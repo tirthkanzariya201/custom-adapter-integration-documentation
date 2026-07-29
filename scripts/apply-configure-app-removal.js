@@ -79,7 +79,7 @@ console.log('A: created reference/skadnetwork-ids.mdx');
 const androidPages = [
   'guides/android/custom-adapter-gma-sdk/admob.mdx',
   'guides/android/custom-adapter-gma-sdk/google-ad-manager.mdx',
-  'guides/android/custom-adapter-gma-sdk/applovin.mdx',
+  'guides/android/custom-adapter-gma-sdk/applovin-max.mdx',
   'guides/android/custom-adapter-gma-sdk/levelplay.mdx',
 ];
 
@@ -108,7 +108,7 @@ for (const p of androidPages) {
 const iosPages = [
   'guides/ios/custom-adapter-gma-sdk/admob.mdx',
   'guides/ios/custom-adapter-gma-sdk/google-ad-manager.mdx',
-  'guides/ios/custom-adapter-gma-sdk/applovin.mdx',
+  'guides/ios/custom-adapter-gma-sdk/applovin-max.mdx',
   'guides/ios/custom-adapter-gma-sdk/levelplay.mdx',
 ];
 
@@ -137,10 +137,10 @@ for (const p of iosPages) {
 const nonLp = [
   'guides/android/custom-adapter-gma-sdk/admob.mdx',
   'guides/android/custom-adapter-gma-sdk/google-ad-manager.mdx',
-  'guides/android/custom-adapter-gma-sdk/applovin.mdx',
+  'guides/android/custom-adapter-gma-sdk/applovin-max.mdx',
   'guides/ios/custom-adapter-gma-sdk/admob.mdx',
   'guides/ios/custom-adapter-gma-sdk/google-ad-manager.mdx',
-  'guides/ios/custom-adapter-gma-sdk/applovin.mdx',
+  'guides/ios/custom-adapter-gma-sdk/applovin-max.mdx',
 ];
 const lp = [
   'guides/android/custom-adapter-gma-sdk/levelplay.mdx',

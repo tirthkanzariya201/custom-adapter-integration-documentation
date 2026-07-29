@@ -5,13 +5,13 @@
     "mediations": [
       "admob",
       "google-ad-manager",
-      "applovin",
+      "applovin-max",
       "levelplay"
     ],
     "generated": [
       "guides/unity/custom-adapter-gma-sdk/admob.mdx",
       "guides/unity/custom-adapter-gma-sdk/google-ad-manager.mdx",
-      "guides/unity/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/unity/custom-adapter-gma-sdk/applovin-max.mdx",
       "guides/unity/custom-adapter-gma-sdk/levelplay.mdx"
     ]
   },
@@ -21,13 +21,13 @@
     "mediations": [
       "admob",
       "google-ad-manager",
-      "applovin",
+      "applovin-max",
       "levelplay"
     ],
     "generated": [
       "guides/flutter/custom-adapter-gma-sdk/admob.mdx",
       "guides/flutter/custom-adapter-gma-sdk/google-ad-manager.mdx",
-      "guides/flutter/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/flutter/custom-adapter-gma-sdk/applovin-max.mdx",
       "guides/flutter/custom-adapter-gma-sdk/levelplay.mdx"
     ]
   },
@@ -49,13 +49,13 @@
     "mediations": [
       "admob",
       "google-ad-manager",
-      "applovin",
+      "applovin-max",
       "levelplay"
     ],
     "generated": [
       "guides/react-native/custom-adapter-gma-sdk/admob.mdx",
       "guides/react-native/custom-adapter-gma-sdk/google-ad-manager.mdx",
-      "guides/react-native/custom-adapter-gma-sdk/applovin.mdx",
+      "guides/react-native/custom-adapter-gma-sdk/applovin-max.mdx",
       "guides/react-native/custom-adapter-gma-sdk/levelplay.mdx"
     ]
   }

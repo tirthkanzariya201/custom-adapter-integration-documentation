@@ -33,7 +33,7 @@ const PRODUCT_CONFIG = {
   },
 };
 
-/** Cocos: AdMob and GAM only (per structure brief — AppLovin/LevelPlay not available). */
+/** Cocos: AdMob and GAM only (per structure brief — AppLovin MAX/LevelPlay not available). */
 const WRAPPER_MEDIATIONS = {
   cocos: ['admob', 'google-ad-manager'],
 };

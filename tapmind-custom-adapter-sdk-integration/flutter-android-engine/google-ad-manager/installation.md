@@ -27,7 +27,7 @@ Find the dependencies block and add from below for respective mediation platform
 
 ```
 dependencies  
-tapmind_ads_admob_flutter: ^1.0.2
+tapmind_ads_admob_flutter: ^1.0.3
 ```
 
 

@@ -6,17 +6,18 @@ const GMA_VERSION = '25.0.0';
 const LOG_TAG = 'TapMindAdapter';
 const NETWORK_KEY = '15c11cb1d';
 
-const MEDIATION_ORDER = ['admob', 'google-ad-manager', 'applovin', 'levelplay'];
+const MEDIATION_ORDER = ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'];
 
 /** GitBook source folder names when they differ from published mediation slug. */
 const MEDIATION_SOURCE_DIR = {
   levelplay: 'ironsource-levelplay',
+  'applovin-max': 'applovin',
 };
 
 const MEDIATION_DISPLAY_TITLES = {
   admob: 'AdMob',
   'google-ad-manager': 'Google Ad Manager',
-  applovin: 'AppLovin',
+  'applovin-max': 'AppLovin MAX',
   levelplay: 'Unity LevelPlay',
 };
 
@@ -27,7 +28,7 @@ function resolveMediationSourceDir(mediation) {
 const PACKAGE_VERSIONS = {
   admob: '2.1.13',
   gam: '2.1.14',
-  applovin: '2.1.16',
+  'applovin-max': '2.1.16',
   levelplay: '2.1.16',
   'nextgen-admob': '2.0.1',
   'nextgen-gam': '2.0.1',

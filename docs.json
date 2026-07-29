@@ -112,7 +112,12 @@
     },
     {
       "source": "/guides/android/custom-adapter/applovin",
-      "destination": "/guides/android/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/android/custom-adapter-gma-sdk/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/guides/android/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/android/custom-adapter-gma-sdk/applovin-max",
       "permanent": true
     },
     {
@@ -152,7 +157,12 @@
     },
     {
       "source": "/guides/ios/custom-adapter/applovin",
-      "destination": "/guides/ios/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/guides/ios/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/ios/custom-adapter-gma-sdk/applovin-max",
       "permanent": true
     },
     {
@@ -192,7 +202,12 @@
     },
     {
       "source": "/guides/flutter/custom-adapter/applovin",
-      "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin-max",
       "permanent": true
     },
     {
@@ -232,7 +247,12 @@
     },
     {
       "source": "/guides/react-native/custom-adapter/applovin",
-      "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/guides/react-native/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin-max",
       "permanent": true
     },
     {
@@ -272,7 +292,12 @@
     },
     {
       "source": "/guides/unity/custom-adapter/applovin",
-      "destination": "/guides/unity/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/guides/unity/custom-adapter-gma-sdk/applovin",
+      "destination": "/guides/unity/custom-adapter-gma-sdk/applovin-max",
       "permanent": true
     },
     {
@@ -450,8 +475,8 @@
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "guides/android/custom-adapter-gma-sdk/applovin",
-                    "title": "AppLovin"
+                    "page": "guides/android/custom-adapter-gma-sdk/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "guides/android/custom-adapter-gma-sdk/levelplay",
@@ -472,8 +497,8 @@
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "guides/ios/custom-adapter-gma-sdk/applovin",
-                    "title": "AppLovin"
+                    "page": "guides/ios/custom-adapter-gma-sdk/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "guides/ios/custom-adapter-gma-sdk/levelplay",
@@ -494,8 +519,8 @@
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "guides/flutter/custom-adapter-gma-sdk/applovin",
-                    "title": "AppLovin"
+                    "page": "guides/flutter/custom-adapter-gma-sdk/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "guides/flutter/custom-adapter-gma-sdk/levelplay",
@@ -516,8 +541,8 @@
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "guides/react-native/custom-adapter-gma-sdk/applovin",
-                    "title": "AppLovin"
+                    "page": "guides/react-native/custom-adapter-gma-sdk/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "guides/react-native/custom-adapter-gma-sdk/levelplay",
@@ -538,8 +563,8 @@
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "guides/unity/custom-adapter-gma-sdk/applovin",
-                    "title": "AppLovin"
+                    "page": "guides/unity/custom-adapter-gma-sdk/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "guides/unity/custom-adapter-gma-sdk/levelplay",

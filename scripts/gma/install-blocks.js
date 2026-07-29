@@ -4,7 +4,7 @@
 
 const ANDROID_PACKAGES = {
   admob: 'io.github.tapmind-tech:customadapter-admob:3.0.1',
-  applovin: 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
+  'applovin-max': 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.0',
   levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.18',
 };
@@ -19,28 +19,35 @@ const NEXTGEN_ANDROID_PACKAGES = {
 
 const IOS_PODS = {
   admob: 'TapMindAdapter',
-  applovin: 'TapMindALAdapter',
+  'applovin-max': 'TapMindALAdapter',
   'google-ad-manager': 'TapMindAdapter',
   levelplay: 'TapMindISAdapter',
 };
 
 const IOS_SPM_REPOS = {
   admob: 'https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git',
-  applovin: 'https://github.com/tapmind-tech/TapMind-CA-Applovin-iOS.git',
+  'applovin-max': 'https://github.com/tapmind-tech/TapMind-CA-Applovin-iOS.git',
   'google-ad-manager': 'https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git',
   levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Unity-Levelplay-iOS.git',
 };
 
-const FLUTTER_DEPS = {
-  admob: 'tapmind_ads_admob_flutter: ^1.0.2',
-  applovin: 'tapmind_ads_applovin_flutter: ^1.0.2',
-  'google-ad-manager': 'tapmind_ads_admob_flutter: ^1.0.2',
-  levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.2',
+const FLUTTER_DEPS_ANDROID = {
+  admob: 'tapmind_ads_admob_flutter: ^1.0.3',
+  'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
+  'google-ad-manager': 'tapmind_ads_admob_flutter: ^1.0.3',
+  levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
+};
+
+const FLUTTER_DEPS_IOS = {
+  admob: 'tapmind_ads_admob_flutter: ^1.0.3',
+  'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
+  'google-ad-manager': 'tapmind_ads_admob_flutter: ^1.0.3',
+  levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
 
 const IOS_POD_VERSIONS = {
   admob: '2.1.13',
-  applovin: '2.1.13',
+  'applovin-max': '2.1.13',
   'google-ad-manager': '2.1.13',
   levelplay: '2.1.12',
 };
@@ -72,14 +79,14 @@ end
 
 const RN_PACKAGES = {
   admob: 'tapmind_ads_admob: "2.1.4"',
-  applovin: 'tapmind_ads_applovin: "2.1.4"',
+  'applovin-max': 'tapmind_ads_applovin: "2.1.4"',
   'google-ad-manager': 'tapmind_ads_gam: "2.1.4"',
   levelplay: 'tapmind_ads_ironsource: "2.1.4"',
 };
 
 const UNITY_GIT = {
   admob: 'https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git',
-  applovin: 'https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git',
+  'applovin-max': 'https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git',
   'google-ad-manager': 'https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git',
   levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Ironsource-Unity.git',
 };
@@ -133,12 +140,12 @@ pod '${pod}', '${version}'
 }
 
 function flutterInstall(mediation, os) {
-  const dep = FLUTTER_DEPS[mediation];
+  const dep = (os === 'android' ? FLUTTER_DEPS_ANDROID : FLUTTER_DEPS_IOS)[mediation];
   if (!dep) return '';
   const gmaNote =
     mediation === 'admob' || mediation === 'google-ad-manager'
       ? ''
-      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.';
+      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.';
   if (os === 'android') {
     return `Open \`pubspec.yaml\` and add:
 
@@ -174,7 +181,7 @@ ${reactNativePostInstallBlock()}`;
   const gmaNote =
     mediation === 'admob' || mediation === 'google-ad-manager'
       ? ''
-      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution.';
+      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution.';
   return `Add to \`package.json\` and install via npm/yarn:
 
 \`\`\`
@@ -205,7 +212,7 @@ function cocosInstall(mediation) {
   const labels = {
     admob: 'AdMob',
     'google-ad-manager': 'GAM',
-    applovin: 'AppLovin',
+    'applovin-max': 'AppLovin MAX',
     levelplay: 'Unity LevelPlay',
   };
   const label = labels[mediation] || 'TapMind';

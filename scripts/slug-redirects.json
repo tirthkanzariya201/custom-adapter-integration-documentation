@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "source": "/guides/android/custom-adapter",
     "destination": "/guides/android/custom-adapter-gma-sdk/admob",
@@ -26,7 +26,7 @@
   },
   {
     "source": "/guides/android/custom-adapter/applovin",
-    "destination": "/guides/android/custom-adapter-gma-sdk/applovin",
+    "destination": "/guides/android/custom-adapter-gma-sdk/applovin-max",
     "permanent": true
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "source": "/guides/ios/custom-adapter/applovin",
-    "destination": "/guides/ios/custom-adapter-gma-sdk/applovin",
+    "destination": "/guides/ios/custom-adapter-gma-sdk/applovin-max",
     "permanent": true
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "source": "/guides/flutter/custom-adapter/applovin",
-    "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin",
+    "destination": "/guides/flutter/custom-adapter-gma-sdk/applovin-max",
     "permanent": true
   },
   {
@@ -146,7 +146,7 @@
   },
   {
     "source": "/guides/react-native/custom-adapter/applovin",
-    "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin",
+    "destination": "/guides/react-native/custom-adapter-gma-sdk/applovin-max",
     "permanent": true
   },
   {
@@ -186,7 +186,7 @@
   },
   {
     "source": "/guides/unity/custom-adapter/applovin",
-    "destination": "/guides/unity/custom-adapter-gma-sdk/applovin",
+    "destination": "/guides/unity/custom-adapter-gma-sdk/applovin-max",
     "permanent": true
   },
   {

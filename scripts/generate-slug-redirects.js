@@ -3,11 +3,11 @@
  * and next-gen → custom-adapter-gma-next-gen-sdk slug migration.
  */
 const GMA_PLATFORMS = {
-  android: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
-  ios: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
-  flutter: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
-  'react-native': ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
-  unity: ['admob', 'google-ad-manager', 'applovin', 'levelplay'],
+  android: ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'],
+  ios: ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'],
+  flutter: ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'],
+  'react-native': ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'],
+  unity: ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'],
   cocos: ['admob', 'google-ad-manager'],
 };
 
@@ -38,6 +38,17 @@ for (const [platform, mediations] of Object.entries(GMA_PLATFORMS)) {
       permanent: true,
     });
   }
+  // Legacy AppLovin slug -> AppLovin MAX
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter/applovin`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/applovin-max`,
+    permanent: true,
+  });
+  redirects.push({
+    source: `/guides/${platform}/custom-adapter-gma-sdk/applovin`,
+    destination: `/guides/${platform}/custom-adapter-gma-sdk/applovin-max`,
+    permanent: true,
+  });
   redirects.push({
     source: `/guides/${platform}/custom-adapter/ironsource-levelplay`,
     destination: `/guides/${platform}/custom-adapter-gma-sdk/levelplay`,

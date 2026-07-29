@@ -9,13 +9,13 @@ const REGISTRY = {
   'native-android': {
     admob: { className: 'com.tapmind.mediation.TapMindAdmobAdapter' },
     'google-ad-manager': { className: 'com.tapmind.mediation.TapMindGamAdapter' },
-    applovin: { className: 'com.tapmind.tech.TapMindMediationAdapterApplovin' },
+    'applovin-max': { className: 'com.tapmind.tech.TapMindMediationAdapterApplovin' },
     levelplay: { networkKey: NETWORK_KEY },
   },
   'native-ios': {
     admob: { className: 'TapMindMediationAdapterAdmob' },
     'google-ad-manager': { className: 'TapMindMediationAdapterGAM' },
-    applovin: { className: 'TapMindMediationAdapterApplovin' },
+    'applovin-max': { className: 'TapMindMediationAdapterApplovin' },
     levelplay: { networkKey: NETWORK_KEY },
   },
   flutter: {
@@ -27,7 +27,7 @@ const REGISTRY = {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
       ios: 'TapMindMediationAdapterAdmob',
     },
-    applovin: {
+    'applovin-max': {
       android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
       ios: 'TapMindMediationAdapterApplovin',
     },
@@ -42,7 +42,7 @@ const REGISTRY = {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
       ios: 'TapMindMediationAdapterAdmob',
     },
-    applovin: {
+    'applovin-max': {
       android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
       ios: 'TapMindMediationAdapterApplovin',
     },
@@ -57,7 +57,7 @@ const REGISTRY = {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
       ios: 'TapMindMediationAdapterAdmob',
     },
-    applovin: {
+    'applovin-max': {
       android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
       ios: 'TapMindMediationAdapterApplovin',
     },
@@ -72,7 +72,7 @@ const REGISTRY = {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
       ios: 'TapMindMediationAdapterAdmob',
     },
-    applovin: {
+    'applovin-max': {
       android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
       ios: 'TapMindMediationAdapterApplovin',
     },

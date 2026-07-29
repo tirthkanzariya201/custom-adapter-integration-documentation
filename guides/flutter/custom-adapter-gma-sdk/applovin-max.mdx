@@ -1,7 +1,7 @@
 ---
-title: AppLovin
+title: AppLovin MAX
 description: >-
-  AppLovin flutter guide for Custom Adapter (GMA SDK).
+  AppLovin MAX flutter guide for Custom Adapter (GMA SDK).
 ---
 
 ## Prerequisites
@@ -39,11 +39,11 @@ Open `pubspec.yaml` and add:
 
 ```
 dependencies:
-  tapmind_ads_applovin_flutter: ^1.0.2
+  tapmind_ads_applovin_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
-**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
+**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
 
 ### iOS
 
@@ -51,7 +51,7 @@ Update your `ios/Podfile` Runner target, then add to `pubspec.yaml`:
 
 ```
 dependencies:
-  tapmind_ads_applovin_flutter: ^1.0.2
+  tapmind_ads_applovin_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
 
@@ -289,7 +289,7 @@ Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface
 
 Include the complete `SKAdNetworkItems` list as [published by Google](https://developers.google.com/admob/ios/3p-skadnetworks) - keep this snippet as your single source of truth so it never drifts between pages.
 
-## Configure AppLovin
+## Configure AppLovin MAX
 
 *Performed by: Ad ops*
 

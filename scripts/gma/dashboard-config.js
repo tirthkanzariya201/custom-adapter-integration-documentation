@@ -61,8 +61,8 @@ ${PLACEMENT_CALLOUT}
 }
 
 function applovinDashboard({ frameworkKey, os, wrapper }) {
-  const registryEntry = getRegistryEntry(frameworkKey, 'applovin');
-  const className = getClassEntry(frameworkKey, 'applovin', os)?.className
+  const registryEntry = getRegistryEntry(frameworkKey, 'applovin-max');
+  const className = getClassEntry(frameworkKey, 'applovin-max', os)?.className
     || `«CLASS:applovin-${os || 'platform'}»`;
 
   let classBlock;
@@ -166,7 +166,7 @@ Rate : provided by your account manager
 
 const RENDERERS = {
   admob: admobDashboard,
-  applovin: applovinDashboard,
+  'applovin-max': applovinDashboard,
   'google-ad-manager': gamDashboard,
   levelplay: levelplayDashboard,
 };
