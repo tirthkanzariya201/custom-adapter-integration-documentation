@@ -3,9 +3,9 @@
  */
 
 const ANDROID_PACKAGES = {
-  admob: 'io.github.tapmind-tech:customadapter-admob:3.0.1',
+  admob: 'io.github.tapmind-tech:customadapter-admob:3.0.2',
   'applovin-max': 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
-  'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.0',
+  'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.1',
   levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.18',
 };
 
