@@ -50,7 +50,7 @@ const REGISTRY = {
   },
   unity: {
     admob: {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.mediation.TapMindAdmobAdapter',
       ios: 'TapMindMediationAdapterAdmob',
     },
     'google-ad-manager': {
