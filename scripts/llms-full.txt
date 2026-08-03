@@ -1787,7 +1787,7 @@ Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.3
+  tapmind_ads_admob_flutter: ^3.0.1
   google_mobile_ads: ^5.0.0
 ```
 
@@ -1812,7 +1812,7 @@ Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^1.0.3
+  tapmind_ads_admob_flutter: ^3.0.1
   google_mobile_ads: ^5.0.0
 ```
 
@@ -2061,7 +2061,7 @@ Include the complete `SKAdNetworkItems` list as [published by Google](https://de
 ```
 Mapping name : provided by your account manager
 eCPM         : provided by your account manager
-Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
+Class        : com.tapmind.mediation.TapMindAdmobAdapter
 Parameter    : {"placementName": "provided by your account manager"}
 ```
 
@@ -7058,7 +7058,7 @@ Every integration page references class names and network keys. This page is the
 | Native | Google Ad Manager | `com.tapmind.mediation.TapMindGamAdapter` | `TapMindMediationAdapterGAM` |
 | Native | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
 | Native | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
-| Flutter | AdMob | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
+| Flutter | AdMob | `com.tapmind.mediation.TapMindAdmobAdapter` | `TapMindMediationAdapterAdmob` |
 | Flutter | Google Ad Manager | `com.tapmind.tech.TapMindMediationAdapterAdmob` | `TapMindMediationAdapterAdmob` |
 | Flutter | AppLovin | `com.tapmind.tech.TapMindMediationAdapterApplovin` | `TapMindMediationAdapterApplovin` |
 | Flutter | Unity LevelPlay | `15c11cb1d` | `15c11cb1d` |
