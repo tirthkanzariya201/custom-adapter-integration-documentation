@@ -34,14 +34,14 @@ const IOS_SPM_REPOS = {
 const FLUTTER_DEPS_ANDROID = {
   admob: 'tapmind_ads_admob_flutter: ^3.0.1',
   'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
-  'google-ad-manager': 'tapmind_ads_admob_flutter: ^1.0.3',
+  'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
   levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
 
 const FLUTTER_DEPS_IOS = {
   admob: 'tapmind_ads_admob_flutter: ^3.0.1',
   'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
-  'google-ad-manager': 'tapmind_ads_admob_flutter: ^1.0.3',
+  'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
   levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
 
