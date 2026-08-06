@@ -11,6 +11,9 @@
   },
   "devDependencies": {},
   "scripts": {
+    "dev": "jamdesk dev --port 3456",
+    "validate": "jamdesk validate",
+    "deploy": "jamdesk deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -49,22 +49,6 @@ dependencies {
 }
 ```
 
-## Configure your app
-
-*Performed by: Developer*
-
-Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
-
-```
-
-  
-    
-    
-  
-
-```
-
-Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
 
 ## Configure AdMob
 
@@ -108,7 +92,7 @@ After install and dashboard configuration:
 |---------|--------------|-----|
 | No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the [Class & Network Key Registry](/reference/class-network-key-registry) exactly; TapMind AARs ship consumer ProGuard rules automatically |
 | No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm waterfall position |
-| App crashes on launch | Missing AdMob app ID in manifest/Info.plist | Add the app-ID meta-data exactly as shown in **Configure your app** |
+| App crashes on launch | Missing AdMob app ID / Next-Gen init | Explicitly call `MobileAds.initialize()` with your App ID on a background thread; keep App ID in manifest/Info.plist if using Google UMP |
 | Unity LevelPlay network never appears | Wrong network key | Use the canonical key from the Registry |
 
 For anything else, contact your account manager with the log output and the tag **`TapMindAdapter`**.
@@ -159,22 +143,6 @@ dependencies {
 }
 ```
 
-## Configure your app
-
-*Performed by: Developer*
-
-Add your AdMob app ID to `AndroidManifest.xml`. Omitting this crashes the app on launch with `Missing application ID`.
-
-```
-
-  
-    
-    
-  
-
-```
-
-Replace `YOUR_ADMOB_APP_ID` with your AdMob app ID from the [AdMob web interface](https://support.google.com/admob/answer/7356431). While testing, you may use Google's sample app ID shown above.
 
 ## Configure Google Ad Manager
 
@@ -220,7 +188,7 @@ After install and dashboard configuration:
 |---------|--------------|-----|
 | No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the [Class & Network Key Registry](/reference/class-network-key-registry) exactly; TapMind AARs ship consumer ProGuard rules automatically |
 | No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm waterfall position |
-| App crashes on launch | Missing AdMob app ID in manifest/Info.plist | Add the app-ID meta-data exactly as shown in **Configure your app** |
+| App crashes on launch | Missing AdMob app ID / Next-Gen init | Explicitly call `MobileAds.initialize()` with your App ID on a background thread; keep App ID in manifest/Info.plist if using Google UMP |
 | Unity LevelPlay network never appears | Wrong network key | Use the canonical key from the Registry |
 
 For anything else, contact your account manager with the log output and the tag **`TapMindAdapter`**.

@@ -8,6 +8,7 @@ Before integrating any TapMind SDK, make sure you have:
 - A mediation account with the partner you're integrating (AdMob, GAM, AppLovin MAX, or Unity LevelPlay).
 - An ad unit already created in that platform - TapMind targets your existing ad units.
 - The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID key set - `com.google.android.gms.ads.APPLICATION_ID` in `AndroidManifest.xml` (Android) or `GADApplicationIdentifier` in `Info.plist` (iOS). TapMind's adapters run on top of the GMA SDK, which crashes on launch without it. Any app already serving Google ads has this set - see [Troubleshooting](/reference/troubleshooting#app-crashes-on-launch) if the app crashes on init.
+- The Google Mobile Ads (GMA) Next-Gen SDK integrated and explicitly initialized in your app. Unlike the legacy SDK, you must explicitly call `MobileAds.initialize()` on a background thread and pass your App ID programmatically before TapMind's adapters can run. (Note: If you are using the Google UMP SDK for consent, you must also keep your App ID defined in `AndroidManifest.xml` or `Info.plist`).
 - Your TapMind values, provided by your account manager (see the split below).
 
 ## What TapMind provides

@@ -270,7 +270,8 @@ function needsGradleSnippet({ mode, os, wrapper, product }) {
 }
 
 function needsAppIdAndroid({ mode, os, wrapper, product }) {
-  if (product === 'next-gen') return true;
+  // Next-Gen initializes App ID programmatically via MobileAds.initialize()
+  if (product === 'next-gen') return false;
   if (mode === 'native-os' && os === 'android') return true;
   if (wrapper === 'flutter' || wrapper === 'react-native' || wrapper === 'unity' || wrapper === 'cocos') {
     return true;

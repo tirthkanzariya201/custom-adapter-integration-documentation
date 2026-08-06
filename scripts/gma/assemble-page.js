@@ -155,10 +155,10 @@ function assembleNextGenPage({ mediation }) {
   };
   const dashboard = renderDashboard({ mediation, frameworkKey, os: 'android' });
 
+  // Next-Gen uses programmatic MobileAds.initialize() — do not emit Configure your app.
   const body = [
       buildPrerequisitesSection(ctx),
       buildInstallSection(ctx),
-      buildConfigureAppSection(ctx),
       buildConfigureMediationSection(ctx, dashboard),
       buildVerifySection(),
       buildTroubleshootSection(),
