@@ -28,7 +28,7 @@ function resolveMediationSourceDir(mediation) {
 const PACKAGE_VERSIONS = {
   admob: '2.1.13',
   gam: '2.1.14',
-  'applovin-max': '2.1.16',
+  'applovin-max': '3.0.0',
   levelplay: '2.1.16',
   'nextgen-admob': '2.0.1',
   'nextgen-gam': '2.0.1',

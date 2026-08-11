@@ -19,7 +19,7 @@ Please go through the below steps to integrate **TapMinds** as a demand partner 
 
 ```
 Custom Network: TapMind Market Place
-Android Class: com.tapmind.tech.TapMindMediationAdapterApplovin
+Android Class: com.tapmind.mediation.TapMindApplovinAdapter
 ```
 
 3. Click on **Save**.

@@ -1,0 +1,12 @@
+---
+description: Strict rule — always commit through GITA (git); never treat deploy as a commit
+alwaysApply: true
+---
+
+# Always commit through GITA
+
+- **ALWAYS** commit through **GITA** (git). When the user asks to commit, create a real `git commit` following the repo's git commit protocol.
+- **NEVER** treat Jamdesk/`npm run deploy` as a substitute for a git commit. Deploy publishes docs live; it does not clear Source Control or record history.
+- **NEVER** skip the git commit step after the user explicitly asks to commit.
+- Use conventional commits (`feat`, `fix`, `chore`, `docs`, `refactor`, `test`) per this repo's GitLab workflow.
+- Do not push to remote unless the user explicitly asks to push.

@@ -4,7 +4,7 @@
 
 const ANDROID_PACKAGES = {
   admob: 'io.github.tapmind-tech:customadapter-admob:3.0.2',
-  'applovin-max': 'io.github.tapmind-tech:customadapter-applovin:2.1.17',
+  'applovin-max': 'io.github.tapmind-tech:customadapter-applovin:3.0.0',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.1',
   levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.18',
 };
@@ -15,6 +15,7 @@ const NEXTGEN_GMA_ANDROID = 'com.google.android.libraries.ads.mobile.sdk:ads-mob
 const NEXTGEN_ANDROID_PACKAGES = {
   admob: 'io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam-nextgen:2.0.1',
+  levelplay: 'io.github.tapmind-tech:customadapter-ironsource-nextgen:2.0.0',
 };
 
 const IOS_PODS = {
@@ -33,14 +34,14 @@ const IOS_SPM_REPOS = {
 
 const FLUTTER_DEPS_ANDROID = {
   admob: 'tapmind_ads_admob_flutter: ^3.0.1',
-  'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
+  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.0',
   'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
   levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
 
 const FLUTTER_DEPS_IOS = {
   admob: 'tapmind_ads_admob_flutter: ^3.0.1',
-  'applovin-max': 'tapmind_ads_applovin_flutter: ^1.0.3',
+  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.0',
   'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
   levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
@@ -84,11 +85,19 @@ const RN_PACKAGES = {
   levelplay: 'tapmind_ads_ironsource: "2.1.4"',
 };
 
+const RN_PACKAGES_ANDROID = {
+  'applovin-max': 'tapmind_ads_applovin: "3.0.0"',
+};
+
 const UNITY_GIT = {
   admob: 'https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git',
   'applovin-max': 'https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git',
   'google-ad-manager': 'https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git',
   levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Ironsource-Unity.git',
+};
+
+const NEXTGEN_UNITY_GIT = {
+  levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git',
 };
 
 function nextGenAndroidInstall(mediation) {
@@ -182,7 +191,8 @@ dependencies:
 }
 
 function reactNativeInstall(mediation, os) {
-  const pkg = RN_PACKAGES[mediation];
+  const pkg =
+    (os === 'android' && RN_PACKAGES_ANDROID[mediation]) || RN_PACKAGES[mediation];
   if (!pkg) return '';
   if (os === 'ios') {
     return `Add to \`package.json\` and install via npm/yarn:
@@ -208,8 +218,9 @@ ${pkg}
 Also require \`react-native-google-mobile-ads\`.${gmaNote}`;
 }
 
-function unityInstall(mediation) {
-  const url = UNITY_GIT[mediation];
+function unityInstall(mediation, product) {
+  const url =
+    (product === 'next-gen' && NEXTGEN_UNITY_GIT[mediation]) || UNITY_GIT[mediation];
   if (!url) return '';
   return `In Unity **Package Manager → Add package from git URL**:
 
@@ -241,6 +252,9 @@ function cocosInstall(mediation) {
 }
 
 function getInstallBlock({ mode, os, wrapper, mediation, product }) {
+  if (product === 'next-gen' && wrapper === 'unity') {
+    return unityInstall(mediation, product);
+  }
   if (product === 'next-gen' && os === 'android') {
     return nextGenAndroidInstall(mediation);
   }
@@ -254,7 +268,7 @@ function getInstallBlock({ mode, os, wrapper, mediation, product }) {
     return reactNativeInstall(mediation, os);
   }
   if (wrapper === 'unity') {
-    return unityInstall(mediation);
+    return unityInstall(mediation, product);
   }
   if (wrapper === 'cocos') {
     return cocosInstall(mediation);
@@ -263,6 +277,7 @@ function getInstallBlock({ mode, os, wrapper, mediation, product }) {
 }
 
 function needsGradleSnippet({ mode, os, wrapper, product }) {
+  if (product === 'next-gen' && wrapper === 'unity') return false;
   if (product === 'next-gen') return true;
   if (mode === 'native-os' && os === 'android') return true;
   if (wrapper === 'flutter' || wrapper === 'react-native') return true;

@@ -9,8 +9,8 @@ const { MEDIATION_DISPLAY_TITLES } = require('./gma/doc-constants');
 const rootDir = path.resolve(__dirname, '..');
 const outPath = path.join(rootDir, 'reference', 'class-network-key-registry.mdx');
 
-const GMA_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin', 'levelplay'];
-const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager'];
+const GMA_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'];
+const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager', 'levelplay'];
 
 const GMA_PACKAGES = [
   { label: 'Native', androidKey: 'native-android', iosKey: 'native-ios' },
@@ -89,10 +89,20 @@ function buildGmaTable() {
 }
 
 function buildNextGenTable() {
-  const rows = NEXTGEN_MEDIATIONS.map((mediation) => {
+  const rows = [];
+
+  for (const mediation of NEXTGEN_MEDIATIONS) {
     const entry = REGISTRY['next-gen-android'][mediation];
-    return ['Native', mediationLabel(mediation), entry.className, 'n/a'];
-  });
+    if (!entry) continue;
+    const value = entry.networkKey || entry.className || 'n/a';
+    rows.push(['Native', mediationLabel(mediation), value, 'n/a']);
+  }
+
+  const unityLevelplay = REGISTRY['next-gen-unity']?.levelplay;
+  if (unityLevelplay) {
+    const value = unityLevelplay.networkKey || unityLevelplay.className || 'n/a';
+    rows.push(['Unity', mediationLabel('levelplay'), value, value === 'n/a' ? 'n/a' : value]);
+  }
 
   return buildRegistryTable(rows);
 }

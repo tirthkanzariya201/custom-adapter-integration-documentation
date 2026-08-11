@@ -1,7 +1,7 @@
 ---
-title: AdMob
+title: Unity LevelPlay
 description: >-
-  AdMob Android guide for Custom Adapter (GMA Next-Gen SDK).
+  Unity LevelPlay unity guide for Custom Adapter (GMA Next-Gen SDK).
 ---
 
 ## Prerequisites
@@ -10,9 +10,9 @@ description: >-
 
 **App prerequisites**
 
-* minSdkVersion of **23** or higher
-* compileSdkVersion of 36 or higher
-* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
 * An ad unit must already be in place which will be used for targeting
 
 **Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
@@ -21,47 +21,34 @@ description: >-
 
 *Performed by: Developer*
 
-Ensure your `android/build.gradle` (project-level) includes the required repositories:
+In Unity **Package Manager → Add package from git URL**:
 
 ```
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
-}
+https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
-Open the `build.gradle` (Module: app) file and add:
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
 
-```
-dependencies {
-    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1")
-    implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
-}
-```
-
-## Configure AdMob
+## Configure Unity LevelPlay
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
 
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
 
 ```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
-Parameter    : {"placementName": "provided by your account manager"}
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
 ```
 
-> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
 
 ## Verify integration
 

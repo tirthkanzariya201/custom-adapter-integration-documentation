@@ -9,7 +9,7 @@ const REGISTRY = {
   'native-android': {
     admob: { className: 'com.tapmind.mediation.TapMindAdmobAdapter' },
     'google-ad-manager': { className: 'com.tapmind.mediation.TapMindGamAdapter' },
-    'applovin-max': { className: 'com.tapmind.tech.TapMindMediationAdapterApplovin' },
+    'applovin-max': { className: 'com.tapmind.mediation.TapMindApplovinAdapter' },
     levelplay: { networkKey: NETWORK_KEY },
   },
   'native-ios': {
@@ -28,7 +28,7 @@ const REGISTRY = {
       ios: 'TapMindMediationAdapterAdmob',
     },
     'applovin-max': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
+      android: 'com.tapmind.mediation.TapMindApplovinAdapter',
       ios: 'TapMindMediationAdapterApplovin',
     },
     levelplay: { networkKey: NETWORK_KEY },
@@ -81,6 +81,10 @@ const REGISTRY = {
   'next-gen-android': {
     admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },
     'google-ad-manager': { className: 'com.tapmind.mediation.ng.TapMindGamAdapter' },
+    levelplay: { networkKey: NETWORK_KEY },
+  },
+  'next-gen-unity': {
+    levelplay: { networkKey: NETWORK_KEY },
   },
 };
 

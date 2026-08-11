@@ -372,7 +372,7 @@
     },
     {
       "source": "/guides/unity/next-gen",
-      "destination": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
+      "destination": "/guides/unity/custom-adapter-gma-next-gen-sdk/levelplay",
       "permanent": true
     },
     {
@@ -608,6 +608,20 @@
                   {
                     "page": "guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",
                     "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "guides/android/custom-adapter-gma-next-gen-sdk/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Unity",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "guides/unity/custom-adapter-gma-next-gen-sdk/levelplay",
+                    "title": "Unity LevelPlay"
                   }
                 ]
               }
