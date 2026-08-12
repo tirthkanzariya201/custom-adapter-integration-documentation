@@ -3,6 +3,12 @@
  * Output: guides/{android|ios}/{product}/{mediation}.mdx
  *
  * Each mediation page uses H2 Installation + H2 Configuration for the right TOC.
+ *
+ * NOTE: GitBook source trees (tapmind-custom-adapter-sdk-integration/,
+ * next-gen-sdk-integration/) were removed so JamDesk Ask AI no longer indexes
+ * legacy content. Published guides under guides/ are the source of truth.
+ * Edit those MDX files directly. This script will fail until contentRoot is
+ * re-pointed or retired.
  */
 
 const fs = require('fs');

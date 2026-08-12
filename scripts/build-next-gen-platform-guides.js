@@ -1,3 +1,9 @@
+/**
+ * NOTE: GitBook source tree next-gen-sdk-integration/ was removed so JamDesk
+ * Ask AI no longer indexes legacy content. Published guides under guides/ are
+ * the source of truth. Edit those MDX files directly. This script will fail
+ * until contentRoot is re-pointed or retired.
+ */
 const fs = require('fs');
 const path = require('path');
 

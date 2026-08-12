@@ -221,6 +221,8 @@ Before diving into logs, confirm adapter class names against the [Class & Networ
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
 ---
 
 ## Google Ad Manager
@@ -308,6 +310,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -398,6 +402,8 @@ Before diving into logs, confirm adapter class names against the [Class & Networ
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
 ---
 
 ## Unity LevelPlay
@@ -436,7 +442,7 @@ Open the `build.gradle` (Module: app) file and add:
 
 ```
 dependencies {
-    implementation("io.github.tapmind-tech:customadapter-ironsource:2.1.18")
+    implementation("io.github.tapmind-tech:customadapter-ironsource:2.1.19")
     implementation("com.google.android.gms:play-services-ads:25.0.0")
 }
 ```
@@ -483,6 +489,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -563,6 +571,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -645,6 +655,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -729,6 +741,8 @@ Before diving into logs, confirm adapter class names against the [Class & Networ
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
 ---
 
 ## Unity LevelPlay
@@ -808,6 +822,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -5625,6 +5641,8 @@ Before diving into logs, confirm adapter class names and the LevelPlay network k
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
 ---
 
 ## Google Ad Manager
@@ -5715,6 +5733,8 @@ Before diving into logs, confirm adapter class names and the LevelPlay network k
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
 ---
 
 ## Unity LevelPlay
@@ -5802,6 +5822,8 @@ After install and dashboard configuration:
 Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
@@ -6275,6 +6297,7 @@ These apply to every mediation partner. Partner-specific problems are in [Mediat
 | No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the Registry exactly; TapMind AARs ship consumer ProGuard rules automatically (see [Release vs debug](#release-vs-debug)) |
 | No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm your waterfall position |
 | App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID to native config - see [App crashes on launch](#app-crashes-on-launch) |
+| Mediation dashboard shows higher request/attempt counts than TapMind backend receives | Mediation platforms often count a request/attempt at the ad-unit or waterfall level, including for devices without TapMind's adapter (older app versions, or a stripped release build) | Expected mediation-side behavior, see Dashboard vs. backend count discrepancies below |
 
 ## App crashes on launch
 
@@ -6313,6 +6336,8 @@ The problems below are specific to how each mediation platform is configured. Fi
 | Ad source configured but never fills | Class or `placementName` parameter wrong, or eCPM too low to win the waterfall | Verify the Class and the `placementName` JSON exactly; raise the manual eCPM to test whether it's a waterfall-position issue |
 | iOS custom event never loads (Android works) | Android class string used on the iOS custom event | Use the iOS class (`TapMindMediationAdapterAdmob`, no package prefix) from the Registry |
 
+> **Note:** See [Dashboard vs. backend count discrepancies](#dashboard-vs-backend-count-discrepancies) if AdMob's reported request counts run higher than TapMind's backend numbers.
+
 ### Google Ad Manager (yield group)
 
 | Symptom | Likely cause | Fix |
@@ -6322,6 +6347,8 @@ The problems below are specific to how each mediation platform is configured. Fi
 | Wrong class on wrapper vs native | Wrappers use the AdMob class for GAM; native uses the dedicated GAM class | Native: `…TapMindGamAdapter`. Flutter/RN/Unity/Cocos: use the AdMob class per the [Registry](/reference/class-network-key-registry) |
 
 > **Verify:** GAM dashboard changes can take time to propagate before delivery begins - confirm the expected delay with your account manager before assuming a misconfiguration.
+
+> **Note:** See [Dashboard vs. backend count discrepancies](#dashboard-vs-backend-count-discrepancies) if GAM's yield group request counts run higher than TapMind's backend numbers.
 
 ### AppLovin MAX (custom network)
 
@@ -6333,6 +6360,8 @@ The problems below are specific to how each mediation platform is configured. Fi
 
 > **Verify:** confirm the MAX Mediation Debugger surfaces custom-network adapters as described in your setup.
 
+> **Note:** See [Dashboard vs. backend count discrepancies](#dashboard-vs-backend-count-discrepancies) if MAX's Attempts count runs higher than TapMind's backend numbers.
+
 ### Unity LevelPlay (network key)
 
 | Symptom | Likely cause | Fix |
@@ -6340,6 +6369,27 @@ The problems below are specific to how each mediation platform is configured. Fi
 | TapMind network never appears | Wrong network key, or "Custom Adapter" not selected | Add via SDK Networks → **Custom Adapter** → enter the LevelPlay network key from the Registry |
 | Network appears but no fill | No instance created, or the instance rate is too low for its waterfall order | Setup → Instances → add a TapMind instance **per ad format**; set the eCPM/Rate |
 | Looking for a class string and can't find one | LevelPlay uses a **network key**, not a class string | Use the network key from the Registry; there is no class string for LevelPlay |
+
+> **Note:** See [Dashboard vs. backend count discrepancies](#dashboard-vs-backend-count-discrepancies) if LevelPlay's fill counts run lower than expected relative to TapMind's backend numbers.
+
+## Dashboard vs. backend count discrepancies
+
+It's common across mediation platforms (AdMob, Google Ad Manager, AppLovin MAX, Unity LevelPlay) to see the mediation dashboard report a higher request or attempt count for TapMind's line than the number of requests TapMind's backend actually receives.
+
+**Why this happens:** most mediation platforms count a request or attempt at the ad-unit or waterfall level, not on the device itself. Any device requesting an ad for an ad unit configured with TapMind's line can be counted, whether or not that specific app build actually contains TapMind's adapter class. Two common sources:
+
+- Devices still running an app version installed before the adapter was integrated
+- Devices where the adapter class was stripped during release minification (verify your release build's keep rules if suspected)
+
+Both generate a counted request or attempt on the mediation dashboard without that request ever reaching TapMind's backend.
+
+**This is expected mediation-side behavior, not a defect in your integration.** It's most pronounced immediately after rolling out the adapter, and typically narrows as more of your user base updates to a build that includes it. AppLovin documents this pattern directly for MAX: "You may see higher discrepancies between network and MAX numbers at launch and when user adoption rates are low, but this should stabilize as adoption increases."
+
+**What to do:**
+
+1. Track the discrepancy against your app version's adoption curve, not a single day's snapshot, and the gap should shrink as more users update.
+{/* 2. Where your mediation platform supports it (for example, AppLovin MAX's Segment Targeting), you can gate TapMind's line to only builds that include the adapter, preventing this class of count from occurring at all. Contact your account manager for setup guidance. */}
+2. If a significant gap persists well after full adoption of the adapter-carrying build, treat it as a mediation-side reporting question and escalate directly to that platform's support team.
 
 ## Release vs debug
 

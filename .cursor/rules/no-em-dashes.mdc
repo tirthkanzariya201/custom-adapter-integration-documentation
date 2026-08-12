@@ -1,0 +1,8 @@
+---
+description: Never use em dashes in documentation content
+alwaysApply: true
+---
+
+# No em dashes in documentation
+
+Never use em dashes (—) in any documentation content. Use commas, periods, or "and" instead.

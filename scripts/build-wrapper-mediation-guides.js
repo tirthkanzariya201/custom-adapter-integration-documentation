@@ -1,6 +1,11 @@
 /**
  * Builds per-wrapper, per-mediation guide pages.
  * Output: guides/{unity|flutter|cocos}/{product}/{mediation}.mdx
+ *
+ * NOTE: GitBook source trees were removed so JamDesk Ask AI no longer indexes
+ * legacy content. Published guides under guides/ are the source of truth.
+ * Edit those MDX files directly. This script will fail until contentRoot is
+ * re-pointed or retired.
  */
 
 const fs = require('fs');

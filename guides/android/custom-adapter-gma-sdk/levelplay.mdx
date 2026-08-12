@@ -36,7 +36,7 @@ Open the `build.gradle` (Module: app) file and add:
 
 ```
 dependencies {
-    implementation("io.github.tapmind-tech:customadapter-ironsource:2.1.18")
+    implementation("io.github.tapmind-tech:customadapter-ironsource:2.1.19")
     implementation("com.google.android.gms:play-services-ads:25.0.0")
 }
 ```
@@ -83,3 +83,5 @@ After install and dashboard configuration:
 Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
