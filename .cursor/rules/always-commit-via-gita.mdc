@@ -1,12 +1,14 @@
 ---
-description: Strict rule — always commit through GITA (git); never treat deploy as a commit
+description: Strict rule — always commit and publish live through CI Git; never use jamdesk deploy
 alwaysApply: true
 ---
 
-# Always commit through GITA
+# Always commit and publish through CI Git
 
 - **ALWAYS** commit through **GITA** (git). When the user asks to commit, create a real `git commit` following the repo's git commit protocol.
-- **NEVER** treat Jamdesk/`npm run deploy` as a substitute for a git commit. Deploy publishes docs live; it does not clear Source Control or record history.
+- **ALWAYS** publish live by committing and pushing to the Git remote so **CI Git** deploys the site. Every live docs change must go through CI Git.
+- **NEVER** use Jamdesk or `npm run deploy` to publish live. That path bypasses CI Git and does not record the change as a git-based live release.
+- **NEVER** treat Jamdesk/`npm run deploy` as a substitute for a git commit. Deploy does not clear Source Control or record history.
 - **NEVER** skip the git commit step after the user explicitly asks to commit.
 - Use conventional commits (`feat`, `fix`, `chore`, `docs`, `refactor`, `test`) per this repo's GitLab workflow.
-- Do not push to remote unless the user explicitly asks to push.
+- Do not push to remote unless the user explicitly asks to push, publish live, or deploy through CI Git.

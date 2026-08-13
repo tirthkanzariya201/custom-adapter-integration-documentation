@@ -30,7 +30,7 @@ const PACKAGE_VERSIONS = {
   gam: '2.1.14',
   'applovin-max': '3.0.0',
   levelplay: '2.1.19',
-  'nextgen-admob': '2.0.1',
+  'nextgen-admob': '2.0.2',
   'nextgen-gam': '2.0.1',
   orchestration: '1.0.2',
   ump: '4.0.0',

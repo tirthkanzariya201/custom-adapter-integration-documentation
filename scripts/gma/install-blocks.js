@@ -13,7 +13,7 @@ const GMA_ANDROID = 'com.google.android.gms:play-services-ads:25.0.0';
 const NEXTGEN_GMA_ANDROID = 'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0';
 
 const NEXTGEN_ANDROID_PACKAGES = {
-  admob: 'io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1',
+  admob: 'io.github.tapmind-tech:customadapter-admob-nextgen:2.0.2',
   'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam-nextgen:2.0.1',
   levelplay: 'io.github.tapmind-tech:customadapter-ironsource-nextgen:2.0.0',
 };
@@ -48,7 +48,6 @@ const FLUTTER_DEPS_IOS = {
 
 const IOS_POD_VERSIONS = {
   admob: '2.1.13',
-  'applovin-max': '2.1.13',
   'google-ad-manager': '2.1.13',
   levelplay: '2.1.12',
 };
@@ -131,12 +130,13 @@ function iosNativeInstall(mediation) {
   const version = IOS_POD_VERSIONS[mediation];
   const spm = IOS_SPM_REPOS[mediation];
   if (!pod) return '';
+  const podLine = version ? `pod '${pod}', '${version}'` : `pod '${pod}'`;
   return `### CocoaPods
 
 1. Open your project's Podfile and add:
 
 \`\`\`
-pod '${pod}', '${version}'
+${podLine}
 \`\`\`
 
 2. Run \`pod install\` and open the \`.xcworkspace\` file.

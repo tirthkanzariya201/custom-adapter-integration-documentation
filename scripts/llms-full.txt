@@ -684,7 +684,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 1. Open your project's Podfile and add:
 
 ```
-pod 'TapMindALAdapter', '2.1.13'
+pod 'TapMindALAdapter'
 ```
 
 2. Run `pod install` and open the `.xcworkspace` file.
@@ -5594,7 +5594,7 @@ Open the `build.gradle` (Module: app) file and add:
 
 ```
 dependencies {
-    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.1")
+    implementation("io.github.tapmind-tech:customadapter-admob-nextgen:2.0.2")
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
