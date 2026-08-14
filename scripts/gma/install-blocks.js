@@ -41,7 +41,7 @@ const FLUTTER_DEPS_ANDROID = {
 
 const FLUTTER_DEPS_IOS = {
   admob: 'tapmind_ads_admob_flutter: ^3.0.1',
-  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.0',
+  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.2',
   'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
   levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
 };
@@ -79,7 +79,7 @@ end
 
 const RN_PACKAGES = {
   admob: 'tapmind_ads_admob: "2.1.4"',
-  'applovin-max': 'tapmind_ads_applovin: "2.1.4"',
+  'applovin-max': 'tapmind_ads_applovin: "3.0.2"',
   'google-ad-manager': 'tapmind_ads_gam: "2.1.4"',
   levelplay: 'tapmind_ads_ironsource: "2.1.4"',
 };
