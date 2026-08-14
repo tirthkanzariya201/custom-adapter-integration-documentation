@@ -287,19 +287,19 @@ function needsGradleSnippet({ mode, os, wrapper, product }) {
 function needsAppIdAndroid({ mode, os, wrapper, product }) {
   // Next-Gen initializes App ID programmatically via MobileAds.initialize()
   if (product === 'next-gen') return false;
-  if (mode === 'native-os' && os === 'android') return true;
   if (wrapper === 'flutter' || wrapper === 'react-native' || wrapper === 'unity' || wrapper === 'cocos') {
-    return true;
+    return false;
   }
+  if (mode === 'native-os' && os === 'android') return true;
   return false;
 }
 
 function needsAppIdIos({ mode, os, wrapper, product }) {
   if (product === 'next-gen') return false;
-  if (mode === 'native-os' && os === 'ios') return true;
   if (wrapper === 'flutter' || wrapper === 'react-native' || wrapper === 'unity' || wrapper === 'cocos') {
-    return true;
+    return false;
   }
+  if (mode === 'native-os' && os === 'ios') return true;
   return false;
 }
 

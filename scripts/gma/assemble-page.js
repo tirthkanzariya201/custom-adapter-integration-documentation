@@ -133,7 +133,6 @@ function assembleWrapperPage({ wrapper, mediation, gitbookConfig, mergeWrapperCo
   const body = [
       buildPrerequisitesSection(ctx),
       buildInstallSection(ctx),
-      buildConfigureAppSection(ctx),
       buildConfigureMediationSection(ctx, dashboard),
       buildVerifySection(),
       buildTroubleshootSection(),
