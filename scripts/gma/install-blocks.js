@@ -96,6 +96,7 @@ const UNITY_GIT = {
 };
 
 const NEXTGEN_UNITY_GIT = {
+  admob: 'https://github.com/tapmind-tech/TapMind-CA-Admob-NG-Unity.git',
   levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git',
 };
 

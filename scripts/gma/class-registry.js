@@ -84,6 +84,7 @@ const REGISTRY = {
     levelplay: { networkKey: NETWORK_KEY },
   },
   'next-gen-unity': {
+    admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },
     levelplay: { networkKey: NETWORK_KEY },
   },
 };

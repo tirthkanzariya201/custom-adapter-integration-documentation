@@ -98,10 +98,11 @@ function buildNextGenTable() {
     rows.push(['Native', mediationLabel(mediation), value, 'n/a']);
   }
 
-  const unityLevelplay = REGISTRY['next-gen-unity']?.levelplay;
-  if (unityLevelplay) {
-    const value = unityLevelplay.networkKey || unityLevelplay.className || 'n/a';
-    rows.push(['Unity', mediationLabel('levelplay'), value, value === 'n/a' ? 'n/a' : value]);
+  for (const mediation of NEXTGEN_MEDIATIONS) {
+    const android = androidClass('next-gen-unity', mediation);
+    const ios = iosClass('next-gen-unity', mediation);
+    if (android === 'n/a' && ios === 'n/a') continue;
+    rows.push(['Unity', mediationLabel(mediation), android, ios]);
   }
 
   return buildRegistryTable(rows);

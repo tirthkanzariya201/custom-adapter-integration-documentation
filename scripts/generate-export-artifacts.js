@@ -1,8 +1,10 @@
 /**
  * Regenerate local export artifacts from docs.json navigation + MDX sources.
  * Outputs:
- *   scripts/llms-full.txt       — all navigation pages (JamDesk-style export)
- *   scripts/sitemap-pages.txt   — slug list for sitemap verification (levelplay slugs)
+ *   scripts/llms-full.txt        all navigation pages (Jamdesk-style export)
+ *   scripts/sitemap-pages.txt    slug list for sitemap verification (levelplay slugs)
+ *   scripts/nextgen-llms-full.txt Next-Gen pages
+ *   scripts/orch-llms-full.txt    Orchestration SDK pages
  */
 
 const fs = require('fs');
@@ -114,11 +116,20 @@ const sitemapList = generateSitemapList(pages);
 fs.writeFileSync(path.join(__dirname, 'llms-full.txt'), llmsFull, 'utf8');
 fs.writeFileSync(path.join(__dirname, 'sitemap-pages.txt'), sitemapList, 'utf8');
 
-const nextGenSlugs = pages.filter((p) => p.slug.includes('/next-gen/'));
+const nextGenSlugs = pages.filter((p) => p.slug.includes('custom-adapter-gma-next-gen-sdk'));
 if (nextGenSlugs.length) {
   fs.writeFileSync(
     path.join(__dirname, 'nextgen-llms-full.txt'),
-    generateLlmsFull(nextGenSlugs, `${siteName} — Next-Gen`),
+    generateLlmsFull(nextGenSlugs, `${siteName} - Next-Gen`),
+    'utf8',
+  );
+}
+
+const orchSlugs = pages.filter((p) => p.slug.startsWith('orchestration-sdk/'));
+if (orchSlugs.length) {
+  fs.writeFileSync(
+    path.join(__dirname, 'orch-llms-full.txt'),
+    generateLlmsFull(orchSlugs, `${siteName} - Orchestration SDK`),
     'utf8',
   );
 }
@@ -127,6 +138,9 @@ console.log(`Generated llms-full.txt (${pages.length} pages)`);
 console.log(`Generated sitemap-pages.txt`);
 if (nextGenSlugs.length) {
   console.log(`Generated nextgen-llms-full.txt (${nextGenSlugs.length} pages)`);
+}
+if (orchSlugs.length) {
+  console.log(`Generated orch-llms-full.txt (${orchSlugs.length} pages)`);
 }
 
 const staleSlug = pages.some((p) => p.slug.includes('ironsource-levelplay'));

@@ -7,7 +7,7 @@
 
 ## Introduction
 
-*Source: /getting-started/introduction*
+*Source: /guides/introduction*
 
 TapMind connects your app to premium ad demand through your existing mediation stack. You add TapMind as a custom adapter inside the mediation platform you already use - AdMob, Google Ad Manager, AppLovin MAX, or Unity LevelPlay - and TapMind competes for your ad requests like any other network.
 
@@ -38,7 +38,7 @@ Every page follows the same six steps:
 
 ## How TapMind custom adapters work
 
-*Source: /getting-started/how-custom-adapters-work*
+*Source: /guides/how-custom-adapters-work*
 
 The one idea to hold onto: with the Custom Adapter SDKs, you do not call TapMind directly. You integrate your mediation SDK exactly as you normally would, and TapMind rides inside it as a custom network. Your mediation platform loads the TapMind adapter and asks it for an ad whenever TapMind's line item is eligible.
 
@@ -76,7 +76,7 @@ Your app → Mediation SDK (AdMob / MAX / LevelPlay / GAM)
 
 ## Prerequisites
 
-*Source: /getting-started/prerequisites*
+*Source: /guides/prerequisites*
 
 Before integrating any TapMind SDK, make sure you have:
 
@@ -112,7 +112,7 @@ Same for every publisher:
 
 ## Gradle Setup (For Gradle Version 7+)
 
-*Source: /gradle-setup/for-gradle-version-7-plus*
+*Source: /guides/gradle-setup*
 
 On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:
 
@@ -139,7 +139,7 @@ For projects that still use the legacy `allprojects` pattern, see the repository
 
 ## AdMob
 
-*Source: /guides/android/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/android/admob*
 
 ## Prerequisites
 
@@ -167,7 +167,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -227,7 +227,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/android/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/android/google-ad-manager*
 
 ## Prerequisites
 
@@ -255,7 +255,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -317,7 +317,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AppLovin MAX
 
-*Source: /guides/android/custom-adapter-gma-sdk/applovin-max*
+*Source: /custom-adapter-gma-sdk/android/applovin-max*
 
 ## Prerequisites
 
@@ -345,7 +345,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -408,7 +408,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/android/custom-adapter-gma-sdk/levelplay*
+*Source: /custom-adapter-gma-sdk/android/levelplay*
 
 ## Prerequisites
 
@@ -436,7 +436,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -496,7 +496,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/ios/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/ios/admob*
 
 ## Prerequisites
 
@@ -578,7 +578,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/ios/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/ios/google-ad-manager*
 
 ## Prerequisites
 
@@ -662,7 +662,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AppLovin MAX
 
-*Source: /guides/ios/custom-adapter-gma-sdk/applovin-max*
+*Source: /custom-adapter-gma-sdk/ios/applovin-max*
 
 ## Prerequisites
 
@@ -747,7 +747,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/ios/custom-adapter-gma-sdk/levelplay*
+*Source: /custom-adapter-gma-sdk/ios/levelplay*
 
 ## Prerequisites
 
@@ -829,7 +829,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/flutter/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/flutter/admob*
 
 ## Prerequisites
 
@@ -858,7 +858,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -954,7 +954,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/flutter/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/flutter/google-ad-manager*
 
 ## Prerequisites
 
@@ -983,7 +983,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1081,7 +1081,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AppLovin MAX
 
-*Source: /guides/flutter/custom-adapter-gma-sdk/applovin-max*
+*Source: /custom-adapter-gma-sdk/flutter/applovin-max*
 
 ## Prerequisites
 
@@ -1110,7 +1110,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1201,7 +1201,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/flutter/custom-adapter-gma-sdk/levelplay*
+*Source: /custom-adapter-gma-sdk/flutter/levelplay*
 
 ## Prerequisites
 
@@ -1230,7 +1230,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1317,7 +1317,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/react-native/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/react-native/admob*
 
 ## Prerequisites
 
@@ -1346,7 +1346,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1448,7 +1448,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/react-native/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/react-native/google-ad-manager*
 
 ## Prerequisites
 
@@ -1477,7 +1477,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1581,7 +1581,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AppLovin MAX
 
-*Source: /guides/react-native/custom-adapter-gma-sdk/applovin-max*
+*Source: /custom-adapter-gma-sdk/react-native/applovin-max*
 
 ## Prerequisites
 
@@ -1610,7 +1610,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1707,7 +1707,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/react-native/custom-adapter-gma-sdk/levelplay*
+*Source: /custom-adapter-gma-sdk/react-native/levelplay*
 
 ## Prerequisites
 
@@ -1736,7 +1736,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -1829,7 +1829,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/unity/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/unity/admob*
 
 ## Prerequisites
 
@@ -1913,7 +1913,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/unity/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/unity/google-ad-manager*
 
 ## Prerequisites
 
@@ -1999,7 +1999,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AppLovin MAX
 
-*Source: /guides/unity/custom-adapter-gma-sdk/applovin-max*
+*Source: /custom-adapter-gma-sdk/unity/applovin-max*
 
 ## Prerequisites
 
@@ -2076,7 +2076,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/unity/custom-adapter-gma-sdk/levelplay*
+*Source: /custom-adapter-gma-sdk/unity/levelplay*
 
 ## Prerequisites
 
@@ -2149,7 +2149,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/cocos/custom-adapter-gma-sdk/admob*
+*Source: /custom-adapter-gma-sdk/cocos/admob*
 
 ## Prerequisites
 
@@ -2228,7 +2228,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/cocos/custom-adapter-gma-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-sdk/cocos/google-ad-manager*
 
 ## Prerequisites
 
@@ -2309,7 +2309,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## AdMob
 
-*Source: /guides/android/custom-adapter-gma-next-gen-sdk/admob*
+*Source: /custom-adapter-gma-next-gen-sdk/android/admob*
 
 ## Prerequisites
 
@@ -2340,7 +2340,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -2399,7 +2399,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Google Ad Manager
 
-*Source: /guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager*
+*Source: /custom-adapter-gma-next-gen-sdk/android/google-ad-manager*
 
 ## Prerequisites
 
@@ -2430,7 +2430,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -2491,7 +2491,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/android/custom-adapter-gma-next-gen-sdk/levelplay*
+*Source: /custom-adapter-gma-next-gen-sdk/android/levelplay*
 
 ## Prerequisites
 
@@ -2521,7 +2521,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -2581,7 +2581,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Unity LevelPlay
 
-*Source: /guides/unity/custom-adapter-gma-next-gen-sdk/levelplay*
+*Source: /custom-adapter-gma-next-gen-sdk/unity/levelplay*
 
 ## Prerequisites
 
@@ -2656,7 +2656,7 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ## Native Android
 
-*Source: /guides/android/orchestration-sdk/overview*
+*Source: /orchestration-sdk/android*
 
 ## Overview
 
@@ -3209,7 +3209,7 @@ TapMind adapters operate within your existing mediation stack (Custom Adapter SD
 
 ## Orchestration SDK
 
-Orch SDK reads the standard IABTCF consent signals your app provides and forwards them to demand partners; it does not collect or prompt for consent itself. Ensure your app writes these signals through your CMP before initializing Orch SDK. See [Orchestration SDK — Consent & Privacy](/guides/android/orchestration-sdk/overview#consent--privacy) on the Native Android integration guide.
+Orch SDK reads the standard IABTCF consent signals your app provides and forwards them to demand partners; it does not collect or prompt for consent itself. Ensure your app writes these signals through your CMP before initializing Orch SDK. See [Orchestration SDK, Consent and Privacy](/orchestration-sdk/android#consent--privacy) on the Native Android integration guide.
 
 ## Questions
 

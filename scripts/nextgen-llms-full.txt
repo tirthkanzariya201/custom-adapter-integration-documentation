@@ -1,13 +1,13 @@
-# TapMind SDK Documentation — Next-Gen - Complete Documentation
+# TapMind SDK Documentation - Next-Gen - Complete Documentation
 
-> This file contains the complete documentation for TapMind SDK Documentation — Next-Gen.
-> Total pages: 2
+> This file contains the complete documentation for TapMind SDK Documentation - Next-Gen.
+> Total pages: 4
 
 ---
 
 ## AdMob
 
-*Source: /guides/android/next-gen/admob*
+*Source: /custom-adapter-gma-next-gen-sdk/android/admob*
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@
 * The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
 * An ad unit must already be in place which will be used for targeting
 
-**Note:** **Custom Adapter Next-Gen** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter GMA SDK for other mediations and platforms.
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
@@ -38,7 +38,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead — declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -48,7 +48,6 @@ dependencies {
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
-
 
 ## Configure AdMob
 
@@ -62,7 +61,7 @@ dependencies {
 Mapping name : provided by your account manager
 eCPM         : provided by your account manager
 Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
-Parameter    : "placementName": "provided by your account manager"
+Parameter    : {"placementName": "provided by your account manager"}
 ```
 
 > The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
@@ -78,7 +77,7 @@ After install and dashboard configuration:
 1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
 3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production — test mode is disabled automatically in release builds, and live ads serve.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
 **Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
@@ -88,20 +87,17 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-| Symptom | Likely cause | Fix |
-|---------|--------------|-----|
-| No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the [Class & Network Key Registry](/reference/class-network-key-registry) exactly; TapMind AARs ship consumer ProGuard rules automatically |
-| No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm waterfall position |
-| App crashes on launch | Missing AdMob app ID / Next-Gen init | Explicitly call `MobileAds.initialize()` with your App ID on a background thread; keep App ID in manifest/Info.plist if using Google UMP |
-| Unity LevelPlay network never appears | Wrong network key | Use the canonical key from the Registry |
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
-For anything else, contact your account manager with the log output and the tag **`TapMindAdapter`**.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## Google Ad Manager
 
-*Source: /guides/android/next-gen/google-ad-manager*
+*Source: /custom-adapter-gma-next-gen-sdk/android/google-ad-manager*
 
 ## Prerequisites
 
@@ -114,7 +110,7 @@ For anything else, contact your account manager with the log output and the tag 
 * The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
 * An ad unit must already be in place which will be used for targeting
 
-**Note:** **Custom Adapter Next-Gen** covers **AdMob** and **Google Ad Manager** on **Android only**. Use the standard Custom Adapter GMA SDK for other mediations and platforms.
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
@@ -132,7 +128,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/gradle-setup/for-gradle-version-7-plus) instead — declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -142,7 +138,6 @@ dependencies {
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
-
 
 ## Configure Google Ad Manager
 
@@ -158,7 +153,7 @@ dependencies {
 Default CPM : provided by your account manager
 Label       : provided by your account manager
 Class Name  : com.tapmind.mediation.ng.TapMindGamAdapter
-Parameter   : "placementName": "provided by your account manager"
+Parameter   : {"placementName": "provided by your account manager"}
 ```
 
 > The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
@@ -174,7 +169,7 @@ After install and dashboard configuration:
 1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
 3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production — test mode is disabled automatically in release builds, and live ads serve.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
 **Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
@@ -184,13 +179,175 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-| Symptom | Likely cause | Fix |
-|---------|--------------|-----|
-| No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the [Class & Network Key Registry](/reference/class-network-key-registry) exactly; TapMind AARs ship consumer ProGuard rules automatically |
-| No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm waterfall position |
-| App crashes on launch | Missing AdMob app ID / Next-Gen init | Explicitly call `MobileAds.initialize()` with your App ID on a background thread; keep App ID in manifest/Info.plist if using Google UMP |
-| Unity LevelPlay network never appears | Wrong network key | Use the canonical key from the Registry |
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
 
-For anything else, contact your account manager with the log output and the tag **`TapMindAdapter`**.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
+---
+
+## Unity LevelPlay
+
+*Source: /custom-adapter-gma-next-gen-sdk/android/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID meta-data (`com.google.android.gms.ads.APPLICATION_ID`) set in `AndroidManifest.xml`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
+* An ad unit must already be in place which will be used for targeting
+
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+Open the `build.gradle` (Module: app) file and add:
+
+```
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-ironsource-nextgen:2.0.0")
+    implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
+}
+```
+
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
+
+```
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
+---
+
+## Unity LevelPlay
+
+*Source: /custom-adapter-gma-next-gen-sdk/unity/levelplay*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+**App prerequisites**
+
+* minSdkVersion of **23** (Android) or higher
+* iOS **12.0** or higher
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* An ad unit must already be in place which will be used for targeting
+
+**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
+
+![](/images/ironsource-configuration.jpeg)
+
+**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
+
+```
+Instance name : provided by your account manager
+placementCODE : provided by your account manager
+Mediation Group: Select your target mediation group
+Rate : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
 ---
