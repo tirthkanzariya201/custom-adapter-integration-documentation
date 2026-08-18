@@ -1,29 +1,55 @@
 /**
- * Per-cell install blocks (Part 2.8). Versions match current published guides.
+ * Per-cell install blocks. Versions come from sdk-versions.json.
  */
 
-const ANDROID_PACKAGES = {
-  admob: 'io.github.tapmind-tech:customadapter-admob:3.0.2',
-  'applovin-max': 'io.github.tapmind-tech:customadapter-applovin:3.0.0',
-  'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam:3.0.1',
-  levelplay: 'io.github.tapmind-tech:customadapter-ironsource:2.1.19',
-};
+const { loadSdkVersions } = require('./load-sdk-versions');
+const { mavenCoordinate, iosPodLine, FLUTTER_PUBSPEC, RN_PACKAGE, IOS_POD } = require('./package-catalog');
 
-const GMA_ANDROID = 'com.google.android.gms:play-services-ads:25.0.0';
-const NEXTGEN_GMA_ANDROID = 'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0';
+const versions = loadSdkVersions();
+const GMA = 'custom-adapter-gma-sdk';
+const NEXTGEN = 'custom-adapter-gma-next-gen-sdk';
 
-const NEXTGEN_ANDROID_PACKAGES = {
-  admob: 'io.github.tapmind-tech:customadapter-admob-nextgen:2.0.2',
-  'google-ad-manager': 'io.github.tapmind-tech:customadapter-gam-nextgen:2.0.1',
-  levelplay: 'io.github.tapmind-tech:customadapter-ironsource-nextgen:2.0.0',
-};
+function gmaAndroidPackages() {
+  const table = versions[GMA]['native-android'];
+  const out = {};
+  for (const mediation of Object.keys(table)) {
+    out[mediation] = mavenCoordinate(GMA, mediation, table[mediation]);
+  }
+  return out;
+}
 
-const IOS_PODS = {
-  admob: 'TapMindAdapter',
-  'applovin-max': 'TapMindALAdapter',
-  'google-ad-manager': 'TapMindAdapter',
-  levelplay: 'TapMindISAdapter',
-};
+function nextgenAndroidPackages() {
+  const table = versions[NEXTGEN]['native-android'];
+  const out = {};
+  for (const mediation of Object.keys(table)) {
+    out[mediation] = mavenCoordinate(NEXTGEN, mediation, table[mediation]);
+  }
+  return out;
+}
+
+function flutterDeps() {
+  const table = versions[GMA].flutter;
+  const out = {};
+  for (const mediation of Object.keys(table)) {
+    out[mediation] = `${FLUTTER_PUBSPEC[mediation]}: ^${table[mediation]}`;
+  }
+  return out;
+}
+
+function rnPackages() {
+  const table = versions[GMA]['react-native'];
+  const out = {};
+  for (const mediation of Object.keys(table)) {
+    out[mediation] = `${RN_PACKAGE[mediation]}: "${table[mediation]}"`;
+  }
+  return out;
+}
+
+const ANDROID_PACKAGES = gmaAndroidPackages();
+const NEXTGEN_ANDROID_PACKAGES = nextgenAndroidPackages();
+const GMA_ANDROID = `com.google.android.gms:play-services-ads:${versions.google.gma}`;
+const NEXTGEN_GMA_ANDROID = `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:${versions.google['gma-next-gen']}`;
+const IOS_PODS = IOS_POD;
 
 const IOS_SPM_REPOS = {
   admob: 'https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git',
@@ -32,25 +58,9 @@ const IOS_SPM_REPOS = {
   levelplay: 'https://github.com/tapmind-tech/TapMind-CA-Unity-Levelplay-iOS.git',
 };
 
-const FLUTTER_DEPS_ANDROID = {
-  admob: 'tapmind_ads_admob_flutter: ^3.0.1',
-  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.2',
-  'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
-  levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
-};
-
-const FLUTTER_DEPS_IOS = {
-  admob: 'tapmind_ads_admob_flutter: ^3.0.1',
-  'applovin-max': 'tapmind_ads_applovin_flutter: ^3.0.2',
-  'google-ad-manager': 'tapmind_ads_admob_flutter: ^3.0.0',
-  levelplay: 'tapmind_ads_ironsource_flutter: ^1.0.3',
-};
-
-const IOS_POD_VERSIONS = {
-  admob: '2.1.13',
-  'google-ad-manager': '2.1.13',
-  levelplay: '2.1.12',
-};
+const FLUTTER_DEPS_ANDROID = flutterDeps();
+const FLUTTER_DEPS_IOS = flutterDeps();
+const IOS_POD_VERSIONS = versions[GMA]['native-ios'];
 
 function reactNativePostInstallBlock() {
   return `Add the following \`post_install\` hook to your app's **Podfile** (alongside \`use_native_modules!\` and \`react_native_post_install\`):
@@ -77,16 +87,7 @@ end
 \`\`\``;
 }
 
-const RN_PACKAGES = {
-  admob: 'tapmind_ads_admob: "2.1.4"',
-  'applovin-max': 'tapmind_ads_applovin: "3.0.2"',
-  'google-ad-manager': 'tapmind_ads_gam: "2.1.4"',
-  levelplay: 'tapmind_ads_ironsource: "2.1.4"',
-};
-
-const RN_PACKAGES_ANDROID = {
-  'applovin-max': 'tapmind_ads_applovin: "3.0.0"',
-};
+const RN_PACKAGES = rnPackages();
 
 const UNITY_GIT = {
   admob: 'https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git',
@@ -131,7 +132,7 @@ function iosNativeInstall(mediation) {
   const version = IOS_POD_VERSIONS[mediation];
   const spm = IOS_SPM_REPOS[mediation];
   if (!pod) return '';
-  const podLine = version ? `pod '${pod}', '${version}'` : `pod '${pod}'`;
+  const podLine = iosPodLine(mediation, version);
   return `### CocoaPods
 
 1. Open your project's Podfile and add:
@@ -155,7 +156,7 @@ function flutterInstall(mediation, os) {
   const gmaNote =
     mediation === 'admob' || mediation === 'google-ad-manager'
       ? ''
-      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.';
+      : `\n\n**Note:** AdMob and GAM adapters pin \`play-services-ads:${versions.google.gma}\` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.`;
   if (os === 'android') {
     return `Open the \`pubspec.yaml\` file.
 
@@ -192,8 +193,7 @@ dependencies:
 }
 
 function reactNativeInstall(mediation, os) {
-  const pkg =
-    (os === 'android' && RN_PACKAGES_ANDROID[mediation]) || RN_PACKAGES[mediation];
+  const pkg = RN_PACKAGES[mediation];
   if (!pkg) return '';
   if (os === 'ios') {
     return `Add to \`package.json\` and install via npm/yarn:
@@ -209,7 +209,7 @@ ${reactNativePostInstallBlock()}`;
   const gmaNote =
     mediation === 'admob' || mediation === 'google-ad-manager'
       ? ''
-      : '\n\n**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution.';
+      : `\n\n**Note:** AdMob and GAM adapters pin \`play-services-ads:${versions.google.gma}\` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution.`;
   return `Add to \`package.json\` and install via npm/yarn:
 
 \`\`\`

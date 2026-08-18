@@ -1,0 +1,43 @@
+{
+  "$comment": "Edit a version here, then run: npm run sync-versions. That updates every guide that shows the number. Unity and Cocos have no version in docs (git/zip links). For native iOS, null means unpinned (pod name only, latest). Set a string only when the release note says to pin that version.",
+  "custom-adapter-gma-sdk": {
+    "native-android": {
+      "admob": "3.0.2",
+      "google-ad-manager": "3.0.1",
+      "applovin-max": "3.0.0",
+      "levelplay": "2.1.19"
+    },
+    "native-ios": {
+      "admob": "2.1.13",
+      "google-ad-manager": "2.1.13",
+      "applovin-max": null,
+      "levelplay": "2.1.12"
+    },
+    "flutter": {
+      "admob": "3.0.1",
+      "google-ad-manager": "3.0.0",
+      "applovin-max": "3.0.2",
+      "levelplay": "1.0.3"
+    },
+    "react-native": {
+      "admob": "2.1.4",
+      "google-ad-manager": "2.1.4",
+      "applovin-max": "3.0.2",
+      "levelplay": "2.1.4"
+    }
+  },
+  "custom-adapter-gma-next-gen-sdk": {
+    "native-android": {
+      "admob": "2.0.2",
+      "google-ad-manager": "2.0.1",
+      "levelplay": "2.0.0"
+    }
+  },
+  "orchestration-sdk": {
+    "native-android": "1.0.2"
+  },
+  "google": {
+    "gma": "25.0.0",
+    "gma-next-gen": "1.3.0"
+  }
+}

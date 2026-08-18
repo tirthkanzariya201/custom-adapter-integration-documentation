@@ -1,0 +1,92 @@
+---
+description: How to update docs versions from an SDK release note (PM-level)
+alwaysApply: true
+---
+
+# SDK version upgrades in documentation
+
+When an SDK is published, the PM gets a release note. Use that note to change **one file**, then sync.
+
+1. Open `sdk-versions.json` at the repo root.
+2. Change the version for that product, wrapper, and mediation.
+3. Run `npm run sync-versions`.
+4. Commit through git when you are ready to publish.
+
+Do not invent versions. Do not edit version strings on the guide pages by hand.
+
+## What a package is
+
+A **package** is one combination of:
+
+1. **Wrapper:** Native, Flutter, React Native, Unity, or Cocos
+2. **Platform:** Android or iOS
+3. **Mediation:** AdMob, Google Ad Manager (GAM), AppLovin MAX, or Unity LevelPlay
+
+Example: `Unity Android Levelplay` is one package.
+
+**Product** is which SDK family shipped:
+
+- Custom Adapter GMA SDK → `custom-adapter-gma-sdk`
+- Custom Adapter GMA Next-Gen SDK → `custom-adapter-gma-next-gen-sdk`
+- Orchestration SDK → `orchestration-sdk`
+
+## Which number on the release note to use
+
+| Package type | Edit this field in `sdk-versions.json` | Use this number from the note |
+|---|---|---|
+| Native Android | `native-android` | **SDK Version** |
+| Native iOS | `native-ios` | **SDK Version**, and only if the note says to pin |
+| Flutter (Android or iOS) | `flutter` | **Wrapper Version** (one value covers both platforms) |
+| React Native (Android or iOS) | `react-native` | **Wrapper Version** (one value covers both platforms) |
+| Unity | none | Git URL, no docs version |
+| Cocos | none | Zip/git link, no docs version |
+| Orchestration | `orchestration-sdk.native-android` | **SDK Version** |
+
+The changelog (Added / Fixed) explains what shipped. It does not pick the version string.
+
+## How to edit `sdk-versions.json`
+
+Mediation keys: `admob`, `google-ad-manager`, `applovin-max`, `levelplay`.
+
+**Native iOS:** `null` means unpinned (`pod 'TapMindAdapter'` with no version, latest). Set a string such as `"2.1.14"` only when the release note explicitly says to pin that version.
+
+**Flutter and React Native:** one number updates both the Android and iOS examples on that page.
+
+**Google GMA versions** (`google.gma` and `google.gma-next-gen`) change only when the note says the required Google SDK changed.
+
+After saving, run `npm run sync-versions`. That updates:
+
+- The Install snippet on the matching guide page
+- Both Flutter/RN version lines on that page
+- Matching strings in `scripts/gma/install-blocks.js` (it reads this file)
+- Google GMA version mentions and the Compatibility Matrix Google columns, when those Google keys change
+
+## Worked examples
+
+**Native Android AdMob, SDK Version 3.0.3**
+Set `custom-adapter-gma-sdk.native-android.admob` to `"3.0.3"`. Run sync.
+
+**Native iOS AdMob, SDK Version 2.1.14, no pin instruction**
+Leave `native-ios.admob` as `null`. Do not add `2.1.14`.
+
+**Native iOS AdMob, notes say pin 2.1.14**
+Set `native-ios.admob` to `"2.1.14"`. Run sync.
+
+**Flutter Android AdMob, Wrapper Version 3.0.2**
+Set `custom-adapter-gma-sdk.flutter.admob` to `"3.0.2"`. Run sync. Do not also change `native-android`.
+
+**React Native iOS AdMob, Wrapper Version 2.1.5**
+Set `custom-adapter-gma-sdk.react-native.admob` to `"2.1.5"`. Run sync.
+
+**Unity Android LevelPlay, Wrapper Version 3.0.0**
+No docs version change.
+
+**Orchestration, SDK Version 1.0.3**
+Set `orchestration-sdk.native-android` to `"1.0.3"`. Run sync.
+
+## Do not change on a normal TapMind version bump
+
+- Git URLs (Unity, Cocos, iOS SPM)
+- Adapter class names, network keys, `placementName`
+- Compatibility Matrix OS mins
+- A different product, wrapper, or mediation than the package name

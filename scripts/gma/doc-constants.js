@@ -2,7 +2,10 @@
  * Published doc constants.
  */
 
-const GMA_VERSION = '25.0.0';
+const { loadSdkVersions } = require('./load-sdk-versions');
+
+const sdkVersions = loadSdkVersions();
+const GMA_VERSION = sdkVersions.google.gma;
 const LOG_TAG = 'TapMindAdapter';
 const NETWORK_KEY = '15c11cb1d';
 
@@ -26,14 +29,13 @@ function resolveMediationSourceDir(mediation) {
 }
 
 const PACKAGE_VERSIONS = {
-  admob: '2.1.13',
-  gam: '2.1.14',
-  'applovin-max': '3.0.0',
-  levelplay: '2.1.19',
-  'nextgen-admob': '2.0.2',
-  'nextgen-gam': '2.0.1',
-  orchestration: '1.0.2',
-  ump: '4.0.0',
+  admob: sdkVersions['custom-adapter-gma-sdk']['native-android'].admob,
+  gam: sdkVersions['custom-adapter-gma-sdk']['native-android']['google-ad-manager'],
+  'applovin-max': sdkVersions['custom-adapter-gma-sdk']['native-android']['applovin-max'],
+  levelplay: sdkVersions['custom-adapter-gma-sdk']['native-android'].levelplay,
+  'nextgen-admob': sdkVersions['custom-adapter-gma-next-gen-sdk']['native-android'].admob,
+  'nextgen-gam': sdkVersions['custom-adapter-gma-next-gen-sdk']['native-android']['google-ad-manager'],
+  orchestration: sdkVersions['orchestration-sdk']['native-android'],
 };
 
 const MIN_ANDROID = {

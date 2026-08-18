@@ -1,0 +1,27 @@
+---
+description: Before docs edits or live pushes, check origin/main and stop if we are behind
+alwaysApply: true
+---
+
+# Sync with main before docs work
+
+`main` tracking `origin/main` is the live docs source. CI Git deploys from that remote.
+
+## Before any documentation change
+
+1. `git fetch origin`.
+2. Compare `HEAD` to `origin/main`.
+3. **If `HEAD` is behind or has diverged from `origin/main`:** stop. Tell the user we are not in sync with main. Ask whether to sync with main first. Do not edit docs until they confirm.
+4. **If `HEAD` matches `origin/main` (or is ahead only with our own unpublished commits on this branch):** proceed with the requested edit.
+5. After finishing that edit, say whether we were already in sync with main.
+
+Behind means `origin/main` has commits we do not have. Diverged means both sides have unique commits.
+
+## Before pushing live
+
+1. `git fetch origin` again.
+2. Compare `HEAD` to `origin/main`.
+3. **If behind or diverged:** do **not** push. Tell the user we are not in sync with main. Ask them to sync first.
+4. **If in sync, or ahead only with the commits we are publishing:** push to the remote so CI Git can deploy.
+
+Do not use Jamdesk or `npm run deploy` to publish. Pushing live still follows the CI Git commit rule.
