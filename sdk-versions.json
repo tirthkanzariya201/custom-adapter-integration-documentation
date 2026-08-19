@@ -9,7 +9,7 @@
     },
     "native-ios": {
       "admob": "2.1.13",
-      "google-ad-manager": "2.1.13",
+      "google-ad-manager": null,
       "applovin-max": null,
       "levelplay": "2.1.12"
     },
