@@ -8,7 +8,7 @@
       "levelplay": "2.1.19"
     },
     "native-ios": {
-      "admob": "2.1.13",
+      "admob": null,
       "google-ad-manager": null,
       "applovin-max": null,
       "levelplay": "2.1.12"
