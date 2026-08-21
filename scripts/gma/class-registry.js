@@ -21,15 +21,15 @@ const REGISTRY = {
   flutter: {
     admob: {
       android: 'com.tapmind.mediation.TapMindAdmobAdapter',
-      ios: 'TapMindMediationAdapterAdmob',
+      ios: 'TapMindAdmobAdapter',
     },
     'google-ad-manager': {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
-      ios: 'TapMindMediationAdapterAdmob',
+      ios: 'TapMindGamAdapter',
     },
     'applovin-max': {
       android: 'com.tapmind.mediation.TapMindApplovinAdapter',
-      ios: 'TapMindMediationAdapterApplovin',
+      ios: 'TapMindApplovinAdapter',
     },
     levelplay: { networkKey: NETWORK_KEY },
   },
@@ -44,7 +44,7 @@ const REGISTRY = {
     },
     'applovin-max': {
       android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
-      ios: 'TapMindMediationAdapterApplovin',
+      ios: 'TapMindApplovinAdapter',
     },
     levelplay: { networkKey: NETWORK_KEY },
   },
@@ -54,7 +54,7 @@ const REGISTRY = {
       ios: 'TapMindMediationAdapterAdmob',
     },
     'google-ad-manager': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.mediation.TapMindAdmobAdapter',
       ios: 'TapMindMediationAdapterAdmob',
     },
     'applovin-max': {
