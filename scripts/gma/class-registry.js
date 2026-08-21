@@ -13,9 +13,9 @@ const REGISTRY = {
     levelplay: { networkKey: NETWORK_KEY },
   },
   'native-ios': {
-    admob: { className: 'TapMindMediationAdapterAdmob' },
-    'google-ad-manager': { className: 'TapMindMediationAdapterGAM' },
-    'applovin-max': { className: 'TapMindMediationAdapterApplovin' },
+    admob: { className: 'TapMindAdmobAdapter' },
+    'google-ad-manager': { className: 'TapMindGamAdapter' },
+    'applovin-max': { className: 'TapMindApplovinAdapter' },
     levelplay: { networkKey: NETWORK_KEY },
   },
   flutter: {
