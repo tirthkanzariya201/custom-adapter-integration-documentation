@@ -24,7 +24,7 @@ const REGISTRY = {
       ios: 'TapMindAdmobAdapter',
     },
     'google-ad-manager': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.tech.TapMindGamAdapter',
       ios: 'TapMindGamAdapter',
     },
     'applovin-max': {
@@ -39,11 +39,11 @@ const REGISTRY = {
       ios: 'TapMindMediationAdapterAdmob',
     },
     'google-ad-manager': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
-      ios: 'TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.mediation.TapMindGamAdapter',
+      ios: 'TapMindGamAdapter',
     },
     'applovin-max': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
+      android: 'com.tapmind.mediation.TapMindApplovinAdapter',
       ios: 'TapMindApplovinAdapter',
     },
     levelplay: { networkKey: NETWORK_KEY },
