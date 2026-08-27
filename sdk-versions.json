@@ -31,6 +31,9 @@
       "admob": "2.0.2",
       "google-ad-manager": "2.0.1",
       "levelplay": "2.0.0"
+    },
+    "flutter": {
+      "admob": "1.0.1"
     }
   },
   "orchestration-sdk": {

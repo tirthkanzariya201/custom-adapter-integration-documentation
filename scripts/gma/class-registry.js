@@ -83,6 +83,11 @@ const REGISTRY = {
     'google-ad-manager': { className: 'com.tapmind.mediation.ng.TapMindGamAdapter' },
     levelplay: { networkKey: NETWORK_KEY },
   },
+  'next-gen-flutter': {
+    admob: {
+      android: 'com.tapmind.mediation.ng.TapMindAdmobAdapter',
+    },
+  },
   'next-gen-unity': {
     admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },
     levelplay: { networkKey: NETWORK_KEY },

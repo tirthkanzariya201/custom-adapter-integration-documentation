@@ -99,6 +99,13 @@ function buildNextGenTable() {
   }
 
   for (const mediation of NEXTGEN_MEDIATIONS) {
+    const android = androidClass('next-gen-flutter', mediation);
+    const ios = iosClass('next-gen-flutter', mediation);
+    if (android === 'n/a' && ios === 'n/a') continue;
+    rows.push(['Flutter', mediationLabel(mediation), android, ios]);
+  }
+
+  for (const mediation of NEXTGEN_MEDIATIONS) {
     const android = androidClass('next-gen-unity', mediation);
     const ios = iosClass('next-gen-unity', mediation);
     if (android === 'n/a' && ios === 'n/a') continue;

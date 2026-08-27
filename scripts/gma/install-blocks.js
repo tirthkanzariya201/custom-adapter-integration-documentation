@@ -3,7 +3,7 @@
  */
 
 const { loadSdkVersions } = require('./load-sdk-versions');
-const { mavenCoordinate, iosPodLine, FLUTTER_PUBSPEC, RN_PACKAGE, IOS_POD } = require('./package-catalog');
+const { mavenCoordinate, iosPodLine, FLUTTER_PUBSPEC, NEXTGEN_FLUTTER_PUBSPEC, RN_PACKAGE, IOS_POD } = require('./package-catalog');
 
 const versions = loadSdkVersions();
 const GMA = 'custom-adapter-gma-sdk';
@@ -36,6 +36,18 @@ function flutterDeps() {
   return out;
 }
 
+function nextgenFlutterDeps() {
+  const table = versions[NEXTGEN].flutter;
+  if (!table) return {};
+  const out = {};
+  for (const mediation of Object.keys(table)) {
+    const name = NEXTGEN_FLUTTER_PUBSPEC[mediation];
+    if (!name) continue;
+    out[mediation] = `${name}: ^${table[mediation]}`;
+  }
+  return out;
+}
+
 function rnPackages() {
   const table = versions[GMA]['react-native'];
   const out = {};
@@ -60,6 +72,7 @@ const IOS_SPM_REPOS = {
 
 const FLUTTER_DEPS_ANDROID = flutterDeps();
 const FLUTTER_DEPS_IOS = flutterDeps();
+const NEXTGEN_FLUTTER_DEPS = nextgenFlutterDeps();
 const IOS_POD_VERSIONS = versions[GMA]['native-ios'];
 
 function reactNativePostInstallBlock() {
@@ -148,6 +161,22 @@ ${podLine}
 1. In Xcode: **File → Add Package Dependencies**
 2. Add: \`${spm}\`
 3. Add **\`-ObjC\`** to **Targets → Build Settings → Other Linker Flags**`;
+}
+
+function nextGenFlutterInstall(mediation, os) {
+  const dep = NEXTGEN_FLUTTER_DEPS[mediation];
+  if (!dep || os !== 'android') return '';
+  return `Open the \`pubspec.yaml\` file.
+
+Find the dependencies block and add:
+
+\`\`\`
+dependencies:
+  ${dep}
+  google_mobile_ads: ^9.1.0
+\`\`\`
+
+**Note:** To use GMA Next-Gen on Android, build with \`flutter run --dart-define USE_NEXT_GEN_SDK=true\`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).`;
 }
 
 function flutterInstall(mediation, os) {
@@ -255,6 +284,9 @@ function cocosInstall(mediation) {
 function getInstallBlock({ mode, os, wrapper, mediation, product }) {
   if (product === 'next-gen' && wrapper === 'unity') {
     return unityInstall(mediation, product);
+  }
+  if (product === 'next-gen' && wrapper === 'flutter') {
+    return nextGenFlutterInstall(mediation, os);
   }
   if (product === 'next-gen' && os === 'android') {
     return nextGenAndroidInstall(mediation);

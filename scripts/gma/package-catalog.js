@@ -30,6 +30,10 @@ const FLUTTER_PUBSPEC = {
   levelplay: 'tapmind_ads_ironsource_flutter',
 };
 
+const NEXTGEN_FLUTTER_PUBSPEC = {
+  admob: 'tapmind_ads_admob_nextgen_flutter',
+};
+
 const RN_PACKAGE = {
   admob: 'tapmind_ads_admob',
   'google-ad-manager': 'tapmind_ads_gam',
@@ -58,6 +62,7 @@ module.exports = {
   ANDROID_ARTIFACT,
   IOS_POD,
   FLUTTER_PUBSPEC,
+  NEXTGEN_FLUTTER_PUBSPEC,
   RN_PACKAGE,
   WRAPPER_FOLDER,
   mavenCoordinate,

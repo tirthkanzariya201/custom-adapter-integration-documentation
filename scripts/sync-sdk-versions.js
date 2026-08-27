@@ -10,6 +10,7 @@ const {
   ANDROID_ARTIFACT,
   IOS_POD,
   FLUTTER_PUBSPEC,
+  NEXTGEN_FLUTTER_PUBSPEC,
   RN_PACKAGE,
   WRAPPER_FOLDER,
 } = require('./gma/package-catalog');
@@ -82,11 +83,12 @@ function syncIos(product) {
   }
 }
 
-function syncFlutter(product) {
+function syncFlutter(product, pubspecMap = FLUTTER_PUBSPEC) {
   const table = versions[product].flutter;
+  if (!table) return;
   for (const [mediation, version] of Object.entries(table)) {
     const rel = guidePath(product, 'flutter', mediation);
-    const name = FLUTTER_PUBSPEC[mediation];
+    const name = pubspecMap[mediation];
     let src = read(rel);
     src = mustReplace(
       rel,
@@ -199,6 +201,7 @@ syncIos('custom-adapter-gma-sdk');
 syncFlutter('custom-adapter-gma-sdk');
 syncReactNative('custom-adapter-gma-sdk');
 syncAndroid('custom-adapter-gma-next-gen-sdk', 'native-android');
+syncFlutter('custom-adapter-gma-next-gen-sdk', NEXTGEN_FLUTTER_PUBSPEC);
 syncOrchestration();
 syncGoogleDeps();
 

@@ -377,7 +377,7 @@
     },
     {
       "source": "/guides/flutter/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
       "permanent": true
     },
     {
@@ -609,6 +609,21 @@
       "source": "/guides/unity/custom-adapter-gma-next-gen-sdk/levelplay",
       "destination": "/custom-adapter-gma-next-gen-sdk/unity/levelplay",
       "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter-gma-next-gen-sdk",
+      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/custom-adapter-gma-next-gen-sdk/admob",
+      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/flutter/next-gen/admob",
+      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "permanent": true
     }
   ],
   "navigation": {
@@ -797,6 +812,16 @@
                   {
                     "page": "custom-adapter-gma-next-gen-sdk/android/levelplay",
                     "title": "Unity LevelPlay"
+                  }
+                ]
+              },
+              {
+                "group": "Flutter",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/flutter/admob",
+                    "title": "AdMob"
                   }
                 ]
               },
