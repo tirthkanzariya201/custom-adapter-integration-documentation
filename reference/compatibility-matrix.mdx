@@ -3,27 +3,44 @@ title: Compatibility Matrix
 description: Minimum OS versions and SDK compatibility per published package.
 ---
 
-Confirm that your app meets these version floors before you integrate. This page states requirements as minimums and supported ranges. It does not list adapter versions TapMind currently ships.
-
-Your app needs the floors below for the product you are integrating.
-
 ## Custom Adapter (GMA SDK)
 
-### Android baseline
+### Core Development Stack
 
-These Android floors apply to every mediation under this product.
+| Field | Requirement |
+|-------|-------------|
+| Development Framework / Engine | Native, Flutter, Unity, React Native, and Cocos are all supported. |
+| Framework Version | See per-framework table below. |
+| Primary Language (Android) | Java or Kotlin, both supported. |
+| Kotlin/Java Version (Android) | Kotlin 2.1.0 or higher. Java 17 or higher. |
+| Primary Language (iOS) | Swift or Objective-C, both supported. |
 
-| Requirement | Minimum |
-|-------------|---------|
-| minSdkVersion | 24 |
-| compileSdkVersion | 35 (36 recommended) |
-| Kotlin | 2.1.0 |
-| Java | 17 |
-| Android Gradle Plugin (AGP) | 8.6 |
+| Framework | Framework Version |
+|-----------|-------------------|
+| Native | **Not applicable**, no separate framework version. |
+| Flutter | Dart SDK 3.6.0 or higher, Flutter SDK 3.27.0 or higher. |
+| Unity | **[DEVELOPER TO CONFIRM: no minimum Unity version documented yet]** |
+| React Native | 0.76.x or higher. |
+| Cocos | **[DEVELOPER TO CONFIRM: no minimum Cocos version documented yet]** |
 
-### iOS baseline
+### Android Build Specifics
 
-The minimum iOS deployment target depends on your framework, not on mediation.
+| Field | Requirement |
+|-------|-------------|
+| Minimum SDK Version (minSdkVersion) | 24 or higher |
+| Compile SDK Version (compileSdkVersion) | 35 or higher (36 recommended) |
+| Target SDK Version (targetSdkVersion) | **No TapMind-specific requirement.** Follow Google Play's current targetSdk policy. |
+| Gradle Version | Must be compatible with your Android Gradle Plugin (AGP) version. **No separate TapMind-specific floor.** |
+| Android Gradle Plugin (AGP) Version | 8.6 or higher |
+| ProGuard / R8 Minification Enabled? | Supported whether enabled or not. **No additional keep rules required** beyond what is bundled with our library. |
+
+### iOS Build Specifics
+
+| Field | Requirement |
+|-------|-------------|
+| Minimum Deployment Target | See per-framework table below. |
+| Xcode Version Used | 26.0 or higher |
+| Dependency Manager | See table below. |
 
 | Framework | Minimum iOS Deployment Target |
 |-----------|-------------------------------|
@@ -33,73 +50,85 @@ The minimum iOS deployment target depends on your framework, not on mediation.
 | React Native | 15.0 |
 | Cocos | 18.0 |
 
-Xcode 26.0 or later is required. Supported dependency managers are CocoaPods and Swift Package Manager (SPM). When you integrate via SPM, the supported Google Mobile Ads SDK version is 12.14.0 up to but not including 14.0.0. All of 13.x is supported.
+| Dependency Manager | Requirement |
+|--------------------|-------------|
+| CocoaPods | Supported, no additional constraints. |
+| Swift Package Manager (SPM) | Supported. Google Mobile Ads SDK version must be 12.14.0 or higher and below 14.0.0 (all of 13.x is supported). |
 
-### Google Mobile Ads SDK
+### Current Monetization & Mediation Stack
 
-Google Mobile Ads (GMA) SDK version 25.0.0 or higher is required as the underlying demand SDK for every mediation in this product.
+| Field | Requirement |
+|-------|-------------|
+| Primary Mediation Platform | Determines which row below applies: AdMob, Google Ad Manager, AppLovin MAX, or LevelPlay. |
+| Mediation SDK Version | See table below. |
+| GMA SDK Version | Google Mobile Ads (GMA) SDK 25.0.0 or higher, required for every mediation listed above. |
 
-### Additional mediation SDK requirements
+| Mediation Platform | Mediation SDK Version Required |
+|--------------------|--------------------------------|
+| AdMob | **Not applicable**, same as the GMA SDK Version requirement above. |
+| Google Ad Manager | **Not applicable**, same as the GMA SDK Version requirement above. |
+| AppLovin MAX | 13.6.1 or higher |
+| LevelPlay | 9.3.0 or higher |
 
-AdMob and Google Ad Manager require no additional SDK beyond the GMA version above. GMA is the mediation itself in both cases.
+### Additional manifest setup
 
-Also required:
-
-- AdMob: AdMob App ID must be present in your app's manifest.
-- Google Ad Manager: Your Google Ad Manager app ID must be present in your app's manifest.
-
-AppLovin MAX and LevelPlay use GMA as demand underneath a separate mediation SDK. Your app also needs that mediation SDK at the floor below. Versions above the stated floor are supported and are usually fine, though untested beyond the version we have verified against.
-
-| Mediation | Additional Mediation SDK Required |
-|-----------|-----------------------------------|
-| AppLovin MAX | 13.6.1 or higher, on every GMA SDK framework this mediation ships on |
-| LevelPlay | 9.3.0 or higher, on every GMA SDK framework this mediation ships on |
-
-Also required:
-
-- AppLovin MAX: Your applovin.sdk.key must be present in your app's manifest.
-
-### Example
-
-Kotlin 2.1.0 is required even when GMA is already at 25. Meeting only the GMA floor is not enough.
-
-| Publisher Has | TapMind Requires | Result |
-|---------------|------------------|--------|
-| Kotlin 1.9.24 with GMA 25 | Kotlin 2.1.0 or higher | Not compatible |
+| Mediation Platform | Also required in your app |
+|--------------------|---------------------------|
+| AdMob | AdMob App ID present in your app's manifest. |
+| Google Ad Manager | Your Google Ad Manager app ID present in your app's manifest. |
+| AppLovin MAX | Your applovin.sdk.key present in your app's manifest. |
+| LevelPlay | **No manifest key required.** |
 
 ## Custom Adapter (GMA Next-Gen SDK)
 
-This product currently ships these packages only:
+Supported packages:
 
-- Native Android: AdMob, Google Ad Manager, LevelPlay
-- Flutter Android: AdMob
-- Unity Android: AdMob, LevelPlay
+- Native Android: AdMob, Google Ad Manager, AppLovin MAX, LevelPlay
+- Flutter Android: AdMob only
+- Unity Android: AdMob and LevelPlay only
 
 iOS is not yet supported for the Next-Gen SDK.
 
-### Android baseline
+### Core Development Stack
 
-These Android floors apply to every Next-Gen package listed above.
+| Field | Requirement |
+|-------|-------------|
+| Development Framework / Engine | Native Android, Flutter Android, and Unity Android are supported. |
+| Framework Version | See per-framework table below. |
+| Primary Language (Android) | Java or Kotlin, both supported. |
+| Kotlin/Java Version (Android) | **[DEVELOPER TO CONFIRM: same as GMA SDK product or different?]** |
 
-| Requirement | Minimum |
-|-------------|---------|
-| minSdkVersion | 24 |
-| compileSdkVersion | 36 |
-| Kotlin | 2.1.0 |
-| Java | 17 |
-| Android Gradle Plugin (AGP) | 8.6 |
+| Framework | Framework Version |
+|-----------|-------------------|
+| Native | **Not applicable**, no separate framework version. |
+| Flutter | **[DEVELOPER TO CONFIRM: same as GMA SDK product or different?]** |
+| Unity | **[DEVELOPER TO CONFIRM: same as GMA SDK product or different?]** |
 
-### GMA Next-Gen SDK
+### Android Build Specifics
 
-The GMA Next-Gen SDK version required is 1.3.0 or higher.
+| Field | Requirement |
+|-------|-------------|
+| Minimum SDK Version (minSdkVersion) | 24 or higher |
+| Compile SDK Version (compileSdkVersion) | 36 or higher |
+| Target SDK Version (targetSdkVersion) | **No TapMind-specific requirement.** Follow Google Play's current targetSdk policy. |
+| Gradle Version | Must be compatible with your Android Gradle Plugin (AGP) version. **No separate TapMind-specific floor.** |
+| Android Gradle Plugin (AGP) Version | 8.6 or higher |
+| ProGuard / R8 Minification Enabled? | Supported whether enabled or not. **No additional keep rules required** beyond what is bundled with our library. |
 
-### Additional mediation SDK requirements
+### Current Monetization & Mediation Stack
 
-AdMob and Google Ad Manager require no additional SDK beyond the GMA Next-Gen version above.
+| Field | Requirement |
+|-------|-------------|
+| Primary Mediation Platform | Determines which row below applies: AdMob, Google Ad Manager, AppLovin MAX (Native Android only), or LevelPlay (Native Android and Unity Android). |
+| Mediation SDK Version | See table below. |
+| GMA SDK Version | GMA Next-Gen SDK 1.3.0 or higher **[DEVELOPER TO CONFIRM this floor is current]** |
 
-| Mediation | Additional Mediation SDK Required |
-|-----------|-----------------------------------|
-| LevelPlay (Native Android, Unity Android) | 9.3.0 or higher |
+| Mediation Platform | Mediation SDK Version Required |
+|--------------------|--------------------------------|
+| AdMob | **Not applicable**, same as GMA Next-Gen SDK Version requirement above. |
+| Google Ad Manager | **Not applicable**, same as GMA Next-Gen SDK Version requirement above. |
+| AppLovin MAX (Native Android only) | **[DEVELOPER TO CONFIRM: same floor as GMA SDK product, 13.6.1, or a separate floor?]** |
+| LevelPlay (Native Android and Unity Android) | **[DEVELOPER TO CONFIRM: same floor as GMA SDK product, 9.3.0, or a separate floor?]** |
 
 Flutter Next-Gen AdMob requires `google_mobile_ads` 9.0.0 or later.
 
