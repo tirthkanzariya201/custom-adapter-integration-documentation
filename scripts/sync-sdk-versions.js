@@ -176,21 +176,12 @@ function syncGoogleDeps() {
   const matrixRel = 'reference/compatibility-matrix.mdx';
   let matrix = read(matrixRel);
   const prevMatrix = matrix;
-  matrix = matrix.replace(/(\| AdMob \| )[0-9.]+( \| GAM SDK)/, `$1${gma}$2`);
   matrix = matrix.replace(
-    /(\| Google Ad Manager \| )[0-9.]+( \| GAM SDK)/,
+    /(Google Mobile Ads \(GMA\) SDK version )[0-9.]+( or higher is required)/,
     `$1${gma}$2`,
   );
   matrix = matrix.replace(
-    /(\| AdMob \| )[0-9.]+( \| GMA Next-Gen SDK)/,
-    `$1${nextgen}$2`,
-  );
-  matrix = matrix.replace(
-    /(\| Google Ad Manager \| )[0-9.]+( \| GMA Next-Gen SDK)/,
-    `$1${nextgen}$2`,
-  );
-  matrix = matrix.replace(
-    /(\| Unity LevelPlay \| )[0-9.]+( \| Unity LevelPlay SDK \| 24 or higher)/,
+    /(The GMA Next-Gen SDK version required is )[0-9.]+( or higher)/,
     `$1${nextgen}$2`,
   );
   track(matrixRel, writeIfChanged(matrixRel, matrix, prevMatrix));

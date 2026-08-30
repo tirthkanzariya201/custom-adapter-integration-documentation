@@ -1,0 +1,19 @@
+---
+description: New packages must include compatibility floors on the Compatibility Matrix page
+alwaysApply: true
+---
+
+# Compatibility Matrix when adding a package
+
+A **package** is one Framework + Platform + Mediation combination under Custom Adapter (GMA SDK) or Custom Adapter (GMA Next-Gen SDK). Example: Unity Android LevelPlay.
+
+When you add a new package anywhere in this documentation (a new guide page, Package Versions, SDK Changelog, Feature Matrix, `sdk-versions.json`, or nav):
+
+1. Stop and prompt for that package's compatibility and support requirements before treating the addition as complete. Ask for:
+   - Android baseline if it differs from that product's existing baseline on `/reference/compatibility-matrix` (`minSdkVersion`, `compileSdkVersion`, Kotlin, Java, AGP)
+   - iOS baseline if the product has iOS and the package's minimum deployment target differs from that framework's existing row
+   - Any additional mediation SDK version floor (only when GMA is demand under a separate mediation, such as AppLovin MAX or LevelPlay)
+2. Update `reference/compatibility-matrix.mdx` so the new package is reflected. Do not invent floors. If a value is unknown, add a visible `[DEVELOPER TO CONFIRM]` marker on that page and ask for the number.
+3. Do not finish documenting the package on Package Versions, SDK Changelog, or Feature Matrix without also updating the Compatibility Matrix.
+
+Do not change the Orchestration SDK section of the Compatibility Matrix unless the user asked to edit Orchestration.
