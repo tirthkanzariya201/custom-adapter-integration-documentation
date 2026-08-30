@@ -190,7 +190,7 @@ function syncGoogleDeps() {
     `$1${nextgen}$2`,
   );
   matrix = matrix.replace(
-    /(\| Unity LevelPlay \| )[0-9.]+( \| Unity LevelPlay SDK \| 23 or higher)/,
+    /(\| Unity LevelPlay \| )[0-9.]+( \| Unity LevelPlay SDK \| 24 or higher)/,
     `$1${nextgen}$2`,
   );
   track(matrixRel, writeIfChanged(matrixRel, matrix, prevMatrix));
