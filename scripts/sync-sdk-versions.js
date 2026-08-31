@@ -177,11 +177,19 @@ function syncGoogleDeps() {
   let matrix = read(matrixRel);
   const prevMatrix = matrix;
   matrix = matrix.replace(
-    /(Google Mobile Ads \(GMA\) SDK )[0-9.]+( or higher, required for every mediation listed above)/,
+    /(\| Native \| \*\*)[0-9.]+(\*\* or higher \| \*\*12\.14\.0)/,
     `$1${gma}$2`,
   );
   matrix = matrix.replace(
-    /(GMA Next-Gen SDK )[0-9.]+( or higher)/,
+    /(\| AdMob \| \*\*)[0-9.]+(\*\* or higher \|)/,
+    `$1${gma}$2`,
+  );
+  matrix = matrix.replace(
+    /(\| Google Ad Manager \| \*\*)[0-9.]+(\*\* or higher \|)/,
+    `$1${gma}$2`,
+  );
+  matrix = matrix.replace(
+    /(GMA Next-Gen SDK \*\*)[0-9.]+(\*\* or higher)/,
     `$1${nextgen}$2`,
   );
   track(matrixRel, writeIfChanged(matrixRel, matrix, prevMatrix));
