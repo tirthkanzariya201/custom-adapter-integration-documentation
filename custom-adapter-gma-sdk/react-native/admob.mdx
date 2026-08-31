@@ -86,7 +86,7 @@ end
 Mapping name : provided by your account manager
 eCPM         : provided by your account manager
 Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter    : {"placementName": "provided by your account manager"}
+Parameter    : {"placementName":"","placementcode":"","appid":"","publisherid":""}
 ```
 
 ### iOS
@@ -95,10 +95,10 @@ Parameter    : {"placementName": "provided by your account manager"}
 Mapping name : provided by your account manager
 eCPM         : provided by your account manager
 Class        : TapMindMediationAdapterAdmob
-Parameter    : {"placementName": "provided by your account manager"}
+Parameter    : {"placementName":"","placementcode":"","appid":"","publisherid":""}
 ```
 
-> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
 
 **Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
 
@@ -121,6 +121,6 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.

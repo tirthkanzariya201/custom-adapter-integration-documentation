@@ -15,7 +15,7 @@ The integration model is simple:
 2. **Trigger a placement.** At a natural break in your user flow, call the placement with a single method. If a cached ad is available, it displays immediately. If not, the SDK fetches a fresh ad and displays it once loaded.
 3. **Receive callbacks.** Your listener is notified of the full ad lifecycle - loaded, shown, clicked, dismissed, or failed.
 
-Your TapMind account manager provides your placement codes and all account-level configuration.
+Your TapMind account manager provides your Placement Codes and all account-level configuration.
 
 ## Requirements
 
@@ -127,7 +127,7 @@ OrchAd.setListener(object : OrchAdListener {
 OrchAd.loadAd(activity, "YOUR_PLACEMENT_CODE")
 ```
 
-Use the placement code shared by your TapMind account manager.
+Use the Placement Code shared by your TapMind account manager.
 
 ### How `loadAd()` behaves
 
@@ -158,7 +158,7 @@ val config = OrchConfig.Builder()
     .build()
 ```
 
-Use the same placement code shared by your TapMind account manager - no separate test code is needed.
+Use the same Placement Code shared by your TapMind account manager - no separate test code is needed.
 
 > **Never click live ads in development.**
 > Interacting with live ads during testing is treated as invalid traffic and can put your ad serving at risk.
@@ -187,7 +187,7 @@ Each error carries a code and a descriptive message.
 | Code | Name | Meaning | Recommended action |
 | --- | --- | --- | --- |
 | `1001` | `SDK_NOT_INITIALIZED` | The SDK is not in a ready state for the requested operation. | Ensure `initialize()` completed successfully before triggering placements, and initialize only once per session. |
-| `1002` | `INVALID_PLACEMENT` | The placement code is not recognized. | Verify the placement code with your TapMind account manager. |
+| `1002` | `INVALID_PLACEMENT` | The Placement Code is not recognized. | Verify the Placement Code with your TapMind account manager. |
 | `1003` | `NO_NETWORK` | No usable network connection was available. | Retry when connectivity is restored; your app flow should continue without an ad. |
 | `1004` | `CONFIG_ERROR` | The SDK could not retrieve or apply its configuration. | Retry later; if persistent, contact your account manager. |
 | `1005` | `NO_FILL` | No ad was available for this request. | No action needed - continue your app flow. Fill varies by geography and time. |
@@ -207,6 +207,6 @@ Each error carries a code and a descriptive message.
 
 ## Support
 
-Your TapMind account manager is your single point of contact for all queries - placement codes, app-ads.txt entries, account configuration, technical integration questions, and go-live assistance.
+Your TapMind account manager is your single point of contact for all queries - Placement Codes, app-ads.txt entries, account configuration, technical integration questions, and go-live assistance.
 
 For technical issues, share your SDK version, a description of the issue, and relevant Logcat output under the `ORCH` tag with your account manager to help resolve it faster.

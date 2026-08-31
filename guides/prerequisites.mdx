@@ -13,7 +13,7 @@ Before integrating any TapMind SDK, make sure you have:
 
 ## What TapMind provides
 
-Your account manager provides the values below. Enter each **exactly** as given - `placementName` and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.
+Your account manager provides the values below. Enter each **exactly** as given - `placementName`, `placementcode`, and the class name / network key are case-sensitive, exact-match strings, and a single wrong character causes silent no-fill with no error message.
 
 ### Static SDK values (from the Class & Network Key Registry)
 
@@ -24,10 +24,11 @@ Same for every publisher:
 ### Your account values (from your account manager)
 
 - **placementName** - case-sensitive, exact match
+- **placementcode** - case-sensitive, exact match
 - **eCPM / rate** - the value to configure in your waterfall
 
 <Info>
-**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class & Network Key Registry](/reference/class-network-key-registry). Your `placementName` and eCPM / rate come directly from your account manager - not the Registry.
+**Single source of truth:** adapter class names and LevelPlay network keys live in the [Class & Network Key Registry](/reference/class-network-key-registry). Your `placementName`, `placementcode`, and eCPM / rate come directly from your account manager - not the Registry.
 </Info>
 
 <Info>

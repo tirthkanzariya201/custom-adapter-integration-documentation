@@ -3,7 +3,7 @@ title: Troubleshooting
 description: Shared troubleshooting for all TapMind SDK integrations.
 ---
 
-Most integration issues trace back to one of four values not matching exactly: adapter class name, `placementName`, the Unity LevelPlay network key, or eCPM/rate. Adapter class names and the network key live in the [Class & Network Key Registry](/reference/class-network-key-registry); your `placementName` and eCPM/rate come directly from your account manager. Check these before diving into logs.
+Most integration issues trace back to one of five values not matching exactly: adapter class name, `placementName`, `placementcode`, the Unity LevelPlay network key, or eCPM/rate. Adapter class names and the network key live in the [Class & Network Key Registry](/reference/class-network-key-registry); your `placementName`, `placementcode`, and eCPM/rate come directly from your account manager. Check these before diving into logs.
 
 ## Common issues
 
@@ -12,7 +12,7 @@ These apply to every mediation partner. Partner-specific problems are in [Mediat
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
 | No TapMind ad in production, but works in debug | Wrong/missing class string, or release-build stripping | Verify the class string matches the Registry exactly; TapMind AARs ship consumer ProGuard rules automatically (see [Release vs debug](#release-vs-debug)) |
-| No fill at all | `placementName` mismatch (case/space) or wrong eCPM position | Re-check `placementName` exactly against the TapMind Dashboard Placement Name; confirm your waterfall position |
+| No fill at all | `placementName` or `placementcode` mismatch (case/space) or wrong eCPM position | Re-check `placementName` and `placementcode` exactly against the TapMind Dashboard Placement Name and Placement Code; confirm your waterfall position |
 | App crashes on launch | Missing AdMob / Ad Manager app ID in the manifest (Android) or Info.plist (iOS) | Add your app ID to native config - see [App crashes on launch](#app-crashes-on-launch) |
 | Mediation dashboard shows higher request/attempt counts than TapMind backend receives | Mediation platforms often count a request/attempt at the ad-unit or waterfall level, including for devices without TapMind's adapter (older app versions, or a stripped release build) | Expected mediation-side behavior, see Dashboard vs. backend count discrepancies below |
 
@@ -52,7 +52,7 @@ The problems below are specific to how each mediation platform is configured. Fi
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
 | TapMind never competes in the mediation group | Custom event not added to the group, or the group doesn't target this ad unit / format / platform | In Mediation → your group, confirm the custom event is added and the group targets the correct ad format, platform (Android/iOS), and ad units |
-| Ad source configured but never fills | Class or `placementName` parameter wrong, or eCPM too low to win the waterfall | Verify the Class and the `placementName` JSON exactly; raise the manual eCPM to test whether it's a waterfall-position issue |
+| Ad source configured but never fills | Class, `placementName`, or `placementcode` parameter wrong, or eCPM too low to win the waterfall | Verify the Class and the `placementName` and `placementcode` JSON values exactly; raise the manual eCPM to test whether it's a waterfall-position issue |
 | iOS custom event never loads (Android works) | Android class string used on the iOS custom event | Use the iOS class from the [Registry](/reference/class-network-key-registry) (no package prefix) |
 
 > **Note:** See [Dashboard vs. backend count discrepancies](#dashboard-vs-backend-count-discrepancies) if AdMob's reported request counts run higher than TapMind's backend numbers.
@@ -129,7 +129,7 @@ If you still see release-only failures after confirming class strings, contact y
 Contact your account manager with:
 
 - The mediation platform and framework
-- The adapter class name and `placementName` you are using
+- The adapter class name, `placementName`, and `placementcode` you are using
 - For Orchestration: error code and message from `OrchError`
 
 Integration pages include partner-specific verification steps under **Verify integration** on each mediation page.

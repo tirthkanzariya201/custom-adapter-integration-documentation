@@ -64,7 +64,7 @@ Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
 Parameter    : {"placementName": "provided by your account manager"}
 ```
 
-> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
 
 **Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
 
@@ -87,7 +87,7 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
@@ -156,7 +156,7 @@ Class Name  : com.tapmind.mediation.ng.TapMindGamAdapter
 Parameter   : {"placementName": "provided by your account manager"}
 ```
 
-> The **placementName** value is case-sensitive and must exactly match the Placement Name configured in the TapMind Dashboard.
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
 
 **Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
 
@@ -179,7 +179,7 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
@@ -269,7 +269,7 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
@@ -346,7 +346,7 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), and `placementName` and eCPM/rate with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
 
