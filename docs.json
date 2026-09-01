@@ -884,6 +884,28 @@
               {
                 "page": "reference/privacy-consent",
                 "title": "Privacy & Consent"
+              },
+              {
+                "group": "Mediation Integration Setup",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "reference/mediation-integration-setup/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "reference/mediation-integration-setup/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "reference/mediation-integration-setup/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "reference/mediation-integration-setup/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               }
             ]
           }

@@ -1,0 +1,43 @@
+---
+title: AppLovin MAX
+description: >-
+  AppLovin MAX custom network setup for TapMind Custom Adapter integrations.
+---
+
+## Configure AppLovin MAX
+
+*Performed by: Ad ops*
+
+### 1. Create a custom network
+
+1. Go to **MAX → Mediation → Manage → Networks**.
+2. Click **Add a Custom Network**.
+3. Set **Network type** to **SDK**.
+4. Enter the custom network details:
+
+```
+Custom Network : TapMind Marketplace
+Android Class  : provided by your account manager
+iOS Class      : provided by your account manager
+```
+
+### 2. Create and configure an ad unit
+
+1. Go to **MAX → Mediation → Manage → Ad Units → Create Ad Unit**.
+2. Enter the **Ad unit name**.
+3. Select **Platform**.
+4. Select **Ad type**.
+5. Under **Custom network**, set TapMind **Enable status** to on.
+6. Enter the TapMind line item details:
+
+```
+App ID             : leave blank (optional)
+Placement ID       : provided by your account manager
+Custom Parameters  : provided by your account manager
+CPM Price          : provided by your account manager
+Country targeting  : as required for your campaign
+```
+
+7. Click **Save**.
+
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.

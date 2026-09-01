@@ -1,0 +1,38 @@
+---
+title: Unity LevelPlay
+description: >-
+  Unity LevelPlay network and instance setup for TapMind Custom Adapter integrations.
+---
+
+## Configure Unity LevelPlay
+
+*Performed by: Ad ops*
+
+### 1. Open Unity LevelPlay
+
+Go to **Products → All Products → Monetization → Unity LevelPlay**.
+
+### 2. Create the TapMind custom network
+
+1. Go to **LevelPlay → Setup → Networks**.
+2. Select **Create custom network**.
+3. **Add network key** from the [Class & Network Key Registry](/reference/class-network-key-registry), then **Confirm key**.
+4. Click **Save**.
+5. Add **Publisher ID** and set **Reported revenue** to **Rate based revenue**.
+
+### 3. Set up instances
+
+1. Go to **Setup → Instances**.
+2. Select **TapMind Marketplace**.
+3. Click **Add instance**.
+4. Select the **Ad type**.
+5. Enter the instance details:
+
+```
+Instance name   : provided by your account manager
+placementCODE     : provided by your account manager
+Mediation groups  : select your target mediation group
+Rate              : provided by your account manager
+```
+
+**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.

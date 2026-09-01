@@ -1,0 +1,49 @@
+---
+title: Google Ad Manager
+description: >-
+  Google Ad Manager yield group setup for TapMind Custom Adapter integrations.
+---
+
+## Configure Google Ad Manager
+
+*Performed by: Ad ops*
+
+### 1. Create the TapMind company
+
+1. Go to **Admin → Companies → New company**.
+2. Select **Ad Network**.
+3. Enter the company **Name**: **TapMind**.
+4. Set **Ad network** to **Other company**.
+5. Turn **Mediation** **ON**.
+6. Click **Save**.
+
+### 2. Create a yield group
+
+1. Go to **Delivery → Yield groups → New yield group**.
+2. Enter the **Name** (provided by your account manager).
+3. Select the **Ad format**.
+4. Set **Status** as required.
+5. Set **Inventory type** to **Mobile**.
+6. Under **Targeting → Inventory size**, **select your ad units**.
+
+### 3. Add TapMind as a yield partner
+
+1. Select **Add yield partner**.
+2. **Select yield partner**: TapMind.
+3. Set **Integration type** to **Custom event** (auto-filled).
+4. Confirm **Platform** (for example, **Android** — auto-filled based on your setup).
+5. Set **Status** to **Active**.
+6. Enter **Default CPM** (provided by your account manager).
+7. Under **Additional yield partner details**, enter:
+
+```
+Label      : provided by your account manager
+Class Name : provided by your account manager
+Parameter  : provided by your account manager
+```
+
+8. Click **Save**.
+
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)

@@ -1,0 +1,41 @@
+---
+title: AdMob
+description: >-
+  AdMob mediation dashboard setup for TapMind Custom Adapter integrations.
+---
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+### 1. Open Mediation
+
+In the [Google AdMob console](https://admob.google.com/), go to **Mediation**.
+
+### 2. Create a mediation group
+
+1. Select **Create mediation group**.
+2. **Choose a format** (for example, Banner, Interstitial, or Rewarded).
+3. Select your **Platform** (Android or iOS), then click **Continue**.
+4. Enter the **Mediation group name** (provided by your account manager).
+5. Set **Location** targeting as required for your campaign.
+6. Click **Add ad units**.
+7. **Select your app**, then **select the ad units** you want this group to target.
+
+### 3. Add TapMind as a custom event
+
+1. In the mediation group, choose **Add custom event**.
+2. Select **Manual eCPM**, then click **Continue**.
+3. **Select mapping**, then click **Save**.
+4. Enter the TapMind line item details:
+
+```
+Mapping name : provided by your account manager
+eCPM         : provided by your account manager
+Class        : provided by your account manager
+Parameter    : provided by your account manager
+```
+
+> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+
+**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)

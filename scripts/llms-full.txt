@@ -182,20 +182,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.TapMindAdmobAdapter
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -270,22 +257,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android** →
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.mediation.TapMindGamAdapter
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -360,23 +332,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
-
-```
-Custom Network : TapMind Marketplace
-Android Class  : com.tapmind.mediation.TapMindApplovinAdapter
-```
-
-**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
-
-```
-App ID             : leave blank (optional)
-Placement ID       : provided by your account manager
-eCPM               : provided by your account manager
-Custom Parameters  : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 ## Verify integration
 
@@ -451,20 +407,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -533,20 +476,7 @@ pod 'TapMindAdapter', '2.1.13'
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -615,22 +545,7 @@ pod 'TapMindAdapter', '2.1.13'
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **iOS** →
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : TapMindMediationAdapterGAM
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -699,23 +614,7 @@ pod 'TapMindALAdapter'
 
 *Performed by: Ad ops*
 
-**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
-
-```
-Custom Network : TapMind Marketplace
-iOS Class      : TapMindMediationAdapterApplovin
-```
-
-**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
-
-```
-App ID             : leave blank (optional)
-Placement ID       : provided by your account manager
-eCPM               : provided by your account manager
-Custom Parameters  : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 ## Verify integration
 
@@ -784,20 +683,7 @@ pod 'TapMindISAdapter', '2.1.12'
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -900,31 +786,7 @@ dependencies:
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-### Android
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.TapMindAdmobAdapter
-Parameter    : provided by your account manager
-```
-
-### iOS
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -1025,33 +887,7 @@ dependencies:
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
-
-### Android
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-### iOS
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -1154,24 +990,7 @@ dependencies:
 
 *Performed by: Ad ops*
 
-**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
-
-```
-Custom Network : TapMind Marketplace
-Android Class  : com.tapmind.mediation.TapMindApplovinAdapter
-iOS Class      : TapMindMediationAdapterApplovin
-```
-
-**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
-
-```
-App ID             : leave blank (optional)
-Placement ID       : provided by your account manager
-eCPM               : provided by your account manager
-Custom Parameters  : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 ## Verify integration
 
@@ -1274,20 +1093,7 @@ dependencies:
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -1394,31 +1200,7 @@ end
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-### Android
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-### iOS
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -1525,33 +1307,7 @@ end
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
-
-### Android
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-### iOS
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -1660,24 +1416,7 @@ end
 
 *Performed by: Ad ops*
 
-**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
-
-```
-Custom Network : TapMind Marketplace
-Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
-iOS Class      : TapMindMediationAdapterApplovin
-```
-
-**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
-
-```
-App ID             : leave blank (optional)
-Placement ID       : provided by your account manager
-eCPM               : provided by your account manager
-Custom Parameters  : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 ## Verify integration
 
@@ -1786,20 +1525,7 @@ end
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -1859,31 +1585,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-### Android
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.TapMindAdmobAdapter
-Parameter    : provided by your account manager
-```
-
-### iOS
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -1943,33 +1645,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
-
-### Android
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-### iOS
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -2029,24 +1705,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the custom network:** MAX → Mediation → Manage → Networks → **Add a Custom Network** → Network type SDK →
-
-```
-Custom Network : TapMind Marketplace
-Android Class  : com.tapmind.tech.TapMindMediationAdapterApplovin
-iOS Class      : TapMindMediationAdapterApplovin
-```
-
-**Add the yield partner:** MAX → Mediation → Manage → Ad Units → select your ad unit → enable TapMind → enter:
-
-```
-App ID             : leave blank (optional)
-Placement ID       : provided by your account manager
-eCPM               : provided by your account manager
-Custom Parameters  : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 ## Verify integration
 
@@ -2106,20 +1765,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -2174,31 +1820,7 @@ Install the TapMind AdMob extension:
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-### Android
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-### iOS
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -2253,33 +1875,7 @@ Install the TapMind GAM extension:
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android or iOS** →
-
-### Android
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.tech.TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-### iOS
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : TapMindMediationAdapterAdmob
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -2354,20 +1950,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.ng.TapMindAdmobAdapter
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
@@ -2444,22 +2027,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the TapMind company:** Admin → Companies → New company → type Ad Network → name **TapMind** → Ad Network **Other Company** → toggle Mediation on → Save.
-
-**Create/open a yield group:** Delivery → Yield groups → New yield group → name (from your account manager) → set ad format → inventory type **Mobile** → target your ad units.
-
-**Add the yield partner:** Add yield partner → select TapMind → Integration type **Custom Event** → Status **Active** → platform **Android** →
-
-```
-Default CPM : provided by your account manager
-Label       : provided by your account manager
-Class Name  : com.tapmind.mediation.ng.TapMindGamAdapter
-Parameter   : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a yield group](https://support.google.com/admanager/answer/7390828)
+Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
 ## Verify integration
 
@@ -2536,20 +2104,7 @@ dependencies {
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 
@@ -2613,20 +2168,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the TapMind network:** Monetize → Setup → SDK Networks → Available Networks → Manage Networks → select **Custom Adapter** → enter network key **15c11cb1d** → Enter → Save. The network appears as **TapMind**.
-
-![](/images/ironsource-configuration.jpeg)
-
-**Set up instances:** Setup → Instances → select TapMind Marketplace → Add ad instance → select ad type →
-
-```
-Instance name : provided by your account manager
-placementCODE : provided by your account manager
-Mediation Group: Select your target mediation group
-Rate : provided by your account manager
-```
-
-**Note:** Enter the rate for each placement - it determines waterfall order. Add one instance per ad format to start.
+Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
 ## Verify integration
 

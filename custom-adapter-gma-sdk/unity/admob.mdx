@@ -30,31 +30,7 @@ Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobi
 
 *Performed by: Ad ops*
 
-**Create the custom event (waterfall):** Mediation → Create mediation group → select **Android or iOS** and ad format → name it (provided by your account manager) → Add ad units → select your app and ad units.
-
-**Add the ad source:** Waterfall source → Set up ad source → Custom event → select your app/platform → select the ad unit, then enter:
-
-### Android
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : com.tapmind.mediation.TapMindAdmobAdapter
-Parameter    : provided by your account manager
-```
-
-### iOS
-
-```
-Mapping name : provided by your account manager
-eCPM         : provided by your account manager
-Class        : TapMindMediationAdapterAdmob
-Parameter    : provided by your account manager
-```
-
-> The **placementName** and **placementcode** values are case-sensitive and must exactly match the Placement Name and Placement code configured in the TapMind Dashboard.
-
-**Note:** Official Google documentation: [Create a custom event](https://support.google.com/admob/answer/13407144)
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 ## Verify integration
 
