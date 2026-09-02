@@ -37,7 +37,7 @@
     }
   },
   "orchestration-sdk": {
-    "native-android": "1.0.2"
+    "native-android": "1.0.3"
   },
   "google": {
     "gma": "25.0.0",

@@ -128,8 +128,9 @@ description: Minimum OS versions and SDK compatibility per published package.
 
 | Requirement | Value |
 |-------------|-------|
-| Runtime Android API | 24 (Android 7.0) or higher |
-| Compile minSdk | May stay 23. Below API 24 the SDK does not initialize (`UNSUPPORTED_VERSION`). |
+| minSDK | 24 (Android 7.0) or higher. May stay 23. Below API 24 the SDK does not initialize (`UNSUPPORTED_VERSION`). |
+| compileSDK | 35 or higher |
+| targetSDK | 35 or higher |
 | Other | Google Play services. `mavenCentral()`. |
 
 Contact your account manager if you need confirmation for a specific package version before upgrading.

@@ -1,7 +1,7 @@
 # TapMind SDK Documentation - Next-Gen - Complete Documentation
 
 > This file contains the complete documentation for TapMind SDK Documentation - Next-Gen.
-> Total pages: 4
+> Total pages: 6
 
 ---
 
@@ -13,14 +13,9 @@
 
 *Performed by: Developer*
 
-**App prerequisites**
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
 
-* minSdkVersion of **23** or higher
-* compileSdkVersion of 36 or higher
-* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
-* An ad unit must already be in place which will be used for targeting
-
-**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
@@ -90,14 +85,9 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 *Performed by: Developer*
 
-**App prerequisites**
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
 
-* minSdkVersion of **23** or higher
-* compileSdkVersion of 36 or higher
-* The Google Mobile Ads (GMA) SDK must be integrated in your app (next-generation GMA API)
-* An ad unit must already be in place which will be used for targeting
-
-**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
@@ -167,13 +157,9 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 *Performed by: Developer*
 
-**App prerequisites**
-
 * See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
-* The Google Mobile Ads (GMA) SDK integrated in your app, with its app-ID meta-data (`com.google.android.gms.ads.APPLICATION_ID`) set in `AndroidManifest.xml`. Any app already serving Google ads has this set - if it's missing, the app crashes on launch (see [App crashes on launch](/reference/troubleshooting#app-crashes-on-launch)).
-* An ad unit must already be in place which will be used for targeting
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
 
-**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
@@ -236,6 +222,143 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 ---
 
+## AdMob
+
+*Source: /custom-adapter-gma-next-gen-sdk/flutter/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
+
+
+## Install the SDK
+
+*Performed by: Developer*
+
+Ensure your `android/build.gradle` (project-level) includes the required repositories:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+
+### Android
+
+Open the `pubspec.yaml` file.
+
+Find the dependencies block and add:
+
+```
+dependencies:
+  tapmind_ads_admob_nextgen_flutter: ^1.0.1
+  google_mobile_ads: ^9.1.0
+```
+
+**Note:** To use GMA Next-Gen on Android, build with `flutter run --dart-define USE_NEXT_GEN_SDK=true`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
+---
+
+## AdMob
+
+*Source: /custom-adapter-gma-next-gen-sdk/unity/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
+* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+
+
+## Install the SDK
+
+*Performed by: Developer*
+
+In Unity **Package Manager → Add package from git URL**:
+
+```
+https://github.com/tapmind-tech/TapMind-CA-Admob-NG-Unity.git
+```
+
+TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+
+Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+
+---
+
 ## Unity LevelPlay
 
 *Source: /custom-adapter-gma-next-gen-sdk/unity/levelplay*
@@ -244,14 +367,10 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 *Performed by: Developer*
 
-**App prerequisites**
-
-* minSdkVersion of **23** (Android) or higher
-* iOS **12.0** or higher
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
 * The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
-* An ad unit must already be in place which will be used for targeting
 
-**Note:** **Custom Adapter (GMA Next-Gen SDK)** covers **AdMob**, **Google Ad Manager**, and **Unity LevelPlay** on **Native Android**, and **Unity LevelPlay** for the **Unity** framework. Use the standard Custom Adapter (GMA SDK) for other mediations and platforms.
 
 ## Install the SDK
 
