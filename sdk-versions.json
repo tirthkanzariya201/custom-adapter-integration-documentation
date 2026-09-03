@@ -20,7 +20,7 @@
       "levelplay": "1.0.3"
     },
     "react-native": {
-      "admob": "2.1.4",
+      "admob": "2.1.7",
       "google-ad-manager": "2.1.4",
       "applovin-max": "3.0.2",
       "levelplay": "2.1.4"
@@ -29,7 +29,7 @@
   "custom-adapter-gma-next-gen-sdk": {
     "native-android": {
       "admob": "2.0.2",
-      "google-ad-manager": "2.0.1",
+      "google-ad-manager": "2.1.0",
       "levelplay": "2.0.0"
     },
     "flutter": {

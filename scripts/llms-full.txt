@@ -1116,7 +1116,7 @@ allprojects {
 Add to `package.json` and install via npm/yarn:
 
 ```
-tapmind_ads_admob: "2.1.4"
+tapmind_ads_admob: "2.1.7"
 ```
 
 Also require `react-native-google-mobile-ads`.
@@ -1126,7 +1126,7 @@ Also require `react-native-google-mobile-ads`.
 Add to `package.json` and install via npm/yarn:
 
 ```
-tapmind_ads_admob: "2.1.4"
+tapmind_ads_admob: "2.1.7"
 ```
 
 Also require `react-native-google-mobile-ads`.
@@ -1936,7 +1936,7 @@ Open the `build.gradle` (Module: app) file and add:
 
 ```
 dependencies {
-    implementation("io.github.tapmind-tech:customadapter-gam-nextgen:2.0.1")
+    implementation("io.github.tapmind-tech:customadapter-gam-nextgen:2.1.0")
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
