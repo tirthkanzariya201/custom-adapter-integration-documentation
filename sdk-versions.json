@@ -30,6 +30,7 @@
     "native-android": {
       "admob": "2.0.2",
       "google-ad-manager": "2.1.0",
+      "applovin-max": "2.0.0",
       "levelplay": "2.0.0"
     },
     "flutter": {

@@ -1,14 +1,15 @@
 ---
-title: Unity LevelPlay
+title: AppLovin MAX
 description: >-
-  Unity LevelPlay flutter guide for Custom Adapter (GMA SDK).
+  AppLovin MAX Android guide for Custom Adapter (GMA Next-Gen SDK).
 ---
 
 ## Prerequisites
 
 *Performed by: Developer*
 
-* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and compile SDK versions for this package.
+* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
 
 
 ## Install the SDK
@@ -29,50 +30,21 @@ allprojects {
 
 **Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
-### Android
-
-Open the `pubspec.yaml` file.
-
-Find the dependencies block and add:
+Open the `build.gradle` (Module: app) file and add:
 
 ```
-dependencies:
-  tapmind_ads_ironsource_flutter: ^1.0.3
-  google_mobile_ads: ^5.0.0
+dependencies {
+    implementation("io.github.tapmind-tech:customadapter-applovin-nextgen:2.0.0")
+    implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
+}
 ```
 
-**Note:** AdMob and GAM adapters pin `play-services-ads:25.0.0` on Android. AppLovin MAX and Unity LevelPlay adapters use compatible GMA version resolution so Gradle can align with your app.
 
-### iOS
-
-Update Pod file as per below:
-
-```
-target 'Runner' do
-  use_frameworks! :linkage => :static # Add this line for tapmind adapter
-
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  target 'RunnerTests' do
-    inherit! :search_paths
-  end
-end
-```
-
-Open the `pubspec.yaml` file.
-
-Find the dependencies block and add:
-
-```
-dependencies:
-  tapmind_ads_ironsource_flutter: ^1.0.3
-  google_mobile_ads: ^5.0.0
-```
-
-## Configure Unity LevelPlay
+## Configure AppLovin MAX
 
 *Performed by: Ad ops*
 
-Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
+Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
 Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
 
@@ -95,6 +67,8 @@ After install and dashboard configuration:
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
 
 See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.

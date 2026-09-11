@@ -586,6 +586,11 @@
       "permanent": true
     },
     {
+      "source": "/guides/android/custom-adapter-gma-next-gen-sdk/applovin-max",
+      "destination": "/custom-adapter-gma-next-gen-sdk/android/applovin-max",
+      "permanent": true
+    },
+    {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/levelplay",
       "destination": "/custom-adapter-gma-next-gen-sdk/android/levelplay",
       "permanent": true
@@ -808,6 +813,10 @@
                   {
                     "page": "custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
                     "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/android/applovin-max",
+                    "title": "AppLovin MAX"
                   },
                   {
                     "page": "custom-adapter-gma-next-gen-sdk/android/levelplay",

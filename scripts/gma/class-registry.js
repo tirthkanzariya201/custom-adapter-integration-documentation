@@ -81,6 +81,7 @@ const REGISTRY = {
   'next-gen-android': {
     admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },
     'google-ad-manager': { className: 'com.tapmind.mediation.ng.TapMindGamAdapter' },
+    'applovin-max': { className: 'com.tapmind.mediation.ng.TapMindApplovinAdapter' },
     levelplay: { networkKey: NETWORK_KEY },
   },
   'next-gen-flutter': {

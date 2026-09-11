@@ -12,6 +12,7 @@ const ANDROID_ARTIFACT = {
   'custom-adapter-gma-next-gen-sdk': {
     admob: 'customadapter-admob-nextgen',
     'google-ad-manager': 'customadapter-gam-nextgen',
+    'applovin-max': 'customadapter-applovin-nextgen',
     levelplay: 'customadapter-ironsource-nextgen',
   },
 };

@@ -10,7 +10,7 @@ const rootDir = path.resolve(__dirname, '..');
 const outPath = path.join(rootDir, 'reference', 'class-network-key-registry.mdx');
 
 const GMA_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'];
-const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager', 'levelplay'];
+const NEXTGEN_MEDIATIONS = ['admob', 'google-ad-manager', 'applovin-max', 'levelplay'];
 
 const GMA_PACKAGES = [
   { label: 'Native', androidKey: 'native-android', iosKey: 'native-ios' },
