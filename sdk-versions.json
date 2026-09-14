@@ -5,7 +5,7 @@
       "admob": "3.0.4",
       "google-ad-manager": "3.0.1",
       "applovin-max": "3.0.0",
-      "levelplay": "2.1.19"
+      "levelplay": "2.1.20"
     },
     "native-ios": {
       "admob": null,
