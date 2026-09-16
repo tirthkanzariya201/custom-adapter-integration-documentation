@@ -72,11 +72,12 @@ const REGISTRY = {
       android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
       ios: 'TapMindMediationAdapterAdmob',
     },
-    'applovin-max': {
-      android: 'com.tapmind.tech.TapMindMediationAdapterApplovin',
-      ios: 'TapMindMediationAdapterApplovin',
+  },
+  cocos2dx: {
+    admob: {
+      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
+      ios: 'TapMindMediationAdapterAdmob',
     },
-    levelplay: { networkKey: NETWORK_KEY },
   },
   'next-gen-android': {
     admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },

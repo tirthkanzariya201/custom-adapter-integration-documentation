@@ -576,6 +576,31 @@
       "permanent": true
     },
     {
+      "source": "/guides/cocos-2dx/custom-adapter-gma-sdk/admob",
+      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
+      "source": "/guides/cocos2dx/custom-adapter-gma-sdk/admob",
+      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos-2dx/admob",
+      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos-2dx",
+      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos2dx",
+      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
       "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
@@ -788,6 +813,16 @@
                   {
                     "page": "custom-adapter-gma-sdk/cocos/google-ad-manager",
                     "title": "Google Ad Manager"
+                  }
+                ]
+              },
+              {
+                "group": "Cocos2dx",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/cocos2dx/admob",
+                    "title": "AdMob"
                   }
                 ]
               }

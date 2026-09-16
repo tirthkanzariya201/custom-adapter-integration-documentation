@@ -44,6 +44,9 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -117,6 +120,9 @@ dependencies {
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Google Ad Manager
 
@@ -192,6 +198,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AppLovin MAX
 
@@ -267,6 +275,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -347,6 +357,9 @@ dependencies:
 
 **Note:** To use GMA Next-Gen on Android, build with `flutter run --dart-define USE_NEXT_GEN_SDK=true`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -409,6 +422,9 @@ TapMind's Unity package uses a **post-processing script** that automatically add
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -470,6 +486,9 @@ https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
 TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 

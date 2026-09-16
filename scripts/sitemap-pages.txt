@@ -1,4 +1,4 @@
-# Sitemap page list (43 URLs)
+# Sitemap page list (44 URLs)
 
 Base: https://docs.tapmind.io
 
@@ -28,20 +28,21 @@ Base: https://docs.tapmind.io
 24. https://docs.tapmind.io/custom-adapter-gma-sdk/unity/levelplay
 25. https://docs.tapmind.io/custom-adapter-gma-sdk/cocos/admob
 26. https://docs.tapmind.io/custom-adapter-gma-sdk/cocos/google-ad-manager
-27. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/admob
-28. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/google-ad-manager
-29. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/applovin-max
-30. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/levelplay
-31. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/flutter/admob
-32. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/unity/admob
-33. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/unity/levelplay
-34. https://docs.tapmind.io/orchestration-sdk/android
-35. https://docs.tapmind.io/reference/class-network-key-registry
-36. https://docs.tapmind.io/reference/compatibility-matrix
-37. https://docs.tapmind.io/reference/skadnetwork-ids
-38. https://docs.tapmind.io/reference/troubleshooting
-39. https://docs.tapmind.io/reference/privacy-consent
-40. https://docs.tapmind.io/reference/mediation-integration-setup/admob
-41. https://docs.tapmind.io/reference/mediation-integration-setup/google-ad-manager
-42. https://docs.tapmind.io/reference/mediation-integration-setup/applovin-max
-43. https://docs.tapmind.io/reference/mediation-integration-setup/levelplay
+27. https://docs.tapmind.io/custom-adapter-gma-sdk/cocos2dx/admob
+28. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/admob
+29. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/google-ad-manager
+30. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/applovin-max
+31. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/android/levelplay
+32. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/flutter/admob
+33. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/unity/admob
+34. https://docs.tapmind.io/custom-adapter-gma-next-gen-sdk/unity/levelplay
+35. https://docs.tapmind.io/orchestration-sdk/android
+36. https://docs.tapmind.io/reference/class-network-key-registry
+37. https://docs.tapmind.io/reference/compatibility-matrix
+38. https://docs.tapmind.io/reference/skadnetwork-ids
+39. https://docs.tapmind.io/reference/troubleshooting
+40. https://docs.tapmind.io/reference/privacy-consent
+41. https://docs.tapmind.io/reference/mediation-integration-setup/admob
+42. https://docs.tapmind.io/reference/mediation-integration-setup/google-ad-manager
+43. https://docs.tapmind.io/reference/mediation-integration-setup/applovin-max
+44. https://docs.tapmind.io/reference/mediation-integration-setup/levelplay

@@ -1,7 +1,7 @@
 # TapMind SDK Documentation - Complete Documentation
 
 > This file contains the complete documentation for TapMind SDK Documentation.
-> Total pages: 43
+> Total pages: 44
 
 ---
 
@@ -15,7 +15,7 @@ TapMind connects your app to premium ad demand through your existing mediation s
 
 Check with your TapMind account manager to confirm which SDK is suitable for your app.
 
-- **Custom Adapter (GMA SDK)**: a lightweight adapter for an existing mediation stack. Android, iOS, and four cross-platform frameworks.
+- **Custom Adapter (GMA SDK)**: a lightweight adapter for an existing mediation stack. Android, iOS, and cross-platform frameworks including Flutter, React Native, Unity, Cocos, and Cocos2dx.
 - **Custom Adapter (GMA Next-Gen SDK)**: native Android (AdMob, Google Ad Manager, AppLovin MAX, Unity LevelPlay), Flutter Android (AdMob), and Unity (AdMob, Unity LevelPlay) on the next-generation GMA API.
 - **Orchestration SDK**: lightweight Android ad serving through placement codes, with no third-party mediation platform.
 
@@ -176,6 +176,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AdMob
 
@@ -250,6 +252,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Google Ad Manager
 
@@ -324,6 +328,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AppLovin MAX
 
@@ -398,6 +404,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -466,6 +474,8 @@ pod 'TapMindAdapter'
 2. Add: `https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git`
 3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AdMob
 
@@ -534,6 +544,8 @@ pod 'TapMindAdapter'
 2. Add: `https://github.com/tapmind-tech/TapMind-Custom-Adapter-iOS.git`
 3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Google Ad Manager
 
@@ -602,6 +614,8 @@ pod 'TapMindALAdapter'
 2. Add: `https://github.com/tapmind-tech/TapMind-CA-Applovin-iOS.git`
 3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AppLovin MAX
 
@@ -670,6 +684,8 @@ pod 'TapMindISAdapter', '2.1.12'
 2. Add: `https://github.com/tapmind-tech/TapMind-CA-Unity-Levelplay-iOS.git`
 3. Add **`-ObjC`** to **Targets → Build Settings → Other Linker Flags**
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -772,6 +788,9 @@ dependencies:
   google_mobile_ads: ^5.0.0
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -870,6 +889,9 @@ dependencies:
   tapmind_ads_admob_flutter: ^3.0.1
   google_mobile_ads: ^5.0.0
 ```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Google Ad Manager
 
@@ -972,6 +994,9 @@ dependencies:
   google_mobile_ads: ^5.0.0
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AppLovin MAX
 
 *Performed by: Ad ops*
@@ -1072,6 +1097,9 @@ dependencies:
   tapmind_ads_ironsource_flutter: ^1.0.3
   google_mobile_ads: ^5.0.0
 ```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -1178,6 +1206,9 @@ post_install do |installer|
 end
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -1282,6 +1313,9 @@ post_install do |installer|
   end
 end
 ```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Google Ad Manager
 
@@ -1390,6 +1424,9 @@ post_install do |installer|
 end
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AppLovin MAX
 
 *Performed by: Ad ops*
@@ -1497,6 +1534,9 @@ post_install do |installer|
 end
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure Unity LevelPlay
 
 *Performed by: Ad ops*
@@ -1555,6 +1595,9 @@ https://github.com/tapmind-tech/TapMind-CA-Admob-Unity.git
 TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AdMob
 
@@ -1615,6 +1658,9 @@ TapMind's Unity package uses a **post-processing script** that automatically add
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure Google Ad Manager
 
 *Performed by: Ad ops*
@@ -1673,6 +1719,9 @@ https://github.com/tapmind-tech/TapMind-CA-Applovin-Unity.git
 TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AppLovin MAX
 
@@ -1733,6 +1782,9 @@ TapMind's Unity package uses a **post-processing script** that automatically add
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure Unity LevelPlay
 
 *Performed by: Ad ops*
@@ -1786,6 +1838,9 @@ Install the TapMind AdMob extension:
 1. **Extension → Extension Manager → Install from File**
 2. Download the TapMind extension ZIP: [TapMind-CA-Admob-Cocos (main)](https://github.com/tapmind-tech/TapMind-CA-Admob-Cocos/archive/refs/heads/main.zip)
 3. Select the downloaded ZIP, install, then **Enable** the extension in the **Installed** tab.
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AdMob
 
@@ -1841,11 +1896,114 @@ Install the TapMind GAM extension:
 2. Download the TapMind extension ZIP: [TapMind-CA-Admob-Cocos (main)](https://github.com/tapmind-tech/TapMind-CA-Admob-Cocos/archive/refs/heads/main.zip)
 3. Select the downloaded ZIP, install, then **Enable** the extension in the **Installed** tab.
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure Google Ad Manager
 
 *Performed by: Ad ops*
 
 Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
+
+Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would.
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+---
+
+## AdMob
+
+*Source: /custom-adapter-gma-sdk/cocos2dx/admob*
+
+## Prerequisites
+
+*Performed by: Developer*
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
+
+
+## Install the SDK
+
+*Performed by: Developer*
+
+1. **Install the toolchain**  
+   CMake **3.6** or newer, Python **3**, and Node.js **18+** for the adapter installer.  
+   For Android: Android Studio with SDK **34** and NDK **21.4.7075529**.  
+   For iOS: Xcode with command line tools, plus CocoaPods.
+
+2. **Get the engine**  
+   Download the Cocos2d-x **4.0** release and unpack it into your project as `cocos2d/`.
+
+3. **Fetch the prebuilt dependencies**  
+   The engine ships without its third-party binaries. Run this from inside `cocos2d/`, or the CMake configure step will fail on missing headers.
+
+```
+python download-deps.py
+```
+
+   Clone the TapMind Cocos2dx AdMob adapter installer: [cocos-2dx-custom-adapter-admob-gma](https://github.com/tapmind-tech/cocos-2dx-custom-adapter-admob-gma.git)
+
+4. **Generate and build — Android**  
+   Open `proj.android/` in Android Studio and run, or build from the command line. Gradle drives CMake for the native layer.
+
+```
+cd proj.android && ./gradlew assembleDebug
+```
+
+5. **Generate and build — iOS**  
+   CMake generates the Xcode project; CocoaPods then integrates the pods into a workspace. Open the **workspace**, never the `.xcodeproj`.
+
+```
+cmake -S . -B proj.ios_mac/build -GXcode \
+  -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos \
+  -DCMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET=15.0
+```
+
+6. **Add the adapter**  
+   Run the installer against your game root — the folder holding `proj.android/` and `proj.ios_mac/`. It writes the Gradle dependency and the Podfile entry between managed markers.
+
+```
+node inject.js --project /path/to/game [--platform android|ios|all]
+```
+
+It wires the dependency only. The Google Mobile Ads SDK arrives transitively, but your AdMob App ID and all load/show code are yours to add.
+
+7. **Run Pod**
+
+```
+cd proj.ios_mac && pod install
+open CocosSampleProject.xcworkspace
+```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
 
@@ -1912,6 +2070,9 @@ dependencies {
     implementation("com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.0")
 }
 ```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AdMob
 
@@ -1987,6 +2148,9 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure Google Ad Manager
 
 *Performed by: Ad ops*
@@ -2061,6 +2225,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure AppLovin MAX
 
@@ -2136,6 +2302,8 @@ dependencies {
 }
 ```
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -2216,6 +2384,9 @@ dependencies:
 
 **Note:** To use GMA Next-Gen on Android, build with `flutter run --dart-define USE_NEXT_GEN_SDK=true`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -2278,6 +2449,9 @@ TapMind's Unity package uses a **post-processing script** that automatically add
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
 
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
 ## Configure AdMob
 
 *Performed by: Ad ops*
@@ -2339,6 +2513,9 @@ https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
 TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
 Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
 ## Configure Unity LevelPlay
 
@@ -2623,8 +2800,7 @@ UnityAppLovin MAXcom.tapmind.tech.TapMindMediationAdapterApplovinTapMindMediatio
 UnityUnity LevelPlay15c11cb1d15c11cb1d
 CocosAdMobcom.tapmind.tech.TapMindMediationAdapterAdmobTapMindMediationAdapterAdmob
 CocosGoogle Ad Managercom.tapmind.tech.TapMindMediationAdapterAdmobTapMindMediationAdapterAdmob
-CocosAppLovin MAXcom.tapmind.tech.TapMindMediationAdapterApplovinTapMindMediationAdapterApplovin
-CocosUnity LevelPlay15c11cb1d15c11cb1d
+Cocos2dxAdMobcom.tapmind.tech.TapMindMediationAdapterAdmobTapMindMediationAdapterAdmob
 
 
 
@@ -2655,7 +2831,7 @@ UnityUnity LevelPlay15c11cb1d15c11cb1d
 
 | Field | Requirement |
 |-------|-------------|
-| Development Framework / Engine | Native, Flutter, Unity, React Native, and Cocos are all supported. |
+| Development Framework / Engine | Native, Flutter, Unity, React Native, Cocos, and Cocos2dx are all supported. |
 | Framework Version | See per-framework table below. |
 | Primary Language (Android) | Java or Kotlin, both supported. |
 | Kotlin/Java Version (Android) | Kotlin **2.1.0** or higher. Java **1.8** or higher. |
@@ -2667,6 +2843,7 @@ UnityUnity LevelPlay15c11cb1d15c11cb1d
 | Unity | Unity **2019.4** and above. |
 | React Native | **0.76.x** or higher. |
 | Cocos | Cocos Creator **3.8.0** or later. |
+| Cocos2dx | Cocos2d-x **4.0** or higher. |
 
 ### Android Build Specifics
 
@@ -2692,6 +2869,7 @@ UnityUnity LevelPlay15c11cb1d15c11cb1d
 | Flutter | **15.0** |
 | React Native | **15.0** |
 | Cocos | **18.0** |
+| Cocos2dx | **15.0** |
 
 | Dependency Manager | Requirement |
 |--------------------|-------------|
@@ -2720,6 +2898,7 @@ UnityUnity LevelPlay15c11cb1d15c11cb1d
 | Unity | **11.0.0** or higher | **10.3.0** or higher |
 | React Native | **16.1.0** or higher | **16.0.3** or higher |
 | Cocos | **25.0.0** or higher (native GMA, not plugin version) | **12.14.0** or higher and below **14.0.0** (native GMA) |
+| Cocos2dx | **play-services-ads 25.0.0** or higher | **Google-Mobile-Ads-SDK 13.5.0** or higher |
 
 ### Additional manifest setup
 

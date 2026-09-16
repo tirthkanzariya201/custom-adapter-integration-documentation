@@ -1,7 +1,7 @@
 ---
-title: Unity LevelPlay
+title: AdMob
 description: >-
-  Unity LevelPlay unity guide for Custom Adapter (GMA Next-Gen SDK).
+  AdMob Cocos2dx guide for Custom Adapter (GMA SDK).
 ---
 
 ## Prerequisites
@@ -9,32 +9,69 @@ description: >-
 *Performed by: Developer*
 
 * See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
-* Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
-* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
 
 
 ## Install the SDK
 
 *Performed by: Developer*
 
-In Unity **Package Manager → Add package from git URL**:
+1. **Install the toolchain**  
+   CMake **3.6** or newer, Python **3**, and Node.js **18+** for the adapter installer.  
+   For Android: Android Studio with SDK **34** and NDK **21.4.7075529**.  
+   For iOS: Xcode with command line tools, plus CocoaPods.
+
+2. **Get the engine**  
+   Download the Cocos2d-x **4.0** release and unpack it into your project as `cocos2d/`.
+
+3. **Fetch the prebuilt dependencies**  
+   The engine ships without its third-party binaries. Run this from inside `cocos2d/`, or the CMake configure step will fail on missing headers.
 
 ```
-https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
+python download-deps.py
 ```
 
-TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+   Clone the TapMind Cocos2dx AdMob adapter installer: [cocos-2dx-custom-adapter-admob-gma](https://github.com/tapmind-tech/cocos-2dx-custom-adapter-admob-gma.git)
 
-Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+4. **Generate and build — Android**  
+   Open `proj.android/` in Android Studio and run, or build from the command line. Gradle drives CMake for the native layer.
+
+```
+cd proj.android && ./gradlew assembleDebug
+```
+
+5. **Generate and build — iOS**  
+   CMake generates the Xcode project; CocoaPods then integrates the pods into a workspace. Open the **workspace**, never the `.xcodeproj`.
+
+```
+cmake -S . -B proj.ios_mac/build -GXcode \
+  -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos \
+  -DCMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET=15.0
+```
+
+6. **Add the adapter**  
+   Run the installer against your game root — the folder holding `proj.android/` and `proj.ios_mac/`. It writes the Gradle dependency and the Podfile entry between managed markers.
+
+```
+node inject.js --project /path/to/game [--platform android|ios|all]
+```
+
+It wires the dependency only. The Google Mobile Ads SDK arrives transitively, but your AdMob App ID and all load/show code are yours to add.
+
+7. **Run Pod**
+
+```
+cd proj.ios_mac && pod install
+open CocosSampleProject.xcworkspace
+```
 
 **App ID Configuration:**
 Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
 
-## Configure Unity LevelPlay
+## Configure AdMob
 
 *Performed by: Ad ops*
 
-Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
 Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
 

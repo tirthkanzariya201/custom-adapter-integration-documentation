@@ -53,6 +53,7 @@ const MIN_IOS = {
   unity: 12.0,
   'react-native': 15.0,
   cocos: 18.0,
+  cocos2dx: 15.0,
 };
 
 module.exports = {

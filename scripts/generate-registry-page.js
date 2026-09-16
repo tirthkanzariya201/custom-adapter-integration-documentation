@@ -17,7 +17,8 @@ const GMA_PACKAGES = [
   { label: 'Flutter', androidKey: 'flutter', iosKey: 'flutter' },
   { label: 'React Native', androidKey: 'react-native', iosKey: 'react-native' },
   { label: 'Unity', androidKey: 'unity', iosKey: 'unity' },
-  { label: 'Cocos', androidKey: 'cocos', iosKey: 'cocos' },
+  { label: 'Cocos', androidKey: 'cocos', iosKey: 'cocos', mediations: ['admob', 'google-ad-manager'] },
+  { label: 'Cocos2dx', androidKey: 'cocos2dx', iosKey: 'cocos2dx', mediations: ['admob'] },
 ];
 
 function mediationLabel(key) {
@@ -77,7 +78,8 @@ function buildGmaTable() {
   const rows = [];
 
   for (const pkg of GMA_PACKAGES) {
-    for (const mediation of GMA_MEDIATIONS) {
+    const mediations = pkg.mediations || GMA_MEDIATIONS;
+    for (const mediation of mediations) {
       const android = androidClass(pkg.androidKey, mediation);
       const ios = iosClass(pkg.iosKey, mediation);
       if (android === 'n/a' && ios === 'n/a') continue;
