@@ -954,6 +954,23 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Release Notes",
+        "icon": "newspaper",
+        "groups": [
+          {
+            "group": "Release Notes",
+            "tag": "Test",
+            "pages": [
+              {
+                "page": "release-notes",
+                "title": "Release Notes",
+                "tag": "Test"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

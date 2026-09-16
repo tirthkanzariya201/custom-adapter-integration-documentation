@@ -1,0 +1,70 @@
+---
+title: Release Notes
+description: Release notes for TapMind backend services.
+---
+
+<Info title="Legend">
+- <Badge color="green" size="sm" shape="pill">feat</Badge> new feature
+- <Badge color="blue" size="sm" shape="pill">fix</Badge> bug fix
+- <Badge color="red" size="sm" shape="pill">fix!</Badge> breaking fix
+- <Badge color="gray" size="sm" shape="pill">chore</Badge> maintenance / no functional change
+</Info>
+
+## Release Notes - 25 August 2026
+
+**Platform**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Updated default Placement timeout from 9000ms to 5000ms
+
+---
+
+## Release Notes - 13 August 2026
+
+**Platform**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added Source Performance Table with the main metrics for Mediation, Refresh and Total Data
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added Total, Mediation and Ad Refresh metrics in Reporting
+
+---
+
+## Release Notes - 6 August 2026
+
+**Platform**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added visibility parameter for banner ad refresh at the placement level
+
+---
+
+## Release Notes - 5 August 2026
+
+**Serving**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added visibility parameter in the bid request response for banner ad refresh
+
+---
+
+## Release Notes - 3 August 2026
+
+**Platform**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added Demand Partner ID as a new reporting dimension
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Added Ad Tag Rotation Count as a new reporting metric to provide better visibility into ad tag rotation performance
+
+---
+
+## Release Notes - 29 July 2025
+
+**Platform**
+
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Demand Partner wise performance table added on dashboard
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Ad Refresh toggle for Banner ads to enable Ad Refresh
+- <Badge color="green" size="sm" shape="pill">feat</Badge> UI to set Refresh duration, Retry Duration, and Retry Attempts when Ad Refresh is enabled
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Removed option to add configurations; added Refresh Config to select demand tags used for ad refresh
+
+---
+
+**Serving**
+
+- <Badge color="blue" size="sm" shape="pill">fix</Badge> Banner ad refresh flow
+- <Badge color="blue" size="sm" shape="pill">fix</Badge> Bid Request API refreshes the adapters array
+- <Badge color="green" size="sm" shape="pill">feat</Badge> Bid Request API accepts banner ad type events in the payload and stores them in the impression collection with 3 additional keys
