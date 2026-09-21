@@ -24,7 +24,7 @@ const REGISTRY = {
       ios: 'TapMindAdmobAdapter',
     },
     'google-ad-manager': {
-      android: 'com.tapmind.tech.TapMindGamAdapter',
+      android: 'com.tapmind.mediation.TapMindGamAdapter',
       ios: 'TapMindGamAdapter',
     },
     'applovin-max': {
