@@ -861,7 +861,7 @@ Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^3.0.1
+  tapmind_ads_gam_flutter: ^3.0.1
   google_mobile_ads: ^5.0.0
 ```
 
@@ -886,7 +886,7 @@ Find the dependencies block and add:
 
 ```
 dependencies:
-  tapmind_ads_admob_flutter: ^3.0.1
+  tapmind_ads_gam_flutter: ^3.0.1
   google_mobile_ads: ^5.0.0
 ```
 

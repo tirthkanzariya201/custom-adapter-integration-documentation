@@ -26,7 +26,7 @@ const IOS_POD = {
 
 const FLUTTER_PUBSPEC = {
   admob: 'tapmind_ads_admob_flutter',
-  'google-ad-manager': 'tapmind_ads_admob_flutter',
+  'google-ad-manager': 'tapmind_ads_gam_flutter',
   'applovin-max': 'tapmind_ads_applovin_flutter',
   levelplay: 'tapmind_ads_ironsource_flutter',
 };
