@@ -12,8 +12,8 @@
   },
   "favicon": "/images/favicon.png",
   "logo": {
-    "light": "/images/logo-light.png",
-    "dark": "/images/logo-dark.png"
+    "light": "/images/tapmind-logo.svg",
+    "dark": "/images/tapmind-logo.svg"
   },
   "interaction": {
     "drilldown": false

@@ -1,9 +1,47 @@
 /* TapMind — header logo */
 header img[alt$=" logo"],
 nav img[alt$=" logo"] {
-  height: 40px !important;
-  max-width: 320px !important;
+  height: 36px !important;
+  max-width: 200px !important;
   width: auto !important;
+}
+
+/* Top tabs: boxed, clickable button look */
+.nav-tab-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.45rem 0.85rem !important;
+  margin: 0 0.15rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(148, 163, 184, 0.45) !important;
+  background: #fff !important;
+  color: var(--color-text-secondary, #64748b) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.nav-tab-link:hover {
+  color: var(--color-primary, #FE7B49) !important;
+  border-color: var(--color-primary, #FE7B49) !important;
+  background: color-mix(in srgb, var(--color-primary, #FE7B49) 8%, #fff) !important;
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--color-primary, #FE7B49) 25%, transparent) !important;
+}
+
+/* Active tab (Jamdesk adds font-semibold when selected) */
+a.nav-tab-link.font-semibold,
+a.nav-tab-link.font-semibold i {
+  color: var(--color-primary, #FE7B49) !important;
+}
+
+a.nav-tab-link.font-semibold {
+  font-weight: 600 !important;
+  border-color: var(--color-primary, #FE7B49) !important;
+  background: color-mix(in srgb, var(--color-primary, #FE7B49) 14%, #fff) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary, #FE7B49) 35%, transparent),
+    0 1px 4px color-mix(in srgb, var(--color-primary, #FE7B49) 20%, transparent) !important;
 }
 
 /* ─── Sidebar hierarchy ─────────────────────────────────────────── */
