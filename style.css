@@ -6,12 +6,12 @@ nav img[alt$=" logo"] {
   width: auto !important;
 }
 
-/* Top tabs: boxed, clickable button look */
+/* Top tabs: boxed, clickable button look (desktop TabsNav + mobile sidebar) */
 .nav-tab-link {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
-  padding: 0.45rem 0.85rem !important;
+  padding: 0.55rem 0.85rem !important;
   margin: 0 0.15rem !important;
   border-radius: 8px !important;
   border: 1px solid rgba(148, 163, 184, 0.45) !important;
@@ -20,7 +20,19 @@ nav img[alt$=" logo"] {
   font-weight: 500 !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
   cursor: pointer !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  text-align: left !important;
   transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+/* Mobile sidebar tabs are <button>s — make the whole row tappable */
+aside .sidebar-tabs .nav-tab-link,
+.sidebar-tabs .nav-tab-link {
+  display: flex !important;
+  width: calc(100% - 0.5rem) !important;
+  margin: 0 0.25rem 0.25rem 0 !important;
+  min-height: 44px !important;
 }
 
 .nav-tab-link:hover {
@@ -30,13 +42,16 @@ nav img[alt$=" logo"] {
   box-shadow: 0 1px 4px color-mix(in srgb, var(--color-primary, #FE7B49) 25%, transparent) !important;
 }
 
-/* Active tab (Jamdesk adds font-semibold when selected) */
+/* Active tab (Jamdesk adds font-semibold when selected) — anchors and buttons */
 a.nav-tab-link.font-semibold,
-a.nav-tab-link.font-semibold i {
+a.nav-tab-link.font-semibold i,
+button.nav-tab-link.font-semibold,
+button.nav-tab-link.font-semibold i {
   color: var(--color-primary, #FE7B49) !important;
 }
 
-a.nav-tab-link.font-semibold {
+a.nav-tab-link.font-semibold,
+button.nav-tab-link.font-semibold {
   font-weight: 600 !important;
   border-color: var(--color-primary, #FE7B49) !important;
   background: color-mix(in srgb, var(--color-primary, #FE7B49) 14%, #fff) !important;
