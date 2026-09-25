@@ -13,7 +13,8 @@
   "favicon": "/images/favicon.png",
   "logo": {
     "light": "/images/tapmind-logo.svg",
-    "dark": "/images/tapmind-logo.svg"
+    "dark": "/images/tapmind-logo.svg",
+    "href": "https://tapmind.com/"
   },
   "interaction": {
     "drilldown": false
@@ -690,136 +691,151 @@
         "icon": "mobile-screen",
         "groups": [
           {
-            "group": "Native Android",
-            "expanded": false,
+            "group": "Mobile tab entry",
+            "hidden": true,
             "pages": [
               {
                 "page": "custom-adapter-gma-sdk/android/admob",
                 "title": "AdMob"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/android/google-ad-manager",
-                "title": "Google Ad Manager"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/android/applovin-max",
-                "title": "AppLovin MAX"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/android/levelplay",
-                "title": "Unity LevelPlay"
               }
             ]
           },
           {
-            "group": "Native iOS",
-            "expanded": false,
+            "group": "Custom Adapter (GMA SDK)",
             "pages": [
               {
-                "page": "custom-adapter-gma-sdk/ios/admob",
-                "title": "AdMob"
+                "group": "Native Android",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/android/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/android/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/android/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/android/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/ios/google-ad-manager",
-                "title": "Google Ad Manager"
+                "group": "Native iOS",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/ios/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/ios/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/ios/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/ios/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/ios/applovin-max",
-                "title": "AppLovin MAX"
+                "group": "Flutter",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/flutter/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/flutter/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/flutter/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/flutter/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/ios/levelplay",
-                "title": "Unity LevelPlay"
-              }
-            ]
-          },
-          {
-            "group": "Flutter",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-sdk/flutter/admob",
-                "title": "AdMob"
+                "group": "React Native",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/react-native/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/react-native/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/react-native/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/react-native/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/flutter/google-ad-manager",
-                "title": "Google Ad Manager"
+                "group": "Unity",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/unity/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/unity/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/unity/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/unity/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/flutter/applovin-max",
-                "title": "AppLovin MAX"
+                "group": "Cocos",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/cocos/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-sdk/cocos/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-sdk/flutter/levelplay",
-                "title": "Unity LevelPlay"
-              }
-            ]
-          },
-          {
-            "group": "React Native",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-sdk/react-native/admob",
-                "title": "AdMob"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/react-native/google-ad-manager",
-                "title": "Google Ad Manager"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/react-native/applovin-max",
-                "title": "AppLovin MAX"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/react-native/levelplay",
-                "title": "Unity LevelPlay"
-              }
-            ]
-          },
-          {
-            "group": "Unity",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-sdk/unity/admob",
-                "title": "AdMob"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/unity/google-ad-manager",
-                "title": "Google Ad Manager"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/unity/applovin-max",
-                "title": "AppLovin MAX"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/unity/levelplay",
-                "title": "Unity LevelPlay"
-              }
-            ]
-          },
-          {
-            "group": "Cocos",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-sdk/cocos/admob",
-                "title": "AdMob"
-              },
-              {
-                "page": "custom-adapter-gma-sdk/cocos/google-ad-manager",
-                "title": "Google Ad Manager"
-              }
-            ]
-          },
-          {
-            "group": "Cocos2dx",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-sdk/cocos2dx/admob",
-                "title": "AdMob"
+                "group": "Cocos2dx",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/cocos2dx/admob",
+                    "title": "AdMob"
+                  }
+                ]
               }
             ]
           }
@@ -830,48 +846,63 @@
         "icon": "sparkles",
         "groups": [
           {
-            "group": "Native Android",
-            "expanded": false,
+            "group": "Mobile tab entry",
+            "hidden": true,
             "pages": [
               {
                 "page": "custom-adapter-gma-next-gen-sdk/android/admob",
                 "title": "AdMob"
-              },
-              {
-                "page": "custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
-                "title": "Google Ad Manager"
-              },
-              {
-                "page": "custom-adapter-gma-next-gen-sdk/android/applovin-max",
-                "title": "AppLovin MAX"
-              },
-              {
-                "page": "custom-adapter-gma-next-gen-sdk/android/levelplay",
-                "title": "Unity LevelPlay"
               }
             ]
           },
           {
-            "group": "Flutter",
-            "expanded": false,
+            "group": "Custom Adapter (GMA Next-Gen SDK)",
             "pages": [
               {
-                "page": "custom-adapter-gma-next-gen-sdk/flutter/admob",
-                "title": "AdMob"
-              }
-            ]
-          },
-          {
-            "group": "Unity",
-            "expanded": false,
-            "pages": [
-              {
-                "page": "custom-adapter-gma-next-gen-sdk/unity/admob",
-                "title": "AdMob"
+                "group": "Native Android",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/android/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/android/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/android/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               },
               {
-                "page": "custom-adapter-gma-next-gen-sdk/unity/levelplay",
-                "title": "Unity LevelPlay"
+                "group": "Flutter",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/flutter/admob",
+                    "title": "AdMob"
+                  }
+                ]
+              },
+              {
+                "group": "Unity",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/unity/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "custom-adapter-gma-next-gen-sdk/unity/levelplay",
+                    "title": "Unity LevelPlay"
+                  }
+                ]
               }
             ]
           }

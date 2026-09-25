@@ -10,7 +10,7 @@
     "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "jamdesk": "^1.1.188"
+    "jamdesk": "^1.1.213"
   },
   "scripts": {
     "dev": "jamdesk dev --port 3456",
