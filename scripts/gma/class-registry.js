@@ -35,8 +35,8 @@ const REGISTRY = {
   },
   'react-native': {
     admob: {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
-      ios: 'TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.mediation.TapMindAdmobAdapter',
+      ios: 'TapMindAdmobAdapter',
     },
     'google-ad-manager': {
       android: 'com.tapmind.mediation.TapMindGamAdapter',
@@ -75,8 +75,8 @@ const REGISTRY = {
   },
   cocos2dx: {
     admob: {
-      android: 'com.tapmind.tech.TapMindMediationAdapterAdmob',
-      ios: 'TapMindMediationAdapterAdmob',
+      android: 'com.tapmind.mediation.TapMindAdmobAdapter',
+      ios: 'TapMindAdmobAdapter',
     },
   },
   'next-gen-android': {
