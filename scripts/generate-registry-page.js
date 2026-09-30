@@ -19,6 +19,7 @@ const GMA_PACKAGES = [
   { label: 'Unity', androidKey: 'unity', iosKey: 'unity' },
   { label: 'Cocos', androidKey: 'cocos', iosKey: 'cocos', mediations: ['admob', 'google-ad-manager'] },
   { label: 'Cocos2dx', androidKey: 'cocos2dx', iosKey: 'cocos2dx', mediations: ['admob'] },
+  { label: 'Capacitor', androidKey: 'capacitor', iosKey: 'capacitor', mediations: ['admob'] },
 ];
 
 function mediationLabel(key) {

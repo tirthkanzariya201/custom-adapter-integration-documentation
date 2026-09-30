@@ -79,6 +79,12 @@ const REGISTRY = {
       ios: 'TapMindAdmobAdapter',
     },
   },
+  capacitor: {
+    admob: {
+      android: 'com.tapmind.mediation.TapMindAdmobAdapter',
+      ios: 'TapMindAdmobAdapter',
+    },
+  },
   'next-gen-android': {
     admob: { className: 'com.tapmind.mediation.ng.TapMindAdmobAdapter' },
     'google-ad-manager': { className: 'com.tapmind.mediation.ng.TapMindGamAdapter' },

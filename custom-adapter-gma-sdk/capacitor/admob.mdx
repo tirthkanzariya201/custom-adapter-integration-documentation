@@ -1,0 +1,103 @@
+---
+title: AdMob
+description: >-
+  AdMob Capacitor guide for Custom Adapter (GMA SDK).
+---
+
+## Prerequisites
+
+*Performed by: Developer*
+
+* See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
+* Requires Capacitor **8+** and `@capacitor-community/admob` **^8.1.0**.
+
+
+## Install the SDK
+
+*Performed by: Developer*
+
+### Android
+
+Ensure your app's Gradle repositories include Google, Maven Central, and JitPack. On Gradle 7+, declare them in `settings.gradle` under `dependencyResolutionManagement` (see [Gradle Setup (Gradle 7+)](/guides/gradle-setup)). Example:
+
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Install the Capacitor plugin and AdMob community plugin:
+
+```
+npm install tapmind-ads-admob-capacitor @capacitor-community/admob
+npx cap sync
+```
+
+Or with yarn:
+
+```
+yarn add tapmind-ads-admob-capacitor @capacitor-community/admob
+npx cap sync
+```
+
+`@capacitor-community/admob` must be a direct app dependency so Capacitor can link its native Android/iOS code. `tapmind-ads-admob-capacitor` injects the TapMind adapter on top of that AdMob plugin.
+
+### iOS
+
+Install the same packages and sync:
+
+```
+npm install tapmind-ads-admob-capacitor @capacitor-community/admob
+npx cap sync
+```
+
+Or with yarn:
+
+```
+yarn add tapmind-ads-admob-capacitor @capacitor-community/admob
+npx cap sync
+```
+
+**App ID Configuration:**
+Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+
+* **Android:** set `com.google.android.gms.ads.APPLICATION_ID` in `AndroidManifest.xml`.
+* **iOS:** set `GADApplicationIdentifier` in `Info.plist`.
+
+## Configure AdMob
+
+*Performed by: Ad ops*
+
+Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
+
+Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+
+## Verify integration
+
+*Performed by: Developer*
+
+After install and dashboard configuration:
+
+1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+2. Request an ad through your mediation SDK as you normally would (via `@capacitor-community/admob`).
+3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
+4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+
+**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+
+**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+
+## Troubleshooting
+
+*Performed by: Developer*
+
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+
+**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.

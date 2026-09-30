@@ -836,6 +836,16 @@
                     "title": "AdMob"
                   }
                 ]
+              },
+              {
+                "group": "Capacitor",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "custom-adapter-gma-sdk/capacitor/admob",
+                    "title": "AdMob"
+                  }
+                ]
               }
             ]
           }
