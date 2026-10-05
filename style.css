@@ -26,6 +26,29 @@ nav img[alt$=" logo"] {
   transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
 }
 
+/* Desktop top tabs: one row, smaller type, so more engines still fit */
+@media (min-width: 1024px) {
+  nav.hidden.lg\:block > div.flex {
+    flex-wrap: nowrap !important;
+    gap: 0.2rem !important;
+    overflow-x: auto;
+  }
+
+  nav.hidden.lg\:block .nav-tab-link {
+    font-size: 0.6875rem !important;
+    line-height: 1.2 !important;
+    padding: 0.28rem 0.4rem !important;
+    margin: 0 !important;
+    gap: 0.25rem !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+  }
+
+  nav.hidden.lg\:block .nav-tab-link i {
+    font-size: 10px !important;
+  }
+}
+
 /* Mobile sidebar tabs are <button>s — make the whole row tappable */
 aside .sidebar-tabs .nav-tab-link,
 .sidebar-tabs .nav-tab-link {
@@ -378,4 +401,156 @@ article table td code,
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+/* Package Registry — use the full content width, every column on screen */
+body:has(.package-registry-scroll) [data-jd-layout-root] [style*="--layout-max-width"] {
+  max-width: none !important;
+}
+
+#content-area .package-registry-scroll,
+article .package-registry-scroll,
+.prose .package-registry-scroll {
+  overflow-x: visible;
+  max-width: 100%;
+  width: 100%;
+  margin: 0.75rem 0 1.25rem;
+}
+
+#content-area table.package-registry-table,
+article table.package-registry-table,
+.prose table.package-registry-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+  font-size: 0.8125rem;
+}
+
+#content-area table.package-registry-table th,
+#content-area table.package-registry-table td,
+article table.package-registry-table th,
+article table.package-registry-table td,
+.prose table.package-registry-table th,
+.prose table.package-registry-table td {
+  white-space: normal !important;
+  vertical-align: top !important;
+  width: auto !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: manual !important;
+}
+
+#content-area table.package-registry-table th:nth-child(1),
+#content-area table.package-registry-table td:nth-child(1),
+article table.package-registry-table th:nth-child(1),
+article table.package-registry-table td:nth-child(1),
+.prose table.package-registry-table th:nth-child(1),
+.prose table.package-registry-table td:nth-child(1) { width: 4% !important; }
+
+#content-area table.package-registry-table th:nth-child(2),
+#content-area table.package-registry-table td:nth-child(2),
+article table.package-registry-table th:nth-child(2),
+article table.package-registry-table td:nth-child(2),
+.prose table.package-registry-table th:nth-child(2),
+.prose table.package-registry-table td:nth-child(2) { width: 8% !important; }
+
+#content-area table.package-registry-table th:nth-child(3),
+#content-area table.package-registry-table td:nth-child(3),
+article table.package-registry-table th:nth-child(3),
+article table.package-registry-table td:nth-child(3),
+.prose table.package-registry-table th:nth-child(3),
+.prose table.package-registry-table td:nth-child(3) { width: 9% !important; }
+
+#content-area table.package-registry-table th:nth-child(4),
+#content-area table.package-registry-table td:nth-child(4),
+article table.package-registry-table th:nth-child(4),
+article table.package-registry-table td:nth-child(4),
+.prose table.package-registry-table th:nth-child(4),
+.prose table.package-registry-table td:nth-child(4) { width: 8% !important; }
+
+#content-area table.package-registry-table th:nth-child(5),
+#content-area table.package-registry-table td:nth-child(5),
+article table.package-registry-table th:nth-child(5),
+article table.package-registry-table td:nth-child(5),
+.prose table.package-registry-table th:nth-child(5),
+.prose table.package-registry-table td:nth-child(5) { width: 12% !important; }
+
+#content-area table.package-registry-table th:nth-child(6),
+#content-area table.package-registry-table td:nth-child(6),
+article table.package-registry-table th:nth-child(6),
+article table.package-registry-table td:nth-child(6),
+.prose table.package-registry-table th:nth-child(6),
+.prose table.package-registry-table td:nth-child(6) { width: 20% !important; }
+
+#content-area table.package-registry-table th:nth-child(7),
+#content-area table.package-registry-table td:nth-child(7),
+#content-area table.package-registry-table th:nth-child(8),
+#content-area table.package-registry-table td:nth-child(8),
+article table.package-registry-table th:nth-child(7),
+article table.package-registry-table td:nth-child(7),
+article table.package-registry-table th:nth-child(8),
+article table.package-registry-table td:nth-child(8),
+.prose table.package-registry-table th:nth-child(7),
+.prose table.package-registry-table td:nth-child(7),
+.prose table.package-registry-table th:nth-child(8),
+.prose table.package-registry-table td:nth-child(8) { width: 10% !important; }
+
+#content-area table.package-registry-table th:nth-child(9),
+#content-area table.package-registry-table td:nth-child(9),
+article table.package-registry-table th:nth-child(9),
+article table.package-registry-table td:nth-child(9),
+.prose table.package-registry-table th:nth-child(9),
+.prose table.package-registry-table td:nth-child(9) { width: 11% !important; }
+
+#content-area table.package-registry-table th:nth-child(10),
+#content-area table.package-registry-table td:nth-child(10),
+article table.package-registry-table th:nth-child(10),
+article table.package-registry-table td:nth-child(10),
+.prose table.package-registry-table th:nth-child(10),
+.prose table.package-registry-table td:nth-child(10) { width: 8% !important; }
+
+#content-area table.package-registry-table td code,
+article table.package-registry-table td code,
+.prose table.package-registry-table td code {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+#content-area table.package-registry-table thead th,
+article table.package-registry-table thead th,
+.prose table.package-registry-table thead th {
+  background: #FE7B49 !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+#content-area table.package-registry-table tbody tr:nth-child(even) td,
+article table.package-registry-table tbody tr:nth-child(even) td,
+.prose table.package-registry-table tbody tr:nth-child(even) td {
+  background: #fff6f2 !important;
+}
+
+#content-area table.package-registry-table tbody tr:hover td,
+article table.package-registry-table tbody tr:hover td,
+.prose table.package-registry-table tbody tr:hover td {
+  background: #ffe8df !important;
+}
+
+#content-area table.package-registry-table td.pkg-available,
+article table.package-registry-table td.pkg-available,
+.prose table.package-registry-table td.pkg-available {
+  color: #15803d !important;
+  font-weight: 600 !important;
+}
+
+#content-area table.package-registry-table td.pkg-unavailable,
+article table.package-registry-table td.pkg-unavailable,
+.prose table.package-registry-table td.pkg-unavailable {
+  color: #64748b !important;
+  font-weight: 600 !important;
 }
