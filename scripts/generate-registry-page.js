@@ -131,11 +131,11 @@ Every integration page references class names and network keys. This page is the
 2. Copy the class name (or network key for LevelPlay) **exactly** into your mediation dashboard. Long class names wrap in the table - click a class name to select the full string, then copy.
 3. If ads fail in release builds, see [Troubleshooting](/reference/troubleshooting) - consumer ProGuard rules ship in the published AARs.
 
-## Custom Adapter (GMA SDK)
+## Mediation Adapters (GMA SDK)
 
 ${buildGmaTable()}
 
-## Custom Adapter (GMA Next-Gen SDK)
+## Mediation Adapters (GMA Next-Gen SDK)
 
 ${buildNextGenTable()}
 `;

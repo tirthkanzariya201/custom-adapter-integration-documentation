@@ -2,7 +2,7 @@
   "$schema": "https://jamdesk.com/docs.json",
   "projectId": "q4LJ64aPcqgAnhkqpp3z",
   "name": "TapMind SDK Documentation",
-  "description": "Integration guides for TapMind Custom Adapter (GMA SDK), Custom Adapter (GMA Next-Gen SDK), and Orchestration SDKs.",
+  "description": "Integration guides for TapMind Mediation Adapters (GMA SDK) and Mediation Adapters (GMA Next-Gen SDK).",
   "theme": "jam",
   "tabsPosition": "top",
   "colors": {
@@ -88,317 +88,317 @@
     },
     {
       "source": "/guides/android/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": false
     },
     {
       "source": "/guides/android/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/android/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/android/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk/applovin",
-      "destination": "/custom-adapter-gma-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/android/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter/levelplay",
-      "destination": "/custom-adapter-gma-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/android/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/android/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
       "permanent": false
     },
     {
       "source": "/guides/ios/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/ios/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/ios/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/ios/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/ios/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk/applovin",
-      "destination": "/custom-adapter-gma-sdk/ios/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/ios/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter/levelplay",
-      "destination": "/custom-adapter-gma-sdk/ios/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/ios/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/ios/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/ios/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
       "permanent": false
     },
     {
       "source": "/guides/flutter/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/flutter/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/flutter/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/flutter/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/flutter/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk/applovin",
-      "destination": "/custom-adapter-gma-sdk/flutter/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/flutter/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter/levelplay",
-      "destination": "/custom-adapter-gma-sdk/flutter/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/flutter/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/flutter/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/flutter/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": false
     },
     {
       "source": "/guides/react-native/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/react-native/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/react-native/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/react-native/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/react-native/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk/applovin",
-      "destination": "/custom-adapter-gma-sdk/react-native/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/react-native/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter/levelplay",
-      "destination": "/custom-adapter-gma-sdk/react-native/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/react-native/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/react-native/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/react-native/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
       "permanent": false
     },
     {
       "source": "/guides/unity/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/unity/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/unity/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/unity/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/unity/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk/applovin",
-      "destination": "/custom-adapter-gma-sdk/unity/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/unity/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter/levelplay",
-      "destination": "/custom-adapter-gma-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/unity/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/unity/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": false
     },
     {
       "source": "/guides/cocos/custom-adapter/overview",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter/admob",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/cocos/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/cocos/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter/ironsource-levelplay",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/native/custom-adapter",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": false
     },
     {
       "source": "/guides/android/next-gen/overview",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/next-gen/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/next-gen/google-ad-manager",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/unity/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/next-gen",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter/applovin",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/overview",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": true
     },
     {
@@ -408,17 +408,17 @@
     },
     {
       "source": "/guides/android/custom-adapter-next-gen-sdk",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-next-gen-sdk/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-next-gen-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/google-ad-manager",
       "permanent": true
     },
     {
@@ -428,7 +428,12 @@
     },
     {
       "source": "/getting-started/how-custom-adapters-work",
-      "destination": "/guides/how-custom-adapters-work",
+      "destination": "/guides/how-mediation-adapter-works",
+      "permanent": true
+    },
+    {
+      "source": "/guides/how-custom-adapters-work",
+      "destination": "/guides/how-mediation-adapter-works",
       "permanent": true
     },
     {
@@ -447,13 +452,13 @@
       "permanent": true
     },
     {
-      "source": "/custom-adapter-gma-sdk",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "source": "/mediation-adapter-gma-sdk",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
-      "source": "/custom-adapter-gma-next-gen-sdk",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "source": "/mediation-adapter-gma-next-gen-sdk",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
@@ -468,192 +473,367 @@
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/android/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/android/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-sdk/levelplay",
-      "destination": "/custom-adapter-gma-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/android/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/ios/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/ios/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-sdk/ios/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/ios/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/ios/custom-adapter-gma-sdk/levelplay",
-      "destination": "/custom-adapter-gma-sdk/ios/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/ios/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/flutter/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/flutter/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-sdk/flutter/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/flutter/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-sdk/levelplay",
-      "destination": "/custom-adapter-gma-sdk/flutter/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/flutter/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/react-native/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/react-native/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-sdk/react-native/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/react-native/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/react-native/custom-adapter-gma-sdk/levelplay",
-      "destination": "/custom-adapter-gma-sdk/react-native/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/react-native/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/unity/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/unity/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-sdk/unity/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/unity/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-sdk/levelplay",
-      "destination": "/custom-adapter-gma-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/unity/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos/custom-adapter-gma-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-sdk/cocos/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/cocos/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/cocos-2dx/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
       "permanent": true
     },
     {
       "source": "/guides/cocos2dx/custom-adapter-gma-sdk/admob",
-      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
       "permanent": true
     },
     {
       "source": "/custom-adapter-gma-sdk/cocos-2dx/admob",
-      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
       "permanent": true
     },
     {
       "source": "/custom-adapter-gma-sdk/cocos-2dx",
-      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
       "permanent": true
     },
     {
       "source": "/custom-adapter-gma-sdk/cocos2dx",
-      "destination": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/google-ad-manager",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/google-ad-manager",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/applovin-max",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/applovin-max",
       "permanent": true
     },
     {
       "source": "/guides/android/custom-adapter-gma-next-gen-sdk/levelplay",
-      "destination": "/custom-adapter-gma-next-gen-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-next-gen-sdk",
-      "destination": "/custom-adapter-gma-next-gen-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-next-gen-sdk/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/next-gen/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/admob",
       "permanent": true
     },
     {
       "source": "/guides/unity/custom-adapter-gma-next-gen-sdk/levelplay",
-      "destination": "/custom-adapter-gma-next-gen-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/levelplay",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-next-gen-sdk",
-      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/custom-adapter-gma-next-gen-sdk/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/flutter/admob",
       "permanent": true
     },
     {
       "source": "/guides/flutter/next-gen/admob",
-      "destination": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/flutter/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/flutter/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/unity/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/android/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/android/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/android/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/android/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/android/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/android/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/capacitor/admob",
+      "destination": "/mediation-adapter-gma-sdk/capacitor/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/cocos/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/cocos2dx/admob",
+      "destination": "/mediation-adapter-gma-sdk/cocos2dx/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/flutter/admob",
+      "destination": "/mediation-adapter-gma-sdk/flutter/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/flutter/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/flutter/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/flutter/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/flutter/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/flutter/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/flutter/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/ios/admob",
+      "destination": "/mediation-adapter-gma-sdk/ios/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/ios/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/ios/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/ios/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/ios/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/ios/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/ios/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/react-native/admob",
+      "destination": "/mediation-adapter-gma-sdk/react-native/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/react-native/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/react-native/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/react-native/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/react-native/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/react-native/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/react-native/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/unity/admob",
+      "destination": "/mediation-adapter-gma-sdk/unity/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/unity/applovin-max",
+      "destination": "/mediation-adapter-gma-sdk/unity/applovin-max",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/unity/google-ad-manager",
+      "destination": "/mediation-adapter-gma-sdk/unity/google-ad-manager",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/unity/levelplay",
+      "destination": "/mediation-adapter-gma-sdk/unity/levelplay",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/android/admob",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-sdk/*",
+      "destination": "/mediation-adapter-gma-sdk/*",
+      "permanent": true
+    },
+    {
+      "source": "/custom-adapter-gma-next-gen-sdk/*",
+      "destination": "/mediation-adapter-gma-next-gen-sdk/*",
       "permanent": true
     }
   ],
@@ -671,8 +851,8 @@
                 "title": "Introduction"
               },
               {
-                "page": "guides/how-custom-adapters-work",
-                "title": "How Custom Adapters Work"
+                "page": "guides/how-mediation-adapter-works",
+                "title": "How Mediation Adapter Works"
               },
               {
                 "page": "guides/prerequisites",
@@ -687,249 +867,702 @@
         ]
       },
       {
-        "tab": "Custom Adapter (GMA SDK)",
+        "tab": "Native Android",
         "icon": "mobile-screen",
         "groups": [
           {
-            "group": "Mobile tab entry",
-            "hidden": true,
+            "group": "Mediation Adapters (GMA SDK)",
             "pages": [
               {
-                "page": "custom-adapter-gma-sdk/android/admob",
-                "title": "AdMob"
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/android/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/android/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/android/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/android/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "TopOn",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/topon",
+                    "title": "TopOn"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/android/topon",
+                    "title": "Changelog"
+                  }
+                ]
               }
             ]
           },
           {
-            "group": "Custom Adapter (GMA SDK)",
+            "group": "Mediation Adapters (GMA Next-Gen SDK)",
             "pages": [
               {
-                "group": "Native Android",
+                "group": "AdMob",
                 "expanded": false,
                 "pages": [
                   {
-                    "page": "custom-adapter-gma-sdk/android/admob",
+                    "page": "mediation-adapter-gma-next-gen-sdk/android/admob",
                     "title": "AdMob"
                   },
                   {
-                    "page": "custom-adapter-gma-sdk/android/google-ad-manager",
+                    "page": "changelog/gma-next-gen-sdk/android/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/android/google-ad-manager",
                     "title": "Google Ad Manager"
                   },
                   {
-                    "page": "custom-adapter-gma-sdk/android/applovin-max",
+                    "page": "changelog/gma-next-gen-sdk/android/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/android/applovin-max",
                     "title": "AppLovin MAX"
                   },
                   {
-                    "page": "custom-adapter-gma-sdk/android/levelplay",
+                    "page": "changelog/gma-next-gen-sdk/android/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/android/levelplay",
                     "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "Native iOS",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/ios/admob",
-                    "title": "AdMob"
                   },
                   {
-                    "page": "custom-adapter-gma-sdk/ios/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/ios/applovin-max",
-                    "title": "AppLovin MAX"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/ios/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "Flutter",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/flutter/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/flutter/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/flutter/applovin-max",
-                    "title": "AppLovin MAX"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/flutter/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "React Native",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/react-native/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/react-native/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/react-native/applovin-max",
-                    "title": "AppLovin MAX"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/react-native/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "Unity",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/unity/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/unity/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/unity/applovin-max",
-                    "title": "AppLovin MAX"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/unity/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "Cocos",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/cocos/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-sdk/cocos/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  }
-                ]
-              },
-              {
-                "group": "Cocos2dx",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/cocos2dx/admob",
-                    "title": "AdMob"
-                  }
-                ]
-              },
-              {
-                "group": "Capacitor",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-sdk/capacitor/admob",
-                    "title": "AdMob"
+                    "page": "changelog/gma-next-gen-sdk/android/levelplay",
+                    "title": "Changelog"
                   }
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Custom Adapter (GMA Next-Gen SDK)",
-        "icon": "sparkles",
-        "groups": [
+          },
           {
             "group": "Mobile tab entry",
             "hidden": true,
             "pages": [
               {
-                "page": "custom-adapter-gma-next-gen-sdk/android/admob",
+                "page": "mediation-adapter-gma-sdk/android/admob",
                 "title": "AdMob"
               }
-            ]
-          },
-          {
-            "group": "Custom Adapter (GMA Next-Gen SDK)",
-            "pages": [
-              {
-                "group": "Native Android",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/android/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/android/google-ad-manager",
-                    "title": "Google Ad Manager"
-                  },
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/android/applovin-max",
-                    "title": "AppLovin MAX"
-                  },
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/android/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              },
-              {
-                "group": "Flutter",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/flutter/admob",
-                    "title": "AdMob"
-                  }
-                ]
-              },
-              {
-                "group": "Unity",
-                "expanded": false,
-                "pages": [
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/unity/admob",
-                    "title": "AdMob"
-                  },
-                  {
-                    "page": "custom-adapter-gma-next-gen-sdk/unity/levelplay",
-                    "title": "Unity LevelPlay"
-                  }
-                ]
-              }
-            ]
+            ],
+            "searchable": true
           }
         ]
       },
       {
-        "tab": "Orchestration SDK",
-        "icon": "code",
+        "tab": "Native iOS",
+        "icon": "mobile-screen",
         "groups": [
           {
-            "group": "Orchestration SDK",
+            "group": "Mediation Adapters (GMA SDK)",
             "pages": [
               {
-                "page": "orchestration-sdk/android",
-                "title": "Native Android"
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/ios/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/ios/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/ios/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/ios/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/ios/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/ios/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/ios/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/ios/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
               }
             ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/ios/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "Flutter",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/flutter/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/flutter/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/flutter/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/flutter/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/flutter/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/flutter/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/flutter/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/flutter/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mediation Adapters (GMA Next-Gen SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/flutter/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-next-gen-sdk/flutter/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/flutter/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "React Native",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/react-native/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/react-native/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/react-native/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/react-native/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/react-native/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/react-native/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/react-native/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/react-native/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/react-native/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "Unity",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/unity/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/unity/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/unity/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/unity/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "AppLovin MAX",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/unity/applovin-max",
+                    "title": "AppLovin MAX"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/unity/applovin-max",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/unity/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/unity/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "TopOn",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/unity/topon",
+                    "title": "TopOn"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/unity/topon",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mediation Adapters (GMA Next-Gen SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/unity/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-next-gen-sdk/unity/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Unity LevelPlay",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-next-gen-sdk/unity/levelplay",
+                    "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "changelog/gma-next-gen-sdk/unity/levelplay",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/unity/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "Cocos",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/cocos/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/cocos/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              },
+              {
+                "group": "Google Ad Manager",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/cocos/google-ad-manager",
+                    "title": "Google Ad Manager"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/cocos/google-ad-manager",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/cocos/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "Cocos2dx",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/cocos2dx/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/cocos2dx/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/cocos2dx/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "Capacitor",
+        "icon": "mobile-screen",
+        "groups": [
+          {
+            "group": "Mediation Adapters (GMA SDK)",
+            "pages": [
+              {
+                "group": "AdMob",
+                "expanded": false,
+                "pages": [
+                  {
+                    "page": "mediation-adapter-gma-sdk/capacitor/admob",
+                    "title": "AdMob"
+                  },
+                  {
+                    "page": "changelog/gma-sdk/capacitor/admob",
+                    "title": "Changelog"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "mediation-adapter-gma-sdk/capacitor/admob",
+                "title": "AdMob"
+              }
+            ],
+            "searchable": true
+          }
+        ]
+      },
+      {
+        "tab": "SDK changelog",
+        "icon": "clock",
+        "groups": [
+          {
+            "group": "Android SDK (GMA)",
+            "expanded": false,
+            "pages": [
+              {
+                "page": "changelog/sdk/gma-mediation-android",
+                "title": "Changelog"
+              }
+            ]
+          },
+          {
+            "group": "Android SDK (GMA Next-Gen)",
+            "expanded": false,
+            "pages": [
+              {
+                "page": "changelog/sdk/nextgen-gma-mediation-android",
+                "title": "Changelog"
+              }
+            ]
+          },
+          {
+            "group": "iOS SDK",
+            "expanded": false,
+            "pages": [
+              {
+                "page": "changelog/sdk/gma-mediation-ios",
+                "title": "Changelog"
+              }
+            ]
+          },
+          {
+            "group": "Mobile tab entry",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "changelog/sdk/gma-mediation-android",
+                "title": "Changelog"
+              }
+            ],
+            "searchable": true
           }
         ]
       },
@@ -979,13 +1612,54 @@
                   {
                     "page": "reference/mediation-integration-setup/levelplay",
                     "title": "Unity LevelPlay"
+                  },
+                  {
+                    "page": "reference/mediation-integration-setup/topon",
+                    "title": "TopOn"
                   }
                 ]
               }
             ]
+          },
+          {
+            "group": "Hidden pages",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "reference/package-registry",
+                "title": "Package Registry"
+              }
+            ]
           }
         ]
+      },
+      {
+        "tab": "Orchestration SDK",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Orchestration SDK",
+            "pages": [
+              {
+                "page": "orchestration-sdk/android",
+                "title": "Native Android"
+              }
+            ]
+          }
+        ],
+        "hidden": true
       }
     ]
+  },
+  "search": {
+    "prompt": "Search documentation"
+  },
+  "chat": {
+    "enabled": true
+  },
+  "seo": {
+    "ai": {
+      "llmsTxt": true
+    }
   }
 }

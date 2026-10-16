@@ -6,8 +6,8 @@ const { loadSdkVersions } = require('./load-sdk-versions');
 const { mavenCoordinate, iosPodLine, FLUTTER_PUBSPEC, NEXTGEN_FLUTTER_PUBSPEC, RN_PACKAGE, IOS_POD } = require('./package-catalog');
 
 const versions = loadSdkVersions();
-const GMA = 'custom-adapter-gma-sdk';
-const NEXTGEN = 'custom-adapter-gma-next-gen-sdk';
+const GMA = 'mediation-adapter-gma-sdk';
+const NEXTGEN = 'mediation-adapter-gma-next-gen-sdk';
 
 function gmaAndroidPackages() {
   const table = versions[GMA]['native-android'];

@@ -26,8 +26,8 @@ Example: `Unity Android Levelplay` is one package.
 
 **Product** is which SDK family shipped:
 
-- Custom Adapter GMA SDK → `custom-adapter-gma-sdk`
-- Custom Adapter GMA Next-Gen SDK → `custom-adapter-gma-next-gen-sdk`
+- Custom Adapter GMA SDK → `mediation-adapter-gma-sdk`
+- Custom Adapter GMA Next-Gen SDK → `mediation-adapter-gma-next-gen-sdk`
 - Orchestration SDK → `orchestration-sdk`
 
 ## Which number on the release note to use
@@ -64,7 +64,7 @@ After saving, run `npm run sync-versions`. That updates:
 ## Worked examples
 
 **Native Android AdMob, SDK Version 3.0.3**
-Set `custom-adapter-gma-sdk.native-android.admob` to `"3.0.3"`. Run sync.
+Set `mediation-adapter-gma-sdk.native-android.admob` to `"3.0.3"`. Run sync.
 
 **Native iOS AdMob, SDK Version 2.1.14, no pin instruction**
 Leave `native-ios.admob` as `null`. Do not add `2.1.14`.
@@ -73,10 +73,10 @@ Leave `native-ios.admob` as `null`. Do not add `2.1.14`.
 Set `native-ios.admob` to `"2.1.14"`. Run sync.
 
 **Flutter Android AdMob, Wrapper Version 3.0.2**
-Set `custom-adapter-gma-sdk.flutter.admob` to `"3.0.2"`. Run sync. Do not also change `native-android`.
+Set `mediation-adapter-gma-sdk.flutter.admob` to `"3.0.2"`. Run sync. Do not also change `native-android`.
 
 **React Native iOS AdMob, Wrapper Version 2.1.5**
-Set `custom-adapter-gma-sdk.react-native.admob` to `"2.1.5"`. Run sync.
+Set `mediation-adapter-gma-sdk.react-native.admob` to `"2.1.5"`. Run sync.
 
 **Unity Android LevelPlay, Wrapper Version 3.0.0**
 No docs version change.

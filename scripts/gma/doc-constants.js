@@ -29,12 +29,12 @@ function resolveMediationSourceDir(mediation) {
 }
 
 const PACKAGE_VERSIONS = {
-  admob: sdkVersions['custom-adapter-gma-sdk']['native-android'].admob,
-  gam: sdkVersions['custom-adapter-gma-sdk']['native-android']['google-ad-manager'],
-  'applovin-max': sdkVersions['custom-adapter-gma-sdk']['native-android']['applovin-max'],
-  levelplay: sdkVersions['custom-adapter-gma-sdk']['native-android'].levelplay,
-  'nextgen-admob': sdkVersions['custom-adapter-gma-next-gen-sdk']['native-android'].admob,
-  'nextgen-gam': sdkVersions['custom-adapter-gma-next-gen-sdk']['native-android']['google-ad-manager'],
+  admob: sdkVersions['mediation-adapter-gma-sdk']['native-android'].admob,
+  gam: sdkVersions['mediation-adapter-gma-sdk']['native-android']['google-ad-manager'],
+  'applovin-max': sdkVersions['mediation-adapter-gma-sdk']['native-android']['applovin-max'],
+  levelplay: sdkVersions['mediation-adapter-gma-sdk']['native-android'].levelplay,
+  'nextgen-admob': sdkVersions['mediation-adapter-gma-next-gen-sdk']['native-android'].admob,
+  'nextgen-gam': sdkVersions['mediation-adapter-gma-next-gen-sdk']['native-android']['google-ad-manager'],
   orchestration: sdkVersions['orchestration-sdk']['native-android'],
 };
 

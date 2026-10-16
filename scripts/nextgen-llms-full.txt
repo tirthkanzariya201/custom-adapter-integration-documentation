@@ -7,7 +7,7 @@
 
 ## AdMob
 
-*Source: /custom-adapter-gma-next-gen-sdk/android/admob*
+*Source: /mediation-adapter-gma-next-gen-sdk/android/admob*
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+Note: On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -44,8 +44,8 @@ dependencies {
 }
 ```
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure AdMob
 
@@ -53,7 +53,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -61,30 +61,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## Google Ad Manager
 
-*Source: /custom-adapter-gma-next-gen-sdk/android/google-ad-manager*
+*Source: /mediation-adapter-gma-next-gen-sdk/android/google-ad-manager*
 
 ## Prerequisites
 
@@ -110,7 +110,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+Note: On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -121,8 +121,8 @@ dependencies {
 }
 ```
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure Google Ad Manager
 
@@ -130,7 +130,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [Google Ad Manager Mediation Integration Setup](/reference/mediation-integration-setup/google-ad-manager) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -138,30 +138,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## AppLovin MAX
 
-*Source: /custom-adapter-gma-next-gen-sdk/android/applovin-max*
+*Source: /mediation-adapter-gma-next-gen-sdk/android/applovin-max*
 
 ## Prerequisites
 
@@ -187,7 +187,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+Note: On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -198,8 +198,8 @@ dependencies {
 }
 ```
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure AppLovin MAX
 
@@ -207,7 +207,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [AppLovin MAX Mediation Integration Setup](/reference/mediation-integration-setup/applovin-max) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -215,30 +215,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## Unity LevelPlay
 
-*Source: /custom-adapter-gma-next-gen-sdk/android/levelplay*
+*Source: /mediation-adapter-gma-next-gen-sdk/android/levelplay*
 
 ## Prerequisites
 
@@ -264,7 +264,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+Note: On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 Open the `build.gradle` (Module: app) file and add:
 
@@ -275,8 +275,8 @@ dependencies {
 }
 ```
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure Unity LevelPlay
 
@@ -284,7 +284,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -292,30 +292,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](https://docs.tapmind.io/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## AdMob
 
-*Source: /custom-adapter-gma-next-gen-sdk/flutter/admob*
+*Source: /mediation-adapter-gma-next-gen-sdk/flutter/admob*
 
 ## Prerequisites
 
@@ -341,7 +341,7 @@ allprojects {
 }
 ```
 
-**Note:** On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
+Note: On Gradle 7+, use [Gradle Setup (Gradle 7+)](/guides/gradle-setup) instead - declare repositories in `settings.gradle` under `dependencyResolutionManagement` and remove the `allprojects` block. Use one approach, not both.
 
 ### Android
 
@@ -355,10 +355,10 @@ dependencies:
   google_mobile_ads: ^9.1.0
 ```
 
-**Note:** To use GMA Next-Gen on Android, build with `flutter run --dart-define USE_NEXT_GEN_SDK=true`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).
+Note: To use GMA Next-Gen on Android, build with `flutter run --dart-define USE_NEXT_GEN_SDK=true`. See Google's [Install GMA Next-Gen SDK](https://developers.google.com/admob/flutter/android-next).
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure AdMob
 
@@ -366,7 +366,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -374,30 +374,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## AdMob
 
-*Source: /custom-adapter-gma-next-gen-sdk/unity/admob*
+*Source: /mediation-adapter-gma-next-gen-sdk/unity/admob*
 
 ## Prerequisites
 
@@ -405,25 +405,25 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 * See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
 * Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
-* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* The GMA Unity plugin must be imported and AdMob app IDs set under Assets → Google Mobile Ads → Settings
 
 
 ## Install the SDK
 
 *Performed by: Developer*
 
-In Unity **Package Manager → Add package from git URL**:
+In Unity Package Manager → Add package from git URL:
 
 ```
 https://github.com/tapmind-tech/TapMind-CA-Admob-NG-Unity.git
 ```
 
-TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+TapMind's Unity package uses a post-processing script that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
-Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+Import the GMA Unity plugin and set AdMob app IDs under Assets → Google Mobile Ads → Settings.
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure AdMob
 
@@ -431,7 +431,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [AdMob Mediation Integration Setup](/reference/mediation-integration-setup/admob) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -439,30 +439,30 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
-**Note:** Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
+Note: Mediation dashboards may report higher request or attempt counts for TapMind's line than TapMind's backend actually receives. This is expected mediation-side counting behavior, not an integration issue, see [Dashboard vs. backend count discrepancies](/reference/troubleshooting#dashboard-vs-backend-count-discrepancies) in Troubleshooting for details.
 
 ---
 
 ## Unity LevelPlay
 
-*Source: /custom-adapter-gma-next-gen-sdk/unity/levelplay*
+*Source: /mediation-adapter-gma-next-gen-sdk/unity/levelplay*
 
 ## Prerequisites
 
@@ -470,25 +470,25 @@ See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation
 
 * See the [Compatibility Matrix](/reference/compatibility-matrix) for the minimum Android and iOS versions for this package.
 * Initialize the GMA Next-Gen SDK before install. See [Prerequisites](/guides/prerequisites).
-* The GMA Unity plugin must be imported and AdMob app IDs set under **Assets → Google Mobile Ads → Settings**
+* The GMA Unity plugin must be imported and AdMob app IDs set under Assets → Google Mobile Ads → Settings
 
 
 ## Install the SDK
 
 *Performed by: Developer*
 
-In Unity **Package Manager → Add package from git URL**:
+In Unity Package Manager → Add package from git URL:
 
 ```
 https://github.com/tapmind-tech/TapMind-CA-Ironsource-NG-Unity.git
 ```
 
-TapMind's Unity package uses a **post-processing script** that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
+TapMind's Unity package uses a post-processing script that automatically adds the native Android and iOS dependencies during the Unity build. Git tag-based pinning is not used - add the package from the repository URL above.
 
-Import the GMA Unity plugin and set AdMob app IDs under **Assets → Google Mobile Ads → Settings**.
+Import the GMA Unity plugin and set AdMob app IDs under Assets → Google Mobile Ads → Settings.
 
-**App ID Configuration:**
-Ensure the **App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall**. Using a different App ID may prevent the **TapMind SDK from initializing correctly**.
+App ID Configuration:
+Ensure the App ID used in the application matches the App ID configured for TapMind in the AdMob mediation/waterfall. Using a different App ID may prevent the TapMind SDK from initializing correctly.
 
 ## Configure Unity LevelPlay
 
@@ -496,7 +496,7 @@ Ensure the **App ID used in the application matches the App ID configured for Ta
 
 Refer [Unity LevelPlay Mediation Integration Setup](/reference/mediation-integration-setup/levelplay) for the integration.
 
-Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** for the classnames.
+Refer [Class & Network Key Registry](/reference/class-network-key-registry) for the classnames.
 
 ## Verify integration
 
@@ -504,21 +504,21 @@ Refer **[Class & Network Key Registry](/reference/class-network-key-registry)** 
 
 After install and dashboard configuration:
 
-1. Run your app in a **debug** build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
+1. Run your app in a debug build. TapMind's test mode is enabled automatically in debug builds and serves test ads at a high fill rate.
 2. Request an ad through your mediation SDK as you normally would.
-3. Confirm a TapMind ad fills. Check logs for the tag **`TapMindAdapter`**.
-4. When verified, build in **release** mode for production - test mode is disabled automatically in release builds, and live ads serve.
+3. Confirm a TapMind ad fills. Check logs for the tag `TapMindAdapter`.
+4. When verified, build in release mode for production - test mode is disabled automatically in release builds, and live ads serve.
 
-**Note:** Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
+Note: Test mode is automatic. It follows your build type: debug = test ads, release = live ads. There is no flag to enable or disable, and nothing to turn off before going live.
 
-**Release build QA:** There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
+Release build QA: There is currently no documented release-safe test path to validate R8/ProGuard without serving live ads. Consumer ProGuard rules from the TapMind AAR are applied automatically when you integrate the published adapter packages.
 
 ## Troubleshooting
 
 *Performed by: Developer*
 
-Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), **placementName**, **placementcode** and **eCPM/rate** with your account manager.
+Before diving into logs, confirm adapter class names and the LevelPlay network key against the [Class & Network Key Registry](/reference/class-network-key-registry), placementName, placementcode and eCPM/rate with your account manager.
 
-See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under **Verify integration** above.
+See [Troubleshooting](/reference/troubleshooting) for common symptoms, mediation-specific fixes, release vs debug guidance, and escalation steps. Partner-specific verification steps are under Verify integration above.
 
 ---

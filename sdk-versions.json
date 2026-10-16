@@ -1,6 +1,6 @@
 {
   "$comment": "Edit a version here, then run: npm run sync-versions. That updates every guide that shows the number. Unity and Cocos have no version in docs (git/zip links). For native iOS, null means unpinned (pod name only, latest). Set a string only when the release note says to pin that version.",
-  "custom-adapter-gma-sdk": {
+  "mediation-adapter-gma-sdk": {
     "native-android": {
       "admob": "3.0.4",
       "google-ad-manager": "3.0.1",
@@ -26,7 +26,7 @@
       "levelplay": "2.1.4"
     }
   },
-  "custom-adapter-gma-next-gen-sdk": {
+  "mediation-adapter-gma-next-gen-sdk": {
     "native-android": {
       "admob": "2.0.2",
       "google-ad-manager": "2.1.0",
