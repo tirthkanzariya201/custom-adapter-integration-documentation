@@ -116,7 +116,7 @@ const sitemapList = generateSitemapList(pages);
 fs.writeFileSync(path.join(__dirname, 'llms-full.txt'), llmsFull, 'utf8');
 fs.writeFileSync(path.join(__dirname, 'sitemap-pages.txt'), sitemapList, 'utf8');
 
-const nextGenSlugs = pages.filter((p) => p.slug.includes('custom-adapter-gma-next-gen-sdk'));
+const nextGenSlugs = pages.filter((p) => p.slug.includes('mediation-adapter-gma-next-gen-sdk'));
 if (nextGenSlugs.length) {
   fs.writeFileSync(
     path.join(__dirname, 'nextgen-llms-full.txt'),

@@ -3,13 +3,13 @@
  */
 
 const ANDROID_ARTIFACT = {
-  'custom-adapter-gma-sdk': {
+  'mediation-adapter-gma-sdk': {
     admob: 'customadapter-admob',
     'google-ad-manager': 'customadapter-gam',
     'applovin-max': 'customadapter-applovin',
     levelplay: 'customadapter-ironsource',
   },
-  'custom-adapter-gma-next-gen-sdk': {
+  'mediation-adapter-gma-next-gen-sdk': {
     admob: 'customadapter-admob-nextgen',
     'google-ad-manager': 'customadapter-gam-nextgen',
     'applovin-max': 'customadapter-applovin-nextgen',

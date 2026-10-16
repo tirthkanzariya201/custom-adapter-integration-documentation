@@ -1,0 +1,86 @@
+---
+title: TopOn
+description: >-
+  TopOn custom network setup for TapMind Mediation Adapter integrations.
+---
+
+## Configure TopOn
+
+*Performed by: Ad ops*
+
+### 1. Create the custom network firm
+
+1. Go to Network → Monetization → Create Network firm.
+2. Fill in the network firm details:
+
+```
+Network firm name : Tapmind
+Account Name      : your TopOn account name
+```
+
+3. Under Parameters of app and ad source dimensions, open App → Add parameters and add:
+
+```
+App ID
+App Key
+Type
+```
+
+4. Under Unit, add:
+
+```
+Unit ID
+Unit key
+Type
+```
+
+5. Under Adapter classnames, add the class name for each ad format. Use the set that matches the TopOn SDK in the app. The same class names are on the [Class & Network Key Registry](/reference/class-network-key-registry).
+
+SecMTP (`com.secmtp.sdk.*`), SDK 6.5.16–6.6.50:
+
+| Ad format | Adapter class name |
+| --- | --- |
+| Banner | `com.tapmind.mediation.topon.TapMindTopOnBannerAdapter` |
+| Interstitial | `com.tapmind.mediation.topon.TapMindTopOnInterstitialAdapter` |
+| Rewarded Video | `com.tapmind.mediation.topon.TapMindTopOnRewardedVideoAdapter` |
+| Native | `com.tapmind.mediation.topon.TapMindTopOnNativeAdapter` |
+| Splash / App Open | `com.tapmind.mediation.topon.TapMindTopOnSplashAdapter` |
+
+AnyThink (`com.anythink.*`), SDK 6.4.39–6.5.10:
+
+| Ad format | Adapter class name |
+| --- | --- |
+| Banner | `com.tapmind.mediation.topon.TapMindAnyThinkBannerAdapter` |
+| Interstitial | `com.tapmind.mediation.topon.TapMindAnyThinkInterstitialAdapter` |
+| Rewarded Video | `com.tapmind.mediation.topon.TapMindAnyThinkRewardedVideoAdapter` |
+| Native | `com.tapmind.mediation.topon.TapMindAnyThinkNativeAdapter` |
+| Splash / App Open | `com.tapmind.mediation.topon.TapMindAnyThinkSplashAdapter` |
+
+### 2. Add the placement and ad source
+
+1. Go to Application, select the app, and add the placements.
+2. Choose Create placement → Create single placement.
+3. The app is selected by default. Fill in:
+
+```
+Placement name : your placement name
+Ad format      : the format for this placement
+Status         : the status for this placement
+```
+
+4. Click Create.
+5. Under Mediation, choose Add AD source.
+6. The segment is selected by default. Fill in:
+
+```
+Network firm : Tapmind
+User name    : your user name
+Source name  : your ad source name
+Slot ID      : your slot ID
+Price        : your price
+```
+
+7. Under Ad source dimension parameters, add a key named placement name and set the value to the placement name you configured in step 3.
+8. Click Submit.
+
+> placement name is case-sensitive and must exactly match the placement name created above.

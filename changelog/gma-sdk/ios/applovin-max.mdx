@@ -1,14 +1,188 @@
 ---
-title: Changelog
-description: Release notes for the AppLovin MAX adapter on Native iOS (GMA Adapter Mediation SDK).
+title: Changelog - AppLovin MAX - Native iOS
 ---
 
-Release notes for **AppLovin MAX** on **Native iOS** (**GMA SDK**). New entries are added newest first.
 
-## Current version
+<Update label="August 18, 2026">
 
-| Package | Version |
-| --- | --- |
-| `TapMindALAdapter` | **Latest** |
+<p className="cl-version" id="version-302">3.0.2</p>
 
-Install and dashboard setup are on the [AppLovin MAX guide](/custom-adapter-gma-sdk/ios/applovin-max).
+Linked to core SDK version: [v3.0.5](/changelog/sdk/gma-mediation-ios#version-305)
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed the ad refresh issue.
+
+</Update>
+
+<Update label="August 14, 2026">
+
+<p className="cl-version" id="version-301">3.0.1</p>
+
+Linked to core SDK version: [v3.0.3](/changelog/sdk/gma-mediation-ios#version-303)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added product field into the Impression API.
+
+</Update>
+
+<Update label="August 13, 2026">
+
+<p className="cl-version" id="version-300">3.0.0</p>
+
+Linked to core SDK version: [v3.0.2](/changelog/sdk/gma-mediation-ios#version-302)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added and passed the required parameters (Test Mode, Ad Height, Ad Width) in the Bid Request API.
+- Added product key parameter in the Bid Request and Impression APIs.
+- Handled multiple ad scenarios and ensured proper thread management.
+- Implemented ad timeout logic to avoid blocking the overall ad flow.
+- Implemented ad refresh logic.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Enabled and added the necessary logs at key points in the ad request and response flow.
+- Updated new class names for all adapters.
+
+</Update>
+
+<Update label="June 23, 2026">
+
+<p className="cl-version" id="version-2113">2.1.13</p>
+
+Linked to core SDK version: [v1.2.8](/changelog/sdk/gma-mediation-ios#version-128)
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Removed logs.
+
+</Update>
+
+<Update label="June 17, 2026">
+
+<p className="cl-version" id="version-2112">2.1.12</p>
+
+Linked to core SDK version: [v1.2.7](/changelog/sdk/gma-mediation-ios#version-127)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added support for iOS 12 and above.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Resolved the crash issue for Unity which was happening upon opening the app.
+
+</Update>
+
+<Update label="June 16, 2026">
+
+<p className="cl-version" id="version-2111">2.1.11</p>
+
+Linked to core SDK version: [v1.2.7](/changelog/sdk/gma-mediation-ios#version-127)
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Removed the singleton flow in order to return the perfect ads for each placement.
+
+</Update>
+
+<Update label="June 5, 2026">
+
+<p className="cl-version" id="version-2110">2.1.10</p>
+
+Linked to core SDK version: [v1.2.6](/changelog/sdk/gma-mediation-ios#version-126)
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Updated the server URL to srv.tmcadptr.com.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed the crash caused by multiple-time initialisation of the Google SDK.
+
+</Update>
+
+<Update label="April 29, 2026">
+
+<p className="cl-version" id="version-219">2.1.9</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added support for dynamic ad size configuration.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- If `placementName` is unavailable in parameters, an empty value is passed.
+
+</Update>
+
+<Update label="April 11, 2026">
+
+<p className="cl-version" id="version-214">2.1.4</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Internal optimizations and stability enhancements to improve SDK performance and reliability.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed TapMind SDK version resolution within the Swift Package Manager (SPM) distribution.
+
+</Update>
+
+<Update label="April 9, 2026">
+
+<p className="cl-version" id="version-213">2.1.3</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Introduced placement flag configuration to support placement name tracking in the Bid Request API.
+
+</Update>
+
+<Update label="March 25, 2026">
+
+<p className="cl-version" id="version-212">2.1.2</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added case-insensitive key handling for JSON parsing, so data extraction works regardless of JSON key casing received from backend services.
+
+</Update>
+
+<Update label="March 24, 2026">
+
+<p className="cl-version" id="version-211">2.1.1</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed TapMind SDK version management within the SPM distribution, so the designated TapMind SDK version is used automatically when installing the adapter through SPM.
+
+</Update>
+
+<Update label="March 24, 2026">
+
+<p className="cl-version" id="version-210">2.1.0</p>
+
+Linked to core SDK version: [v3.0.9](/changelog/sdk/gma-mediation-ios#latest)
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Standardized adapter architecture across all supported mediation partners.
+- Unified naming conventions for improved clarity and consistency.
+- Optimized ad request-to-response flow for faster and more reliable mediation handling.
+- Enhanced placement handling to support flexible and scalable configurations.
+
+</Update>

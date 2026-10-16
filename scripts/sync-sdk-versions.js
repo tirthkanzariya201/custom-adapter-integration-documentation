@@ -147,11 +147,11 @@ function syncGoogleDeps() {
 
   const gmaPages = [
     ...['admob', 'google-ad-manager', 'applovin-max', 'levelplay'].map(
-      (m) => `custom-adapter-gma-sdk/android/${m}.mdx`,
+      (m) => `mediation-adapter-gma-sdk/android/${m}.mdx`,
     ),
     ...['applovin-max', 'levelplay'].flatMap((m) => [
-      `custom-adapter-gma-sdk/flutter/${m}.mdx`,
-      `custom-adapter-gma-sdk/react-native/${m}.mdx`,
+      `mediation-adapter-gma-sdk/flutter/${m}.mdx`,
+      `mediation-adapter-gma-sdk/react-native/${m}.mdx`,
     ]),
   ];
 
@@ -166,7 +166,7 @@ function syncGoogleDeps() {
 
   for (const m of ['admob', 'google-ad-manager', 'levelplay']) {
     bumpGoogle(
-      `custom-adapter-gma-next-gen-sdk/android/${m}.mdx`,
+      `mediation-adapter-gma-next-gen-sdk/android/${m}.mdx`,
       /ads-mobile-sdk:[0-9.]+/g,
       `ads-mobile-sdk:${nextgen}`,
       'GMA Next-Gen Android',
@@ -195,12 +195,12 @@ function syncGoogleDeps() {
   track(matrixRel, writeIfChanged(matrixRel, matrix, prevMatrix));
 }
 
-syncAndroid('custom-adapter-gma-sdk', 'native-android');
-syncIos('custom-adapter-gma-sdk');
-syncFlutter('custom-adapter-gma-sdk');
-syncReactNative('custom-adapter-gma-sdk');
-syncAndroid('custom-adapter-gma-next-gen-sdk', 'native-android');
-syncFlutter('custom-adapter-gma-next-gen-sdk', NEXTGEN_FLUTTER_PUBSPEC);
+syncAndroid('mediation-adapter-gma-sdk', 'native-android');
+syncIos('mediation-adapter-gma-sdk');
+syncFlutter('mediation-adapter-gma-sdk');
+syncReactNative('mediation-adapter-gma-sdk');
+syncAndroid('mediation-adapter-gma-next-gen-sdk', 'native-android');
+syncFlutter('mediation-adapter-gma-next-gen-sdk', NEXTGEN_FLUTTER_PUBSPEC);
 syncOrchestration();
 syncGoogleDeps();
 
