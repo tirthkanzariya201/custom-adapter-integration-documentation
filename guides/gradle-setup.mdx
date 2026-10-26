@@ -1,6 +1,9 @@
 ---
 title: Gradle Setup (For Gradle Version 7+)
-description: Repository configuration for Android-based integrations on Gradle 7 and above.
+description: >-
+  Configure Gradle 7+ repositories in settings.gradle using
+  dependencyResolutionManagement, and remove any allprojects repositories block
+  from build.gradle
 ---
 
 On Gradle 7+, repositories are declared in `settings.gradle` under `dependencyResolutionManagement`, not in the project `build.gradle`:
