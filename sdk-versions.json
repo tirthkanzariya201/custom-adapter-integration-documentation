@@ -3,7 +3,7 @@
   "mediation-adapter-gma-sdk": {
     "native-android": {
       "admob": "3.0.4",
-      "google-ad-manager": "3.0.1",
+      "google-ad-manager": "3.0.2",
       "applovin-max": "3.0.0",
       "levelplay": "2.1.21"
     },
