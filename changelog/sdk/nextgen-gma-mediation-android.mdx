@@ -2,8 +2,31 @@
 title: Changelog - Android SDK (GMA Next-Gen)
 description: >-
   The Android SDK (GMA Next-Gen) changelog covers every release from 1.0.0 to
-  2.0.6, with dated entries for added adapter support, class renames, and base
+  2.0.8, with dated entries for added adapter support, class renames, and base
 ---
+
+<Update label="November 2, 2026">
+
+<p className="cl-version" id="version-208">2.0.8</p>
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed Banner ANR and UI freezes during concurrent loading.
+- Fixed blank banner slots from simultaneous ad requests.
+- Fixed blank slots on scroll-back by preserving active banner sessions.
+- Fixed AdView and WebView memory leaks on Activity exit.
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added automatic Activity lifecycle management for banner sessions.
+- Added safe view teardown to release WebViews from memory.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Updated multi-banner architecture to isolate AdView per load request.
+- Disabled client-side auto-refresh for mediated banners.
+
+</Update>
 
 <Update label="August 5, 2026">
 
