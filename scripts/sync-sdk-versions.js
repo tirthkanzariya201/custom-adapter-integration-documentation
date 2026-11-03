@@ -8,7 +8,6 @@ const path = require('path');
 const { loadSdkVersions, SDK_VERSIONS_PATH } = require('./gma/load-sdk-versions');
 const {
   ANDROID_ARTIFACT,
-  ANDROID_GROUP,
   IOS_POD,
   FLUTTER_PUBSPEC,
   NEXTGEN_FLUTTER_PUBSPEC,
@@ -50,19 +49,16 @@ function track(rel, did) {
 
 function syncAndroid(product, wrapperKey) {
   const artifacts = ANDROID_ARTIFACT[product];
-  const groups = ANDROID_GROUP[product] || {};
   const table = versions[product][wrapperKey];
   for (const [mediation, version] of Object.entries(table)) {
     const rel = guidePath(product, wrapperKey, mediation);
     const artifact = artifacts[mediation];
-    const group = groups[mediation] || 'io.github.tapmind-tech';
-    const coord = `${group}:${artifact}:${version}`;
     let src = read(rel);
     src = mustReplace(
       rel,
       src,
-      /implementation\("(?:io\.github\.tapmind-tech|com\.tapmind):[^"]+"\)/,
-      `implementation("${coord}")`,
+      new RegExp(`(io\\.github\\.tapmind-tech:${artifact}:)[^"\\s]+`),
+      `$1${version}`,
       `${artifact} version`,
     );
     track(rel, writeIfChanged(rel, src, read(rel)));

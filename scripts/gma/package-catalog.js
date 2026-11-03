@@ -4,7 +4,7 @@
 
 const ANDROID_ARTIFACT = {
   'mediation-adapter-gma-sdk': {
-    admob: 'tapmindsdk-adapter-admob',
+    admob: 'customadapter-admob',
     'google-ad-manager': 'customadapter-gam',
     'applovin-max': 'customadapter-applovin',
     levelplay: 'customadapter-ironsource',
@@ -14,12 +14,6 @@ const ANDROID_ARTIFACT = {
     'google-ad-manager': 'customadapter-gam-nextgen',
     'applovin-max': 'customadapter-applovin-nextgen',
     levelplay: 'customadapter-ironsource-nextgen',
-  },
-};
-
-const ANDROID_GROUP = {
-  'mediation-adapter-gma-sdk': {
-    admob: 'com.tapmind',
   },
 };
 
@@ -57,8 +51,7 @@ const WRAPPER_FOLDER = {
 
 function mavenCoordinate(product, mediation, version) {
   const artifact = ANDROID_ARTIFACT[product][mediation];
-  const group = (ANDROID_GROUP[product] && ANDROID_GROUP[product][mediation]) || 'io.github.tapmind-tech';
-  return `${group}:${artifact}:${version}`;
+  return `io.github.tapmind-tech:${artifact}:${version}`;
 }
 
 function iosPodLine(mediation, version) {
@@ -68,7 +61,6 @@ function iosPodLine(mediation, version) {
 
 module.exports = {
   ANDROID_ARTIFACT,
-  ANDROID_GROUP,
   IOS_POD,
   FLUTTER_PUBSPEC,
   NEXTGEN_FLUTTER_PUBSPEC,
