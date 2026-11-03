@@ -1578,10 +1578,6 @@
                 "title": "Class & Network Key Registry"
               },
               {
-                "page": "reference/package-registry",
-                "title": "Package Registry"
-              },
-              {
                 "page": "reference/compatibility-matrix",
                 "title": "Compatibility Matrix"
               },
@@ -1622,6 +1618,16 @@
                     "title": "TopOn"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "group": "Hidden pages",
+            "hidden": true,
+            "pages": [
+              {
+                "page": "reference/package-registry",
+                "title": "Package Registry"
               }
             ]
           }
