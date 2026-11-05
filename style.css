@@ -737,6 +737,8 @@ a[href$="/mediation-adapter-gma-sdk/android/admob/V4"] {
 
 /* On /admob/V4, highlight the default AdMob nav item the same as V3. */
 aside:has(a[href$="/mediation-adapter-gma-sdk/android/admob/V4"].nav-active)
+  a[href="/mediation-adapter-gma-sdk/android/admob/index"],
+aside:has(a[href$="/mediation-adapter-gma-sdk/android/admob/V4"].nav-active)
   a[href="/mediation-adapter-gma-sdk/android/admob"] {
   color: var(--color-primary) !important;
   font-weight: 600 !important;

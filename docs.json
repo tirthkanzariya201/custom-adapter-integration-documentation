@@ -32,6 +32,11 @@
   },
   "redirects": [
     {
+      "source": "/mediation-adapter-gma-sdk/android/admob",
+      "destination": "/mediation-adapter-gma-sdk/android/admob/index",
+      "permanent": false
+    },
+    {
       "source": "/",
       "destination": "/guides/introduction",
       "permanent": false
@@ -878,7 +883,7 @@
                 "expanded": false,
                 "pages": [
                   {
-                    "page": "mediation-adapter-gma-sdk/android/admob",
+                    "page": "mediation-adapter-gma-sdk/android/admob/index",
                     "title": "AdMob"
                   },
                   {
@@ -1015,7 +1020,7 @@
             "hidden": true,
             "pages": [
               {
-                "page": "mediation-adapter-gma-sdk/android/admob",
+                "page": "mediation-adapter-gma-sdk/android/admob/index",
                 "title": "AdMob"
               }
             ],

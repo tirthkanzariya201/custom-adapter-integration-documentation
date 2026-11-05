@@ -39,6 +39,10 @@ function mustReplace(rel, content, re, replacement, label) {
 
 function guidePath(product, wrapper, mediation) {
   const folder = WRAPPER_FOLDER[wrapper];
+  const indexRel = path.join(product, folder, mediation, 'index.mdx').replace(/\\/g, '/');
+  if (fs.existsSync(path.join(rootDir, indexRel))) {
+    return indexRel;
+  }
   return path.join(product, folder, `${mediation}.mdx`).replace(/\\/g, '/');
 }
 
