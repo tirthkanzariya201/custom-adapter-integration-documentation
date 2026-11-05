@@ -2,8 +2,39 @@
 title: Changelog - AdMob - Native Android
 description: >-
   Track every release of the TapMind AdMob native Android mediation adapter,
-  from version 2.1.11 through 3.0.6, with added, changed, and fixed notes.
+  from version 2.1.11 through 1.4.0.0.0, with added, changed, and fixed notes.
 ---
+
+<Update label="November 5, 2026">
+
+<p className="cl-version" id="version-14000">1.4.0.0.0</p>
+
+Linked to core SDK version: [v4.0.0](/changelog/sdk/gma-mediation-android#version-400)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Automatic cleanup of unused ads to reduce memory use.
+- SDK stability monitoring.
+- Support for TCF, GPP and US Privacy consent signals, and for AdMob privacy settings.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Action required: The Maven dependency is now `com.tapmind:tapmindsdk-adapter-admob:1.4.0.0.0`. Remove `io.github.tapmind-tech:customadapter-admob` and any direct `io.github.tapmind-tech:tapmindsdk` dependency.
+- Action required: Update the Parameter value of each AdMob custom event to include your placement code, app ID and publisher ID. Ad requests fail if the placement code is missing.
+- The SDK now runs on Android 7.0 (API 24) and higher.
+- The SDK no longer refreshes banners itself.
+- Updated dependencies, including Retrofit 3.0.0 and Gson 2.14.0.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- The adapter no longer overrides your app's Google Mobile Ads request configuration.
+- The adapter and SDK versions are now reported correctly to AdMob.
+- Issues when several ads are requested at the same time.
+- Missing ad callbacks, and rewarded ad and impression callback issues.
+- Native ad click, audio and AdChoices icon issues.
+- Banner and native ads loading on closed screens.
+
+</Update>
 
 <Update label="October 31, 2026">
 

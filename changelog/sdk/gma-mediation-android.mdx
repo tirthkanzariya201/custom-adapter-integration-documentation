@@ -1,9 +1,37 @@
 ---
 title: Changelog - Android SDK (GMA)
 description: >-
-  Track every Android SDK (GMA) release from 2.0.14 to 3.0.7, with dated entries
+  Track every Android SDK (GMA) release from 2.0.14 to 4.0.0, with dated entries
   for added features, changes, and fixes across ad types and mediation.
 ---
+
+<Update label="November 5, 2026">
+
+<p className="cl-version" id="version-400">4.0.0</p>
+
+<p className="cl-kind cl-added">Added</p>
+
+- Remote SDK control: TapMind can pause the SDK or an individual placement when needed. TapMind ads are not served while paused.
+- Automatic cleanup of unused ads to reduce memory use.
+- SDK stability monitoring.
+- Support for TCF, GPP and US Privacy consent signals.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Action required: The Maven dependency is now `com.tapmind:tapmindsdk`. It was `io.github.tapmind-tech:tapmindsdk`.
+- The generated BuildConfig class is now `com.tapmind.sdk.BuildConfig`.
+- The SDK now runs on Android 7.0 (API 24) and higher.
+- The SDK no longer refreshes banners itself.
+- Updated dependencies, including Retrofit 3.0.0 and Gson 2.14.0.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Issues when several ads are requested at the same time.
+- Rewarded ad and impression callback issues.
+- Native ad click, audio and AdChoices icon issues.
+- Banner and native ads loading on closed screens.
+
+</Update>
 
 <Update label="October 31, 2026">
 

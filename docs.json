@@ -884,6 +884,10 @@
                   {
                     "page": "changelog/gma-sdk/android/admob",
                     "title": "Changelog"
+                  },
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/admob/V4",
+                    "title": "AdMob"
                   }
                 ]
               },
@@ -1579,7 +1583,8 @@
               },
               {
                 "page": "reference/package-registry",
-                "title": "Package Registry"
+                "title": "Package Registry",
+                "hidden": true
               },
               {
                 "page": "reference/compatibility-matrix",

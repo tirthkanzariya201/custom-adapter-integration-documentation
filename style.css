@@ -725,3 +725,21 @@ article table:not(.package-registry-table) td code,
 .update-content a {
   color: #FE7B49 !important;
 }
+
+/* Native Android AdMob V4 is share-link only; keep it out of the sidebar and pager. */
+aside li:has(a[href$="/mediation-adapter-gma-sdk/android/admob/V4"]) {
+  display: none !important;
+}
+
+a[href$="/mediation-adapter-gma-sdk/android/admob/V4"] {
+  display: none !important;
+}
+
+/* On /admob/V4, highlight the default AdMob nav item the same as V3. */
+aside:has(a[href$="/mediation-adapter-gma-sdk/android/admob/V4"].nav-active)
+  a[href="/mediation-adapter-gma-sdk/android/admob"] {
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}
