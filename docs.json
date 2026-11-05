@@ -1588,8 +1588,7 @@
               },
               {
                 "page": "reference/package-registry",
-                "title": "Package Registry",
-                "hidden": true
+                "title": "Package Registry"
               },
               {
                 "page": "reference/compatibility-matrix",
