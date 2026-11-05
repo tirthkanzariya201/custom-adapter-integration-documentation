@@ -32,8 +32,13 @@
   },
   "redirects": [
     {
-      "source": "/mediation-adapter-gma-sdk/android/admob",
-      "destination": "/mediation-adapter-gma-sdk/android/admob/index",
+      "source": "/mediation-adapter-gma-sdk/android/admob/V4",
+      "destination": "/mediation-adapter-gma-sdk/android/admob-v4",
+      "permanent": false
+    },
+    {
+      "source": "/mediation-adapter-gma-sdk/android/admob/index",
+      "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": false
     },
     {
@@ -883,7 +888,7 @@
                 "expanded": false,
                 "pages": [
                   {
-                    "page": "mediation-adapter-gma-sdk/android/admob/index",
+                    "page": "mediation-adapter-gma-sdk/android/admob",
                     "title": "AdMob"
                   },
                   {
@@ -891,7 +896,7 @@
                     "title": "Changelog"
                   },
                   {
-                    "page": "mediation-adapter-gma-sdk/android/admob/V4",
+                    "page": "mediation-adapter-gma-sdk/android/admob-v4",
                     "title": "AdMob"
                   }
                 ]
@@ -1020,7 +1025,7 @@
             "hidden": true,
             "pages": [
               {
-                "page": "mediation-adapter-gma-sdk/android/admob/index",
+                "page": "mediation-adapter-gma-sdk/android/admob",
                 "title": "AdMob"
               }
             ],

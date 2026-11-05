@@ -6,6 +6,25 @@ description: >-
   changes.
 ---
 
+<Update label="November 5, 2026">
+
+<p className="cl-version" id="version-211">2.1.1</p>
+
+Linked to core SDK version: [v2.0.8](/changelog/sdk/nextgen-gma-mediation-android#version-208)
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- Fixed duplicate impression reporting on banner re-display.
+- Fixed hanging background requests by canceling in-flight loads when custom event times out.
+
+<p className="cl-kind cl-added">Added</p>
+
+- Added adapter destroy lifecycle implementation to cleanly release banner sessions and view containers.
+- Added proper privacy signal passing (COPPA, under-age consent, max content rating).
+- Added fullscreen callback mappings for banner expand and collapse events.
+
+</Update>
+
 <Update label="September 4, 2026">
 
 <p className="cl-version" id="version-210">2.1.0</p>

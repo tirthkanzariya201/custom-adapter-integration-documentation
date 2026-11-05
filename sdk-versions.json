@@ -29,7 +29,7 @@
   "mediation-adapter-gma-next-gen-sdk": {
     "native-android": {
       "admob": "2.0.4",
-      "google-ad-manager": "2.1.0",
+      "google-ad-manager": "2.1.1",
       "applovin-max": "2.0.0",
       "levelplay": "2.0.0"
     },
