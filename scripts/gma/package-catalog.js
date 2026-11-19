@@ -4,8 +4,8 @@
 
 const ANDROID_ARTIFACT = {
   'mediation-adapter-gma-sdk': {
-    admob: 'customadapter-admob',
-    'google-ad-manager': 'customadapter-gam',
+    admob: 'tapmindsdk-adapter-admob',
+    'google-ad-manager': 'tapmindsdk-adapter-gam',
     'applovin-max': 'customadapter-applovin',
     levelplay: 'customadapter-ironsource',
   },
@@ -17,7 +17,12 @@ const ANDROID_ARTIFACT = {
   },
 };
 
-const ANDROID_GROUP = {};
+const ANDROID_GROUP = {
+  'mediation-adapter-gma-sdk': {
+    admob: 'com.tapmind',
+    'google-ad-manager': 'com.tapmind',
+  },
+};
 
 const IOS_POD = {
   admob: 'TapMindAdapter',
