@@ -2,9 +2,40 @@
 title: Changelog - Google Ad Manager - Native Android
 description: >-
   Track every TapMind Google Ad Manager native Android adapter release from
-  2.1.11 through 3.0.2, with dates, linked core SDK versions, and fixes or
+  2.1.11 through 3.4.0.1.0, with dates, linked core SDK versions, and fixes or
   changes.
 ---
+
+<Update label="November 19, 2026">
+
+<p className="cl-version" id="version-34010">3.4.0.1.0</p>
+
+Linked to core SDK version: [v4.0.1](/changelog/sdk/gma-mediation-android#version-401)
+
+<p className="cl-kind cl-added">Added</p>
+
+- Automatic cleanup of unused ads to reduce memory use.
+- SDK stability monitoring.
+- Support for TCF, GPP and US Privacy consent signals, and for Google Ad Manager privacy settings.
+
+<p className="cl-kind cl-changed">Changed</p>
+
+- Action required: The Maven dependency is now `com.tapmind:tapmindsdk-adapter-gam:3.4.0.1.0`. Remove `io.github.tapmind-tech:customadapter-gam` and any direct `io.github.tapmind-tech:tapmindsdk` dependency.
+- Action required: Update the Parameter value of each Google Ad Manager custom event to include your placement code, app ID and publisher ID. Ad requests fail if the placement code is missing.
+- The SDK now runs on Android 7.0 (API 24) and higher.
+- The SDK no longer refreshes banners itself.
+- Updated dependencies, including Retrofit 3.0.0 and Gson 2.14.0.
+
+<p className="cl-kind cl-fixed">Fixed</p>
+
+- The adapter no longer overrides your app's Google Mobile Ads request configuration.
+- The adapter and SDK versions are now reported correctly to Google Ad Manager.
+- Issues when several ads are requested at the same time.
+- Missing ad callbacks, and rewarded ad and impression callback issues.
+- Native ad click, audio and AdChoices icon issues.
+- Banner and native ads loading on closed screens.
+
+</Update>
 
 <Update label="October 26, 2026">
 

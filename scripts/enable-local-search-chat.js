@@ -194,7 +194,12 @@ import path from 'node:path';
 
 function docsRedirects() {
   try {
-    const docsPath = path.join(process.cwd(), 'public', 'docs.json');
+    const candidates = [
+      path.join(process.cwd(), 'public', 'docs.json'),
+      path.join(process.cwd(), 'docs.json'),
+    ];
+    const docsPath = candidates.find((p) => fs.existsSync(p));
+    if (!docsPath) return [];
     const docs = JSON.parse(fs.readFileSync(docsPath, 'utf8'));
     const seen = new Set();
     const rules = [];

@@ -743,3 +743,21 @@ aside:has(a[href$="/mediation-adapter-gma-sdk/android/admob-v4"].nav-active)
   border-left-color: var(--color-primary) !important;
   background: transparent !important;
 }
+
+/* Native Android Google Ad Manager V4 is share-link only; keep it out of the sidebar and pager. */
+aside li:has(a[href$="/mediation-adapter-gma-sdk/android/google-ad-manager-v4"]) {
+  display: none !important;
+}
+
+a[href$="/mediation-adapter-gma-sdk/android/google-ad-manager-v4"] {
+  display: none !important;
+}
+
+/* On Google Ad Manager V4, highlight the default GAM nav item the same as V3. */
+aside:has(a[href$="/mediation-adapter-gma-sdk/android/google-ad-manager-v4"].nav-active)
+  a[href="/mediation-adapter-gma-sdk/android/google-ad-manager"] {
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--color-primary) !important;
+  background: transparent !important;
+}

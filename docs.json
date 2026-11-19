@@ -37,6 +37,11 @@
       "permanent": false
     },
     {
+      "source": "/mediation-adapter-gma-sdk/android/google-ad-manager/V4",
+      "destination": "/mediation-adapter-gma-sdk/android/google-ad-manager-v4",
+      "permanent": false
+    },
+    {
       "source": "/mediation-adapter-gma-sdk/android/admob/index",
       "destination": "/mediation-adapter-gma-sdk/android/admob",
       "permanent": false
@@ -912,6 +917,10 @@
                   {
                     "page": "changelog/gma-sdk/android/google-ad-manager",
                     "title": "Changelog"
+                  },
+                  {
+                    "page": "mediation-adapter-gma-sdk/android/google-ad-manager-v4",
+                    "title": "Google Ad Manager"
                   }
                 ]
               },
