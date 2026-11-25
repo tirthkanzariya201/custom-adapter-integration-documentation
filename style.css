@@ -726,3 +726,20 @@ article table:not(.package-registry-table) td code,
   color: #FE7B49 !important;
 }
 
+.update-content code {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+.update-content pre,
+.update-content pre code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
+
+.update-content li {
+  margin-bottom: 0.55rem !important;
+}
+

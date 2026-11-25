@@ -9,27 +9,43 @@ description: >-
 
 <p className="cl-version" id="version-401">4.0.1</p>
 
+Requires Google Mobile Ads SDK 25.0.0 or higher.
+
+<p className="cl-kind cl-changed">Action required</p>
+
+- Replace the dependency. Remove this line:
+
+```
+io.github.tapmind-tech:tapmindsdk
+```
+
+- Add:
+
+```
+implementation("com.tapmind:tapmindsdk:4.0.1")
+```
+
+- If your code reads TapMind's `BuildConfig`, import `com.tapmind.sdk.BuildConfig` instead of `com.tapminds.BuildConfig`.
+
 <p className="cl-kind cl-added">Added</p>
 
-- Remote SDK control: TapMind can pause the SDK or an individual placement when needed. TapMind ads are not served while paused.
-- Automatic cleanup of unused ads to reduce memory use.
-- SDK stability monitoring.
-- Support for TCF, GPP and US Privacy consent signals.
+- Consent: TapMind reads and honors the TCF, GPP and US Privacy signals saved by your consent tool (CMP), and your Google Mobile Ads privacy settings.
+- Remote pause: TapMind can pause its own ads for your whole app, or for one placement, without an app update. While paused, TapMind ads are not served and mediation moves on to your next ad source.
+- Ads that are loaded but never shown are released automatically, which reduces memory use.
 
 <p className="cl-kind cl-changed">Changed</p>
 
-- Action required: The Maven dependency is now `com.tapmind:tapmindsdk`. It was `io.github.tapmind-tech:tapmindsdk`.
-- The generated BuildConfig class is now `com.tapmind.sdk.BuildConfig`.
-- The SDK now runs on Android 7.0 (API 24) and higher.
-- The SDK no longer refreshes banners itself.
-- Updated dependencies, including Retrofit 3.0.0 and Gson 2.14.0.
+- TapMind now serves ads on Android 7.0 (API 24) and higher. You do not need to change your app's minSdk. On phones below Android 7.0, mediation fills from your other ad sources.
+- Updated libraries that come with the SDK: Retrofit 2.11.0 to 3.0.0, and Gson 2.13.1 to 2.14.0. If your app also uses either library, check that it works with the new version.
 
 <p className="cl-kind cl-fixed">Fixed</p>
 
-- Issues when several ads are requested at the same time.
-- Rewarded ad and impression callback issues.
-- Native ad click, audio and AdChoices icon issues.
-- Banner and native ads loading on closed screens.
+- TapMind no longer overwrites the ad request settings your app gives Google, such as child-directed and under-age-of-consent tags, the ad content rating limit and test devices.
+- When several ads were requested at the same time, an ad loaded for one ad format could be served to a request for another format. Each request now gets the ad that matches it.
+- Ad callbacks that were missing are now delivered.
+- Rewarded ads: the reward was granted as soon as the ad was shown, even if the user closed it early. It is now granted only after the video is completed. The impression is still reported when the ad is shown.
+- Native ads: clicks and audio mute/unmute did not work. Both now work. The AdChoices icon is also fixed.
+- Banner and native ads no longer load for screens that are already closed.
 
 </Update>
 
